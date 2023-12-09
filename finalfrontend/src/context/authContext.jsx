@@ -1,5 +1,6 @@
 import { createContext, useContext, useMemo, useState } from "react";
 
+
 const AuthContext = createContext();
 
 export const AuthContextProvider = ({ children }) => {
@@ -65,6 +66,7 @@ export const AuthContextProvider = ({ children }) => {
     [user, allUser, isDeletedUser]
   );
 
+  
   return (
     <AuthContext.Provider value={value}> {children} </AuthContext.Provider>
   );

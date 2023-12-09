@@ -4,13 +4,17 @@ import App from './App.jsx'
 import './index.css'
 import { AuthContextProvider } from './context/authContext.jsx'
 import { ThemeContextProvider } from './context/themeContext.jsx'
+import { RouterProvider } from 'react-router-dom'
+import { router } from './routes/routes.jsx'
 
 ReactDOM.createRoot(document.getElementById('root')).render(
   <React.StrictMode>
-    <AuthContextProvider>
-      <ThemeContextProvider>  {/* funcion que hace el toggle dark light  */}
-    <App />
-    </ThemeContextProvider>
-    </AuthContextProvider>
+     
+
+      <AuthContextProvider> 
+      <RouterProvider router={router}/>
+      </AuthContextProvider> 
+
+    
   </React.StrictMode>,
 )

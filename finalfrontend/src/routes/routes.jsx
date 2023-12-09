@@ -5,6 +5,8 @@ import { createBrowserRouter } from "react-router-dom";
 import React from 'react'
 import { Protected } from "../components/ProtectedRoutes/Protected";
 import { ProtectedCheckChildren } from "../components/ProtectedRoutes/ProtectedCheckChildren";
+import { Registerpt1 } from "../pages/Register/Registerpt1/Registerpt1";
+import App from "../App";
 
 export const router = createBrowserRouter ([
     {
@@ -13,23 +15,23 @@ export const router = createBrowserRouter ([
         children: [
             {
                 path: "/",
-                element: <Home />,
+                // element: <Home />,
               },
               {
                 path: "/about",
-                element: <About />,
+                // element: <About />,
               },
               {
                 path: "/register",
-                element: <Register />,
+                element: <Registerpt1 />,
               },
               {
-                path: "/registertwo",
+                path: "/register/complete",
                 // element: <RegisterTwo />,
               },
               {
                 path: "/login",
-                element: <Login />,
+                // element: <Login />,
               },
               {
                 path: "/forgotPassword",
@@ -65,7 +67,7 @@ export const router = createBrowserRouter ([
                 path: "/verifyCode",
                 element: 
                 (<ProtectedCheckChildren>
-                  <VerifyCode />
+                  {/* <VerifyCode /> */}
                 </ProtectedCheckChildren>),
               },
               {
@@ -86,7 +88,7 @@ export const router = createBrowserRouter ([
                 path: "/profile",
                 element: 
                 (<Protected>
-                  <Profile />
+                  {/* <Profile /> */}
                 </Protected>),
                 children: [
                   {
@@ -122,7 +124,7 @@ export const router = createBrowserRouter ([
               },
               {
                 path: "*",
-                element: <NotFound />,
+                // element: <NotFound />,
               },
         ],
     },
