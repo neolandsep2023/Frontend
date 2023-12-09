@@ -5,9 +5,13 @@ import { useForm } from "react-hook-form";
 import { Link, Navigate } from "react-router-dom";
 import { useAuth } from "../../../context/authContext"
 import { useEffect, useState } from "react";
-import { registerUser } from "../../../services/user.service";
+import { registerGoogle, registerUser, registerUserWithGoogle } from "../../../services/user.service";
 import { UploadFile } from "../../../components/index";
 import { useErrorRegister } from "../../../hooks/useErrorRegister";
+import { GoogleLogin } from '@react-oauth/google'
+import { useGoogleLogin } from '@react-oauth/google';
+import { jwtDecode } from "jwt-decode"
+
 
 import Button from '@mui/material/Button';
 import SendIcon from '@mui/icons-material/Send';
@@ -20,6 +24,9 @@ export const Registerpt1 = () => {
     const [res, setRes] = useState({});
     const [send, setSend] = useState(false);
     const [okRegister, setRegisterOk] = useState(false);
+    const [googleUser, setGoogleUser] = useState([])
+    // const [googleProfile, setGoogleProfile] = useState ([])
+    const [resGoogle, setResGoogle] = useState({})
 
 
 //!hooks
@@ -52,8 +59,50 @@ export const Registerpt1 = () => {
         }
       };
 
+      const handleGoogleLogin = useGoogleLogin({
+        onSuccess: (codeResponse) => setGoogleUser(codeResponse),
+        onError: (error) => console.log('Login Failed:', error)
+    });
+
+
+    const formGoogle = async () =>{
+      if (resGoogle?.status == 200){
+console.log(resGoogle)
+       const customFormData = {
+          isVerified: resGoogle.data.verified_email,
+          email: resGoogle.data.email,
+          name: resGoogle?.data?.given_name,
+          lastName: resGoogle?.data?.family_name ? resGoogle?.data?.family_name : null ,
+          image: resGoogle.data.picture,
+        }
+
+
+        setSend(true);
+        console.log(customFormData)
+        setRes(await registerUserWithGoogle(customFormData));
+        console.log(res)
+        setSend(false);
+
+      }
+    }
+
+
+
+const handleGoogleRegister = async () =>{
+
+//         const credentialDecoded = jwtDecode(googleUser.credential)
+// console.log(credentialDecoded)
+
+  setSend(true)
+  setResGoogle( await registerGoogle(googleUser.access_token))
+  setSend(false)
+
+}
+
+
 
       useEffect(() => {
+        console.log('entro aqui', res)
         useErrorRegister(res, setRegisterOk, setRes);
         //si es un 200 llama a la funcion puente
         if (res?.status == 200) bridgeData("ALLUSER");
@@ -64,13 +113,28 @@ export const Registerpt1 = () => {
       setIsDeletedUser(()=> false);
     }, [])
     
+
+    useEffect(() => {
+      formGoogle()
+    }, [resGoogle])
     
+    
+
+    useEffect(() => {
+  //  console.log('hola use effect', googleUser)
+      if (googleUser.length != 0){
+        console.log(googleUser, 'ENTROOOOOOOOOO')
+        handleGoogleRegister()
+      }
+
+    }, [googleUser])
+    
+
+
       if (okRegister) {
         //si todo esta ok navega a la pagina del codigo
         return <Navigate to="/verifyCode" />;
       }
-
-
 
 
 
@@ -81,7 +145,10 @@ export const Registerpt1 = () => {
             <div className="formTitle">
             <h1 className="titleFormH1">SIGN UP</h1>
             <p>Champion Within, Victories Begin</p>
-            </div>
+            {/* <GoogleLogin onClick={() => handleGoogleLogin()} /> */}
+            <button onClick={() => handleGoogleLogin()}>Sign in with Google 🚀 </button>
+            {/* {console.log(googleUser.credential)} EL TOKEN !!!! */}
+            </div>'
             <form className="form" onSubmit={handleSubmit(formSubmit)}>
               <div className="inputPlaceHolderForm">
     
@@ -166,7 +233,7 @@ export const Registerpt1 = () => {
               
               <UploadFile />
               <div className="btnContainer">
-              <Button size="large" style= {{backgroundColor: 'var(--color-boton-motogp)', margin: '1.5rem'}}  type="submit"
+              <Button size="large" style= {{color: 'black', margin: '1.5rem'}}  type="submit"
                   disabled={send} variant="contained" endIcon={<SendIcon />}>
      {send ? "Loading..." : "SING UP"}
     </Button>
