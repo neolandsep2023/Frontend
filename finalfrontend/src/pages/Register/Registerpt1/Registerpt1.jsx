@@ -27,6 +27,9 @@ export const Registerpt1 = () => {
     const [googleUser, setGoogleUser] = useState([])
     // const [googleProfile, setGoogleProfile] = useState ([])
     const [resGoogle, setResGoogle] = useState({})
+    const [googlePassword, setGooglePassword] = useState("")
+    const [username, setUsername] = useState("")
+  
 
 
 //!hooks
@@ -58,10 +61,9 @@ export const Registerpt1 = () => {
           setSend(false);
         }
       };
-
       const handleGoogleLogin = useGoogleLogin({
         onSuccess: (codeResponse) => setGoogleUser(codeResponse),
-        onError: (error) => console.log('Login Failed:', error)
+        onError: (error) => console.log('Login Failed:', error),
     });
 
 
@@ -74,7 +76,10 @@ console.log(resGoogle)
           name: resGoogle?.data?.given_name,
           lastName: resGoogle?.data?.family_name ? resGoogle?.data?.family_name : null ,
           image: resGoogle.data.picture,
+          username: resGoogle.data.email.split('@')[0],
+          password: googlePassword,
         }
+        //he tenido que meterle
 
 
         setSend(true);
@@ -146,9 +151,22 @@ const handleGoogleRegister = async () =>{
             <h1 className="titleFormH1">SIGN UP</h1>
             <p>Champion Within, Victories Begin</p>
             {/* <GoogleLogin onClick={() => handleGoogleLogin()} /> */}
-            <button onClick={() => handleGoogleLogin()}>Sign in with Google 🚀 </button>
+          <br />
+          <p>
+            We require a new password so your Google account always stays safe. It is better if you provide a password you have not used anywhere else.
+          </p>
+          <input
+            type="password"
+            id="googlePassword"
+            name="googlePassword"
+            placeholder="Password"
+            onChange={(e) => setGooglePassword(e.target.value)}
+          /> 
+          <br />
+            <button onClick={() => handleGoogleLogin()} disabled={googlePassword.length<8}>Sign in with Google 🚀 </button>
+            {/**cuando la contrasena es menor que el minimo requerido no te deja hacer login con google */}
             {/* {console.log(googleUser.credential)} EL TOKEN !!!! */}
-            </div>'
+            </div>
             <form className="form" onSubmit={handleSubmit(formSubmit)}>
               <div className="inputPlaceHolderForm">
     
