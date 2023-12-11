@@ -7,6 +7,9 @@ flex-direction: ${({direction}) => direction};
 justify-content: center;
 align-items: center;
 flex-wrap: wrap;
+gap: ${({gap}) => gap ? gap : "1rem"};
+margin: ${({margin, theme}) => margin ? margin : theme.spacing(1)};
+padding: ${({padding, theme}) => padding ? padding : theme.spacing(0)};
 
 ${({theme}) => theme.mediaquery.mobile}{
 
@@ -17,10 +20,10 @@ ${({theme}) => theme.mediaquery.mobile}{
 
 
 
-export const FlexDir = ({children, direction, mediaqueryDir}) => {
+export const FlexDir = ({children, direction, mediaqueryDir, gap}) => {
 
 
   return (
-    <FlexStyle direction={direction} mediaqueryDir={mediaqueryDir}>{children}</FlexStyle>
+    <FlexStyle gap = {gap} direction={direction} mediaqueryDir={mediaqueryDir}>{children}</FlexStyle>
   )
 }

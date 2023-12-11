@@ -15,15 +15,19 @@ export const ZINDEX = {
 };
 
 const PALETTE_COLOR_LIGHT = {
-  background: "#fffafa",
-  header: "#fcf6f6" ,
-  enhanced: "#ffffff" ,
-  form: "#ffffff",
+  // background: "#fffafa",
+  // header: "#fcf6f6" ,
+  // enhanced: "#ffffff" ,
+  // form: "#ffffff",
+  background: "#ffffff",
+  header: "#f9f9f9" ,
+  enhanced: "#f5f5f5" ,
+  form: "#f5f5f5",
   textColor: "#1e1e1e",
   button: "#8effab",
   secondButton: "#72cc89" ,
   buttonLoading: "#396644" ,
-  border: "#f6edec",
+  border: "#f1f1f1",
 };
 
 const PALETTE_COLOR_DARK = {

@@ -1,18 +1,21 @@
 import React, { useState } from 'react'
-import { SearchButtonCustom } from '../../components/SearchButton/SearchButton'
-import { SearchInputCustom } from '../../components/SearchInput/SearchInput'
+import { SearchButtonCustom } from '../../components/StyleComponents/Buttons/SearchButton'
+import { SearchInputCustom } from '../../components/StyleComponents/Inputs/SearchInput'
+import { FlexDir } from '../../components/StyleComponents'
 
 export const RoomSearch = () => {
   const [postCode, setPostCode] = useState()
   return (
     <>
-      <section className='searchRoomContainer'>
+      <FlexDir>
         <form>
-          {/* <input type="number" placeholder='find rooms in your area, enter postal code'/> */}
-          <SearchInputCustom placeholder='find rooms in your area, enter postal code'/>
-          <SearchButtonCustom>Find</SearchButtonCustom>
+          <SearchInputCustom/>
+          <SearchButtonCustom>🔎</SearchButtonCustom>
         </form>
-      </section>
+      </FlexDir>
+      <FlexDir>
+        
+      </FlexDir>
     </>
   )
 }

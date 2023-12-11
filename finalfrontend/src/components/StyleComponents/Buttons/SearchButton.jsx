@@ -1,9 +1,10 @@
+import { useTheme } from "@emotion/react"
 import styled from "@emotion/styled"
 
 const SearchButtonStyles = styled.button`
   border-radius: 50%;
-  border: 2px solid #396644;
-  width: 50px;
+  border: 2px solid ${({theme}) => theme.palette.border.main};
+  width: 35px;
   aspect-ratio: 1/1;
   background-color: #ddffe6;
   font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
@@ -12,5 +13,6 @@ const SearchButtonStyles = styled.button`
 `
 
 export const SearchButtonCustom = ({ children }) => {
-  return <SearchButtonStyles type="submit">{children}</SearchButtonStyles>
+  const { theme } = useTheme()
+  return <SearchButtonStyles theme = {theme} type="submit">{children}</SearchButtonStyles>
 }
