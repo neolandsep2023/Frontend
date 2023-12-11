@@ -24,18 +24,8 @@ object-fit: cover;
 
 margin: ${({theme})=>
   theme.spacing(1)};
-}
+};
 
-${({theme}) => theme.mediaquery.tablet}{
-    display: flex;
-    flex-direction: column;
-    width: 45vw;
-    height: 50vh;
-    & img{
-        height: 250px;
-width: 250px;
-        object-fit: cover;
-}
 
 ${({theme}) => theme.mediaquery.mobile}{
     display: flex;
@@ -47,6 +37,18 @@ ${({theme}) => theme.mediaquery.mobile}{
 width: 300px;
         object-fit: cover;
 }
+};
+
+${({theme}) => theme.mediaquery.tablet}{
+    width: 45vw;
+    height: 50vh;
+    & img{
+        height: 250px;
+width: 250px;
+        object-fit: cover;
+}
+}
+
 `
 
 
