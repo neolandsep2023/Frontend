@@ -15,7 +15,7 @@ export const GlobalStyles = () => {
             padding: 0,
             margin: 0,
             backgroundColor: theme.palette.background.main,
-            color: theme.palette.color.main,
+            color: theme.palette.textColor.main,
           },
 
         //   "::-webkit-scrollbar": {

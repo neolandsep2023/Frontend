@@ -7,7 +7,7 @@ import { Protected } from "../components/ProtectedRoutes/Protected";
 import { ProtectedCheckChildren } from "../components/ProtectedRoutes/ProtectedCheckChildren";
 import { Registerpt1 } from "../pages/Register/Registerpt1/Registerpt1";
 import App from "../App";
-import { MapCreation, ByIdMap } from "../pages";
+import { MapCreation, ByIdMap, Home } from "../pages";
 export const router = createBrowserRouter ([
     {
         path:"/",
@@ -15,7 +15,7 @@ export const router = createBrowserRouter ([
         children: [
             {
                 path: "/",
-                // element: <Home />,
+                element: <Home />,
               },
               {
                 path: "/about",
