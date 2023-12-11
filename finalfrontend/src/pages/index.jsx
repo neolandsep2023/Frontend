@@ -5,3 +5,6 @@ export * from "./RoomSearch/RoomSearch"
 export * from "./Pruebas/MapCreation"
 export * from "./Pruebas/ByIdMap"
 export * from './Home/Home'
+export * from "./CreateRoom/CreateRoom"
+export * from "./Login/Login"
+export * from "./VerifyCode/VerifyCode"
