@@ -28,7 +28,6 @@ export const Registerpt1 = () => {
     // const [googleProfile, setGoogleProfile] = useState ([])
     const [resGoogle, setResGoogle] = useState({})
     const [googlePassword, setGooglePassword] = useState("")
-    const [username, setUsername] = useState("")
   
 
 
