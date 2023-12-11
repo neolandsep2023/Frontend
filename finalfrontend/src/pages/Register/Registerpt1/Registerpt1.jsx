@@ -90,8 +90,6 @@ console.log(resGoogle)
       }
     }
 
-
-
 const handleGoogleRegister = async () =>{
 
 //         const credentialDecoded = jwtDecode(googleUser.credential)
@@ -102,8 +100,6 @@ const handleGoogleRegister = async () =>{
   setSend(false)
 
 }
-
-
 
       useEffect(() => {
         console.log('entro aqui', res)
@@ -122,8 +118,6 @@ const handleGoogleRegister = async () =>{
       formGoogle()
     }, [resGoogle])
     
-    
-
     useEffect(() => {
   //  console.log('hola use effect', googleUser)
       if (googleUser.length != 0){
@@ -133,14 +127,10 @@ const handleGoogleRegister = async () =>{
 
     }, [googleUser])
     
-
-
       if (okRegister) {
         //si todo esta ok navega a la pagina del codigo
         return <Navigate to="/verifyCode" />;
       }
-
-
 
 
       return (
