@@ -1,10 +1,11 @@
 import { useForm } from "react-hook-form";
-import "./Login.css";
+
 import { useEffect, useState } from "react";
 import { Link, Navigate, useNavigate } from "react-router-dom";
 import { loginUser } from "../../services/user.service";
 import { useErrorLogin } from "../../hooks/useErrorLogin";
 import { useAuth } from "../../context/authContext";
+import { FlexDir, Form } from "../../components/StyleComponents";
 
 
 
@@ -13,7 +14,7 @@ export const Login = () => {
   const { login, setUser } = useAuth();
   const navigate = useNavigate();
 
-  const [isSent, setIsSent] = useState(false); //isSent maneja los botones, el disable
+  const [isSent, setIsSent] = useState(false); 
   const [res, setRes] = useState({});
   const [successfulLogin, setSuccessfulLogin] = useState(false);
 
@@ -43,57 +44,68 @@ export const Login = () => {
 
   return (
     <>
-      <div >
-      <div >
-      <div >
-          <h1 >LOG IN</h1>
-          </div>
-          <form onSubmit={handleSubmit(formSubmit)}>
-          <div >
-          <label>
-            Email
-          </label>
-          <input
-            type="email"
-            id="userEmail"
-            name="userEmail"
-            autoComplete="false"
-            {...register("email", { required: true })}
-          />
-          <label  htmlFor="password">
-            Password
-          </label>
-          <input
-            type="password"
-            id="password"
-            name="password"
-            autoComplete="false"
-            {...register("password", { required: true })}
-          />
+    <FlexDir direction={"column"}>
+    <div >
+        <h1 >LOG IN</h1>
+        </div>
+        <Form  width={"80vw"} onSubmit={handleSubmit(formSubmit)}>
+        <div >
+          <FlexDir direction={"column"}>
+          <label htmlFor="email">
+          Email
+        </label>
+        <input
+    
+          type="email"
+          id="userEmail"
+          name="userEmail"
+          autoComplete="false"
+          {...register("email", { required: true })}
+        />
+          </FlexDir>
+       <FlexDir direction={"column"}>
+       <label htmlFor="password">
+          Password
+        </label>
+        <input
+        
+          type="password"
+          id="password"
+          name="password"
+          autoComplete="false"
+          {...register("password", { required: true })}
+        />
+       </FlexDir>
+        
 
 </div>
-
-          <div >
-          <button type="submit">
- LOG IN
+<FlexDir  direction={"column"}>
+<div >
+        <button   type="submit"
+            >
+LOG IN
 </button>
-          </div>
-          <p >
-            
-              Have you forgotten the password?{" "}
-              <Link to="/forgotPassword" className="anchorCustom">
-                Change password
-              </Link>
-            
-          </p>
-        </form>
-        <div >
-          <p>
-            Are you not registered? <Link to="/register">Register Here</Link>
-          </p>
         </div>
+        <p >
+          
+            Have you forgotten the password?{" "}
+            <Link to="/forgotPassword" >
+              Change password
+            </Link>
+          
+        </p>
+</FlexDir>
+      
+      </Form>
+      <FlexDir>
+      <div>
+        <p>
+          Are you not registered? <Link to="/register">Register Here</Link>
+        </p>
       </div>
-      </div>
-    </>
+      </FlexDir>
+     
+      </FlexDir>
+  </>
   );
 };

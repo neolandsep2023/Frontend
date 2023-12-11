@@ -8,7 +8,10 @@ import { ProtectedCheckChildren } from "../components/ProtectedRoutes/ProtectedC
 import { Registerpt1 } from "../pages/Register/Registerpt1/Registerpt1";
 import App from "../App";
 import { MapCreation, ByIdMap, Home, RoomSearch } from "../pages";
+import { Login } from "../pages/Login/Login";
+import { VerifyCode } from "../pages/VerifyCode/VerifyCode";
 export const router = createBrowserRouter ([
+
     {
         path:"/",
         element: <App/>,
@@ -31,7 +34,7 @@ export const router = createBrowserRouter ([
               },
               {
                 path: "/login",
-                // element: <Login />,
+                element: <Login />,
               },
               {
                 path: "/forgotPassword",
@@ -67,7 +70,7 @@ export const router = createBrowserRouter ([
                 path: "/verifyCode",
                 element: 
                 (<ProtectedCheckChildren>
-                  {/* <VerifyCode /> */}
+                  <VerifyCode />
                 </ProtectedCheckChildren>),
               },
               {
