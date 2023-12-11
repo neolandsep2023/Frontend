@@ -26,9 +26,12 @@ const mapRef = useRef(null);
 const markerRef = useRef(null);
 
 
-// const centerMap = () => {
-  
-// }
+const centerMap = () => {
+  mapRef.current.setView(
+    [parseFloat(postcodes[post.location][post.postcode].latitude), parseFloat(postcodes[post.location][post.postcode].longitude)],
+    15
+  );
+}
 
 
 useEffect(() => {
@@ -36,7 +39,7 @@ useEffect(() => {
       if (!mapRef.current) {
         const map = L.map('map', {
           center: [parseFloat(postcodes[post.location][post.postcode].latitude), parseFloat(postcodes[post.location][post.postcode].longitude)],
-          zoom: 14
+          zoom: 15
         });
         L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
           attribution: '© OpenStreetMap contributors'
@@ -49,7 +52,7 @@ useEffect(() => {
       } else {
         mapRef.current.setView(
           [parseFloat(postcodes[post.location][post.postcode].latitude), parseFloat(postcodes[post.location][post.postcode].longitude)],
-          14
+          15
         );
         if (markerRef.current) {
           markerRef.current.setLatLng([parseFloat(postcodes[post.location][post.postcode].latitude), parseFloat(postcodes[post.location][post.postcode].longitude)]);
@@ -72,7 +75,7 @@ useEffect(() => {
 
     </div>
       <div id='map'></div>
-      {/* <button onClick={centerMap}>Center</button> */}
+      <button onClick={centerMap}>Center Map</button>
       </div>
     </>
   )
