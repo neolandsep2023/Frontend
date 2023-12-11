@@ -1,8 +1,6 @@
 import React, { useState } from 'react'
-import { SearchButtonCustom } from '../../components/StyleComponents/Buttons/SearchButton'
-import { SearchInputCustom } from '../../components/StyleComponents/Inputs/SearchInput'
-import { FlexDir } from '../../components/StyleComponents'
-import { SearchImgCustom } from '../../components/StyleComponents/Images/SearchImages'
+import { SearchInputCustom, FlexDir, SearchImgCustom, SearchButtonCustom, H1Custom, H3Custom } from '../../components/StyleComponents/index'
+
 
 export const RoomSearch = () => {
   const [postCode, setPostCode] = useState()
@@ -10,8 +8,8 @@ export const RoomSearch = () => {
     <>
       <FlexDir gap="5rem" height = "100vh">
         <FlexDir direction = "column">
-          <h1>Perfect rooms await you</h1>
-          <h3>"Discover Your Ideal Living Space with HousePal's varied offers"</h3>
+          <H1Custom>Perfect rooms await you</H1Custom>
+          <H3Custom>"Discover Your Ideal Living Space with HousePal's varied offers"</H3Custom>
           <form>
             <SearchInputCustom/>
             <SearchButtonCustom>🔎</SearchButtonCustom>
