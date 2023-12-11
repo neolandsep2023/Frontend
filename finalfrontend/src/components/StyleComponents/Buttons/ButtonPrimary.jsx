@@ -8,8 +8,10 @@ const ButtonStyles = styled.button`
 : variant == "loading" 
 && theme.palette.button.dark};
   border-radius: 5px;
+  font-weight: 600;
   text-align: center;
-  margin: 5px;
+  margin: ${({theme})=>
+  theme.spacing(1)};
   height: 35px;
   width: ${({ size }) =>
     size == "large"
