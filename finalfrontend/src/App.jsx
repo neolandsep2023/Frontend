@@ -6,6 +6,7 @@ import React from "react";
 import { useThemeApp } from "./context/themeContext";
 import { Outlet } from "react-router-dom";
 import { ButtonPrimary } from "./components/StyleComponents";
+import { Header, Footer } from "./components";
 
 const App = () => {
   const { theme, toggleTheme } = useThemeApp();
@@ -17,7 +18,12 @@ const App = () => {
       >
         <GlobalStyles />
 
+
+        <Header/>
         <Outlet />
+        <Footer />
+
+
       </ThemeProvider>
     </>
   );

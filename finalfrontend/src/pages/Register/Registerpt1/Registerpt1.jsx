@@ -11,10 +11,9 @@ import { useErrorRegister } from "../../../hooks/useErrorRegister";
 import { GoogleLogin } from '@react-oauth/google'
 import { useGoogleLogin } from '@react-oauth/google';
 import { jwtDecode } from "jwt-decode"
+import { FlexDir, Form } from '../../../components/StyleComponents';
 
 
-import Button from '@mui/material/Button';
-import SendIcon from '@mui/icons-material/Send';
 
 
 
@@ -73,15 +72,15 @@ console.log(resGoogle)
           isVerified: resGoogle.data.verified_email,
           email: resGoogle.data.email,
           name: resGoogle?.data?.given_name,
-          lastName: resGoogle?.data?.family_name ? resGoogle?.data?.family_name : null ,
+          lastName: resGoogle?.data?.family_name ? resGoogle?.data?.family_name : null,
           image: resGoogle.data.picture,
           username: resGoogle.data.email.split('@')[0],
+          password: `${resGoogle.data.email}1A`,
         }
         //he tenido que meterle
 
 
         setSend(true);
-        console.log(customFormData)
         setRes(await registerUserWithGoogle(customFormData));
         console.log(res)
         setSend(false);
@@ -143,11 +142,17 @@ const handleGoogleRegister = async () =>{
 
 
       return (
+
+<>
+<FlexDir>
+        <Form  width={'300px'} height={'600px'}></Form>
+        </FlexDir>
+
         <div className="allForm register">
           <div className="formMain">
             <div className="formTitle">
             <h1 className="titleFormH1">SIGN UP</h1>
-            <p>Champion Within, Victories Begin</p>
+          
             {/* <GoogleLogin onClick={() => handleGoogleLogin()} /> */}
           
           <br />
@@ -239,10 +244,10 @@ const handleGoogleRegister = async () =>{
               
               <UploadFile />
               <div className="btnContainer">
-              <Button size="large" style= {{color: 'black', margin: '1.5rem'}}  type="submit"
-                  disabled={send} variant="contained" endIcon={<SendIcon />}>
+              <button  type="submit"
+                  disabled={send} variant="contained">
      {send ? "Loading..." : "SING UP"}
-    </Button>
+    </button>
     
                 <div className="loginForm">
             <p className="loginParagraph">
@@ -267,5 +272,6 @@ const handleGoogleRegister = async () =>{
             </form>
           </div>
         </div>
+        </>
       );
 }

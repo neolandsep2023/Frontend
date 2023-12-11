@@ -7,7 +7,9 @@ flex-direction: ${({direction}) => direction};
 justify-content: center;
 align-items: center;
 flex-wrap: wrap;
-gap: ${({gap}) => gap ? gap : "1rem"}
+gap: ${({gap}) => gap ? gap : "1rem"};
+margin: ${({margin, theme}) => margin ? margin : theme.spacing(1)};
+padding: ${({padding, theme}) => padding ? padding : theme.spacing(0)};
 
 ${({theme}) => theme.mediaquery.mobile}{
 
