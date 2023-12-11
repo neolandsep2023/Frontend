@@ -11,7 +11,7 @@ import { useErrorRegister } from "../../../hooks/useErrorRegister";
 import { GoogleLogin } from '@react-oauth/google'
 import { useGoogleLogin } from '@react-oauth/google';
 import { jwtDecode } from "jwt-decode"
-import { FlexDir, Form } from '../../../components/StyleComponents';
+import { ButtonPrimary, FlexDir, Form, H1Custom, H1Form, LabelAndInput } from '../../../components/StyleComponents';
 
 
 
@@ -145,69 +145,50 @@ const handleGoogleRegister = async () =>{
 
 <>
 <FlexDir>
-        <Form  width={'300px'} height={'600px'}></Form>
-        </FlexDir>
-
-        <div className="allForm register">
-          <div className="formMain">
-            <div className="formTitle">
-            <h1 className="titleFormH1">SIGN UP</h1>
-          
-            {/* <GoogleLogin onClick={() => handleGoogleLogin()} /> */}
-          
-          <br />
-            <button onClick={() => handleGoogleLogin()} >Sign in with Google 🚀 </button>
-            {/**cuando la contrasena es menor que el minimo requerido no te deja hacer login con google */}
-            {/* {console.log(googleUser.credential)} EL TOKEN !!!! */}
-            </div>
-            <form className="form" onSubmit={handleSubmit(formSubmit)}>
-              <div className="inputPlaceHolderForm">
-    
-              <label htmlFor="name" className="customPlaceholder">
-                  Username
-                </label>
+        <Form  width={'40vw'} height={'80vh'}>
+          <FlexDir direction={"column"}>
+          <H1Form margin={"8px"}>SIGN UP</H1Form>
+          {/* <GoogleLogin onClick={() => handleGoogleLogin()} /> */}
+          <button onClick={() => handleGoogleLogin()} scope='profile email'>Sign in with Google 🚀 </button>
+          <LabelAndInput> Username
                 <input
-                  className="inputForm"
                   type="text"
-                  id="name"
                   name="name"
                   autoComplete="false"
                   {...register("name", { required: true })}
-                />
-               
-    
-      
-              <label htmlFor="email" className="customPlaceholder">
-                  E-mail
-                </label>
+                /></LabelAndInput>
+
+      <LabelAndInput>
+      E-mail
+                
                 <input
-                  className="inputForm"
+                 
                   type="email"
                   id="email"
                   name="email"
                   autoComplete="false"
                   {...register("email", { required: true })}
                 />
-    
-              <label htmlFor="password" className="customPlaceholder">
-                  Password
-                </label>
-                <input
-                  className="inputForm"
+
+      </LabelAndInput>
+
+      <LabelAndInput>
+      Password
+      <input
+                 
                   type="password"
                   id="password"
                   name="password"
                   autoComplete="false"
                   {...register("password", { required: true })}
                 />
-                
-      
-              </div>
-    
-               <p className="customPlaceholder">Gender</p>
-                <div className="formGroup">
-                <div className="gender">
-                  <input
+      </LabelAndInput>
+
+       
+                  
+    <LabelAndInput>
+    Gender
+    <input
                     type="radio"
                     name="gender"
                     id="woman"
@@ -217,7 +198,7 @@ const handleGoogleRegister = async () =>{
                   <label htmlFor="woman" className="labelRadio">
                     WOMAN
                   </label>
-    
+
                   <input
                     type="radio"
                     name="gender"
@@ -238,23 +219,24 @@ const handleGoogleRegister = async () =>{
                   <label htmlFor="other" className="labelRadio">
                     OTHER
                   </label>
-                </div>
-                </div>
+    </LabelAndInput>
+             
+              
                 
               
               <UploadFile />
-              <div className="btnContainer">
-              <button  type="submit"
-                  disabled={send} variant="contained">
+              
+              <ButtonPrimary width={"70%"} type="submit"
+                  disabled={send} variant="normal">
      {send ? "Loading..." : "SING UP"}
-    </button>
+    </ButtonPrimary>
     
                 <div className="loginForm">
             <p className="loginParagraph">
               Already a member? <Link to="/login">Login Here</Link>
             </p>
           </div>
-              </div>
+             
     
               <p className="bottomText">
                 <small className="terms">
@@ -269,9 +251,141 @@ const handleGoogleRegister = async () =>{
                   .
                 </small>
               </p>
-            </form>
-          </div>
-        </div>
+
+
+
+          </FlexDir>
+
+        </Form>
+
+        </FlexDir>
+
         </>
+
+    //     <div className="allForm register">
+    //       <div className="formMain">
+    //         <div className="formTitle">
+    //         <h1 className="titleFormH1">SIGN UP</h1>
+          
+    //         {/* <GoogleLogin onClick={() => handleGoogleLogin()} /> */}
+          
+    //       <br />
+    //         <button onClick={() => handleGoogleLogin()} >Sign in with Google 🚀 </button>
+    //         {/**cuando la contrasena es menor que el minimo requerido no te deja hacer login con google */}
+    //         {/* {console.log(googleUser.credential)} EL TOKEN !!!! */}
+    //         </div>
+    //         <form className="form" onSubmit={handleSubmit(formSubmit)}>
+    //           <div className="inputPlaceHolderForm">
+    
+    //           <label htmlFor="name" className="customPlaceholder">
+    //               Username
+    //             </label>
+    //             <input
+    //               className="inputForm"
+    //               type="text"
+    //               id="name"
+    //               name="name"
+    //               autoComplete="false"
+    //               {...register("name", { required: true })}
+    //             />
+               
+    
+      
+    //           <label htmlFor="email" className="customPlaceholder">
+    //               E-mail
+    //             </label>
+    //             <input
+    //               className="inputForm"
+    //               type="email"
+    //               id="email"
+    //               name="email"
+    //               autoComplete="false"
+    //               {...register("email", { required: true })}
+    //             />
+    
+    //           <label htmlFor="password" className="customPlaceholder">
+    //               Password
+    //             </label>
+    //             <input
+    //               className="inputForm"
+    //               type="password"
+    //               id="password"
+    //               name="password"
+    //               autoComplete="false"
+    //               {...register("password", { required: true })}
+    //             />
+                
+      
+    //           </div>
+    
+    //            <p className="customPlaceholder">Gender</p>
+    //             <div className="formGroup">
+    //             <div className="gender">
+    //               <input
+    //                 type="radio"
+    //                 name="gender"
+    //                 id="woman"
+    //                 value="woman"
+    //                 {...register("gender", {required: true})}
+    //               />
+    //               <label htmlFor="woman" className="labelRadio">
+    //                 WOMAN
+    //               </label>
+    
+    //               <input
+    //                 type="radio"
+    //                 name="gender"
+    //                 id="man"
+    //                 value="man"
+    //                 {...register("gender", {required: true})}
+    //               />
+    //               <label htmlFor="man" className="labelRadio">
+    //                 MAN
+    //               </label>
+    //               <input
+    //                 type="radio"
+    //                 name="gender"
+    //                 id="other"
+    //                 value="other"
+    //                 {...register("gender", {required: true})}
+    //               />
+    //               <label htmlFor="other" className="labelRadio">
+    //                 OTHER
+    //               </label>
+    //             </div>
+    //             </div>
+                
+              
+    //           <UploadFile />
+    //           <div className="btnContainer">
+    //           <button  type="submit"
+    //               disabled={send} variant="contained">
+    //  {send ? "Loading..." : "SING UP"}
+    // </button>
+    
+    //             <div className="loginForm">
+    //         <p className="loginParagraph">
+    //           Already a member? <Link to="/login">Login Here</Link>
+    //         </p>
+    //       </div>
+    //           </div>
+    
+    //           <p className="bottomText">
+    //             <small className="terms">
+    //               By clicking the Sign Up button, you agree to our{" "} <br />
+    //               <Link to="/terms" className="anchorCustom">
+    //                 Terms & Conditions
+    //               </Link>{" "}
+    //               and{" "}
+    //               <Link to="/privacy" className="anchorCustom">
+    //                 Privacy Policy
+    //               </Link>
+    //               .
+    //             </small>
+    //           </p>
+    //         </form>
+    //       </div>
+    //     </div>
+        
       );
 }

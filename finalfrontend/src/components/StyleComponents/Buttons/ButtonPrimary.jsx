@@ -12,19 +12,14 @@ const ButtonStyles = styled.button`
   text-align: center;
   margin: ${({theme})=>
   theme.spacing(1)};
-  height: 35px;
-  width: ${({ size }) =>
-    size == "large"
-      ? "180px"
-      : size == "medium"
-      ? "150px"
-      : size == "small" && "120px"};
+  height: 38px;
+  width: ${({ width }) => width };
       &:hover{
         cursor: pointer;
       };
 `;
 
-export const ButtonPrimary = ({ children, size, variant, onClick }) => {
+export const ButtonPrimary = ({ children, width, variant, onClick }) => {
     const theme = useTheme();
-  return <ButtonStyles theme={theme} size={size} variant={variant} onClick={onClick}>{children}</ButtonStyles>;
+  return <ButtonStyles theme={theme} width={width} variant={variant} onClick={onClick}>{children}</ButtonStyles>;
 };

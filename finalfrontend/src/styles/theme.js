@@ -15,20 +15,19 @@ export const ZINDEX = {
 };
 
 const PALETTE_COLOR_LIGHT = {
-  // background: "#fffafa",
-  // header: "#fcf6f6" ,
-  // enhanced: "#ffffff" ,
-  // form: "#ffffff",
   background: "#ffffff",
   header: "#f9f9f9" ,
   enhanced: "#72cc89", //? puesto por mario
   form: "#f5f5f5",
   textColor: "#1e1e1e",
-  button: "#8effab",
-  secondButton: "#72cc89" ,
-  buttonLoading: "#396644" ,
+  secondTextColor: "#2a2b2e",
+  greenTextColor: "#72cc89",
   border: "#f1f1f1",
-  shadow: "rgba(43,117,60,0.7)" //? puesto por mario
+  shadow: "rgba(43,117,60,0.7)", //? puesto por mario
+  lightGreen: "#8effab",
+  mediumLightGreen: "#97f6a8",
+  mediumGreen: "#72cc89",
+  darkGreen: "#396644",
 };
 
 const PALETTE_COLOR_DARK = {
@@ -37,11 +36,15 @@ const PALETTE_COLOR_DARK = {
     enhanced: "#396644" , //? puesto por mario
     form: "#35363a",
     textColor: "#ffffff",
-    button: "#8effab",
-    secondButton: "#bbffcd" ,
-    buttonLoading: "#396644" ,
+    secondTextColor: "#f9f9f9",
+    greenTextColor: "#72cc89",
     border: "#2a2b2e",
     shadow: "rgba(187,255,205,0.27)", //? puesto por mario
+    lightGreen: "#8effab",
+    mediumLightGreen: "#97f6a8",
+    mediumGreen: "#72cc89",
+    darkGreen: "#396644",
+    
 };
 
 export const themeLight = {
@@ -61,10 +64,13 @@ export const themeLight = {
     textColor: {
       main: PALETTE_COLOR_LIGHT.textColor,
     },
+     greenTextColor:{
+      main: PALETTE_COLOR_LIGHT.mediumLightGreen,
+    },
     button: {
-      main: PALETTE_COLOR_LIGHT.secondButton,
-      light: PALETTE_COLOR_LIGHT.button,
-      dark: PALETTE_COLOR_LIGHT.buttonLoading,
+      main: PALETTE_COLOR_LIGHT.mediumLightGreen,
+      light: PALETTE_COLOR_LIGHT.mediumLightGreen,
+      dark: PALETTE_COLOR_LIGHT.darkGreen,
     },
     border: {
       main: PALETTE_COLOR_LIGHT.border,
@@ -107,10 +113,13 @@ export const themeDark = {
         textColor: {
           main: PALETTE_COLOR_DARK.textColor,
         },
+         greenTextColor:{
+          main: PALETTE_COLOR_DARK.lightGreen,
+        },
         button: {
-          main: PALETTE_COLOR_DARK.secondButton,
-          light: PALETTE_COLOR_DARK.button,
-          dark: PALETTE_COLOR_DARK.buttonLoading,
+          main: PALETTE_COLOR_DARK.lightGreen,
+          light: PALETTE_COLOR_DARK.lightGreen,
+          dark: PALETTE_COLOR_DARK.darkGreen,
         },
         border: {
           main: PALETTE_COLOR_DARK.border,
