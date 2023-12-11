@@ -27,7 +27,7 @@ export const Registerpt1 = () => {
     const [googleUser, setGoogleUser] = useState([])
     // const [googleProfile, setGoogleProfile] = useState ([])
     const [resGoogle, setResGoogle] = useState({})
-    const [googlePassword, setGooglePassword] = useState("")
+
   
 
 
@@ -76,7 +76,6 @@ console.log(resGoogle)
           lastName: resGoogle?.data?.family_name ? resGoogle?.data?.family_name : null ,
           image: resGoogle.data.picture,
           username: resGoogle.data.email.split('@')[0],
-          password: googlePassword,
         }
         //he tenido que meterle
 
@@ -90,6 +89,8 @@ console.log(resGoogle)
       }
     }
 
+
+
 const handleGoogleRegister = async () =>{
 
 //         const credentialDecoded = jwtDecode(googleUser.credential)
@@ -100,6 +101,8 @@ const handleGoogleRegister = async () =>{
   setSend(false)
 
 }
+
+
 
       useEffect(() => {
         console.log('entro aqui', res)
@@ -118,6 +121,8 @@ const handleGoogleRegister = async () =>{
       formGoogle()
     }, [resGoogle])
     
+    
+
     useEffect(() => {
   //  console.log('hola use effect', googleUser)
       if (googleUser.length != 0){
@@ -127,10 +132,14 @@ const handleGoogleRegister = async () =>{
 
     }, [googleUser])
     
+
+
       if (okRegister) {
         //si todo esta ok navega a la pagina del codigo
         return <Navigate to="/verifyCode" />;
       }
+
+
 
 
       return (
@@ -140,19 +149,9 @@ const handleGoogleRegister = async () =>{
             <h1 className="titleFormH1">SIGN UP</h1>
             <p>Champion Within, Victories Begin</p>
             {/* <GoogleLogin onClick={() => handleGoogleLogin()} /> */}
+          
           <br />
-          <p>
-            We require a new password so your Google account always stays safe. It is better if you provide a password you have not used anywhere else.
-          </p>
-          <input
-            type="password"
-            id="googlePassword"
-            name="googlePassword"
-            placeholder="Password"
-            onChange={(e) => setGooglePassword(e.target.value)}
-          /> 
-          <br />
-            <button onClick={() => handleGoogleLogin()} disabled={googlePassword.length<8}>Sign in with Google 🚀 </button>
+            <button onClick={() => handleGoogleLogin()} >Sign in with Google 🚀 </button>
             {/**cuando la contrasena es menor que el minimo requerido no te deja hacer login con google */}
             {/* {console.log(googleUser.credential)} EL TOKEN !!!! */}
             </div>
@@ -240,10 +239,10 @@ const handleGoogleRegister = async () =>{
               
               <UploadFile />
               <div className="btnContainer">
-              <button type="submit"
+              <Button size="large" style= {{color: 'black', margin: '1.5rem'}}  type="submit"
                   disabled={send} variant="contained" endIcon={<SendIcon />}>
      {send ? "Loading..." : "SING UP"}
-    </button>
+    </Button>
     
                 <div className="loginForm">
             <p className="loginParagraph">
