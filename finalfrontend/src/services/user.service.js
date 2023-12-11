@@ -1,5 +1,6 @@
 import { updateToken } from "../utils/updateToken";
 import { extraConfig } from "./serviceApiGeneral.config";
+import { googleUser } from "./serviceGoogle.config";
 
 //*---------------------favoritos----------------------------
 //! -------------------> Get Fav Players [User]
@@ -75,12 +76,30 @@ export const getUsersEleven = async (elevenId) => {
 
 export const registerUser = async (formData) => {
   const APIGeneral = extraConfig();
-  return APIGeneral.post("/users/registerRedirect", formData, {
+  return APIGeneral.post("/users/register/registerRedirect", formData, {
     headers: { "Content-Type": "multipart/form-data" },
   })
     .then((res) => res)
     .catch((error) => error);
 };
+
+export const registerUserWithGoogle = async (formData) => {
+  const APIGeneral = extraConfig();
+  return APIGeneral.post("/users/register/registerGoogle", formData)
+    .then((res) => res)
+    .catch((error) => error);
+};
+
+
+
+export const registerGoogle = async (token) => {
+  console.log('ENTRO AL USER SERVICE')
+  const APIGeneral = googleUser(token);
+
+  return APIGeneral.then((res) => res).catch((error) => error);
+};
+
+
 
 //! ------------------------- VERIFY CODE - CHECK NEW USER -------------------------------
 
