@@ -21,25 +21,27 @@ const PALETTE_COLOR_LIGHT = {
   // form: "#ffffff",
   background: "#ffffff",
   header: "#f9f9f9" ,
-  enhanced: "#f5f5f5" ,
+  enhanced: "#72cc89", //? puesto por mario
   form: "#f5f5f5",
   textColor: "#1e1e1e",
   button: "#8effab",
   secondButton: "#72cc89" ,
   buttonLoading: "#396644" ,
   border: "#f1f1f1",
+  shadow: "rgba(43,117,60,0.7)" //? puesto por mario
 };
 
 const PALETTE_COLOR_DARK = {
     background: "#202124",
     header: "#2a2b2e" ,
-    enhanced: "#35363a" ,
+    enhanced: "#396644" , //? puesto por mario
     form: "#35363a",
     textColor: "#ffffff",
     button: "#8effab",
-    secondButton: "#72cc89" ,
+    secondButton: "#bbffcd" ,
     buttonLoading: "#396644" ,
     border: "#2a2b2e",
+    shadow: "rgba(187,255,205,0.27)", //? puesto por mario
 };
 
 export const themeLight = {
@@ -66,6 +68,9 @@ export const themeLight = {
     },
     border: {
       main: PALETTE_COLOR_LIGHT.border,
+    },
+    shadow: {
+      main: PALETTE_COLOR_LIGHT.shadow
     },
   },
   mediaquery: {
@@ -109,6 +114,9 @@ export const themeDark = {
         },
         border: {
           main: PALETTE_COLOR_DARK.border,
+        },
+        shadow: {
+          main: PALETTE_COLOR_DARK.shadow
         },
       },
       mediaquery: {
