@@ -4,7 +4,7 @@ export const BREAKPOINTS = {
   extraSmall: 320,
   mobile: 576,
   tablet: 768,
-  laptop: 992,
+  laptop: 892,
   desktop: 1200,
 };
 
@@ -117,7 +117,7 @@ export const themeDark = {
           main: PALETTE_COLOR_DARK.lightGreen,
         },
         button: {
-          main: PALETTE_COLOR_DARK.lightGreen,
+          main: PALETTE_COLOR_DARK.mediumGreen,
           light: PALETTE_COLOR_DARK.lightGreen,
           dark: PALETTE_COLOR_DARK.darkGreen,
         },
@@ -130,7 +130,7 @@ export const themeDark = {
       },
       mediaquery: {
         mobile: `@media (max-width: ${BREAKPOINTS.mobile}px)`,
-        tablet: `@media (min-width: ${BREAKPOINTS.tablet}px) and (max-width: ${BREAKPOINTS.laptop}px)`,
+        tablet: `@media (min-width: ${BREAKPOINTS.mobile}px) and (max-width: ${BREAKPOINTS.laptop}px)`,
         laptop: `@media (min-width: ${BREAKPOINTS.laptop}px) and (max-width: ${BREAKPOINTS.desktop}px)`,
         desktop: `@media (min-width: ${BREAKPOINTS.desktop}px)`,
       },

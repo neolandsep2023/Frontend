@@ -6,19 +6,19 @@ const LabelAndInputStyle = styled.div`
 
 display: flex;
     flex-direction: column;
-    align-items: flex-start ;
+    align-items: ${({alignItems}) => alignItems ? alignItems : "flex-start"} ;
+    justify-content: center;
 width: 70%;
 & input{
   width: 100%;
-    height: ${({theme}) => theme.spacing(3.5)};
 }
 
 `
 
 
-export const LabelAndInput = ({children}) => {
+export const LabelAndInput = ({children, alignItems}) => {
   const { theme } = useTheme()
   return (
-    <LabelAndInputStyle theme={theme}>{children}</LabelAndInputStyle>
+    <LabelAndInputStyle theme={theme} alignItems={alignItems}>{children}</LabelAndInputStyle>
   )
 }

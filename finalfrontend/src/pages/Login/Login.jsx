@@ -5,7 +5,7 @@ import { Link, Navigate, useNavigate } from "react-router-dom";
 import { loginUser } from "../../services/user.service";
 import { useErrorLogin } from "../../hooks/useErrorLogin";
 import { useAuth } from "../../context/authContext";
-import { FlexDir, Form } from "../../components/StyleComponents";
+import { ButtonPrimary, FlexDir, Form, H1Form, LabelAndInput } from "../../components/StyleComponents";
 
 
 
@@ -45,12 +45,13 @@ export const Login = () => {
   return (
     <>
     <FlexDir direction={"column"}>
-    <div >
-        <h1 >LOG IN</h1>
-        </div>
+
         <Form  width={"80vw"} onSubmit={handleSubmit(formSubmit)}>
-        <div >
-          <FlexDir direction={"column"}>
+        <FlexDir direction={"column"}>
+        <H1Form margin={"8px 0 0 0"}>LOG IN</H1Form>
+      
+
+          <LabelAndInput>
           <label htmlFor="email">
           Email
         </label>
@@ -62,8 +63,10 @@ export const Login = () => {
           autoComplete="false"
           {...register("email", { required: true })}
         />
-          </FlexDir>
-       <FlexDir direction={"column"}>
+          </LabelAndInput>
+          
+ 
+          <LabelAndInput>
        <label htmlFor="password">
           Password
         </label>
@@ -75,27 +78,27 @@ export const Login = () => {
           autoComplete="false"
           {...register("password", { required: true })}
         />
-       </FlexDir>
+</LabelAndInput>
         
 
-</div>
+
 <FlexDir  direction={"column"}>
-<div >
-        <button   type="submit"
-            >
-LOG IN
-</button>
-        </div>
-        <p >
+
+<ButtonPrimary width={"70%"} type="submit"
+                  disabled={isSent} variant={ isSent ? "loading" : "normal"}>
+     {isSent ? "Loading..." : "LOGIN"}
+    </ButtonPrimary>
+   
+
           
             Have you forgotten the password?{" "}
             <Link to="/forgotPassword" >
               Change password
             </Link>
           
-        </p>
+
 </FlexDir>
-      
+</FlexDir>
       </Form>
       <FlexDir>
       <div>

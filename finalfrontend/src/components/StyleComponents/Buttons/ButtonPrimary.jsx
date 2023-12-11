@@ -9,13 +9,15 @@ const ButtonStyles = styled.button`
 && theme.palette.button.dark};
   border-radius: 5px;
   font-weight: 600;
+  font-size: 24px;
   text-align: center;
   margin: ${({theme})=>
   theme.spacing(1)};
-  height: 38px;
+  height: 42px;
   width: ${({ width }) => width };
       &:hover{
         cursor: pointer;
+        transform: scale(1.01)
       };
 `;
 

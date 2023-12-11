@@ -16,6 +16,13 @@ height: ${({height})=> height ? height : "fit-content"};
 ${({theme}) => theme.mediaquery.mobile}{
     display: flex;
     flex-direction: column;
+    width: 95vw;
+}
+
+
+${({theme}) => theme.mediaquery.tablet}{
+  width: 80vw;
+  height: fit-content;
 }
 `
 

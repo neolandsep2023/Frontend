@@ -1,5 +1,4 @@
 import styled from "@emotion/styled";
-import { useThemeApp } from "../../../context/themeContext";
 
 const H1Styles = styled.h1`
   margin: 0;

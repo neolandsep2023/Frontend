@@ -11,7 +11,7 @@ import { useErrorRegister } from "../../../hooks/useErrorRegister";
 import { GoogleLogin } from '@react-oauth/google'
 import { useGoogleLogin } from '@react-oauth/google';
 import { jwtDecode } from "jwt-decode"
-import { ButtonPrimary, FlexDir, Form, H1Custom, H1Form, LabelAndInput } from '../../../components/StyleComponents';
+import { Anchor, ButtonPrimary, FlexDir, Form, H1Custom, H1Form, LabelAndInput, RadioInput, Small } from '../../../components/StyleComponents';
 
 
 
@@ -145,9 +145,13 @@ const handleGoogleRegister = async () =>{
 
 <>
 <FlexDir>
-        <Form  width={'40vw'} height={'80vh'}>
+        <Form  width={'40vw'} height={'80vh'} onSubmit={handleSubmit(formSubmit)}>
           <FlexDir direction={"column"}>
-          <H1Form margin={"8px"}>SIGN UP</H1Form>
+          <H1Form margin={"8px 0 0 0"}>SIGN UP</H1Form>
+          <FlexDir margin={"0 0 8px 0"}>
+              Already a member?<Link  to="/login"><Anchor>Login Here</Anchor></Link>
+
+              </FlexDir>
           {/* <GoogleLogin onClick={() => handleGoogleLogin()} /> */}
           <button onClick={() => handleGoogleLogin()} scope='profile email'>Sign in with Google 🚀 </button>
           <LabelAndInput> Username
@@ -186,8 +190,9 @@ const handleGoogleRegister = async () =>{
 
        
                   
-    <LabelAndInput>
-    Gender
+    <LabelAndInput alignItems={"center"}>
+
+    <RadioInput>
     <input
                     type="radio"
                     name="gender"
@@ -198,7 +203,6 @@ const handleGoogleRegister = async () =>{
                   <label htmlFor="woman" className="labelRadio">
                     WOMAN
                   </label>
-
                   <input
                     type="radio"
                     name="gender"
@@ -219,28 +223,25 @@ const handleGoogleRegister = async () =>{
                   <label htmlFor="other" className="labelRadio">
                     OTHER
                   </label>
+    </RadioInput>
+  
     </LabelAndInput>
              
               
                 
               
-              <UploadFile />
+              {/* <UploadFile /> */}
               
               <ButtonPrimary width={"70%"} type="submit"
-                  disabled={send} variant="normal">
+                  disabled={send} variant={ send ? "loading" : "normal"}>
      {send ? "Loading..." : "SING UP"}
     </ButtonPrimary>
     
-                <div className="loginForm">
-            <p className="loginParagraph">
-              Already a member? <Link to="/login">Login Here</Link>
-            </p>
-          </div>
+ 
              
-    
-              <p className="bottomText">
-                <small className="terms">
-                  By clicking the Sign Up button, you agree to our{" "} <br />
+    <FlexDir>
+      <Small>
+    By clicking the Sign Up button, you agree to our{" "} <br />
                   <Link to="/terms" className="anchorCustom">
                     Terms & Conditions
                   </Link>{" "}
@@ -249,8 +250,10 @@ const handleGoogleRegister = async () =>{
                     Privacy Policy
                   </Link>
                   .
-                </small>
-              </p>
+                  </Small>
+    </FlexDir>
+
+           
 
 
 
