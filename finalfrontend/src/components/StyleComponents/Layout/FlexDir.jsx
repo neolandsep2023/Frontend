@@ -10,6 +10,7 @@ flex-wrap: wrap;
 gap: ${({gap}) => gap ? gap : "1rem"};
 margin: ${({margin, theme}) => margin ? margin : theme.spacing(1)};
 padding: ${({padding, theme}) => padding ? padding : theme.spacing(0)};
+height: ${({height}) => height ? height : "auto"};
 
 ${({theme}) => theme.mediaquery.mobile}{
 
@@ -20,10 +21,10 @@ ${({theme}) => theme.mediaquery.mobile}{
 
 
 
-export const FlexDir = ({children, direction, mediaqueryDir, gap}) => {
+export const FlexDir = ({children, direction, mediaqueryDir, gap, height}) => {
 
 
   return (
-    <FlexStyle gap = {gap} direction={direction} mediaqueryDir={mediaqueryDir}>{children}</FlexStyle>
+    <FlexStyle height = {height} gap = {gap} direction={direction} mediaqueryDir={mediaqueryDir}>{children}</FlexStyle>
   )
 }
