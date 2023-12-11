@@ -13,10 +13,10 @@ const SearchButtonStyles = styled.button`
   margin-left: 15px;
 `
 
-export const SearchButtonCustom = ({ children }) => {
+export const SearchButtonCustom = ({ children, onClick }) => {
   const { theme } = useTheme()
   const themeObject = useThemeApp()
   const darkOrLight = themeObject.theme
 
-  return <SearchButtonStyles darkOrLight = {darkOrLight} theme = {theme} type="submit">{children}</SearchButtonStyles>
+  return <SearchButtonStyles onClick={onClick} darkOrLight = {darkOrLight} theme = {theme} type="submit">{children}</SearchButtonStyles>
 }
