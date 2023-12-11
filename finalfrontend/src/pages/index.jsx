@@ -4,3 +4,4 @@ export * from "./RoomById/RoomById"
 export * from "./RoomSearch/RoomSearch"
 export * from "./Pruebas/MapCreation"
 export * from "./Pruebas/ByIdMap"
+export * from './Home/Home'

@@ -250,10 +250,10 @@ const handleGoogleRegister = async () =>{
               
               <UploadFile />
               <div className="btnContainer">
-              <Button size="large" style= {{color: 'black', margin: '1.5rem'}}  type="submit"
+              <button type="submit"
                   disabled={send} variant="contained" endIcon={<SendIcon />}>
      {send ? "Loading..." : "SING UP"}
-    </Button>
+    </button>
     
                 <div className="loginForm">
             <p className="loginParagraph">
