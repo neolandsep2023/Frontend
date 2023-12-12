@@ -23,6 +23,7 @@ import {
   RadioInput,
   Small,
 } from "../../../components/StyleComponents";
+import { useAutoLogin } from "../../../hooks/useAutoLogin";
 
 export const Registerpt1 = () => {
   //!estados
@@ -36,7 +37,7 @@ export const Registerpt1 = () => {
 
   //!hooks
   const { register, handleSubmit } = useForm();
-  const { bridgeData, setIsDeletedUser } = useAuth();
+  const { bridgeData, setIsDeletedUser, allUser } = useAuth();
 
   const formSubmit = async (formData) => {
     const inputFile = document.getElementById("file-upload").files;
@@ -137,8 +138,12 @@ export const Registerpt1 = () => {
   }
 
 if (okRegisterGoogle) {
-    //si todo esta ok navega a la pagina del codigo
-    return <Navigate to="/register/complete" />;
+  if (!localStorage.getItem("user")) {
+    console.log(allUser)
+    useAutoLogin(allUser);
+   } else {
+     return <Navigate to="/register/complete" />;
+ }
   }
 
 

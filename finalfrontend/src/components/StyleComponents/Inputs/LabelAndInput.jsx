@@ -11,14 +11,22 @@ display: flex;
 width: ${({parentWidth}) => parentWidth ? parentWidth : '70%'};
 & input{
   width: 100%;
+  height: ${({inputHeight}) => inputHeight ? inputHeight: 'auto'};
+  flex-wrap: wrap
+}
+
+& textarea{
+  width: 100%;
+  height: ${({inputHeight}) => inputHeight ? inputHeight: 'auto'};
+
 }
 
 `
 
 
-export const LabelAndInput = ({children, alignItems, parentWidth}) => {
+export const LabelAndInput = ({children, alignItems, parentWidth, inputHeight}) => {
   const { theme } = useTheme()
   return (
-    <LabelAndInputStyle theme={theme} alignItems={alignItems} parentWidth={parentWidth}>{children}</LabelAndInputStyle>
+    <LabelAndInputStyle theme={theme} alignItems={alignItems} parentWidth={parentWidth} inputHeight={inputHeight}>{children}</LabelAndInputStyle>
   )
 }

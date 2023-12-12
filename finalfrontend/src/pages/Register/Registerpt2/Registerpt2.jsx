@@ -3,7 +3,8 @@ import { useAuth } from "../../../context/authContext";
 import { useEffect, useState } from "react";
 import { updateUser } from "../../../services/user.service";
 import { useErrorRegisterpt2 } from "../../../hooks/useErrorRegisterpt2";
-import { CheckboxInput, FlexDir, Form, H1Form, LabelAndInput, RadioInput } from "../../../components/StyleComponents";
+import { Anchor, ButtonPrimary, CheckboxInput, FlexDir, Form, H1Form, LabelAndInput, RadioInput } from "../../../components/StyleComponents";
+import { Link } from "react-router-dom";
 
 
 export const Registerpt2 = () => {
@@ -18,6 +19,7 @@ export const Registerpt2 = () => {
 
 
   const formSubmit = async (formData) => {
+    console.log(formData)
    
           setSend(true);
           setRes(await updateUser(formData));
@@ -27,17 +29,11 @@ export const Registerpt2 = () => {
   
 
   useEffect(() => {
+    console.log(res)
     useErrorRegisterpt2(res, setRes);
   }, [res]);
 
-
-
-
-
-
-
-
-
+  
 
 
   return (
@@ -56,9 +52,10 @@ export const Registerpt2 = () => {
 
             <FlexDir mediaqueryDirMobile={"column"}>
               <FlexDir  width={"40vw"}
-      mediaqueryWidthMobile={"95vw"} direction={"column"}>COLUMNA 1
+      mediaqueryWidthMobile={"95vw"} direction={"column"}>
 
               <LabelAndInput alignItems={"center"}>
+                I'm looking for a
               <RadioInput>
                 <input
                   type="radio"
@@ -113,6 +110,17 @@ export const Registerpt2 = () => {
                 {...register("birthYear")}
               />
             </LabelAndInput>
+
+            <LabelAndInput inputHeight={"60px"}>
+              Brief description of you
+              <textarea
+                type="text" 
+                placeholder="I'm very clean and organized and love cats..."
+                name="description"
+                autoComplete="false"
+                {...register("description")}
+              />
+            </LabelAndInput>
               
               
               </FlexDir>
@@ -160,9 +168,27 @@ export const Registerpt2 = () => {
 
 
 
-            <div>INPUT DESCRIPTTION</div>
 
-          <div>BOTONES</div>
+
+            <ButtonPrimary
+              // width={"200px"}
+              type="submit"
+              disabled={send}
+              variant={send ? "loading" : "normal"}
+            >
+              {send ? "Loading..." : "COMPLETE PROFILE"}
+            </ButtonPrimary>
+
+            <FlexDir margin={"0"}>
+              <Link to="/profile">
+                <Anchor>Skip</Anchor>
+              </Link>
+            </FlexDir>
+
+        
+
+         
+
           </FlexDir>
 
 
