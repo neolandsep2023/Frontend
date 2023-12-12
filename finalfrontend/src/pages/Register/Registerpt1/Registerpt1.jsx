@@ -64,15 +64,13 @@ export const Registerpt1 = () => {
   };
 
 
-
-
   const handleGoogleLogin = useGoogleLogin({
     onSuccess: (codeResponse) => setGoogleUser(codeResponse),
     onError: (error) => console.log("Login Failed:", error),
   });
 
   const formGoogle = async () => {
-    if (resGoogle?.status == 200) {
+
       console.log(resGoogle);
       const customFormData = {
         isVerified: resGoogle.data.verified_email,
@@ -84,14 +82,14 @@ export const Registerpt1 = () => {
         image: resGoogle.data.picture,
         username: resGoogle.data.email.split("@")[0],
         password: `${resGoogle.data.email}1A`,
-      };
+      }
       //he tenido que meterle
 
       setSend(true);
       setRes(await registerUserWithGoogle(customFormData));
       console.log(res);
       setSend(false);
-    }
+    
   };
 
   const handleGoogleRegister = async () => {
@@ -105,7 +103,7 @@ export const Registerpt1 = () => {
 
 
   useEffect(() => {
-    formGoogle();
+    resGoogle?.status == 200 && formGoogle();
   }, [resGoogle]);
 
   useEffect(() => {
@@ -161,7 +159,7 @@ if (okRegisterGoogle) {
               Sign in with Google 🚀{" "}
             </button>
             <LabelAndInput>
-              {" "}
+    
               Username
               <input
                 type="text"

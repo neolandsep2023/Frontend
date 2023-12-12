@@ -27,8 +27,6 @@ if(res?.data?.googleSignUp){
 
 
 
-
-
   //! ------------------- 409: user ya registrado
 
   if (res?.response?.status === 409) {
@@ -67,7 +65,7 @@ if(res?.data?.googleSignUp){
 
   //! ------------------- cuando el userName ya existe
   if (
-    res?.response?.data?.includes("This username already exists")
+    res?.response?.status === 409 || res?.response?.data?.includes("This username already exists")
   ) {
     Swal.fire({
       icon: "error",

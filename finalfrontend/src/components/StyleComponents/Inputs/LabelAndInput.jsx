@@ -8,7 +8,7 @@ display: flex;
     flex-direction: column;
     align-items: ${({alignItems}) => alignItems ? alignItems : "flex-start"} ;
     justify-content: center;
-width: 70%;
+width: ${({parentWidth}) => parentWidth ? parentWidth : '70%'};
 & input{
   width: 100%;
 }
@@ -16,9 +16,9 @@ width: 70%;
 `
 
 
-export const LabelAndInput = ({children, alignItems}) => {
+export const LabelAndInput = ({children, alignItems, parentWidth}) => {
   const { theme } = useTheme()
   return (
-    <LabelAndInputStyle theme={theme} alignItems={alignItems}>{children}</LabelAndInputStyle>
+    <LabelAndInputStyle theme={theme} alignItems={alignItems} parentWidth={parentWidth}>{children}</LabelAndInputStyle>
   )
 }

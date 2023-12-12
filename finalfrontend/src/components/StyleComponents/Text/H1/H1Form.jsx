@@ -5,6 +5,7 @@ import styled from "@emotion/styled";
 const H1Styles = styled.h1`
   margin: ${({margin}) => margin ? margin : 0};
   font-size: 2.5rem;
+  text-align: center;
   color: ${({theme}) => theme.palette.greenTextColor.main};
   -webkit-text-stroke: 1px #35363a;
 
