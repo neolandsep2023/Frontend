@@ -37,7 +37,7 @@ export const useVerifyCodeError = (
   }
 
 
-  if (res?.data?.check == false && res?.data?.delete.includes('El usuario se ha borrado correctamente')) {
+  if (res?.data?.check == false && res?.data?.delete.includes('User deleted for security')) {
     setRes(() => ({}));
     setOkDeleteUser(() => true)
     Swal.fire({
@@ -50,7 +50,7 @@ export const useVerifyCodeError = (
   }
 
 
-  if (res?.data?.check == false && res?.data?.delete.includes('El usuario no se ha podido borrar')) {
+  if (res?.data?.check == false && res?.data?.delete.includes('Error in updating validation')) {
     setRes(() => ({}));
     Swal.fire({
       icon: "error",
@@ -63,24 +63,10 @@ export const useVerifyCodeError = (
 
   
 
-//'El usuario no se ha podido borrar''El usuario se ha borrado correctamente'
 
-  if (res?.response?.data?.includes('error al comprobar el check user ❌')) {
-    setUserNotFound(() => true);
-    setRes(() => ({}));
-    Swal.fire({
-      icon: "error",
-      title: "Interval server error ❎.",
-      text: "User not found, please register.",
-      showConfirmButton: false,
-      timer: 1500,
-    });
-  }
+ 
 
-  
- // ------------- userNoFound ---> 404
-
-  if (res?.response?.data.includes('User not found/is not registered 🔎❌')) {
+  if (res?.response?.data.includes('User not found')) {
     setUserNotFound(() => true);
     setRes(() => ({}));
     Swal.fire({
