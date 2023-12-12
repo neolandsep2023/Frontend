@@ -91,9 +91,62 @@ const editProfileFormSubmit = async (formData) => {
                 defaultValue={user?.name}
                 {...register("name")}
               />
-              <img  style={{padding: '0'}} src={user?.image} alt={user?.name}/>
-              <UploadFile />
+            
+          
             </FlexDir>
+            <FlexDir  direction={"column"} >
+              <label htmlFor="custom-input" >
+              Last Name
+              </label>
+              <input
+              
+                type="text"
+                id="lastName"
+                name="lastName"
+                autoComplete="false"
+
+                defaultValue={user?.lastName}
+                {...register("lastName")}
+              />
+             
+              <FlexDir  direction={"column"} >
+              <label htmlFor="custom-input" >
+              Username
+              </label>
+              <input
+              
+                type="text"
+                id="username"
+                name="username"
+                autoComplete="false"
+
+                defaultValue={user?.username}
+                {...register("username")}
+              />
+             
+          
+            </FlexDir>
+            <FlexDir  direction={"column"} >
+              <label htmlFor="custom-input" >
+              Birth Year
+              </label>
+              <input
+              
+                type="number"
+                id="birthYear"
+                name="birthYear"
+                autoComplete="false"
+
+                defaultValue={user?.birthYear}
+                {...register("birthYear")}
+              />
+             
+          
+            </FlexDir>
+             
+            </FlexDir>
+            <img  style={{padding: '0'}} src={user?.image} alt={user?.name}/>
+            <UploadFile />
             <FlexDir  direction={"column"} >
               
               <p>Gender</p>

@@ -8,7 +8,7 @@ import { ProtectedCheckChildren } from "../components/ProtectedRoutes/ProtectedC
 import { Registerpt1 } from "../pages/Register/Registerpt1/Registerpt1";
 import App from "../App";
 
-import { MapCreation, ByIdMap, Home, RoomSearch, CreateRoom, Login, VerifyCode,Registerpt2, Profile,UserProfileData,FavGallery,EditProfile } from "../pages";
+import { MapCreation, ByIdMap, Home, RoomSearch, CreateRoom, Login, VerifyCode,Registerpt2, Profile,UserProfileData,FavGallery,EditProfile, AccountSettings } from "../pages";
 
 
 
@@ -120,7 +120,7 @@ export const router = createBrowserRouter ([
                     path: "/profile/settings",
                     element: 
                     (<Protected>
-                      {/* <AccountSettings /> */}
+                     <AccountSettings/>
                     </Protected>),
                   },
         

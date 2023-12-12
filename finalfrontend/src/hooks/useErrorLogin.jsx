@@ -40,7 +40,7 @@ export const useErrorLogin = (res, setRes, login, setSuccessfulLogin) => {
       }
     
     
-      if (res?.response?.data?.includes("password is incorrect (does not match)")) {
+      if (res?.response?.data?.includes("Password is incorrect")) {
         Swal.fire({
           icon: "error",
           title: "Wrong password",
