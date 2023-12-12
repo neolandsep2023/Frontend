@@ -57,6 +57,7 @@ export const getRoomByLocation = async (location) => {
 //! ---------------- GET by POSTCODE ----------------
 export const getRoomByPostCode = async (postcode) => {
   const APIGeneral = extraConfig();
+  console.log(postcode)
 
   return APIGeneral.get(`/rooms/byPostcode/${postcode}`)
     .then((res) => res)

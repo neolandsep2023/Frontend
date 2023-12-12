@@ -22,12 +22,12 @@ const SearchInputStyles = styled.input`
     text-align: center
   }
 `
-export const SearchInputCustom = () => {
+export const SearchInputCustom = ({ onChange }) => {
   const { theme } = useTheme()
   const themeObject = useThemeApp()
   const darkOrLight = themeObject.theme
 
   return (
-    <SearchInputStyles darkOrLight = {darkOrLight} theme = {theme} placeholder="enter location or postcode" type= "text"></SearchInputStyles>
+    <SearchInputStyles onChange={onChange} darkOrLight = {darkOrLight} theme = {theme} placeholder="enter location or postcode" ></SearchInputStyles>
   )
 }

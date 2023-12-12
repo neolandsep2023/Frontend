@@ -1,12 +1,16 @@
-import React, { useState } from 'react'
+import React, { useEffect, useState } from 'react'
 import { SearchInputCustom, FlexDir, SearchImgCustom, SearchButtonCustom, H1Custom, H3Custom } from '../../components/StyleComponents/index'
 import { useThemeApp } from '../../context/themeContext'
-import { getRoomByLocation } from '../../services/room.service';
+import { getRoomByLocation, getRoomByPostCode, getRoomByProvince } from '../../services/room.service';
+import { useErrorFindRoom } from '../../hooks/useErrorFindRoom';
+import { roomData } from '../../data/Rooms.data';
 
 
 export const RoomSearch = () => {
   //! ---------- Estados ----------
   const [res, setRes] = useState();
+  const [findOK, setFindOk] = useState();
+  const [send, setSend] = useState();
   const [valueInput, setValueInput] = useState();
   const [submit, setSubmit] = useState()
   const [postCode, setPostCode] = useState()
@@ -16,9 +20,24 @@ export const RoomSearch = () => {
 
   const handleSearch = async () => {
     setSubmit(true)
-    setRes(await getRoomByLocation(valueInput))
+    setSend(true)
+    //? -------- condicional para llamar al controlador que toque --------
+    if (valueInput.includes("0", "1", "2", "3", "4", "5", "6", "7", "8", "9")) {
+      console.log(valueInput)
+      setRes(await getRoomByPostCode(valueInput))
+    } else if (roomData.publicLocation.includes(valueInput)) {
+      setRes(await getRoomByLocation(valueInput))
+    } else if (roomData.province.includes(valueInput)) {
+      setRes(await getRoomByProvince(valueInput))
+    } //? ----------------------------------------------------------------
+    setSend(false)
     await console.log(res)
   }
+
+  useEffect(() => {
+    useErrorFindRoom(res, setFindOk, setRes)
+  }, [res])
+
   return (
     <>
       <FlexDir minHeight="100vh" width="100vw" direction="column" margin="0">
