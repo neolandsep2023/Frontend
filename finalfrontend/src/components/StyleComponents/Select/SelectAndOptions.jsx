@@ -10,25 +10,45 @@ const SelectAndOptionsStyle = styled.div`
   border-radius: ${({theme}) => theme.spacing(2.5)};
   width: 70%;
   padding: 20px;
+  position: relative;
 
   & label {
-    width: 100%;
-    box-sizing: border-box;
-    margin-bottom: ${({theme}) => theme.spacing(0.5)};
+    display: block;
+    margin-bottom: ${({theme}) => theme.spacing(1)};
+    font-size: 16px;
+    color: ${({ theme }) => theme.palette.textColor.main};
   }
 
   & select {
     width: 100%;
-    box-sizing: border-box;
-    height: 30px;
-    border-radius: ${({theme}) => theme.spacing(0.5)};
-    background-color:${({ theme }) => theme.palette.header};
-    font-size: 15px;
+    padding: 10px;
+    font-size: ${({theme}) => theme.spacing(2)};
+    border: ${({theme}) => theme.spacing(0.5)} solid ${({ theme }) => theme.palette.border.main};
+    border-radius: ${({theme}) => theme.spacing(1)};
+    background-color: ${({ theme }) => theme.palette.background.light};
+    color: ${({ theme }) => theme.palette.textColor.main};
+    cursor: pointer;
+
+    transition: border-color 0.3s ease;
+
+    &:hover {
+      border-color: ${({ theme }) => theme.palette.button.main};
+    }
+
+    &:focus {
+      outline: none;
+      border-color: ${({ theme }) => theme.palette.button.main};
+      box-shadow: 0 0 0 3px ${({ theme }) => theme.palette.shadow.main};
+    }
   }
 
-  & option {
-    width: 100%;
-    font-size: 15px;
+  & select::after {
+    content: "▼";
+    position: absolute;
+    top: 50%;
+    right: 10px;
+    transform: translateY(-50%);
+    pointer-events: none;
   }
 `;
 
