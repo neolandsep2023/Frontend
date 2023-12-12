@@ -13,8 +13,8 @@ console.log(submit)
   }
   return (
     <>
-      <FlexDir direction="row" gap="5vw" height = "100vh" padding="3rem" mediaqueryDir="row">
-        <FlexDir direction = "column" width="45vw" mediaqueryWidth="90vw">
+      <FlexDir direction="row" gap="5vw" height = "100vh" padding="3rem" mediaqueryDir="column">
+        <FlexDir direction = "column" width="45vw" mediaqueryWidth="90vw" wrap="wrap">
           <H1Custom>Perfect <span style={{color: theme == "dark" ? "#72cc89" : "#396644"}}>rooms</span> await you</H1Custom>
           <H3Custom>Discover Your Ideal Living Space with HousePal's varied offers</H3Custom>
           <FlexDir width="100%" direction="row">

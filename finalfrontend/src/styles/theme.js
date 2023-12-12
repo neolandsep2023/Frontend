@@ -71,6 +71,7 @@ export const themeLight = {
       main: PALETTE_COLOR_LIGHT.mediumLightGreen,
       light: PALETTE_COLOR_LIGHT.mediumLightGreen,
       dark: PALETTE_COLOR_LIGHT.darkGreen,
+      mediumGreen: PALETTE_COLOR_LIGHT.mediumGreen
     },
     border: {
       main: PALETTE_COLOR_LIGHT.border,
@@ -120,6 +121,7 @@ export const themeDark = {
           main: PALETTE_COLOR_DARK.mediumGreen,
           light: PALETTE_COLOR_DARK.lightGreen,
           dark: PALETTE_COLOR_DARK.darkGreen,
+          mediumGreen: PALETTE_COLOR_DARK.mediumGreen
         },
         border: {
           main: PALETTE_COLOR_DARK.border,
