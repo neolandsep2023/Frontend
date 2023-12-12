@@ -1,3 +1,4 @@
+import './Registerpt2.css'
 import { useForm } from "react-hook-form";
 import { useAuth } from "../../../context/authContext";
 import { useEffect, useState } from "react";
@@ -61,7 +62,7 @@ export const Registerpt2 = () => {
                   type="radio"
                   name="gender"
                   id="room"
-                  value="room"
+                  value="roomSeeker"
                   {...register("role", { required: true })}
                 />
                 <label htmlFor="room">
@@ -71,7 +72,7 @@ export const Registerpt2 = () => {
                   type="radio"
                   name="gender"
                   id="mate"
-                  value="roommate"
+                  value="roommateSeeker"
                   {...register("role", { required: true })}
                 />
                 <label htmlFor="mate">
@@ -132,9 +133,36 @@ export const Registerpt2 = () => {
       <LabelAndInput>
               
 
-              <CheckboxInput value={"Art"}></CheckboxInput>
-              <CheckboxInput value={"Climbing"}></CheckboxInput>
-              <CheckboxInput value={"Concerts"}></CheckboxInput>
+              <CheckboxInput {...register("interests")} value={"Art"}>
+              <label className=".label" htmlFor={"Art"}>
+              <input className="inputCheckBox" type="checkbox" name={"Art"}
+    value={"Art"}
+     id={"Art"} />
+     <div className="div"></div>
+     </label>
+              </CheckboxInput>
+              <CheckboxInput {...register("interests")}  value={"Climbing"}></CheckboxInput>
+
+              
+              <div class="checkboxDiv">
+  <label class="label label--checkbox" htmlFor="Climbing">
+  Climbing
+    <input type="checkbox" name="Climbing" value={"Climbing"} {...register("interests")}/>
+    <div class="endDiv"></div>
+  </label>
+</div>
+
+//! EL QUE VA BIEN
+<div class="checkbox-wrapper-21">
+  <label class="control control--checkbox" >
+    Checkbox
+    <input type="checkbox" name="Climbing" value={"Climbing"} {...register("interests")}/>
+    <div class="control__indicator"></div>
+  </label>
+</div> 
+//! EL QUE VA BIEN//! EL QUE VA BIEN
+              <CheckboxInput value={"Concerts"}>
+              </CheckboxInput>
               <CheckboxInput value={"Cooking"}></CheckboxInput>
               <CheckboxInput value={"Dancing"}></CheckboxInput>
               <CheckboxInput value={"Fashion"}></CheckboxInput>

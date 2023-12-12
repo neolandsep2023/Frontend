@@ -79,9 +79,9 @@ export const CheckboxInput = ({value, margin}) => {
   return (
     <CheckBoxInputStyle margin={margin}>
         <label htmlFor={value}>{value}
-  <input type="checkbox" name={value}
+  {/* <input type="checkbox" name={value}
     value={value}
-    {...register("register")} id={value} />
+     id={value} /> */}
     <div className="div"></div>
   </label>
         </CheckBoxInputStyle>
