@@ -75,8 +75,9 @@ export const getUsersEleven = async (elevenId) => {
 //! ------------------------- REGISTER ----------------------------------
 
 export const registerUser = async (formData) => {
+  console.log('entro en services', formData)
   const APIGeneral = extraConfig();
-  return APIGeneral.post("/users/register/registerRedirect", formData, {
+  return APIGeneral.post("/users/redirectRegister", formData, {
     headers: { "Content-Type": "multipart/form-data" },
   })
     .then((res) => res)
@@ -114,7 +115,7 @@ export const verifyConfirmationCode = async (formData) => {
 
 export const resendConfirmationCode = async (formData) => {
   const APIGeneral = extraConfig();
-  return APIGeneral.post("/users/resend", formData)
+  return APIGeneral.post("/users/resend/code", formData)
     .then((res) => res)
     .catch((error) => error);
 };
