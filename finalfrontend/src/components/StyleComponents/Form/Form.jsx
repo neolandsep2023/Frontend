@@ -10,8 +10,11 @@ border: ${({theme}) => theme.spacing(0.1)} solid ${({theme}) => theme.palette.bo
 width: ${({width})=> width};
 height: ${({height})=> height ? height : "fit-content"};
 & input{
-    width: 70%;
+    /* width: 70%; */
     height: ${({theme}) => theme.spacing(3.5)};
+}
+&textarea {
+width: 100%;
 }
 ${({theme}) => theme.mediaquery.mobile}{
     display: flex;
@@ -21,17 +24,17 @@ ${({theme}) => theme.mediaquery.mobile}{
 
 
 ${({theme}) => theme.mediaquery.tablet}{
-  width: 80vw;
+  width: 60vw;
   height: fit-content;
 }
 `
 
 
 
-export const Form = ({children, width, height}) => {
+export const Form = ({children, width, height, onSubmit}) => {
 const { theme } = useTheme()
 
   return (
-    <FormStyle theme={theme} width={width} height={height}>{children}</FormStyle>
+    <FormStyle theme={theme} width={width} height={height} onSubmit={onSubmit}>{children}</FormStyle>
   )
 }

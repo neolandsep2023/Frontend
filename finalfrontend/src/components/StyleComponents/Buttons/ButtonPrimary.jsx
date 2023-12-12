@@ -8,12 +8,12 @@ const ButtonStyles = styled.button`
 : variant == "loading" 
 && theme.palette.button.dark};
   border-radius: 5px;
-  font-weight: 600;
+  font-weight: 500;
   font-size: 24px;
   text-align: center;
   margin: ${({theme})=>
   theme.spacing(1)};
-  height: 42px;
+  height: 40px;
   width: ${({ width }) => width };
       &:hover{
         cursor: pointer;

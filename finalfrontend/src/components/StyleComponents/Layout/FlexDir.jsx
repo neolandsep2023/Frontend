@@ -13,6 +13,7 @@ margin: ${({margin, theme}) => margin ? margin : theme.spacing(1)};
 padding: ${({padding, theme}) => padding ? padding : theme.spacing(0)};
 height: ${({height}) => height ? height : "auto"};
 width: ${({width}) => width ? width : "auto"};
+min-height: ${({minHeight}) => minHeight ? minHeight : "auto"};
 
 ${({theme}) => theme.mediaquery.laptop}{
   /* flex-direction: ${({mediaqueryDir, direction})=> mediaqueryDir ? mediaqueryDir : direction}; */
@@ -28,13 +29,10 @@ ${({theme}) => theme.mediaquery.mobile}{
 }
 `
 
-
-
-export const FlexDir = ({children, direction, mediaqueryDir, gap, height, width, margin, padding, mediaqueryWidth, wrap}) => {
+export const FlexDir = ({children, direction, mediaqueryDir, gap, height, width, margin, padding, mediaqueryWidth, wrap, minHeight}) => {
   const { theme } = useTheme()
-  console.log(theme)
 
   return (
-    <FlexStyle wrap={wrap} theme = {theme} mediaqueryWidth={mediaqueryWidth} padding = {padding} width={width} height = {height} gap = {gap}  margin={margin} direction={direction} mediaqueryDir={mediaqueryDir}>{children}</FlexStyle>
+    <FlexStyle minHeight={minHeight} wrap={wrap} theme = {theme} mediaqueryWidth={mediaqueryWidth} padding = {padding} width={width} height = {height} gap = {gap}  margin={margin} direction={direction} mediaqueryDir={mediaqueryDir}>{children}</FlexStyle>
   )
 }

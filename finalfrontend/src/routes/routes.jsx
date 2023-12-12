@@ -7,7 +7,9 @@ import { Protected } from "../components/ProtectedRoutes/Protected";
 import { ProtectedCheckChildren } from "../components/ProtectedRoutes/ProtectedCheckChildren";
 import { Registerpt1 } from "../pages/Register/Registerpt1/Registerpt1";
 import App from "../App";
-import { MapCreation, ByIdMap, Home, RoomSearch, CreateRoom, Login, VerifyCode, Profile,UserProfileData,FavGallery,EditProfile } from "../pages";
+
+import { MapCreation, ByIdMap, Home, RoomSearch, CreateRoom, Login, VerifyCode,Registerpt2, Profile,UserProfileData,FavGallery,EditProfile } from "../pages";
+
 
 
 export const router = createBrowserRouter ([
@@ -30,7 +32,7 @@ export const router = createBrowserRouter ([
               },
               {
                 path: "/register/complete",
-                // element: <RegisterTwo />,
+                element: <Registerpt2 />,
               },
               {
                 path: "/login",

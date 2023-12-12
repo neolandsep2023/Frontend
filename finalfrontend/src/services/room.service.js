@@ -45,6 +45,33 @@ export const getRoomByName = async (roomName) => {
     .catch((error) => error);
 };
 
+//! ---------------- GET by LOCATION ----------------
+export const getRoomByLocation = async (location) => {
+  const APIGeneral = extraConfig();
+
+  return APIGeneral.get(`/rooms/byLocation/${location}`)
+    .then((res) => res)
+    .catch((error) => error);
+};
+
+//! ---------------- GET by POSTCODE ----------------
+export const getRoomByPostCode = async (postcode) => {
+  const APIGeneral = extraConfig();
+
+  return APIGeneral.get(`/rooms/byPostcode/${postcode}`)
+    .then((res) => res)
+    .catch((error) => error);
+};
+
+//! ---------------- GET by PROVINCE ----------------
+export const getRoomByProvince = async (province) => {
+  const APIGeneral = extraConfig();
+
+  return APIGeneral.get(`/rooms/byProvince/${province}`)
+    .then((res) => res)
+    .catch((error) => error);
+};
+
 //! ------------------ GET ALL ------------------
 export const getAllRooms = async () => {
   const APIGeneral = extraConfig();
@@ -68,6 +95,15 @@ export const filterRooms = async (filter, min, max) => {
   const APIGeneral = extraConfig();
 
   return APIGeneral.get(`/rooms/filter/rooms/${filter}/${min}/${max}`)
+    .then((res) => res)
+    .catch((error) => error);
+};
+
+//! ------------------ FILTER ENUM ------------------
+export const filterEnumRooms = async (filter, value) => {
+  const APIGeneral = extraConfig();
+
+  return APIGeneral.get(`/rooms/filterEnum/rooms/${filter}/${value}`)
     .then((res) => res)
     .catch((error) => error);
 };
