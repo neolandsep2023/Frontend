@@ -16,7 +16,7 @@ display: flex;
     align-items: center;
     justify-content: center;
     margin: 4px;
-    min-width: 45%;
+    min-width: ${({minW})=> minW ? minW : "45%"};
     height: 30px;
     font-weight: 500;
 
@@ -35,11 +35,11 @@ border-radius: ${({theme}) => theme.spacing(1)};
 
 
 
-export const RadioInput = ({children, margin}) => {
+export const RadioInput = ({children, margin, minW}) => {
 
 const { theme } = useTheme()  
 
   return (
-    <RadioInputStyles margin={margin} theme={theme}>{children}</RadioInputStyles>
+    <RadioInputStyles margin={margin} theme={theme} minW={minW}>{children}</RadioInputStyles>
   )
 }
