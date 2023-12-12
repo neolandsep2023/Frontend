@@ -92,7 +92,7 @@ export const VerifyCode = () => {
    if (!localStorage.getItem("user")) {
      useAutoLogin(allUser);
     } else {
-      return <Navigate to="/" />;
+      return <Navigate to="/register/complete" />;
   }
 }
 

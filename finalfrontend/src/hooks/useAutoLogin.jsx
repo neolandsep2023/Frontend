@@ -29,7 +29,7 @@ const {login} = useAuth();
 
       const userToJSONString = JSON.stringify(customUser)
       login(userToJSONString);
-      return <Navigate to="/"/>
+      return <Navigate to="/register/complete"/>
     } else {
         return <Navigate to="/login"/>
     }
