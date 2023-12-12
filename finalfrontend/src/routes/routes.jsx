@@ -99,22 +99,23 @@ export const router = createBrowserRouter ([
                   {
                     path: "/profile/user",
                     element: 
-                   
+                    (<Protected>
                     <UserProfileData/>
-                  ,
+                    </Protected>),
                   },
                   {
                     path: "/profile/favourites",
                     element: 
+                    (<Protected>
             <FavGallery/>
-                  
+            </Protected>),
                   },
                   {
                     path: "/profile/edit",
                     element: 
-               
+                    (<Protected>
                       <EditProfile />
-                   
+                      </Protected>),
                   },
                   {
                     path: "/profile/settings",

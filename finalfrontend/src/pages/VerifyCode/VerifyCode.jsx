@@ -101,14 +101,9 @@ if(okDeleteUser) {
 }
 
 
-// if(userNotFound) {
-// return <Navigate to="/login"/>
-// }
-
-
   return (
     <>
-     <FlexDir >
+     <FlexDir  direction={"column"}>
      
         <div >
         <h1 >Verify your code</h1>

@@ -11,12 +11,9 @@ export const useVerifyCodeError = (
   setUserNotFound
 ) => {
 
-  // ------------------------- 200 test todo correcto
-//convertir a string por seguridad
-  if (res?.data?.testCheckUser?.toString() == "true") {
+  if (res?.data?.testUser?.toString() == "true") {
    
-    /// si viene del login modificamos el estado de user del contexto para poner el check en true
-    //este viene del login
+
     if (localStorage.getItem("user")) {
       const currentUser = localStorage.getItem("user");
       const parseUser = JSON.parse(currentUser);
@@ -26,7 +23,7 @@ export const useVerifyCodeError = (
       };
 
       const stringUser = JSON.stringify(customUser);
-      // llamamos a la funcion de login para resetear que el check esta a true
+
       userlogin(stringUser);
     }
     setOkCheck(() => true);
@@ -52,7 +49,7 @@ export const useVerifyCodeError = (
     });
   }
 
-  // -------------- 200 test = false
+
   if (res?.data?.check == false && res?.data?.delete.includes('El usuario no se ha podido borrar')) {
     setRes(() => ({}));
     Swal.fire({

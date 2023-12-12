@@ -54,18 +54,6 @@ if (res?.status == 200){
     });
   }
 
-  if (acc != 0) {
-    if (res?.status == 200) {    // enviabamos el test con la respuesta 200
-      setRes(() => ({}));
-      return Swal.fire({
-        icon: "error",
-        title: "There was an error updating your profile",
-        text: "Please try again",
-        showConfirmButton: false,
-        timer: 3000,
-      });
-    }
-  }
 
 
 

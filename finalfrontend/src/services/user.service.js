@@ -190,9 +190,9 @@ export const getUserByName = async (userName) => {
 };
 
 //! -------------------> Get User By Id
-export const getUserById = async (userId) => {
+export const getUserById = async (id) => {
   const APIGeneral = extraConfig();
-  return APIGeneral.get(`/users/${userId}`)
+  return APIGeneral.get(`/users/getById/${id}`)
     .then((res) => res)
     .catch((error) => error);
 };

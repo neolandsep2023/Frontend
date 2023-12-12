@@ -4,9 +4,8 @@ import { useAuth } from "../../context/authContext";
 import { UploadFile } from "../../components";
 
 import Swal from "sweetalert2/dist/sweetalert2.all.js";
-import { useErrorChangePassword } from "../../hooks/useErrorChangePassword";
 import { useErrorUpdate } from "../../hooks/useErrorUpdate";
-import { updateUser } from "../../services/user.service";
+import { getUserById, updateUser } from "../../services/user.service";
 import { FlexDir, Form } from "../../components/StyleComponents";
 
 
@@ -18,13 +17,24 @@ export const EditProfile = () => {
   const [sendPassword, setSendPassword] = useState(false);
   const [resEdit, setResEdit] = useState({});
   const [sendEdit, setSendEdit] = useState(false);
+  const [data, setData] = useState(null);
 
   //! ----- hooks
 
   const { setUser, setIsDeletedUser, user, logout } = useAuth();
   const { handleSubmit, register } = useForm();
-
+  const [isDataReady, setIsDataReady] = useState(false);
   const [gender, setGender] = useState(user?.gender);
+  const fetchData = async () => {
+    const dataForState = await getUserById(user?._id);
+    setData(dataForState);
+    setIsDataReady(true);
+    console.log(dataForState)
+  };
+  useEffect(() => {
+    fetchData();
+
+  }, [ ]);
 
 const editProfileFormSubmit = async (formData) => {
     Swal.fire({
@@ -63,12 +73,10 @@ const editProfileFormSubmit = async (formData) => {
   };
   //! ----- useEffect
 
-  useEffect(() => {
-    useErrorChangePassword(resPassword, setResPassword, setUser);
-  }, [resPassword]);
 
   useEffect(() => {
     useErrorUpdate(resEdit, setResEdit, logout);
+    console.log(data)
   }, [resEdit]);
 
   return (
@@ -78,7 +86,7 @@ const editProfileFormSubmit = async (formData) => {
         <Form  onSubmit={handleSubmit(editProfileFormSubmit)}>
           <FlexDir  direction={"column"}>
             <FlexDir  direction={"column"} >
-              <label htmlFor="custom-input" >
+              <label htmlFor="custom-input">
                 Name
               </label>
               <input
@@ -88,7 +96,7 @@ const editProfileFormSubmit = async (formData) => {
                 name="name"
                 autoComplete="false"
 
-                defaultValue={user?.name}
+                defaultValue={data?.data?.name}
                 {...register("name")}
               />
             
@@ -105,7 +113,7 @@ const editProfileFormSubmit = async (formData) => {
                 name="lastName"
                 autoComplete="false"
 
-                defaultValue={user?.lastName}
+                defaultValue={data?.data?.lastName}
                 {...register("lastName")}
               />
              
@@ -120,7 +128,7 @@ const editProfileFormSubmit = async (formData) => {
                 name="username"
                 autoComplete="false"
 
-                defaultValue={user?.username}
+                defaultValue={data?.data?.username}
                 {...register("username")}
               />
              
@@ -137,7 +145,7 @@ const editProfileFormSubmit = async (formData) => {
                 name="birthYear"
                 autoComplete="false"
 
-                defaultValue={user?.birthYear}
+                defaultValue={data?.data?.birthYear}
                 {...register("birthYear")}
               />
              
@@ -145,7 +153,7 @@ const editProfileFormSubmit = async (formData) => {
             </FlexDir>
              
             </FlexDir>
-            <img  style={{padding: '0'}} src={user?.image} alt={user?.name}/>
+            <img style={{ width: '200px' }} src={user?.image} alt={user?.name}/>
             <UploadFile />
             <FlexDir  direction={"column"} >
               
@@ -156,7 +164,7 @@ const editProfileFormSubmit = async (formData) => {
                   name="gender"
                   id="male"
                   value="hombre"
-                  {...register("gender", { required: true })}
+                  {...register("gender")}
                 />
                 <label
                   htmlFor="male"
@@ -171,7 +179,7 @@ const editProfileFormSubmit = async (formData) => {
                   name="gender"
                   id="female"
                   value="mujer"
-                  {...register("gender", { required: true })}
+                  {...register("gender")}
                 />
                 <label
                   htmlFor="female"
@@ -187,7 +195,7 @@ const editProfileFormSubmit = async (formData) => {
                   name="gender"
                   id="otros"
                   value="otros"
-                  {...register("gender", { required: true })}
+                  {...register("gender")}
                 />
                 <label
                   htmlFor="otros"

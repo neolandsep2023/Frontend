@@ -1,8 +1,6 @@
 import { useEffect, useState } from "react";
 import { useAuth } from "../../context/authContext";
-import { getById } from "../../services/user.service";
-
-import Button from "@mui/material/Button";
+import { getById, getUserById } from "../../services/user.service";
 import { FlexDir } from "../../components/StyleComponents";
 
 export const UserProfileData = () => {
@@ -10,17 +8,17 @@ export const UserProfileData = () => {
   const [data, setData] = useState(null);
   const [isDataReady, setIsDataReady] = useState(false);
   const [displaySection, setDisplaySection] = useState("followed")
-  const [isDeleted, setIsDeleted] = useState(false);
 
   const fetchData = async () => {
-    const dataForState = await getById(user._id);
+    const dataForState = await getUserById(user?._id);
     setData(dataForState);
     setIsDataReady(true);
+
   };
   useEffect(() => {
     fetchData();
- 
-  }, [ data]);
+
+  }, [ ]);
 
   const renderSection = () => {
     switch (displaySection) {
@@ -41,7 +39,7 @@ export const UserProfileData = () => {
     <FlexDir  direction={"column"}>
     
         <figure >
-          <img
+          <img style={{ width: '100px' }}
             src={user?.image}
             alt="user image"
            
@@ -56,19 +54,19 @@ export const UserProfileData = () => {
             onClick={() => setDisplaySection("followers")}
            
           >
-            {data?.data?.followers?.length} followers
+             followers
           </button>
           <button
             onClick={() => setDisplaySection("followed")}
           
           >
-            {data?.data?.followed?.length} following
+           following
           </button>
           <button
             onClick={() => setDisplaySection("comments")}
           
           >
-            {data?.data?.comments?.length} comments
+           comments
           </button>
 
          
