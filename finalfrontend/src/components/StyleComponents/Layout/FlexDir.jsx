@@ -31,7 +31,6 @@ ${({theme}) => theme.mediaquery.mobile}{
 
 export const FlexDir = ({children, direction, mediaqueryDir, gap, height, width, margin, padding, mediaqueryWidth, wrap, minHeight}) => {
   const { theme } = useTheme()
-  console.log(theme)
 
   return (
     <FlexStyle minHeight={minHeight} wrap={wrap} theme = {theme} mediaqueryWidth={mediaqueryWidth} padding = {padding} width={width} height = {height} gap = {gap}  margin={margin} direction={direction} mediaqueryDir={mediaqueryDir}>{children}</FlexStyle>

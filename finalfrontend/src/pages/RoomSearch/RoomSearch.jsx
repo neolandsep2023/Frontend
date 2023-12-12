@@ -1,25 +1,33 @@
 import React, { useState } from 'react'
 import { SearchInputCustom, FlexDir, SearchImgCustom, SearchButtonCustom, H1Custom, H3Custom } from '../../components/StyleComponents/index'
 import { useThemeApp } from '../../context/themeContext'
+import { getRoomByLocation } from '../../services/room.service';
 
 
 export const RoomSearch = () => {
+  //! ---------- Estados ----------
+  const [res, setRes] = useState();
+  const [valueInput, setValueInput] = useState();
   const [submit, setSubmit] = useState()
   const [postCode, setPostCode] = useState()
+
+  //! ---------- Destructuring ----------
   const {theme} = useThemeApp()
-console.log(submit)
-  const handleSearch = () => {
+
+  const handleSearch = async () => {
     setSubmit(true)
+    setRes(await getRoomByLocation(valueInput))
+    await console.log(res)
   }
   return (
     <>
-      <FlexDir minHeight="100vh" width="100vw" direction="column">
-        <FlexDir direction="row" gap="5vw" height = "100%" padding="3rem" mediaqueryDir="column">
+      <FlexDir minHeight="100vh" width="100vw" direction="column" margin="0">
+        <FlexDir direction="row" gap="5vw" height = "100%" width="100%" padding="3rem" mediaqueryDir="column">
           <FlexDir direction = "column" width="45vw" mediaqueryWidth="90vw" wrap="wrap">
             <H1Custom>Perfect <span style={{color: theme == "dark" ? "#72cc89" : "#396644"}}>rooms</span> await you</H1Custom>
             <H3Custom>Discover Your Ideal Living Space with HousePal's varied offers</H3Custom>
             <FlexDir width="100%" direction="row">
-              <SearchInputCustom/>
+              <SearchInputCustom onChange = {(e) => setValueInput(e.target.value)}/>
               <SearchButtonCustom onClick={handleSearch}>🔎</SearchButtonCustom>
             </FlexDir>
           </FlexDir>
@@ -30,7 +38,7 @@ console.log(submit)
           </FlexDir>
         </FlexDir>
         {submit == true && <FlexDir>
-          <h1>Top Rooms in your City</h1>
+          <h1>Top Rooms in your Area</h1>
         </FlexDir>}
       </FlexDir>
     </>
