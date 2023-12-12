@@ -27,59 +27,65 @@ const MiniCardsStyle = styled.div`
     text-align: left;
     width: 100%;
     margin: 0;
+    font-size: 1.6vw;
   }
   & ul{
-    display: inline;
+    display: flex;
+    flex-direction: row;
     margin: 0;
     padding: 0;
+    width: 100%;
+    justify-content: center;
+    flex-wrap: wrap;
+    gap: 0.7rem;
   }
   & li{
     list-style: none;
     font-weight: 400;
-    font-size: 15px;
+    font-size: 1.2vw;
     color: black;
     text-align: left;
     width: fit-content;
     float: left;
-    margin: 0;
-    margin: 0 12px;
-    padding: 0 5px;
-    background-color: ${({theme}) => theme.palette.button.mediumGreen};
-    border-radius: 5px; 
+    padding: 0 4px;
+    background-color: ${({theme}) => theme.palette.button.mediumGreenOpaco};
+    border-radius: 5px;
   }
 
+  ${({theme}) => theme.mediaquery.desktop}{
+      & h4 {
+        font-size: 1.3vw
+      }
+      & li {
+        font-size: 1vw;
+      }
+  }
 
-${({theme}) => theme.mediaquery.mobile}{
-    display: flex;
-    flex-direction: column;
-    width: 90vw;
-    height: 90vh;
-    & img{
-      height: 300px;
-      width: 300px;
-      object-fit: cover;
-}
-};
+  ${({theme}) => theme.mediaquery.tablet}{
+      width: 40vw;
+      & h4 {
+        font-size: 2vw
+      }
+      & li {
+        font-size: 1.6vw;
+      }
+  }
 
-${({theme}) => theme.mediaquery.tablet}{
-    width: 45vw;
-    height: 50vh;
-    & img{
-      height: 250px;
-      width: 250px;
-      object-fit: cover;
-}
-}
-
+  ${({theme}) => theme.mediaquery.mobile}{
+      width: 80vw;
+      & h4 {
+        font-size: 3.4vw
+      }
+      & li {
+        font-size: 2.5vw;
+      }
+  };
 `
 
 
-
-
 export const MiniCards = ({children}) => {
-const { theme } = useTheme()
-
-  return (
-    <MiniCardsStyle theme={theme} >{children}</MiniCardsStyle>
-  )
+  const { theme } = useTheme()
+    return (
+      <MiniCardsStyle theme={theme} >{children}</MiniCardsStyle>
+    )
 }

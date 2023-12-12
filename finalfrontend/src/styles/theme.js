@@ -28,6 +28,7 @@ const PALETTE_COLOR_LIGHT = {
   lightGreen: "#8effab",
   mediumLightGreen: "#97f6a8",
   mediumGreen: "#72cc89",
+  mediumGreenOpaco: "#72cc8999",
   darkGreen: "#396644",
   ultraDarkGreen: "#2a2f2b",
   cardBackground: "#ddffe6",
@@ -47,6 +48,7 @@ const PALETTE_COLOR_DARK = {
   lightGreen: "#8effab",
   mediumLightGreen: "#97f6a8",
   mediumGreen: "#72cc89",
+  mediumGreenOpaco: "#72cc8999",
   darkGreen: "#396644",
   ultraDarkGreen: "#2a2f2b",
   cardBackground: "#ddffe6",
@@ -78,7 +80,8 @@ export const themeLight = {
       main: PALETTE_COLOR_LIGHT.mediumLightGreen,
       light: PALETTE_COLOR_LIGHT.mediumLightGreen,
       dark: PALETTE_COLOR_LIGHT.darkGreen,
-      mediumGreen: PALETTE_COLOR_DARK.mediumGreen
+      mediumGreen: PALETTE_COLOR_LIGHT.mediumGreen,
+      mediumGreenOpaco: PALETTE_COLOR_LIGHT.mediumGreenOpaco,
     },
     border: {
       main: PALETTE_COLOR_LIGHT.border,
@@ -92,7 +95,7 @@ export const themeLight = {
   },
   mediaquery: {
     mobile: `@media (max-width: ${BREAKPOINTS.mobile}px)`,
-    tablet: `@media (min-width: ${BREAKPOINTS.tablet}px) and (max-width: ${BREAKPOINTS.laptop}px)`,
+    tablet: `@media (min-width: ${BREAKPOINTS.mobile}px) and (max-width: ${BREAKPOINTS.laptop}px)`,
     laptop: `@media (min-width: ${BREAKPOINTS.laptop}px) and (max-width: ${BREAKPOINTS.desktop}px)`,
     desktop: `@media (min-width: ${BREAKPOINTS.desktop}px)`,
   },
@@ -133,7 +136,8 @@ export const themeDark = {
       main: PALETTE_COLOR_DARK.mediumGreen,
       light: PALETTE_COLOR_DARK.lightGreen,
       dark: PALETTE_COLOR_DARK.darkGreen,
-      mediumGreen: PALETTE_COLOR_DARK.mediumGreen
+      mediumGreen: PALETTE_COLOR_DARK.mediumGreen,
+      mediumGreenOpaco: PALETTE_COLOR_DARK.mediumGreenOpaco,
     },
     border: {
       main: PALETTE_COLOR_DARK.border,

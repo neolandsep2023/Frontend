@@ -59,19 +59,19 @@ export const RoomSearch = () => {
             <SearchImgCustom marginTop = "10rem" src = "https://hips.hearstapps.com/hmg-prod/images/living-room-ideas-lb-avery-cox-virginia-highlands2576-v2-1670968227.jpg"/>
           </FlexDir>
         </FlexDir>
-        {submit == true && <FlexDir direction="column">
-          <h1>Top Rooms in your Area</h1>
-          <FlexDir wrap="wrap" gap="2rem">
+        {submit == true && <FlexDir direction="column" width="100%" margin="0">
+          <h2>Top Rooms in your Area</h2>
+          <FlexDir wrap="wrap" gap="2rem" width="100%" margin="0">
             {console.log(res)}
             {res && res?.data?.map((room)=> (
               <MiniCards>
                 <img src={room.image[0]} alt={room.title}/>
                 <h4>{room.title.slice(0, 25)}...</h4>
-                <ul>
-                  <li>{room.province}, {room.publicLocation}</li>
-                  {room.roomates > 0 ? <li>{room.roomates} 🙍🏻‍♂️</li> : <li>{room.type}</li>}
-                  <li>{room.surface}m²</li>
-                </ul>
+                  <ul>
+                    <li>{room.province}, {room.publicLocation}</li>
+                    {room.roomates > 0 ? <li>{room.roomates} 🙍🏻‍♂️</li> : <li>{room.type}</li>}
+                    <li>{room.surface}m²</li>
+                  </ul>
               </MiniCards>
             ))}
           </FlexDir>
