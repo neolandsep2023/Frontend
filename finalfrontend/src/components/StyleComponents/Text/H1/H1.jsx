@@ -1,3 +1,4 @@
+import { useTheme } from "@emotion/react";
 import styled from "@emotion/styled";
 
 const H1Styles = styled.h1`
@@ -6,11 +7,21 @@ const H1Styles = styled.h1`
   width: 100%;
   font-size: 4em;
   line-height: 1;
-  /* padding-right: 25%; */
+
+  ${({ theme }) => theme.mediaquery.tablet} {
+    text-align: center;
+    font-size: 7vw;
+  }
+
+  ${({ theme }) => theme.mediaquery.mobile} {
+    text-align: center;
+    font-size: 9vw;
+  }
 `
 
 export const H1Custom = ({children}) => {
+  const { theme } = useTheme();
   return (
-    <H1Styles>{children}</H1Styles>
+    <H1Styles theme={theme} >{children}</H1Styles>
   )
 }

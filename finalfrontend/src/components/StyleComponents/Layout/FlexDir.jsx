@@ -21,9 +21,9 @@ const FlexStyle = styled.div`
 
   ${({ theme }) => theme.mediaquery.tablet} {
     flex-direction: ${({ mediaqueryDirTablet, direction }) =>
-      mediaqueryDirTablet ? mediaqueryDirTablet : direction};
+    mediaqueryDirTablet ? mediaqueryDirTablet : direction};
     width: ${({ mediaqueryWidthTablet, width }) =>
-      mediaqueryWidthTablet ? mediaqueryWidthTablet : width};
+    mediaqueryWidthTablet ? mediaqueryWidthTablet : width};
   }
 
   ${({ theme }) => theme.mediaquery.mobile} {
