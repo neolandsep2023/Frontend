@@ -8,7 +8,7 @@ import { ProtectedCheckChildren } from "../components/ProtectedRoutes/ProtectedC
 import { Registerpt1 } from "../pages/Register/Registerpt1/Registerpt1";
 import App from "../App";
 
-import { MapCreation, ByIdMap, Home, RoomSearch, CreateRoom, Login, VerifyCode,Registerpt2, Profile,UserProfileData,FavGallery,EditProfile, AccountSettings } from "../pages";
+import { MapCreation, ByIdMap, Home, RoomSearch, CreateRoom, Login, VerifyCode,Registerpt2, Profile,UserProfileData,FavGallery,EditProfile, AccountSettings, RoomById } from "../pages";
 
 
 
@@ -44,7 +44,7 @@ export const router = createBrowserRouter ([
               },
               {
                 path: "/roomSearch",
-                // element: < />,
+                element: <RoomSearch/>,
               },
               {
                 path: "/roomFinds",
@@ -54,7 +54,7 @@ export const router = createBrowserRouter ([
                 path: "/roomFinds/:id",
                 element: 
                 (<Protected>
-                  {/* < /> */}
+                  < RoomById/>
                 </Protected>)
               },
               {
@@ -135,10 +135,6 @@ export const router = createBrowserRouter ([
             element: <MapCreation/>},
             {path: "/pruebas/view",
           element: <ByIdMap/>},
-          {
-            path: "/pruebas/styledcomponents",
-            element: <RoomSearch/>
-          }
         ],
     },
 ]);

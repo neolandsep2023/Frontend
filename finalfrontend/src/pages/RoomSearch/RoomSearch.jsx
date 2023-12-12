@@ -6,6 +6,7 @@ import { useErrorFindRoom } from '../../hooks/useErrorFindRoom';
 import { roomData } from '../../data/Rooms.data';
 import { GalleryCustom } from '../../components';
 import { useTheme } from '@emotion/react';
+import { Link } from 'react-router-dom';
 
 
 export const RoomSearch = () => {
@@ -80,15 +81,17 @@ export const RoomSearch = () => {
           <FlexDir wrap="wrap" gap="2rem" width="100%" margin="0">
             {console.log(res)}
             {res && res?.data?.map((room)=> (
-              <MiniCards>
-                <img src={room.image[0]} alt={room.title}/>
-                <h4>{room.title.slice(0, 25)}...</h4>
+              <Link>
+                <MiniCards>
+                  <img src={room.image[0]} alt={room.title}/>
+                  <h4>{room.title.slice(0, 30)}...</h4>
                   <ul>
                     <li>{room.province}, {room.publicLocation}</li>
                     {room.roomates > 0 ? <li>{room.roomates} 🙍🏻‍♂️</li> : <li>{room.type}</li>}
                     <li>{room.surface}m²</li>
                   </ul>
-              </MiniCards>
+                </MiniCards>
+              </Link>
             ))}
           </FlexDir>
         </FlexDir>}
