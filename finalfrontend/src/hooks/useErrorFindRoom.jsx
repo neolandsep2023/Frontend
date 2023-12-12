@@ -12,6 +12,17 @@ export const useErrorFindRoom = (res, setFindOk, setRes) => {
       showConfirmButton: false,
       timer: 1500,
     });
+    // setRes({});
+  }
+
+  if (res?.response?.data?.includes("we couldn't find any rooms")) {
+    Swal.fire({
+      icon: "error",
+      title: "Not Found",
+      text: "No matching rooms",
+      showConfirmButton: false,
+      timer: 3000,
+    });
     setRes({});
   }
 
@@ -20,17 +31,6 @@ export const useErrorFindRoom = (res, setFindOk, setRes) => {
       icon: "error",
       title: "Interval server error",
       text: "There was an error in our interval server. Please try again",
-      showConfirmButton: false,
-      timer: 3000,
-    });
-    setRes({});
-  }
-
-  if (res?.response?.status == 404) {
-    Swal.fire({
-      icon: "error",
-      title: "Not Found",
-      text: "404 error",
       showConfirmButton: false,
       timer: 3000,
     });

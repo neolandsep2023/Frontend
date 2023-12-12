@@ -30,6 +30,7 @@ const PALETTE_COLOR_LIGHT = {
   mediumGreen: "#72cc89",
   darkGreen: "#396644",
   ultraDarkGreen: "#2a2f2b",
+  cardBackground: "#ddffe6",
 };
 
 const PALETTE_COLOR_DARK = {
@@ -48,6 +49,7 @@ const PALETTE_COLOR_DARK = {
   mediumGreen: "#72cc89",
   darkGreen: "#396644",
   ultraDarkGreen: "#2a2f2b",
+  cardBackground: "#ddffe6",
 };
 
 export const themeLight = {
@@ -84,6 +86,9 @@ export const themeLight = {
     shadow: {
       main: PALETTE_COLOR_LIGHT.shadow,
     },
+    cardBackground: {
+      main: PALETTE_COLOR_LIGHT.cardBackground
+    }
   },
   mediaquery: {
     mobile: `@media (max-width: ${BREAKPOINTS.mobile}px)`,
@@ -136,6 +141,9 @@ export const themeDark = {
     shadow: {
       main: PALETTE_COLOR_DARK.shadow,
     },
+    cardBackground: {
+      main: PALETTE_COLOR_DARK.cardBackground
+    }
   },
   mediaquery: {
     mobile: `@media (max-width: ${BREAKPOINTS.mobile}px)`,

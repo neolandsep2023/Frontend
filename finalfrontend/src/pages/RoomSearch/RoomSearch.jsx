@@ -1,9 +1,10 @@
 import React, { useEffect, useState } from 'react'
-import { SearchInputCustom, FlexDir, SearchImgCustom, SearchButtonCustom, H1Custom, H3Custom } from '../../components/StyleComponents/index'
+import { SearchInputCustom, FlexDir, SearchImgCustom, SearchButtonCustom, H1Custom, H3Custom, MiniCards } from '../../components/StyleComponents/index'
 import { useThemeApp } from '../../context/themeContext'
-import { getRoomByLocation, getRoomByPostCode, getRoomByProvince } from '../../services/room.service';
+import { getAllRooms, getRoomByLocation, getRoomByPostCode, getRoomByProvince } from '../../services/room.service';
 import { useErrorFindRoom } from '../../hooks/useErrorFindRoom';
 import { roomData } from '../../data/Rooms.data';
+import { GalleryCustom } from '../../components';
 
 
 export const RoomSearch = () => {
@@ -11,7 +12,7 @@ export const RoomSearch = () => {
   const [res, setRes] = useState();
   const [findOK, setFindOk] = useState();
   const [send, setSend] = useState();
-  const [valueInput, setValueInput] = useState();
+  const [valueInput, setValueInput] = useState("");
   const [submit, setSubmit] = useState()
   const [postCode, setPostCode] = useState()
 
@@ -22,16 +23,18 @@ export const RoomSearch = () => {
     setSubmit(true)
     setSend(true)
     //? -------- condicional para llamar al controlador que toque --------
-    if (valueInput.includes("0", "1", "2", "3", "4", "5", "6", "7", "8", "9")) {
-      console.log(valueInput)
-      setRes(await getRoomByPostCode(valueInput))
-    } else if (roomData.publicLocation.includes(valueInput)) {
-      setRes(await getRoomByLocation(valueInput))
-    } else if (roomData.province.includes(valueInput)) {
-      setRes(await getRoomByProvince(valueInput))
+    if (valueInput.length > 0) {
+      if (valueInput.includes("0", "1", "2", "3", "4", "5", "6", "7", "8", "9")) {
+        setRes(await getRoomByPostCode(valueInput))
+      } else if (roomData.publicLocation.includes(valueInput)) {
+        setRes(await getRoomByLocation(valueInput))
+      } else if (roomData.province.includes(valueInput)) {
+        setRes(await getRoomByProvince(valueInput))
+      }
+    } else {
+      setRes(await getAllRooms())
     } //? ----------------------------------------------------------------
     setSend(false)
-    await console.log(res)
   }
 
   useEffect(() => {
@@ -56,8 +59,22 @@ export const RoomSearch = () => {
             <SearchImgCustom marginTop = "10rem" src = "https://hips.hearstapps.com/hmg-prod/images/living-room-ideas-lb-avery-cox-virginia-highlands2576-v2-1670968227.jpg"/>
           </FlexDir>
         </FlexDir>
-        {submit == true && <FlexDir>
+        {submit == true && <FlexDir direction="column">
           <h1>Top Rooms in your Area</h1>
+          <FlexDir wrap="wrap" gap="2rem">
+            {console.log(res)}
+            {res && res?.data?.map((room)=> (
+              <MiniCards>
+                <img src={room.image[0]} alt={room.title}/>
+                <h4>{room.title.slice(0, 25)}...</h4>
+                <ul>
+                  <li>{room.province}, {room.publicLocation}</li>
+                  {room.roomates > 0 ? <li>{room.roomates} 🙍🏻‍♂️</li> : <li>{room.type}</li>}
+                  <li>{room.surface}m²</li>
+                </ul>
+              </MiniCards>
+            ))}
+          </FlexDir>
         </FlexDir>}
       </FlexDir>
     </>
