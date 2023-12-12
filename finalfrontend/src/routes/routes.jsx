@@ -7,7 +7,9 @@ import { Protected } from "../components/ProtectedRoutes/Protected";
 import { ProtectedCheckChildren } from "../components/ProtectedRoutes/ProtectedCheckChildren";
 import { Registerpt1 } from "../pages/Register/Registerpt1/Registerpt1";
 import App from "../App";
-import { MapCreation, ByIdMap, Home, RoomSearch, CreateRoom, Login, VerifyCode } from "../pages";
+import { MapCreation, ByIdMap, Home, RoomSearch, CreateRoom, Login, VerifyCode, Profile,UserProfileData,FavGallery,EditProfile } from "../pages";
+
+
 export const router = createBrowserRouter ([
 
     {
@@ -88,30 +90,29 @@ export const router = createBrowserRouter ([
               {
                 path: "/profile",
                 element: 
-                (<Protected>
-                  {/* <Profile /> */}
-                </Protected>),
+              
+                  <Profile />
+              ,
                 children: [
                   {
                     path: "/profile/user",
                     element: 
-                    (<Protected>
-                      {/* <UserProfileData /> */} 
-                    </Protected>),
+                   
+                    <UserProfileData/>
+                  ,
                   },
                   {
                     path: "/profile/favourites",
                     element: 
-                    (<Protected>
-                      {/* <FavGallery/> */}
-                    </Protected>),
+            <FavGallery/>
+                  
                   },
                   {
                     path: "/profile/edit",
                     element: 
-                    (<Protected>
-                      {/* <EditProfile /> */}
-                    </Protected>),
+               
+                      <EditProfile />
+                   
                   },
                   {
                     path: "/profile/settings",

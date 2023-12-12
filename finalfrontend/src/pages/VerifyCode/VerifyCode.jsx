@@ -7,7 +7,7 @@ import { useAuth } from "../../context/authContext";
 import { Navigate, useNavigate } from "react-router";
 import { useVerifyCodeError } from "../../hooks/useVerifyCodeError";
 import { resendConfirmationCode, verifyConfirmationCode } from "../../services/user.service";
-import { FlexDir, Form } from "../../components/StyleComponents";
+import { ButtonPrimary, FlexDir, Form } from "../../components/StyleComponents";
 
 export const VerifyCode = () => {
   const navigate = useNavigate();
@@ -132,16 +132,16 @@ if(okDeleteUser) {
         
 
 <FlexDir direction={"column"}>
-<button  type="submit"
+<ButtonPrimary  type="submit"
             >
  Verify Code
-</button>
+</ButtonPrimary>
         
   
-          <button
+          <ButtonPrimary
              onClick={() => handleReSend()}>
  Resend Code
-</button>
+</ButtonPrimary>
 </FlexDir>
 
          

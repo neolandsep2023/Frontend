@@ -8,3 +8,7 @@ export * from './Home/Home'
 export * from "./CreateRoom/CreateRoom"
 export * from "./Login/Login"
 export * from "./VerifyCode/VerifyCode"
+export * from "./Profile/Profile"
+export * from "./UserProfileData/UserProfileData"
+export * from "./EditProfile/EditProfile"
+export * from "./FavGallery/FavGallery"
