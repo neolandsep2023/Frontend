@@ -9,7 +9,7 @@ export const roomData = {
     "Duplex",
     "Flat",
   ],
-  comoditiesRoom: [
+  commoditiesRoom: [
     "Furnished",
     "Single Bed",
     "Double Bed",

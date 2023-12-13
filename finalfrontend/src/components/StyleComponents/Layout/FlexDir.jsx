@@ -6,7 +6,7 @@ const FlexStyle = styled.div`
   flex-direction: ${({ direction }) => direction};
   justify-content: center;
   align-items: center;
-  flex-wrap: ${({ wrap }) => (wrap ? wrap : "no-wrap")};
+  flex-wrap: ${({ wrap }) => (wrap ? wrap : "nowrap")};
   gap: ${({ gap, theme }) => (gap ? gap : theme.spacing(1.5))};
   margin: ${({ margin, theme }) => (margin ? margin : theme.spacing(1))};
   padding: ${({ padding, theme }) => (padding ? padding : theme.spacing(0))};
