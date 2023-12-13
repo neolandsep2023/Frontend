@@ -3,10 +3,7 @@ import styled from "@emotion/styled"
 
 
 const MiniCardsStyle = styled.div`
-  /* background-color: ${({theme}) => theme.palette.button.mediumGreen}; */
   color: ${({theme}) => theme.palette.textColor.main};
-  /* border-radius:${({theme}) => theme.spacing(1.5)};
-  border: ${({theme}) => theme.spacing(0.1)} solid ${({theme}) => theme.palette.border.main}; */
   width: 28vw;
   aspect-ratio: 3/2;
   margin: ${({theme})=>

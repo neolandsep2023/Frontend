@@ -42,7 +42,7 @@ export const RoomSearch = () => {
   }
 
   useEffect(() => {
-    useErrorFindRoom(res, setFindOk, setRes)
+    // useErrorFindRoom(res, setFindOk, setRes)
   }, [res])
 
   return (

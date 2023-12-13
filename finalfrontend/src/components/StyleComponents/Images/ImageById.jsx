@@ -3,8 +3,8 @@ import styled from "@emotion/styled";
 
 const ByIdImageStyle = styled.img`
   width: 100%;
-  aspect-ratio: 1/1;
-  border-radius: 3px;
+  aspect-ratio: 1.5/1;
+  border-radius: 7px;
   object-fit: cover;
   margin-top: ${({marginTop}) => marginTop ? marginTop : "auto"};
 
