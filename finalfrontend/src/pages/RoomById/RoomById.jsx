@@ -7,6 +7,7 @@ import { UlCustom } from "../../components/StyleComponents/UL/Ul";
 import { ConnectButtonCustom } from "../../components/StyleComponents/Buttons/ConnectButton";
 import { Description } from "../../components/StyleComponents/Text/Small/Description";
 import { ByIdMap } from "../Pruebas/ByIdMap";
+import { printIcons } from "../../utils/enumIcons";
 
 export const RoomById = () => {
   //! ---------- Estados ----------
@@ -28,13 +29,13 @@ export const RoomById = () => {
     <>
       {res && 
       <FlexDir minHeight="100vh" direction="column" margin="0">
-        <h1>{res?.data?.title}</h1>
-        <FlexDir direction="row" gap="2rem">
+        <h1 style={{fontSize: "4vw"}}>{res?.data?.title}</h1>
+        <FlexDir direction="row" gap="2rem" mediaqueryDirMobile="column">
           <FlexDir width="60vw">
             <ByIdImageCustom src={res?.data?.image} alt={res?.data?.title}/>
           </FlexDir>
-          <FlexDir direction="column" height="100%" width="25vw">
-            <UlCustom alignItems="flex-start">
+          <FlexDir direction="column" height="100%" width="25vw" mediaqueryWidthMobile="100vw" mediaqueryMarginMobile="-1rem 0 0 0">
+            <UlCustom  mediaqueryDirMobile="row">
               <li><span>{res?.data?.post?.price}/month</span></li>
               <li>🏠{res?.data?.type}</li>
               <li>⬜ {res?.data?.surface}m²</li>
@@ -44,16 +45,16 @@ export const RoomById = () => {
             <ConnectButtonCustom>connect</ConnectButtonCustom>
           </FlexDir>
         </FlexDir>
-        <FlexDir direction = "row" width="100vw" margin="2.5rem 0 1rem 0">
-          <FlexDir direction="column" width="50%" height="60vh">
+        <FlexDir direction = "row" width="100vw" margin="2.5rem 0 1rem 0" mediaqueryMarginMobile="0.3rem 0 0 0">
+          <FlexDir direction="column" width="50%" height="50vh">
             <H3Custom textAlign="center">House Commodities</H3Custom>
-            <UlCustom width="100%" height="90%" justifyContent="flex-start">
+            <UlCustom width="100%" height="90%" justifyContent="flex-start" alignItems="start" padding="0 0 0 30%">
               {res?.data?.commoditiesHome?.map((commodity) => (
-                <li key={commodity}>{commodity}</li>
+                <li key={commodity}>{printIcons(commodity)}{commodity}</li>
               ))}
             </UlCustom>
           </FlexDir>
-          <FlexDir direction="column" width="50%" height="60vh">
+          <FlexDir direction="column" width="50%" height="50vh">
             <H3Custom textAlign="center">Room Commodities</H3Custom>
             <UlCustom width="100%" height="90%" justifyContent="flex-start">
               {res?.data?.commoditiesRoom?.map((commodity) => (

@@ -9,7 +9,7 @@ const H3Styles = styled.h3`
 
   ${({ theme }) => theme.mediaquery.tablet} {
     text-align: center;
-    font-size: 1.8vw;
+    font-size: 2.4vw;
   }
 
   ${({ theme }) => theme.mediaquery.mobile} {

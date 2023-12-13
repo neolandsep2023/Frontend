@@ -11,7 +11,12 @@ const ConnectButtonStyles = styled.button`
   color: white;
   font-weight: 650;
   font-size: 1.9vw;
-  letter-spacing: 1.1px
+  letter-spacing: 1.1px;
+
+  ${({ theme }) => theme.mediaquery.mobile} {
+    width: 80%;
+    aspect-ratio: 10/1
+  }
 `
 
 export const ConnectButtonCustom = ({ children, onClick }) => {

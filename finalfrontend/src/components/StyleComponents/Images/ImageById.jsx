@@ -2,18 +2,18 @@ import { useTheme } from "@emotion/react";
 import styled from "@emotion/styled";
 
 const ByIdImageStyle = styled.img`
-  width: 100%;
+  width: 60vw;
   aspect-ratio: 1.5/1;
   border-radius: 7px;
   object-fit: cover;
   margin-top: ${({marginTop}) => marginTop ? marginTop : "auto"};
 
   ${({ theme }) => theme.mediaquery.tablet} {
-    width: 10vw;
+    /* width: 10vw; */
   }
 
   ${({ theme }) => theme.mediaquery.mobile} {
-    width: 13vw
+    width: 90vw
   }
 `
 

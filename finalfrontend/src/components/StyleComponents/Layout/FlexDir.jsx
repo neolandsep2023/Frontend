@@ -29,8 +29,9 @@ const FlexStyle = styled.div`
   ${({ theme }) => theme.mediaquery.mobile} {
     flex-direction: ${({ mediaqueryDirMobile, direction }) =>
       mediaqueryDirMobile ? mediaqueryDirMobile : direction};
-      width: ${({ mediaqueryWidthMobile, width }) =>
+    width: ${({ mediaqueryWidthMobile, width }) =>
       mediaqueryWidthMobile ? mediaqueryWidthMobile : width};
+    margin: ${({mediaqueryMarginMobile, margin}) => mediaqueryMarginMobile ? mediaqueryMarginMobile : margin}
   }
 `;
 
@@ -49,6 +50,7 @@ export const FlexDir = ({
   minHeight,
   mediaqueryDirMobile,
   mediaqueryDirTablet,
+  mediaqueryMarginMobile,
 }) => {
   const { theme } = useTheme();
 
@@ -68,6 +70,7 @@ export const FlexDir = ({
       mediaqueryDir={mediaqueryDir}
       mediaqueryDirTablet={mediaqueryDirTablet}
       mediaqueryDirMobile={mediaqueryDirMobile}
+      mediaqueryMarginMobile={mediaqueryMarginMobile}
     >
       {children}
     </FlexStyle>
