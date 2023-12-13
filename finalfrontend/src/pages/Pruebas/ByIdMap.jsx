@@ -20,7 +20,7 @@ let post = {
   room: "Room 844",
 }
 
-export const ByIdMap = () => {
+export const ByIdMap = ({postcode, province}) => {
 const [postReady, setPostReady] = useState(false)
 const mapRef = useRef(null);
 const markerRef = useRef(null);
@@ -28,7 +28,7 @@ const markerRef = useRef(null);
 
 const centerMap = () => {
   mapRef.current.setView(
-    [parseFloat(postcodes[post.location][post.postcode].latitude), parseFloat(postcodes[post.location][post.postcode].longitude)],
+    [parseFloat(postcodes[province][postcode].latitude), parseFloat(postcodes[province][postcode].longitude)],
     15
   );
 }
@@ -38,24 +38,24 @@ useEffect(() => {
   const createMap = () => {
       if (!mapRef.current) {
         const map = L.map('map', {
-          center: [parseFloat(postcodes[post.location][post.postcode].latitude), parseFloat(postcodes[post.location][post.postcode].longitude)],
-          zoom: 15
+          center: [parseFloat(postcodes[province][postcode].latitude), parseFloat(postcodes[province][postcode].longitude)],
+          zoom: 13
         });
         L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
           attribution: '© OpenStreetMap contributors'
         }).addTo(map);
         mapRef.current = map;
-        const marker = L.marker([parseFloat(postcodes[post.location][post.postcode].latitude), parseFloat(postcodes[post.location][post.postcode].longitude)])
+        const marker = L.marker([parseFloat(postcodes[province][postcode].latitude), parseFloat(postcodes[province][postcode].longitude)])
           .addTo(map);
         markerRef.current = marker;
 
       } else {
         mapRef.current.setView(
-          [parseFloat(postcodes[post.location][post.postcode].latitude), parseFloat(postcodes[post.location][post.postcode].longitude)],
-          15
+          [parseFloat(postcodes[province][postcode].latitude), parseFloat(postcodes[province][postcode].longitude)],
+          13
         );
         if (markerRef.current) {
-          markerRef.current.setLatLng([parseFloat(postcodes[post.location][post.postcode].latitude), parseFloat(postcodes[post.location][post.postcode].longitude)]);
+          markerRef.current.setLatLng([parseFloat(postcodes[province][postcode].latitude), parseFloat(postcodes[province][postcode].longitude)]);
         }
       }
   };
@@ -68,10 +68,10 @@ useEffect(() => {
     <>
     <div className='container'>
     <div className='background'>
-    <h1>{post.title} <small>by {post.author}</small></h1>
+    {/* <h1>{post.title} <small>by {post.author}</small></h1>
     <p>{post.text}</p>
-    <h3 className='tag'>{post.location}</h3>
-    <h3 className='tag'>{post.postcode}</h3>
+    <h3 className='tag'>{province}</h3>
+    <h3 className='tag'>{postcode}</h3> */}
 
     </div>
       <div id='map'></div>

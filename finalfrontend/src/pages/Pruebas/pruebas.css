@@ -1,6 +1,7 @@
 #map{
-width: 75vw;
-height: 30vh;
+    width: 75vw;
+    height: 50vh;
+    border-radius: 10px;
 }
 
 

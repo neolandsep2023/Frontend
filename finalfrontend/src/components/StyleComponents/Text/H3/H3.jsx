@@ -2,9 +2,10 @@ import { useTheme } from "@emotion/react";
 import styled from "@emotion/styled";
 
 const H3Styles = styled.h3`
-  margin: 0;
-  text-align: start;
+  margin: ${({margin}) => margin ? margin : "0"};
+  text-align: ${({textAlign}) => textAlign ? textAlign : "start"};
   width: 100%;
+  padding: ${({padding}) => padding ? padding : "0"};
 
   ${({ theme }) => theme.mediaquery.tablet} {
     text-align: center;
@@ -17,9 +18,9 @@ const H3Styles = styled.h3`
   }
 `
 
-export const H3Custom = ({children}) => {
+export const H3Custom = ({children, textAlign, padding, margin}) => {
   const { theme } = useTheme()
   return (
-    <H3Styles>{children}</H3Styles>
+    <H3Styles margin={margin} padding={padding} textAlign={textAlign} >{children}</H3Styles>
   )
 }
