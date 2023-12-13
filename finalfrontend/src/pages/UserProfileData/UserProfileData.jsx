@@ -35,7 +35,7 @@ export const UserProfileData = () => {
 
   return (
     <>
-    <FlexDir>
+    <FlexDir       gap={"40vw"} minHeight={"80vh"}>
     <FlexDir  direction={"column"}>
     
         <figure >

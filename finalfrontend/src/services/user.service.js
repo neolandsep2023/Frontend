@@ -175,7 +175,7 @@ export const updateUser = async (formData) => {
 
 export const deleteUser = async (formData) => {
   const APIGeneral = extraConfig();
-  return APIGeneral.delete("/users/", formData)
+  return APIGeneral.delete("/users/deleteUser", formData)
     .then((res) => res)
     .catch((error) => error);
 };

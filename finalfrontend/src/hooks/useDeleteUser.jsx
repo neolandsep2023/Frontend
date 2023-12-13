@@ -13,8 +13,11 @@ export const useDeleteUser = (setUser, setIsDeletedUser) => {
         }).then(async (result) => {
       
           if (result.isConfirmed) {
+         
             const res = await deleteUser();
+            console.log(res)
             switch (res.status) {
+          
               case 200:
                 Swal.fire({
                   icon: "success",

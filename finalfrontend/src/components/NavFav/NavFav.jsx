@@ -9,7 +9,7 @@ export const NavFav = ({ setFav }) => {
 
 
       <button  onClick={() => {
-        setFav("savedPosts") 
+        setFav("Posts") 
        }}>Posts</button>
 
 

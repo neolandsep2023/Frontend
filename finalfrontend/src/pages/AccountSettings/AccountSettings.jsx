@@ -6,7 +6,7 @@ import Swal from "sweetalert2/dist/sweetalert2.all.js";
 import { useErrorChangePassword } from "../../hooks/useErrorChangePassword";
 import { useDeleteUser } from "../../hooks/useDeleteUser";
 import { changePasswordAuth} from "../../services/user.service";
-import { FlexDir, Form } from "../../components/StyleComponents";
+import { ButtonPrimary, FlexDir, Form, H1Form, LabelAndInput } from "../../components/StyleComponents";
 
 
 export const AccountSettings = () => {
@@ -66,9 +66,10 @@ export const AccountSettings = () => {
 
  
         <FlexDir direction={"column"} >
-          <h3 >Change your password</h3>
+          <H1Form >Change your password</H1Form>
           <Form onSubmit={handleSubmit(changePasswordFormSubmit)}>
-            <FlexDir direction={"column"}>
+            <FlexDir direction={"column"} >
+            <LabelAndInput direction={"column"}>
               <label htmlFor="custom-input" >
                 Current password
               </label>
@@ -80,8 +81,8 @@ export const AccountSettings = () => {
                 autoComplete="false"
                 {...register("password", { required: true })}
               />
-            </FlexDir>
-            <FlexDir direction={"column"}>
+            </LabelAndInput>
+            <LabelAndInput direction={"column"}>
               <label htmlFor="custom-input" className="customPlaceholder">
                 New password
               </label>
@@ -93,8 +94,8 @@ export const AccountSettings = () => {
                 autoComplete="false"
                 {...register("newPassword", { required: true })}
               />
-            </FlexDir>
-            <FlexDir direction={"column"}>
+            </LabelAndInput>
+            <LabelAndInput direction={"column"}>
               <label htmlFor="custom-input" >
                 Confirm new password
               </label>
@@ -106,20 +107,21 @@ export const AccountSettings = () => {
                 autoComplete="false"
                 {...register("confirmPassword", { required: true })}
               />
-            </FlexDir>
+            </LabelAndInput>
             <FlexDir >
-            <button type="submit"
+            <ButtonPrimary type="submit"
              >
 Change Password
-</button>
+</ButtonPrimary>
 
+            </FlexDir>
             </FlexDir>
           </Form>
         </FlexDir>
         <FlexDir>
-        <button  onClick={() => useDeleteUser(setUser, setIsDeletedUser)}>
+        <ButtonPrimary  onClick={() => useDeleteUser(setUser, setIsDeletedUser)}>
         Delete account
-      </button>
+      </ButtonPrimary>
 
         </FlexDir>
 

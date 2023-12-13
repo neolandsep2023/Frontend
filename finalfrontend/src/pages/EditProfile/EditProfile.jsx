@@ -6,7 +6,7 @@ import { UploadFile } from "../../components";
 import Swal from "sweetalert2/dist/sweetalert2.all.js";
 import { useErrorUpdate } from "../../hooks/useErrorUpdate";
 import { getUserById, updateUser } from "../../services/user.service";
-import { FlexDir, Form } from "../../components/StyleComponents";
+import { ButtonPrimary, FlexDir, Form, H1Form, LabelAndInput, RadioInput } from "../../components/StyleComponents";
 
 
 
@@ -82,10 +82,12 @@ const editProfileFormSubmit = async (formData) => {
   return (
     <>
       <FlexDir direction={"column"} >
-        <h3>Edit your information </h3>
-        <Form  onSubmit={handleSubmit(editProfileFormSubmit)}>
+        <H1Form>Edit your information </H1Form>
+        <Form    width={"40vw"} onSubmit={handleSubmit(editProfileFormSubmit)}>
           <FlexDir  direction={"column"}>
-            <FlexDir  direction={"column"} >
+          <img style={{ width: '200px' }} src={user?.image} alt={user?.name}/>
+            <UploadFile />
+            <LabelAndInput  direction={"column"} >
               <label htmlFor="custom-input">
                 Name
               </label>
@@ -101,11 +103,11 @@ const editProfileFormSubmit = async (formData) => {
               />
             
           
-            </FlexDir>
-            <FlexDir  direction={"column"} >
-              <label htmlFor="custom-input" >
+            </LabelAndInput>
+            <LabelAndInput  direction={"column"} >
+          
               Last Name
-              </label>
+         
               <input
               
                 type="text"
@@ -116,11 +118,11 @@ const editProfileFormSubmit = async (formData) => {
                 defaultValue={data?.data?.lastName}
                 {...register("lastName")}
               />
+              </LabelAndInput>
+              <LabelAndInput  direction={"column"} >
              
-              <FlexDir  direction={"column"} >
-              <label htmlFor="custom-input" >
               Username
-              </label>
+            
               <input
               
                 type="text"
@@ -132,12 +134,12 @@ const editProfileFormSubmit = async (formData) => {
                 {...register("username")}
               />
              
-          
-            </FlexDir>
-            <FlexDir  direction={"column"} >
-              <label htmlFor="custom-input" >
+             </LabelAndInput>
+           
+            <LabelAndInput  direction={"column"} >
+           
               Birth Year
-              </label>
+         
               <input
               
                 type="number"
@@ -150,15 +152,14 @@ const editProfileFormSubmit = async (formData) => {
               />
              
           
-            </FlexDir>
+            </LabelAndInput>
              
-            </FlexDir>
-            <img style={{ width: '200px' }} src={user?.image} alt={user?.name}/>
-            <UploadFile />
+          
+          
             <FlexDir  direction={"column"} >
-              
-              <p>Gender</p>
+          
               <FlexDir  >
+              <RadioInput minW={"68%"}>
                 <input
                   type="radio"
                   name="gender"
@@ -205,14 +206,25 @@ const editProfileFormSubmit = async (formData) => {
                 >
                   Others
                 </label>
+                </RadioInput>
               </FlexDir>
             </FlexDir>
+            <LabelAndInput inputHeight={"60px"}>
+              Brief description of you
+              <textarea
+                type="text" 
+                defaultValue={data?.data?.description}
+                name="description"
+                autoComplete="false"
+                {...register("description")}
+              />
+            </LabelAndInput>
           </FlexDir>
           <FlexDir >
-          <button type="submit"
+          <ButtonPrimary type="submit"
            >
 Save changes
-</button>
+</ButtonPrimary>
 
           </FlexDir>
         </Form>

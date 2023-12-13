@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react'
-import { NavFav } from '../../components'
+import { GalleryCustom, NavFav } from '../../components'
 import { useAuth } from '../../context/authContext';
 import { getUserByIdP } from '../../services/user.service';
 import { FlexDir } from '../../components/StyleComponents';
@@ -31,6 +31,7 @@ export const FavGallery = () => {
 
   return (<FlexDir direction={"column"}>  
   <NavFav  setFav={setMainFav}/>
+  <GalleryCustom>
      { datos&& datos?.map((item)=>(
       //!!Meter Componente para favoritos o lo que sea
       <FlexDir key={item._id} direction={"column"}> 
@@ -39,7 +40,7 @@ export const FavGallery = () => {
         </FlexDir>
 
      ))}
-
+</GalleryCustom>
   </FlexDir>
 
   )
