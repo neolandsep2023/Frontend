@@ -92,7 +92,7 @@ export const Login = () => {
 
     <Small>
             Have you forgotten the password?{" "}
-            <Link to="/forgotPassword" >
+            <Link to="/forgotpassword" >
               <Anchor>Change password</Anchor>
             </Link>
             </Small>

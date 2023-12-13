@@ -142,7 +142,7 @@ export const loginUser = async (formData) => {
 
 export const forgotPasswordNoAuth = async (formData) => {
   const APIGeneral = extraConfig();
-  return APIGeneral.patch("/users/forgotpassword/forgotpassword", formData)
+  return APIGeneral.patch("/users/forgotpassword", formData)
     .then((res) => res)
     .catch((error) => error);
 };
