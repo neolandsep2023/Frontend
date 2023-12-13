@@ -1,7 +1,8 @@
 import React, { useEffect, useState } from 'react'
 import { NavFav } from '../../components'
 import { useAuth } from '../../context/authContext';
-import { getUserById } from '../../services/user.service';
+import { getUserByIdP } from '../../services/user.service';
+import { FlexDir } from '../../components/StyleComponents';
 
 export const FavGallery = () => {
   const { user } = useAuth();
@@ -12,7 +13,7 @@ export const FavGallery = () => {
 
   const fetchData = async () => {
     setGalleryLoading(true);
-    setRes(await getUserById(user._id));
+    setRes(await getUserByIdP (user._id));
     setGalleryLoading(false);
     
   };
@@ -23,12 +24,23 @@ export const FavGallery = () => {
   useEffect(() => {
     res?.status == 200 && setDatos(res?.data[mainFav]);
   }, [res]);
-console.log(datos)
-console.log(mainFav)
-  return (<>
-      <div>FavGallery</div>
+  useEffect(() => {
+    setDatos(res?.data[mainFav]);
+    
+  }, [mainFav]);
+
+  return (<FlexDir direction={"column"}>  
   <NavFav  setFav={setMainFav}/>
-  </>
+     { datos&& datos?.map((item)=>(
+      //!!Meter Componente para favoritos o lo que sea
+      <FlexDir key={item._id} direction={"column"}> 
+        <h2 >{item?.title}</h2>
+        <img style={{ width: '500px' }} src={item.image}/>
+        </FlexDir>
+
+     ))}
+
+  </FlexDir>
 
   )
 }
