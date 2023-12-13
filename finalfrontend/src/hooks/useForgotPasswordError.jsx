@@ -4,7 +4,7 @@ export const useForgotPasswordError = (res, setRes, setForgotOk) => {
     //! ----------------------------- 404: 'User no register'
     if (
       res?.response?.status == 404 &&
-      res?.response?.data?.includes("User no register")
+      res?.response?.data?.includes("User does not exist.")
     ) {
       setRes(() => ({}));
       Swal.fire({
