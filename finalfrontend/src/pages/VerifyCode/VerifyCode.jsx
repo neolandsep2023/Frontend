@@ -9,7 +9,7 @@ import {
   resendConfirmationCode,
   verifyConfirmationCode,
 } from "../../services/user.service";
-import { ButtonPrimary, FlexDir, Form } from "../../components/StyleComponents";
+import { Anchor, ButtonPrimary, FlexDir, Form, H1Form, LabelAndInput, Small } from "../../components/StyleComponents";
 
 export const VerifyCode = () => {
   const navigate = useNavigate();
@@ -100,14 +100,15 @@ export const VerifyCode = () => {
 
   return (
     <>
-      <FlexDir direction={"column"}>
-        <div>
-          <h1>Verify your code</h1>
-          <p>Write the code sent to your email</p>
-        </div>
-        <Form onSubmit={handleSubmit(formSubmit)}>
-          <FlexDir direction={"column"}>
-            <label htmlFor="custom-input">Registration code</label>
+      <FlexDir direction={"column"} margin={"50px 0 8px 0"}>
+
+        <Form width={"40vw"}  height={"50vh"} onSubmit={handleSubmit(formSubmit)}>
+          <FlexDir direction={"column"} gap={"20px"} >
+          <H1Form margin={"8px 0 0 0"}>Verify your account</H1Form>
+
+      
+            <LabelAndInput>
+              Confirmation Code
             <input
               type="text"
               id="name"
@@ -115,21 +116,22 @@ export const VerifyCode = () => {
               autoComplete="false"
               {...register("confirmationCode", { required: false })}
             />
+            </LabelAndInput>
 
-            <FlexDir direction={"column"}>
-              <ButtonPrimary type="submit">Verify Code</ButtonPrimary>
+            
+              <ButtonPrimary  width={"70%"} variant={send ? "loading" : "normal"} type="submit">Verify Code</ButtonPrimary>
 
-              <ButtonPrimary onClick={() => handleReSend()}>
+              <Anchor onClick={() => handleReSend()}>
                 Resend Code
-              </ButtonPrimary>
-            </FlexDir>
+              </Anchor>
+        
 
-            <p>
-              <small>
+            
+              <Small>
                 If the code is not correct, your user will be deleted from the
                 database and you will need to register again.{" "}
-              </small>
-            </p>
+              </Small>
+            
           </FlexDir>
         </Form>
       </FlexDir>

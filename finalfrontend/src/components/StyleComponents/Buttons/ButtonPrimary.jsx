@@ -9,11 +9,11 @@ const ButtonStyles = styled.button`
 && theme.palette.button.dark};
   border-radius: 5px;
   font-weight: 500;
-  font-size: 24px;
+  font-size: 22px;
   text-align: center;
-  margin: ${({theme})=>
+  margin: ${({margin, theme})=> margin ? margin :
   theme.spacing(1)};
-  height: 40px;
+  height: 38px;
   width: ${({ width }) => width };
       &:hover{
         cursor: pointer;
@@ -21,7 +21,7 @@ const ButtonStyles = styled.button`
       };
 `;
 
-export const ButtonPrimary = ({ children, width, variant, onClick }) => {
+export const ButtonPrimary = ({ children, width, variant, onClick, margin }) => {
     const theme = useTheme();
-  return <ButtonStyles theme={theme} width={width} variant={variant} onClick={onClick}>{children}</ButtonStyles>;
+  return <ButtonStyles theme={theme} width={width} variant={variant} onClick={onClick} margin={margin}>{children}</ButtonStyles>;
 };

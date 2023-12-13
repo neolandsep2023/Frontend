@@ -64,22 +64,22 @@ export const Registerpt2 = () => {
               <RadioInput minW={"68%"}>
                 <input
                   type="radio"
-                  name="gender"
-                  id="room"
+                  name="roomSeeker"
+                  id="roomSeeker"
                   value="roomSeeker"
                   {...register("role", { required: true })}
                 />
-                <label htmlFor="room">
+                <label htmlFor="roomSeeker">
                   Room
                 </label>
                 <input
                   type="radio"
-                  name="gender"
-                  id="mate"
+                  name="roommateSeeker"
+                  id="roommateSeeker"
                   value="roommateSeeker"
                   {...register("role", { required: true })}
                 />
-                <label htmlFor="mate">
+                <label htmlFor="roommateSeeker">
                   Roommate
                 </label>
               </RadioInput>

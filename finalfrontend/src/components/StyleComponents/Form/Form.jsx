@@ -3,6 +3,8 @@ import styled from "@emotion/styled";
 
 const FormStyle = styled.form`
   background-color: ${({ theme }) => theme.palette.form.main};
+  padding: ${({ padding }) =>
+  padding ? padding : "8px"};
   color: ${({ theme }) => theme.palette.textColor.main};
   border-radius: ${({ theme }) => theme.spacing(3)};
   border: ${({ theme }) => theme.spacing(0.1)} solid
