@@ -1,4 +1,4 @@
-export const printIcons = (commodity) => {
+export const printHomeIcons = (commodity) => {
   let src = '';
 
   switch (commodity) {
@@ -68,8 +68,6 @@ export const printIcons = (commodity) => {
     case "Pool":
       src = "https://cdn-icons-png.flaticon.com/128/2784/2784593.png";
       break;
-    default:
-      src = "default_image_url";
   }
 
   return <img src={src} alt={commodity} style={{width: "2vw", margin: "0 1vw 0 0", padding: "3px 0 0 0"}}/>;
@@ -100,4 +98,44 @@ const commoditiesHomeIcon = [
   "https://cdn-icons-png.flaticon.com/128/2447/2447825.png",
   "https://cdn-icons-png.flaticon.com/128/6473/6473469.png",
   "https://cdn-icons-png.flaticon.com/128/2784/2784593.png",
+]
+
+export const printRoomIcons = (commodity) => {
+  let src = '';
+
+  switch (commodity) {
+    case "Furnished":
+      src = "https://cdn-icons-png.flaticon.com/128/4133/4133821.png";
+      break;
+    case "Single Bed":
+      src = "https://cdn-icons-png.flaticon.com/128/3351/3351069.png";
+      break;
+    case "Double Bed":
+      src = "https://cdn-icons-png.flaticon.com/128/864/864595.png";
+      break;
+    case "Private Bathroom":
+      src = "https://cdn-icons-png.flaticon.com/128/900/900688.png";
+      break;
+    case "Balcony":
+      src = "https://cdn-icons-png.flaticon.com/128/82/82490.png";
+      break;
+    case "Natural Light":
+      src = "https://cdn-icons-png.flaticon.com/128/2775/2775417.png";
+      break;
+    case "Working Space":
+      src = "https://cdn-icons-png.flaticon.com/128/7829/7829469.png";
+      break;
+  }
+
+  return <img src={src} alt={commodity} style={{width: "2vw", margin: "0 1vw 0 0", padding: "3px 0 0 0"}}/>;
+}
+
+const commoditiesRoomIcon = [
+  "https://cdn-icons-png.flaticon.com/128/4133/4133821.png",
+  "https://cdn-icons-png.flaticon.com/128/3351/3351069.png",
+  "https://cdn-icons-png.flaticon.com/128/864/864595.png",
+  "https://cdn-icons-png.flaticon.com/128/900/900688.png",
+  "https://cdn-icons-png.flaticon.com/128/82/82490.png",
+  "https://cdn-icons-png.flaticon.com/128/2775/2775417.png",
+  "https://cdn-icons-png.flaticon.com/128/7829/7829469.png",
 ]

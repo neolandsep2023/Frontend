@@ -7,7 +7,7 @@ import { UlCustom } from "../../components/StyleComponents/UL/Ul";
 import { ConnectButtonCustom } from "../../components/StyleComponents/Buttons/ConnectButton";
 import { Description } from "../../components/StyleComponents/Text/Small/Description";
 import { ByIdMap } from "../Pruebas/ByIdMap";
-import { printIcons } from "../../utils/enumIcons";
+import { printHomeIcons, printRoomIcons } from "../../utils/enumIcons";
 
 export const RoomById = () => {
   //! ---------- Estados ----------
@@ -50,15 +50,15 @@ export const RoomById = () => {
             <H3Custom textAlign="center">House Commodities</H3Custom>
             <UlCustom width="100%" height="90%" justifyContent="flex-start" alignItems="start" padding="0 0 0 30%">
               {res?.data?.commoditiesHome?.map((commodity) => (
-                <li key={commodity}>{printIcons(commodity)}{commodity}</li>
+                <li key={commodity}>{printHomeIcons(commodity)}{commodity}</li>
               ))}
             </UlCustom>
           </FlexDir>
           <FlexDir direction="column" width="50%" height="50vh">
             <H3Custom textAlign="center">Room Commodities</H3Custom>
-            <UlCustom width="100%" height="90%" justifyContent="flex-start">
+            <UlCustom width="100%" height="90%" justifyContent="flex-start" alignItems="start" padding="0 0 0 30%">
               {res?.data?.commoditiesRoom?.map((commodity) => (
-                <li key={commodity}>{commodity}</li>
+                <li key={commodity}>{printRoomIcons(commodity)}{commodity}</li>
               ))}
             </UlCustom>
           </FlexDir>
