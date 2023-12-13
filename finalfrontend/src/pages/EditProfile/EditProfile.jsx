@@ -219,6 +219,174 @@ const editProfileFormSubmit = async (formData) => {
                 {...register("description")}
               />
             </LabelAndInput>
+            <FlexDir width={"40vw"}
+      mediaqueryWidthMobile={"95vw"} direction={"column"} >
+      Interests
+
+      <FlexDir>
+      <LabelAndInput gap={"4px"}>
+              
+
+     
+            <div className="inputContainer">
+  <label className="inputLabel inputLabel--checkbox">
+    Art
+    <input type="checkbox" name="Art" value="Art" {...register("interests")} />
+    <div className="div"></div>
+  </label>
+</div>
+              
+
+<div className="inputContainer">
+  <label className="inputLabel inputLabel--checkbox">
+    Climbing
+    <input type="checkbox" name="Climbing" value="Climbing" {...register("interests")} />
+    <div className="div"></div>
+  </label>
+</div>
+<div className="inputContainer">
+  <label className="inputLabel inputLabel--checkbox">
+  Concerts
+    <input type="checkbox" name="Concerts" value="Concerts" {...register("interests")} />
+    <div className="div"></div>
+  </label>
+</div>
+
+<div className="inputContainer">
+  <label className="inputLabel inputLabel--checkbox">
+  Cooking
+    <input type="checkbox" name="Cooking" value="Cooking" {...register("interests")} />
+    <div className="div"></div>
+  </label>
+</div>
+
+<div className="inputContainer">
+  <label className="inputLabel inputLabel--checkbox">
+  Dancing
+    <input type="checkbox" name="Dancing" value="Dancing" {...register("interests")} />
+    <div className="div"></div>
+  </label>
+</div>
+
+<div className="inputContainer">
+  <label className="inputLabel inputLabel--checkbox">
+  Fashion
+    <input type="checkbox" name="Fashion" value="Fashion" {...register("interests")} />
+    <div className="div"></div>
+  </label>
+</div>
+
+<div className="inputContainer">
+  <label className="inputLabel inputLabel--checkbox">
+  Gaming
+    <input type="checkbox" name="Gaming" value="Gaming" {...register("interests")} />
+    <div className="div"></div>
+  </label>
+</div>
+
+<div className="inputContainer">
+  <label className="inputLabel inputLabel--checkbox">
+  Gym
+    <input type="checkbox" name="Gym" value="Gym" {...register("interests")} />
+    <div className="div"></div>
+  </label>
+</div>
+
+<div className="inputContainer">
+  <label className="inputLabel inputLabel--checkbox">
+  Movies
+    <input type="checkbox" name="Movies" value="Movies" {...register("interests")} />
+    <div className="div"></div>
+  </label>
+  </div>
+  <div className="inputContainer">
+  <label className="inputLabel inputLabel--checkbox">
+  Music
+    <input type="checkbox" name="Music" value="Music" {...register("interests")} />
+    <div className="div"></div>
+  </label>
+</div>
+
+</LabelAndInput>
+              <LabelAndInput gap={"4px"}>
+
+              <div className="inputContainer">
+  <label className="inputLabel inputLabel--checkbox">
+  Nature
+    <input type="checkbox" name="Nature" value="Nature" {...register("interests")} />
+    <div className="div"></div>
+  </label>
+</div>
+
+<div className="inputContainer">
+  <label className="inputLabel inputLabel--checkbox">
+  Party
+    <input type="checkbox" name="Party" value="Party" {...register("interests")} />
+    <div className="div"></div>
+  </label>
+</div>
+<div className="inputContainer">
+  <label className="inputLabel inputLabel--checkbox">
+  Pets
+    <input type="checkbox" name="Pets" value="Pets" {...register("interests")} />
+    <div className="div"></div>
+  </label>
+</div>
+<div className="inputContainer">
+  <label className="inputLabel inputLabel--checkbox">
+  Photography
+    <input type="checkbox" name="Photography" value="Photography" {...register("interests")} />
+    <div className="div"></div>
+  </label>
+</div>
+<div className="inputContainer">
+  <label className="inputLabel inputLabel--checkbox">
+  Reading
+    <input type="checkbox" name="Reading" value="Reading" {...register("interests")} />
+    <div className="div"></div>
+  </label>
+</div>
+<div className="inputContainer">
+  <label className="inputLabel inputLabel--checkbox">
+  Socializing
+    <input type="checkbox" name="Socializing" value="Socializing" {...register("interests")} />
+    <div className="div"></div>
+  </label>
+</div>
+<div className="inputContainer">
+  <label className="inputLabel inputLabel--checkbox">
+  Sports
+    <input type="checkbox" name="Sports" value="Sports" {...register("interests")} />
+    <div className="div"></div>
+  </label>
+</div>
+<div className="inputContainer">
+  <label className="inputLabel inputLabel--checkbox">
+  Technology
+    <input type="checkbox" name="Technology" value="Technology" {...register("interests")} />
+    <div className="div"></div>
+  </label>
+</div>
+<div className="inputContainer">
+  <label className="inputLabel inputLabel--checkbox">
+  Travel
+    <input type="checkbox" name="Travel" value="Travel" {...register("interests")} />
+    <div className="div"></div>
+  </label>
+</div>
+<div className="inputContainer">
+  <label className="inputLabel inputLabel--checkbox">
+  Writing
+    <input type="checkbox" name="Writing" value="Writing" {...register("interests")} />
+    <div className="div"></div>
+  </label>
+</div>
+
+
+            </LabelAndInput>
+      
+            </FlexDir>
+            </FlexDir>
           </FlexDir>
           <FlexDir >
           <ButtonPrimary type="submit"

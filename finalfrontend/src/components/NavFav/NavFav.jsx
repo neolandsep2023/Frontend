@@ -1,16 +1,17 @@
+import { ButtonPrimary } from "../StyleComponents";
 
 export const NavFav = ({ setFav }) => {
   return (
     <nav >
      
-      <button onClick={() => {setFav("savedRooms")
-   }}>Rooms</button>
+      <ButtonPrimary onClick={() => {setFav("savedRooms")
+   }}>Rooms</ButtonPrimary>
 
 
 
-      <button  onClick={() => {
+      <ButtonPrimary onClick={() => {
         setFav("Posts") 
-       }}>Posts</button>
+       }}>Posts</ButtonPrimary>
 
 
 

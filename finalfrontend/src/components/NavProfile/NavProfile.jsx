@@ -1,5 +1,6 @@
 
 import { NavLink, useNavigate } from "react-router-dom";
+import { ButtonPrimary } from "../StyleComponents";
 
 
 export const NavProfile = () => {
@@ -9,10 +10,10 @@ export const NavProfile = () => {
   return (
     <>
    
-        <button onClick={() => navigate("/profile/user")} >Profile</button>
-        <button onClick={() => navigate("/profile/favourites")} >Favourites</button>
-        <button onClick={() => navigate("/profile/edit")} >Edit</button>
-        <button onClick={() => navigate("/profile/settings")} >Settings</button>
+        <ButtonPrimary onClick={() => navigate("/profile/user")} >Profile</ButtonPrimary>
+        <ButtonPrimary onClick={() => navigate("/profile/favourites")} >Favourites</ButtonPrimary>
+        <ButtonPrimary onClick={() => navigate("/profile/edit")} >Edit</ButtonPrimary>
+        <ButtonPrimary onClick={() => navigate("/profile/settings")} >Settings</ButtonPrimary>
      
     </>
   );
