@@ -23,7 +23,7 @@ const PALETTE_COLOR_LIGHT = {
   textColor: "#1e1e1e",
   secondTextColor: "#2a2b2e",
   greenTextColor: "#72cc89",
-  border: "#f1f1f1",
+  border: "#dadde0",
   shadow: "rgba(43,117,60,0.7)", //? puesto por mario
   ultraLightGreen: "#d4efdb",
   lightGreen: "#8effab",
@@ -45,7 +45,7 @@ const PALETTE_COLOR_DARK = {
   textColor: "#ffffff",
   secondTextColor: "#f9f9f9",
   greenTextColor: "#72cc89",
-  border: "#2a2b2e",
+  border: "#535459",
   shadow: "rgba(187,255,205,0.27)", //? puesto por mario
   ultraLightGreen: "#d4efdb",
   lightGreen: "#8effab",
