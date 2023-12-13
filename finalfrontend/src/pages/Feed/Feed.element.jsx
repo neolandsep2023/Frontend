@@ -2,6 +2,10 @@ import styled from "@emotion/styled"
 
 const FeedStyled = styled.div`
 display: flex;
+background-color: pink;
+width: 100vw;
+height: 90vh;
+flex-wrap: wrap;
 /* flex: row wrap; */
 justify-content: center;
 flex-direction: row;

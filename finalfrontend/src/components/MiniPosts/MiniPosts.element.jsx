@@ -7,8 +7,9 @@ display: flex;
 flex-direction: column;
 justify-content: center;
 background-color: red;
-width: 28vw;
-margin: 1rem;
+width: 30vw;
+height: 300px;
+margin: ${({ margin, theme }) => (margin ? margin : theme.spacing(1.5))};
 
 ${({ theme }) => theme.mediaquery.tablet} {
     width: 45vw;

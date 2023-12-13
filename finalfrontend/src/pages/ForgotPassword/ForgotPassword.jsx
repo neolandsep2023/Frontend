@@ -3,7 +3,7 @@ import { useForm } from "react-hook-form";
 import { Navigate } from "react-router-dom";
 import { forgotPasswordNoAuth } from "../../services/user.service";
 import { useForgotPasswordError } from "../../hooks/useForgotPasswordError";
-import { ButtonPrimary, FlexDir, Form, H1Form, LabelAndInput, Small } from "../../components/StyleComponents";
+import { ButtonPrimary, FlexDir, Form, H1Form, H3Form, LabelAndInput, Small } from "../../components/StyleComponents";
 
 
 export const ForgotPassword = () => {
@@ -27,13 +27,14 @@ export const ForgotPassword = () => {
     }
     return (
         <>
-        <FlexDir direction={"column"}>
-            <Form onSubmit={handleSubmit(formSubmit)}>
-            <div>
+        <FlexDir direction={"column"} margin={"50px 0 8px 0"}>
+            <Form width={"40vw"}  height={"50vh"}  onSubmit={handleSubmit(formSubmit)}>
+         
             <H1Form margin={"8px 0 0 0"}> FORGOT PASSWORD?</H1Form>
-                <Small>Don't worry! We will send you a new one to your email</Small>
-            </div>
-                <FlexDir direction={"column"}>
+            <FlexDir direction={"column"} gap={"25px"} >
+                Don't worry! We will send you a new one to your email
+           
+                
                 <LabelAndInput>
                     <label htmlFor="email">
                         Email
@@ -47,11 +48,12 @@ export const ForgotPassword = () => {
                         />
                 </LabelAndInput>
                 
-                    <FlexDir direction={"column"}>
-                        <ButtonPrimary type="submit">SEND</ButtonPrimary>
-                    </FlexDir>
-                </FlexDir>
+                  
+                        <ButtonPrimary  width={"70%"} variant={send ? "loading" : "normal"} type="submit">SEND</ButtonPrimary>
+               
+             
                 <Small>Please set a new password as soon as you log into your account.</Small>
+                </FlexDir>
             </Form>
         </FlexDir>
         </>

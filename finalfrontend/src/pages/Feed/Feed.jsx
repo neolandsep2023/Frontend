@@ -3,7 +3,9 @@ import { FeedStyle } from "./Feed.element"
 
 export const Feed = () => {
   return (
-    <FeedStyle>Feed
+    <FeedStyle>
+        <MiniPosts></MiniPosts>
+        <MiniPosts></MiniPosts>
         <MiniPosts></MiniPosts>
         <MiniPosts></MiniPosts>
         <MiniPosts></MiniPosts>
