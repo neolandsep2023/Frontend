@@ -16,7 +16,7 @@ const MiniCardsStyle = styled.div`
   flex-wrap: wrap;
   justify-content: center;
   align-items: center;
-  gap: 1rem;
+  gap: 0.6rem;
   & img{
     width: 100%;
     aspect-ratio: 3/2;
@@ -63,6 +63,7 @@ const MiniCardsStyle = styled.div`
 
   ${({theme}) => theme.mediaquery.tablet}{
       width: 40vw;
+      gap: 0.4rem;
       & h4 {
         font-size: 2vw
       }

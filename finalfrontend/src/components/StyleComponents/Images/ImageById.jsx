@@ -1,10 +1,10 @@
 import { useTheme } from "@emotion/react";
 import styled from "@emotion/styled";
 
-const SearchImageStyle = styled.img`
-  width: 17vh;
-  aspect-ratio: 6/20;
-  border-radius: 50px;
+const ByIdImageStyle = styled.img`
+  width: 100%;
+  aspect-ratio: 1/1;
+  border-radius: 3px;
   object-fit: cover;
   margin-top: ${({marginTop}) => marginTop ? marginTop : "auto"};
 
@@ -17,9 +17,9 @@ const SearchImageStyle = styled.img`
   }
 `
 
-export const SearchImgCustom = ({ src, marginTop }) => {
+export const ByIdImageCustom = ({ src, marginTop }) => {
   const { theme } = useTheme()
   return (
-    <SearchImageStyle theme={theme} marginTop = {marginTop} src={src}/>
+    <ByIdImageStyle theme={theme} marginTop = {marginTop} src={src}/>
   )
 }

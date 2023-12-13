@@ -16,7 +16,6 @@ export const RoomSearch = () => {
   const [send, setSend] = useState();
   const [valueInput, setValueInput] = useState("");
   const [submit, setSubmit] = useState()
-  const [postCode, setPostCode] = useState()
 
   //! ---------- Destructuring ----------
   const {theme} = useThemeApp()
@@ -81,7 +80,7 @@ export const RoomSearch = () => {
           <FlexDir wrap="wrap" gap="2rem" width="100%" margin="0">
             {console.log(res)}
             {res && res?.data?.map((room)=> (
-              <Link>
+              <Link to = {`/roomFinds/${room._id}`}>
                 <MiniCards>
                   <img src={room.image[0]} alt={room.title}/>
                   <h4>{room.title.slice(0, 30)}...</h4>
