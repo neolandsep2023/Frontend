@@ -35,7 +35,7 @@ export const useVerifyCodeError = (
   }
 
 
-  if (res?.data?.check == false && res?.data?.delete.includes('User deleted for security')) {
+  if (res?.data?.check == false && res?.data?.doesUserExist.includes('User deleted for security')) {
     setRes(() => ({}));
     setOkDeleteUser(() => true)
     Swal.fire({
@@ -48,7 +48,7 @@ export const useVerifyCodeError = (
   }
 
 
-  if (res?.data?.check == false && res?.data?.delete.includes('Error in updating validation')) {
+  if (res?.data?.check == false && res?.data?.doesUserExist.includes('Error in updating validation')) {
     setRes(() => ({}));
     Swal.fire({
       icon: "error",
@@ -59,7 +59,7 @@ export const useVerifyCodeError = (
     });
   }
 
-  if (res?.response?.data.includes('User not found')) {
+  if (res?.response?.data?.includes('User not found')) {
     setUserNotFound(() => true);
     setRes(() => ({}));
     Swal.fire({
