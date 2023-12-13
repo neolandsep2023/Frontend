@@ -1,25 +1,17 @@
-/* <div class="checkbox-wrapper-21">
-  <label class="control control--checkbox">
-    Checkbox
-    <input type="checkbox" />
-    <div class="control__indicator"></div>
-  </label>
-</div> */
 
-
-  .checkbox-wrapper-21 .control {
+  .inputContainer .inputLabel {
     display: block;
     position: relative;
     padding-left: 30px;
     cursor: pointer;
-    font-size: 18px;
+    font-size: 17px;
   }
-  .checkbox-wrapper-21 .control input {
+  .inputContainer .inputLabel input {
     position: absolute;
     z-index: -1;
     opacity: 0;
   }
-  .checkbox-wrapper-21 .control__indicator {
+  .inputContainer .div {
     position: absolute;
     top: 2px;
     left: 0;
@@ -27,31 +19,31 @@
     width: 20px;
     background: #e6e6e6;
   }
-  .checkbox-wrapper-21 .control:hover input ~ .control__indicator,
-  .checkbox-wrapper-21 .control input:focus ~ .control__indicator {
+  .inputContainer .inputLabel:hover input ~ .div,
+  .inputContainer .inputLabel input:focus ~ .div {
     background: #ccc;
   }
-  .checkbox-wrapper-21 .control input:checked ~ .control__indicator {
-    background: #2aa1c0;
+  .inputContainer .inputLabel input:checked ~ .div {
+    background: #97f6a8;
   }
-  .checkbox-wrapper-21 .control:hover input:not([disabled]):checked ~ .control__indicator,
-  .checkbox-wrapper-21 .control input:checked:focus ~ .control__indicator {
-    background: #0e647d;
+  .inputContainer .inputLabel:hover input:not([disabled]):checked ~ .div,
+  .inputContainer .inputLabel input:checked:focus ~ .div {
+    background: #72cc89;
   }
-  .checkbox-wrapper-21 .control input:disabled ~ .control__indicator {
+  .inputContainer .inputLabel input:disabled ~ .div {
     background: #e6e6e6;
     opacity: 0.6;
     pointer-events: none;
   }
-  .checkbox-wrapper-21 .control__indicator:after {
+  .inputContainer .div:after {
     content: '';
     position: absolute;
     display: none;
   }
-  .checkbox-wrapper-21 .control input:checked ~ .control__indicator:after {
+  .inputContainer .inputLabel input:checked ~ .div:after {
     display: block;
   }
-  .checkbox-wrapper-21 .control--checkbox .control__indicator:after {
+  .inputContainer .inputLabel--checkbox .div:after {
     left: 8px;
     top: 4px;
     width: 3px;
@@ -60,6 +52,6 @@
     border-width: 0 2px 2px 0;
     transform: rotate(45deg);
   }
-  .checkbox-wrapper-21 .control--checkbox input:disabled ~ .control__indicator:after {
+  .inputContainer .inputLabel--checkbox input:disabled ~ .div:after {
     border-color: #7b7b7b;
   }

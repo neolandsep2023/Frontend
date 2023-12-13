@@ -10,11 +10,12 @@ export const useErrorRegister = (res, setRegisterOk, setRegisterGoogleOK, setRes
     const dataToString = JSON.stringify(res);
     localStorage.setItem("data", dataToString);
 
-if(res?.data?.googleSignUp){
-  setRegisterGoogleOK(() => true)
-}else{
-  setRegisterOk(() => true);
-}
+res?.data?.googleSignUp && setRegisterGoogleOK(() => true)
+
+setRegisterOk(() => true) 
+
+console.log(res?.data?.googleSignUp)
+
 
     Swal.fire({
       icon: "success",

@@ -2,7 +2,7 @@ import Swal from "sweetalert2/dist/sweetalert2.all.js";
 
 
 
-export const useErrorRegisterpt2 = (res, setRes) => {
+export const useErrorRegisterpt2 = (res, setRes, setOkRegister) => {
 
 let acc
 if(res?.data){
@@ -30,6 +30,7 @@ if(acc == 0){
 
 if (res?.status == 200){
     setRes(()=>({}))
+    setOkRegister(() => true) 
     return Swal.fire({
         icon: "success",
         title: "Register completed",

@@ -8,6 +8,7 @@ display: flex;
     align-items: ${({alignItems}) => alignItems ? alignItems : "flex-start"} ;
     justify-content: center;
 width: ${({parentWidth}) => parentWidth ? parentWidth : '70%'};
+gap: ${({ gap }) => (gap ? gap : null)};
 & input{
   width: 100%;
   height: ${({inputHeight}) => inputHeight ? inputHeight: 'auto'};
@@ -22,9 +23,9 @@ width: ${({parentWidth}) => parentWidth ? parentWidth : '70%'};
 
 `
 
-export const LabelAndInput = ({children, alignItems, parentWidth, inputHeight}) => {
+export const LabelAndInput = ({children, alignItems, parentWidth, inputHeight, gap}) => {
   const { theme } = useTheme()
   return (
-    <LabelAndInputStyle theme={theme} alignItems={alignItems} parentWidth={parentWidth} inputHeight={inputHeight}>{children}</LabelAndInputStyle>
+    <LabelAndInputStyle theme={theme} alignItems={alignItems} parentWidth={parentWidth} gap={gap} inputHeight={inputHeight}>{children}</LabelAndInputStyle>
   )
 }

@@ -4,8 +4,8 @@ import { useAuth } from "../../../context/authContext";
 import { useEffect, useState } from "react";
 import { updateUser } from "../../../services/user.service";
 import { useErrorRegisterpt2 } from "../../../hooks/useErrorRegisterpt2";
-import { Anchor, ButtonPrimary, CheckboxInput, FlexDir, Form, H1Form, LabelAndInput, RadioInput } from "../../../components/StyleComponents";
-import { Link } from "react-router-dom";
+import { Anchor, ButtonPrimary, CheckboxInput, FlexDir, Form, H1Form, H3Custom, H3Form, LabelAndInput, RadioInput } from "../../../components/StyleComponents";
+import { Link, Navigate } from "react-router-dom";
 
 
 export const Registerpt2 = () => {
@@ -13,6 +13,7 @@ export const Registerpt2 = () => {
 
   const [res, setRes] = useState({});
   const [send, setSend] = useState(false);
+  const [okRegister, setOkRegister]= useState(false)
 
 
   const { setUser, user, logout } = useAuth();
@@ -31,9 +32,12 @@ export const Registerpt2 = () => {
 
   useEffect(() => {
     console.log(res)
-    useErrorRegisterpt2(res, setRes);
+    useErrorRegisterpt2(res, setRes, setOkRegister);
   }, [res]);
 
+  if(okRegister){
+    return <Navigate to="/roomSearch" />
+  }
   
 
 
@@ -41,9 +45,9 @@ export const Registerpt2 = () => {
     <>
     <FlexDir>
     <Form
-          heightTablet={"80vh"}
+          heightTablet={"95vh"}
           width={"80vw"}
-          height={"80vh"}
+          height={"85vh"}
           mediaqueryWidth={"90vw"}
           onSubmit={handleSubmit(formSubmit)}
         >
@@ -56,8 +60,8 @@ export const Registerpt2 = () => {
       mediaqueryWidthMobile={"95vw"} direction={"column"}>
 
               <LabelAndInput alignItems={"center"}>
-                I'm looking for a
-              <RadioInput>
+               <H3Form>I'm looking for a</H3Form> 
+              <RadioInput minW={"68%"}>
                 <input
                   type="radio"
                   name="gender"
@@ -130,59 +134,163 @@ export const Registerpt2 = () => {
       Interests
 
       <FlexDir>
-      <LabelAndInput>
+      <LabelAndInput gap={"4px"}>
               
 
-              <CheckboxInput {...register("interests")} value={"Art"}>
-              <label className=".label" htmlFor={"Art"}>
-              <input className="inputCheckBox" type="checkbox" name={"Art"}
-    value={"Art"}
-     id={"Art"} />
-     <div className="div"></div>
-     </label>
-              </CheckboxInput>
-              <CheckboxInput {...register("interests")}  value={"Climbing"}></CheckboxInput>
-
+     
+            <div className="inputContainer">
+  <label className="inputLabel inputLabel--checkbox">
+    Art
+    <input type="checkbox" name="Art" value="Art" {...register("interests")} />
+    <div className="div"></div>
+  </label>
+</div>
               
-              <div class="checkboxDiv">
-  <label class="label label--checkbox" htmlFor="Climbing">
-  Climbing
-    <input type="checkbox" name="Climbing" value={"Climbing"} {...register("interests")}/>
-    <div class="endDiv"></div>
+
+<div className="inputContainer">
+  <label className="inputLabel inputLabel--checkbox">
+    Climbing
+    <input type="checkbox" name="Climbing" value="Climbing" {...register("interests")} />
+    <div className="div"></div>
+  </label>
+</div>
+<div className="inputContainer">
+  <label className="inputLabel inputLabel--checkbox">
+  Concerts
+    <input type="checkbox" name="Concerts" value="Concerts" {...register("interests")} />
+    <div className="div"></div>
   </label>
 </div>
 
-//! EL QUE VA BIEN
-<div class="checkbox-wrapper-21">
-  <label class="control control--checkbox" >
-    Checkbox
-    <input type="checkbox" name="Climbing" value={"Climbing"} {...register("interests")}/>
-    <div class="control__indicator"></div>
+<div className="inputContainer">
+  <label className="inputLabel inputLabel--checkbox">
+  Cooking
+    <input type="checkbox" name="Cooking" value="Cooking" {...register("interests")} />
+    <div className="div"></div>
   </label>
-</div> 
-//! EL QUE VA BIEN//! EL QUE VA BIEN
-              <CheckboxInput value={"Concerts"}>
-              </CheckboxInput>
-              <CheckboxInput value={"Cooking"}></CheckboxInput>
-              <CheckboxInput value={"Dancing"}></CheckboxInput>
-              <CheckboxInput value={"Fashion"}></CheckboxInput>
-              <CheckboxInput value={"Gaming"}></CheckboxInput>
-              <CheckboxInput value={"Gym"}></CheckboxInput>
-              <CheckboxInput value={"Movies"}></CheckboxInput>
-              <CheckboxInput value={"Music"}></CheckboxInput>
-              </LabelAndInput>
-              <LabelAndInput>
+</div>
 
-              <CheckboxInput value={"Nature"}></CheckboxInput>
-              <CheckboxInput value={"Party"}></CheckboxInput>
-              <CheckboxInput value={"Pets"}></CheckboxInput>
-              <CheckboxInput value={"Photography"}></CheckboxInput>
-              <CheckboxInput value={"Reading"}></CheckboxInput>
-              <CheckboxInput value={"Socializing"}></CheckboxInput>
-              <CheckboxInput value={"Sports"}></CheckboxInput>
-              <CheckboxInput value={"Technology"}></CheckboxInput>
-              <CheckboxInput value={"Travel"}></CheckboxInput>
-              <CheckboxInput value={"Writing"}></CheckboxInput>
+<div className="inputContainer">
+  <label className="inputLabel inputLabel--checkbox">
+  Dancing
+    <input type="checkbox" name="Dancing" value="Dancing" {...register("interests")} />
+    <div className="div"></div>
+  </label>
+</div>
+
+<div className="inputContainer">
+  <label className="inputLabel inputLabel--checkbox">
+  Fashion
+    <input type="checkbox" name="Fashion" value="Fashion" {...register("interests")} />
+    <div className="div"></div>
+  </label>
+</div>
+
+<div className="inputContainer">
+  <label className="inputLabel inputLabel--checkbox">
+  Gaming
+    <input type="checkbox" name="Gaming" value="Gaming" {...register("interests")} />
+    <div className="div"></div>
+  </label>
+</div>
+
+<div className="inputContainer">
+  <label className="inputLabel inputLabel--checkbox">
+  Gym
+    <input type="checkbox" name="Gym" value="Gym" {...register("interests")} />
+    <div className="div"></div>
+  </label>
+</div>
+
+<div className="inputContainer">
+  <label className="inputLabel inputLabel--checkbox">
+  Movies
+    <input type="checkbox" name="Movies" value="Movies" {...register("interests")} />
+    <div className="div"></div>
+  </label>
+  </div>
+  <div className="inputContainer">
+  <label className="inputLabel inputLabel--checkbox">
+  Music
+    <input type="checkbox" name="Music" value="Music" {...register("interests")} />
+    <div className="div"></div>
+  </label>
+</div>
+
+</LabelAndInput>
+              <LabelAndInput gap={"4px"}>
+
+              <div className="inputContainer">
+  <label className="inputLabel inputLabel--checkbox">
+  Nature
+    <input type="checkbox" name="Nature" value="Nature" {...register("interests")} />
+    <div className="div"></div>
+  </label>
+</div>
+
+<div className="inputContainer">
+  <label className="inputLabel inputLabel--checkbox">
+  Party
+    <input type="checkbox" name="Party" value="Party" {...register("interests")} />
+    <div className="div"></div>
+  </label>
+</div>
+<div className="inputContainer">
+  <label className="inputLabel inputLabel--checkbox">
+  Pets
+    <input type="checkbox" name="Pets" value="Pets" {...register("interests")} />
+    <div className="div"></div>
+  </label>
+</div>
+<div className="inputContainer">
+  <label className="inputLabel inputLabel--checkbox">
+  Photography
+    <input type="checkbox" name="Photography" value="Photography" {...register("interests")} />
+    <div className="div"></div>
+  </label>
+</div>
+<div className="inputContainer">
+  <label className="inputLabel inputLabel--checkbox">
+  Reading
+    <input type="checkbox" name="Reading" value="Reading" {...register("interests")} />
+    <div className="div"></div>
+  </label>
+</div>
+<div className="inputContainer">
+  <label className="inputLabel inputLabel--checkbox">
+  Socializing
+    <input type="checkbox" name="Socializing" value="Socializing" {...register("interests")} />
+    <div className="div"></div>
+  </label>
+</div>
+<div className="inputContainer">
+  <label className="inputLabel inputLabel--checkbox">
+  Sports
+    <input type="checkbox" name="Sports" value="Sports" {...register("interests")} />
+    <div className="div"></div>
+  </label>
+</div>
+<div className="inputContainer">
+  <label className="inputLabel inputLabel--checkbox">
+  Technology
+    <input type="checkbox" name="Technology" value="Technology" {...register("interests")} />
+    <div className="div"></div>
+  </label>
+</div>
+<div className="inputContainer">
+  <label className="inputLabel inputLabel--checkbox">
+  Travel
+    <input type="checkbox" name="Travel" value="Travel" {...register("interests")} />
+    <div className="div"></div>
+  </label>
+</div>
+<div className="inputContainer">
+  <label className="inputLabel inputLabel--checkbox">
+  Writing
+    <input type="checkbox" name="Writing" value="Writing" {...register("interests")} />
+    <div className="div"></div>
+  </label>
+</div>
 
 
             </LabelAndInput>

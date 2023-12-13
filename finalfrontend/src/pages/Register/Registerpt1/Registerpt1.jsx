@@ -46,6 +46,10 @@ export const Registerpt1 = () => {
       //- !=0 -- hay una imagen en el form
       const customFormData = {
         ...formData,
+        name: "", 
+        lastName: "",
+        description: "",
+        birthYear: 2000,
         image: inputFile[0],
       };
 
@@ -56,6 +60,10 @@ export const Registerpt1 = () => {
       // no hay imagen
       const customFormData = {
         ...formData,
+        name: "", 
+        lastName: "",
+        description: "",
+        birthYear: 2000,
       };
 
       setSend(true);
@@ -130,21 +138,19 @@ export const Registerpt1 = () => {
     setIsDeletedUser(() => false);
   }, []);
 
-
-
-  if (okRegister) {
+  if (okRegisterGoogle) {
+    if (!localStorage.getItem("user")) {
+      console.log(allUser)
+      useAutoLogin(allUser);
+     } else {
+       return <Navigate to="/register/complete" />;
+   }
+    } else if (okRegister) {
     //si todo esta ok navega a la pagina del codigo
     return <Navigate to="/verifyCode" />;
   }
 
-if (okRegisterGoogle) {
-  if (!localStorage.getItem("user")) {
-    console.log(allUser)
-    useAutoLogin(allUser);
-   } else {
-     return <Navigate to="/register/complete" />;
- }
-  }
+
 
 
   return (

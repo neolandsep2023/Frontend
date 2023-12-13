@@ -19,6 +19,7 @@ const PALETTE_COLOR_LIGHT = {
   header: "#f9f9f9",
   enhanced: "#72cc89", //? puesto por mario
   form: "#f5f5f5",
+  lighterForm: "#d3d7db",
   textColor: "#1e1e1e",
   secondTextColor: "#2a2b2e",
   greenTextColor: "#72cc89",
@@ -39,6 +40,7 @@ const PALETTE_COLOR_DARK = {
   header: "#2a2b2e",
   enhanced: "#396644", //? puesto por mario
   form: "#35363a",
+  lighterForm: "#62676c",
   textColor: "#ffffff",
   secondTextColor: "#f9f9f9",
   greenTextColor: "#72cc89",
@@ -69,6 +71,7 @@ export const themeLight = {
     },
     form: {
       main: PALETTE_COLOR_LIGHT.form,
+      light: PALETTE_COLOR_LIGHT.lighterForm,
     },
     textColor: {
       main: PALETTE_COLOR_LIGHT.textColor,
@@ -125,6 +128,7 @@ export const themeDark = {
     },
     form: {
       main: PALETTE_COLOR_DARK.form,
+      light: PALETTE_COLOR_DARK.lighterForm,
     },
     textColor: {
       main: PALETTE_COLOR_DARK.textColor,

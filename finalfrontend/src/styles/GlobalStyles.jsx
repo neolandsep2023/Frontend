@@ -61,6 +61,7 @@ export const GlobalStyles = () => {
             src: `url(${theme.typography.fonts.semibold}) format("truetype")`,
           },
         },
+        
       ]}
     />
   );

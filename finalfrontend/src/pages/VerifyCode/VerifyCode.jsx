@@ -1,4 +1,3 @@
-
 import { useEffect, useState } from "react";
 import { useForm } from "react-hook-form";
 import { useAutoLogin } from "../../hooks/useAutoLogin";
@@ -6,7 +5,10 @@ import { useResendCodeError } from "../../hooks/useResendCodeError";
 import { useAuth } from "../../context/authContext";
 import { Navigate, useNavigate } from "react-router";
 import { useVerifyCodeError } from "../../hooks/useVerifyCodeError";
-import { resendConfirmationCode, verifyConfirmationCode } from "../../services/user.service";
+import {
+  resendConfirmationCode,
+  verifyConfirmationCode,
+} from "../../services/user.service";
 import { ButtonPrimary, FlexDir, Form } from "../../components/StyleComponents";
 
 export const VerifyCode = () => {
@@ -24,10 +26,10 @@ export const VerifyCode = () => {
     const userLocal = localStorage.getItem("user");
 
     if (userLocal == null) {
-      
+      console.log(allUser);
       const custFormData = {
-     
         confirmationCode: parseInt(formData.confirmationCode),
+
         email: allUser.data.user.email,
       };
 
@@ -35,8 +37,8 @@ export const VerifyCode = () => {
       setRes(await verifyConfirmationCode(custFormData));
       setSend(false);
     } else {
-    
       const parseUser = JSON.parse(userLocal);
+      console.log(parseUser.email, parseInt(formData.confirmationCode));
       const customFormData = {
         email: parseUser.email,
         confirmationCode: parseInt(formData.confirmationCode),
@@ -70,7 +72,6 @@ export const VerifyCode = () => {
   };
 
   useEffect(() => {
-    
     useVerifyCodeError(
       res,
       setRes,
@@ -82,39 +83,31 @@ export const VerifyCode = () => {
   }, [res]);
 
   useEffect(() => {
- 
     useResendCodeError(resResend, setResResend, setUserNotFound);
-  }, [resResend]); 
-
-
+  }, [resResend]);
 
   if (okCheck) {
-   if (!localStorage.getItem("user")) {
-     useAutoLogin(allUser);
+    if (!localStorage.getItem("user")) {
+      useAutoLogin(allUser);
     } else {
       return <Navigate to="/register/complete" />;
+    }
   }
-}
 
-if(okDeleteUser) {
-  return <Navigate to="/register"/>
-}
-
+  if (okDeleteUser) {
+    return <Navigate to="/register" />;
+  }
 
   return (
     <>
-     <FlexDir  direction={"column"}>
-     
-        <div >
-        <h1 >Verify your code</h1>
-        <p>Write the code sent to your email</p>
+      <FlexDir direction={"column"}>
+        <div>
+          <h1>Verify your code</h1>
+          <p>Write the code sent to your email</p>
         </div>
         <Form onSubmit={handleSubmit(formSubmit)}>
-        <FlexDir direction={"column"}>
-        
-          <label htmlFor="custom-input">
-              Registration code
-            </label>
+          <FlexDir direction={"column"}>
+            <label htmlFor="custom-input">Registration code</label>
             <input
               type="text"
               id="name"
@@ -122,39 +115,24 @@ if(okDeleteUser) {
               autoComplete="false"
               {...register("confirmationCode", { required: false })}
             />
-           
-          
-        
 
-<FlexDir direction={"column"}>
-<ButtonPrimary  type="submit"
-            >
- Verify Code
-</ButtonPrimary>
-        
-  
-          <ButtonPrimary
-             onClick={() => handleReSend()}>
- Resend Code
-</ButtonPrimary>
-</FlexDir>
+            <FlexDir direction={"column"}>
+              <ButtonPrimary type="submit">Verify Code</ButtonPrimary>
 
-         
+              <ButtonPrimary onClick={() => handleReSend()}>
+                Resend Code
+              </ButtonPrimary>
+            </FlexDir>
 
-          
-
-          <p>
-            <small>
-            If the code is not correct, your user will be deleted from the
-              database and you will need to register again.{" "}
-            </small>
-          </p>
-        </FlexDir>
-         
-
+            <p>
+              <small>
+                If the code is not correct, your user will be deleted from the
+                database and you will need to register again.{" "}
+              </small>
+            </p>
+          </FlexDir>
         </Form>
-        </FlexDir>
+      </FlexDir>
     </>
   );
-
-}
+};
