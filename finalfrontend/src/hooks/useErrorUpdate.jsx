@@ -1,7 +1,5 @@
 import Swal from "sweetalert2/dist/sweetalert2.all.js";
 
-
-
 export const useErrorUpdate = (res, setRes, logout) => {
 
 let acc
@@ -53,9 +51,5 @@ if (res?.status == 200){
       timer: 3000,
     });
   }
-
-
-
-
 
 }

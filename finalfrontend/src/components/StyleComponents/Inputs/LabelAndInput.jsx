@@ -1,7 +1,6 @@
 import { useTheme } from "@emotion/react"
 import styled from "@emotion/styled"
 
-
 const LabelAndInputStyle = styled.div`
 
 display: flex;
@@ -22,7 +21,6 @@ width: ${({parentWidth}) => parentWidth ? parentWidth : '70%'};
 }
 
 `
-
 
 export const LabelAndInput = ({children, alignItems, parentWidth, inputHeight}) => {
   const { theme } = useTheme()

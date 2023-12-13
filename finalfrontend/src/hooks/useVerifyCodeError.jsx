@@ -1,7 +1,5 @@
 import Swal from "sweetalert2";
 
-
-
 export const useVerifyCodeError = (
   res,
   setRes,
@@ -61,11 +59,6 @@ export const useVerifyCodeError = (
     });
   }
 
-  
-
-
- 
-
   if (res?.response?.data.includes('User not found')) {
     setUserNotFound(() => true);
     setRes(() => ({}));
@@ -89,7 +82,5 @@ export const useVerifyCodeError = (
       });
       setRes(() => ({}));
     }
-  
-
 };
 
