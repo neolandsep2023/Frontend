@@ -1,7 +1,8 @@
 import Swal from "sweetalert2"
-export const useErrorCreateRoom = (res, setRes, setCreatedRoomSuccesfully) => {
+export const useErrorCreateRoom = (res, setRes, setCreatedRoomSuccesfully, setId) => {
   console.log(res);
   if (res?.status == 200) {
+    setId(res.data._id)
     setCreatedRoomSuccesfully(() => true);
     Swal.fire({
       icon: "success",

@@ -30,8 +30,10 @@ export const CreatePost = () => {
   const [send, setSend] = useState(null);
   const [res, setRes] = useState({});
   const [createdPostSuccesfully, setCreatedPostSuccesfully] = useState(false);
+  const [id, setId] = useState(null)
   const { register, handleSubmit } = useForm();
   const navigate = useNavigate();
+
 
   //estos estados son para que se rendericen condicionalmente elementos
   const [postType, setPostType] = useState("");
@@ -83,9 +85,9 @@ export const CreatePost = () => {
     useErrorCreatePost(res, setRes, setCreatedPostSuccesfully);
   }, [res]);
 
-  if (createdPostSuccesfully) {
-    <Navigate to="/profile" />;
-  }
+//   if (createdPostSuccesfully) {
+//     return <Navigate to={`/postFinds/${id}` }/>;
+//  }
 
   //----------------------USE EFFECT MAPA--------------------------
   useEffect(() => {
@@ -196,6 +198,21 @@ export const CreatePost = () => {
                 value="RoomSeeker"
                 onInput={(e) => {
                   console.log("soy target", e.target.value);
+                  //este set timeout y el del siguiente radio es porque leaflet (la libreria de mapas), no muestra
+                  //bien el mapa por el hidden y el renderizado condicional. El rpoblema de raiz se genera en que
+                  //el div que contiene el id de map para que leaflet renderice ahi su mapa tiene que aparecer en la pagina
+                  //desde el principio, porque si no, no lo encuentra. Podia probablemente haber componetizado el create map 
+                  //y haberlo llamado en una funcion solo cuando el estado se settease a x o cualquier cosa, pero ya tenia
+                  //toda la estructura hecha de esta manera. Tratare de implementarlo si tenemos tiempo.
+                  //y bueno, tenia problemas tambien con los select, porque si un usuario dejaba por defecto la provincia o 
+                  //el codigo postal, no se setteaba el estado a esa provincia o codigo postal, porque no se detecta como un
+                  //on Input ni onChange, es solo un renderizado condicional, por lo tanto, no se renderizaba el resto de selects
+                  //que dependian de los valores anteriores. 
+                  //La libreria no carga bien el mapa si el div con id map no esta visible o renderizado desde el principio,
+                  //pero con el resize lo carga bien
+                  setTimeout(() => {
+                    window.dispatchEvent(new Event("resize"));
+                 }, 500);
                   setPostType(e.target.value);
                 }}
                 {...register("type", { required: true })}
@@ -207,6 +224,9 @@ export const CreatePost = () => {
                 id="RoommateSeeker"
                 value="RoommateSeeker"
                 onInput={(e) => {
+                  setTimeout(() => {
+                    window.dispatchEvent(new Event("resize"));
+                 }, 500);
                   console.log("soy target", e.target.value);
                   setPostType(e.target.value);
                 }}
