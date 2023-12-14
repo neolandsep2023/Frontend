@@ -10,6 +10,7 @@ import App from "../App";
 
 import { MapCreation, ForgotPassword, ByIdMap, Home, RoomSearch, CreateRoom, Login, VerifyCode,Registerpt2, Profile,UserProfileData,FavGallery,EditProfile, AccountSettings, RoomById, Feed } from "../pages";
 import { AppCarousel } from "../components/Carousel/Carousel";
+import { RoomReview } from "../components/Review/RoomReview";
 
 
 
@@ -139,7 +140,7 @@ export const router = createBrowserRouter ([
           element: <ByIdMap/>},
           {
             path: "/pruebas/styledcomponents",
-            element: <AppCarousel/>
+            element: <RoomReview/>
           }
         ],
     },
