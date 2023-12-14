@@ -1,61 +1,108 @@
+import { useEffect, useState } from 'react';
 import { ButtonPrimary, FlexDir, Form, MiniCards } from '../../components/StyleComponents'
-import { useThemeApp } from '../../context/themeContext';
+<Link to="/register"></Link>
 import './Home.css'
+import { Link } from 'react-router-dom';
 
 export const Home = () => {
-    const { toggleTheme } = useThemeApp();
+  const [showBackToTop, setShowBackToTop] = useState(false);
+
+  const handleScroll = () => {
+    if (window.scrollY > 20) {
+      setShowBackToTop(true);
+    } else {
+      setShowBackToTop(false);
+    }
+  };
+
+  const scrollToTop = () => {
+    window.scrollTo({ top: 0, behavior: 'smooth' });
+  };
+
+  useEffect(() => {
+    window.addEventListener('scroll', handleScroll);
+
+    return () => {
+      window.removeEventListener('scroll', handleScroll);
+    };
+  }, []);
+
 
   return (
-    <div>Home
 
-<ButtonPrimary  variant={"normal"} size={"large"} onClick={toggleTheme}>TOGGLE THEME</ButtonPrimary>
-<FlexDir direction={"row"}>
-    <h1>hola</h1>
-    <h1>que tal</h1>
-    </FlexDir>
+<div className='home'>
+  <section className='imagenPrincipal'>
+  <article className='registrate'>
+ 
+        <h2>Unlock Benefits:<br/> Register Now!</h2>
+        <Link to="/register">
+           <ButtonPrimary>Register Now</ButtonPrimary>
+        </Link>
+       
+   
+  </article>
+  </section>
+ 
+  <section className='articleSmallContainer'>
+    <article className='articleSmall'>
+      <img src="https://res.cloudinary.com/djfkchzyq/image/upload/v1702551961/qelzk4orupgn409surv5.png" alt="Un mapa con una chincheta"/>
+      <div className='parteTexto'>
+        <h3 className='hHome'>Una de las cosas que hace</h3>
+        <p>Explica las cosas que hace la app en esta parte</p>
+        <Link className="link"to={"/"}>No logado lleva a Login</Link>
+      </div>
+    
+    </article>
+    <article className='articleSmall'>
+      <img src="https://res.cloudinary.com/djfkchzyq/image/upload/v1702551960/bvy675olyeco90oxqshy.png" alt="Manos en un ordenador"/>
+      <div className='parteTexto'>
+        <h3 className='hHome'>Otra de las cosas que hace</h3>
+        <p>Explica las cosas que hace la app en esta parte</p>
+        <Link className="link" to={"/"}>No logado lleva a Login</Link>
+      </div>
+    
+    </article>
+    
+   
+  </section>
+  <section className='sectionGrande'>
+      <img src="https://res.cloudinary.com/djfkchzyq/image/upload/v1702552600/pl9dhup17rw7tibsisyw.png" alt="Dos mujeres riéndose"/>
+  
+      <article className='textoGrande'>
+        <h3 className='hHome'>Una de las cosas grandes</h3>
+       <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. In nam reiciendis, quaerat temporibus 
+        neque quidem! </p>
+        <Link className="link" to={"/"}>No logado lleva a Login</Link>
+      </article>
 
-<FlexDir direction={"column"}>
-<Form width={"80vw"} >
-  <FlexDir direction={"column"} >
-  <div>
-    hola
-  </div>
-  <div>
-    hola
-  </div>
-  <div>
-    hola
-  </div>
-  <div>
-    hola
-  </div>
-  <div>
-    hola
-  </div>
-  <input></input>
-  <label>INPUT</label>
-  </FlexDir>
-</Form>
+    </section>
+  <section className='leftSection'>
+      <img src="https://res.cloudinary.com/djfkchzyq/image/upload/v1702557520/qfwylmwwiw6g76ykjmk8.jpg"alt="Grupo de amigos con el móvil"/>
+  
+      <article className='textoGrandeL'>
+        <h3 className='hHome'>Otra de las cosas grandes</h3>
+       <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. In nam reiciendis, quaerat temporibus 
+        neque quidem! </p>
+        <Link className="link"to={"/"}>No logado lleva a Login</Link>
+      </article>
 
+    </section>
+    <section className='sectionGrande'>
+      <img src="https://res.cloudinary.com/djfkchzyq/image/upload/v1702561445/f8yg29casftvtzs7f6bs.png" alt="Un piso lujoso"/>
+  
+      <article className='textoGrande'>
+        <h3 className='hHome'>Una de las cosas grandes</h3>
+       <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. In nam reiciendis, quaerat temporibus 
+        neque quidem! </p>
+        <Link className="link" to={"/"}>No logado lleva a Login</Link>
+      </article>
 
-</FlexDir>
-
-<FlexDir mediaqueryDir={"column"}>
-<MiniCards>
-  <h1>HOLAAAA</h1>
-  <img  alt="hello kitty" src="https://mma.prnewswire.com/media/2261098/Hello_Kitty_50th_Logo.jpg?p=twitter"/>
-</MiniCards>
-
-<MiniCards>
-  <h1>HOLAAAA</h1>
-  <img  alt="hello kitty" src="https://addons-media.operacdn.com/media/CACHE/images/themes/05/125405/1.0-rev1/images/0fd5423c-b863-4816-8995-321ff9716aaf/b6212ff0ee5d9abccee7771b10a7c49c.jpg"/>
-</MiniCards>
-<MiniCards>
-  <h1>HOLAAAA</h1>
-  <img  alt="hello kitty" src="https://www.telemundo.com/sites/nbcutelemundo/files/styles/fit-760w/public/sites/nbcutelemundo/files/images/article/2014/08/28/hello_kitty_140920568644_4.jpg?ramen_itok=iqwQftIcTf"/>
-</MiniCards>
-</FlexDir>
-
-    </div>
+    </section>
+    {showBackToTop && (
+        <ButtonPrimary className="back-to-top" onClick={scrollToTop}>
+          Back to Top
+        </ButtonPrimary>
+      )}
+</div>
   )
 }

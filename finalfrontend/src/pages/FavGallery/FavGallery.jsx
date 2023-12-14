@@ -36,7 +36,7 @@ export const FavGallery = () => {
       //!!Meter Componente para favoritos o lo que sea
       <FlexDir key={item._id} direction={"column"}> 
         <h2 >{item?.title}</h2>
-        <img style={{ width: '500px' }} src={item.image}/>
+        <img style={{ width: '500px' }} src={item.image[0]}/>
         </FlexDir>
 
      ))}
