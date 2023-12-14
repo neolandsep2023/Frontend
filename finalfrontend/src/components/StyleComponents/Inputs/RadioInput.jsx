@@ -38,8 +38,8 @@ const RadioInputStyles = styled.div`
   }
 `;
 
-export const RadioInput = ({ children, margin, minW }) => {
+export const RadioInput = ({ children, margin, minW, onClick }) => {
   const { theme } = useTheme();
 
-  return <RadioInputStyles margin={margin} theme={theme} minW={minW}>{children}</RadioInputStyles>;
+  return <RadioInputStyles margin={margin} theme={theme} minW={minW} onClick={onClick}>{children}</RadioInputStyles>;
 };

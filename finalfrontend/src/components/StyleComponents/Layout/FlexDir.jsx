@@ -6,6 +6,7 @@ const FlexStyle = styled.div`
   flex-direction: ${({ direction }) => direction};
   justify-content: center;
   align-items: center;
+  text-align: justify;
   flex-wrap: ${({ wrap }) => (wrap ? wrap : "no-wrap")};
   gap: ${({ gap, theme }) => (gap ? gap : theme.spacing(1.5))};
   margin: ${({ margin, theme }) => (margin ? margin : theme.spacing(1))};
@@ -31,6 +32,8 @@ const FlexStyle = styled.div`
       mediaqueryDirMobile ? mediaqueryDirMobile : direction};
     width: ${({ mediaqueryWidthMobile, width }) =>
       mediaqueryWidthMobile ? mediaqueryWidthMobile : width};
+      height: ${({ mediaqueryHeightMobile, height }) =>
+      mediaqueryHeightMobile ? mediaqueryHeightMobile : height};
     margin: ${({mediaqueryMarginMobile, margin}) => mediaqueryMarginMobile ? mediaqueryMarginMobile : margin}
   }
 `;
@@ -51,6 +54,7 @@ export const FlexDir = ({
   mediaqueryDirMobile,
   mediaqueryDirTablet,
   mediaqueryMarginMobile,
+  mediaqueryHeightMobile,
 }) => {
   const { theme } = useTheme();
 
@@ -71,6 +75,7 @@ export const FlexDir = ({
       mediaqueryDirTablet={mediaqueryDirTablet}
       mediaqueryDirMobile={mediaqueryDirMobile}
       mediaqueryMarginMobile={mediaqueryMarginMobile}
+      mediaqueryHeightMobile={mediaqueryHeightMobile}
     >
       {children}
     </FlexStyle>

@@ -3,6 +3,7 @@ import styled from '@emotion/styled'
 import React from 'react'
 
 const MiniPostStyles = styled.div`
+  text-align: justify;
 display: flex;
 flex-direction: column;
 justify-content: center;
@@ -12,10 +13,12 @@ border: ${({ theme }) => theme.spacing(0.3)} solid
 border-radius: ${({theme }) => (theme.spacing(1.5))};
 padding: ${({theme }) => (theme.spacing(1))};
 width: 45vw;
-height: 300px;
+height: 340px;
 margin: ${({ margin, theme }) => (margin ? margin : theme.spacing(1.5))};
 & img{
     width: 40%;
+    aspect-ratio: 1/1;
+    object-fit: cover;
     border-radius: 10px;
     border: ${({ theme }) => theme.spacing(0.5)} solid
     ${({ theme }) => theme.palette.border.main};
@@ -27,22 +30,56 @@ margin: ${({ margin, theme }) => (margin ? margin : theme.spacing(1.5))};
   }
 
   & p {
-    max-height: 50px;
+    max-height: 70%;
     max-width: 100%;
-    font-size: 15px;
+    font-size: 16px;
     text-overflow: ellipsis;
-    overflow-wrap: break-word;
-    white-space: nowrap;
+    display: -webkit-box;
+    -webkit-line-clamp: 3;
+    -webkit-box-orient: vertical;  
+    /* white-space: nowrap; */
   overflow: hidden;
   }
+  & h3 {
+    height: 30%;
+    font-size: 20px;
+    align-self: center;
+  }
+
+
+${({ theme }) => theme.mediaquery.laptop} {
+    margin: ${({ margin, theme }) => (margin ? margin : theme.spacing(1))};
+    /* background: red; */
+
+
+  }
+
+
+
+
+
 
 
 ${({ theme }) => theme.mediaquery.tablet} {
     width: 45vw;
-    height: 25vh;
+    height: 28vh;
     & img{
     width: 30%;
   }
+
+
+  & p {
+    max-height: 70%;
+    max-width: 100%;
+    font-size: 13px;
+  }
+  & h3 {
+    height: 30%;
+    font-size: 15px;
+
+  }
+
+
     margin: ${({ margin, theme }) => (margin ? margin : theme.spacing(1))};
   }
 
@@ -52,7 +89,18 @@ ${({ theme }) => theme.mediaquery.tablet} {
     height: 80vh;
 
     & img{
-    width: 80%;
+    width: 70%;
+
+  }
+
+  & p {
+    max-height: 70%;
+    max-width: 100%;
+    font-size: 16px;
+  }
+  & h3 {
+    height: 30%;
+    font-size: 18px;
 
   }
 
