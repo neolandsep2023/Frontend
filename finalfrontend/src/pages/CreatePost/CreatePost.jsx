@@ -396,7 +396,6 @@ export const CreatePost = () => {
             </select>
           </SelectAndOptions>
 
-          {province != "" && (
 
 <>
 <SelectAndOptions>
@@ -417,18 +416,15 @@ export const CreatePost = () => {
         </option>
       ))}
   </select>
- {postcode != "" && (
-   <div
-   id="map"
-   style={{ width: "100%", margin: "4px", height: "50vh" }}
- ></div>
- )}
 </SelectAndOptions>
 </>
-          )}
           
         </>
      )}
+        <div
+   id="map"
+   style={{ width: "60%", margin: "4px", height: "50vh", display: postType == "" ? "none" : "block"}}
+ ></div>
 
           <UploadFile />
           <button type="submit" disabled={send}>

@@ -22,7 +22,11 @@ const RadioInputStyles = styled.div`
     border-radius: 3px;
     transition: background-color 0.3s ease, border-radius 0.3s ease, border 0.3s ease;
   }
-
+  ${({ theme }) => theme.mediaquery.mobile} {
+    & label {
+      height: 3rem;
+    }
+}
   & input[type="radio"] {
     display: none;
   }
