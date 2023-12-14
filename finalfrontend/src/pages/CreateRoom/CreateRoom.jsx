@@ -20,8 +20,8 @@ import { createRoom } from "../../services/room.service";
 
 //<!--IMP                     Data                            -->
 import { roomData } from "../../data/Rooms.data";
-import { postcodes } from "../../../data/noAbrirElArchivoEsDemasiadoLargo/shortPostcodes";
 import { useErrorCreateRoom } from "../../hooks/useErrorCreateRoom";
+import { postcodes } from "../../../data/noAbrirElArchivoEsDemasiadoLargo/shortPostcodes";
 
 //<!--IMP                     Component                            -->
 export const CreateRoom = () => {
@@ -34,8 +34,9 @@ export const CreateRoom = () => {
 
   //estos estados son para que se rendericen condicionalmente elementos
   const [roomType, setRoomType] = useState("Apartment");
-  const [province, setProvince] = useState("Almeria");
+  const [province, setProvince] = useState("");
   const [postcode, setPostcode] = useState("");
+  const [publicLocation, setPublicLocation] = useState("Andalucia");
 
   //estos estados son para re-renderizar el componente si cambia la referencia
   const mapRef = useRef(null);
@@ -75,9 +76,10 @@ export const CreateRoom = () => {
 
   useEffect(() => {
     console.log(roomType);
+    console.log(publicLocation);
     console.log(postcode);
     console.log(province);
-  }, [roomType, postcode, province]);
+  }, [roomType, postcode, province, publicLocation]);
 
   useEffect(() => {
     useErrorCreateRoom(res, setRes, setCreatedRoomSuccesfully);
@@ -91,10 +93,12 @@ export const CreateRoom = () => {
   useEffect(() => {
     const createMap = () => {
       if (
+        publicLocation &&
         province &&
         postcode &&
-        postcodes[province] &&
-        postcodes[province][postcode]
+        postcodes[publicLocation] &&
+        postcodes[publicLocation][province] &&
+        postcodes[publicLocation][province][postcode]
       ) {
         //solo si existen todos los datos que necesitamos!!
         if (!mapRef.current) {
@@ -104,8 +108,12 @@ export const CreateRoom = () => {
           //centro, que son las coordenadas latitud y longitud del codigo postal seleccionado
           const map = L.map("map", {
             center: [
-              parseFloat(postcodes[province][postcode].latitude),
-              parseFloat(postcodes[province][postcode].longitude),
+              parseFloat(
+                postcodes[publicLocation][province][postcode].latitude
+              ),
+              parseFloat(
+                postcodes[publicLocation][province][postcode].longitude
+              ),
             ],
             zoom: 15,
           });
@@ -123,16 +131,20 @@ export const CreateRoom = () => {
           //se le asignan las coordenadas del codigo postal y se anade al mapa (addTo(map))
           //Luego al igual que con el mapa, lo guardamos como primera instancia de markerRef
           const marker = L.marker([
-            parseFloat(postcodes[province][postcode].latitude),
-            parseFloat(postcodes[province][postcode].longitude),
+            parseFloat(postcodes[publicLocation][province][postcode].latitude),
+            parseFloat(postcodes[publicLocation][province][postcode].longitude),
           ]).addTo(map);
           markerRef.current = marker;
         } else {
           // esto se hace si SI hay mapRef.current, que es settear la vista, es decir, actualizar la vista del mapa
           mapRef.current.setView(
             [
-              parseFloat(postcodes[province][postcode].latitude),
-              parseFloat(postcodes[province][postcode].longitude),
+              parseFloat(
+                postcodes[publicLocation][province][postcode].latitude
+              ),
+              parseFloat(
+                postcodes[publicLocation][province][postcode].longitude
+              ),
             ],
             15
           );
@@ -141,8 +153,12 @@ export const CreateRoom = () => {
           // LoNGitude.
           if (markerRef.current) {
             markerRef.current.setLatLng([
-              parseFloat(postcodes[province][postcode].latitude),
-              parseFloat(postcodes[province][postcode].longitude),
+              parseFloat(
+                postcodes[publicLocation][province][postcode].latitude
+              ),
+              parseFloat(
+                postcodes[publicLocation][province][postcode].longitude
+              ),
             ]);
           }
         }
@@ -402,38 +418,46 @@ export const CreateRoom = () => {
             <select
               name="publicLocation"
               id="publicLocation"
-              defaultValue="Madrid"
+              defaultValue={publicLocation}
+              onInput={(e) => setPublicLocation(e.target.value)}
               {...register("publicLocation", { required: true })}
             >
-              {roomData?.publicLocation?.map((item) => (
-                <option key={item} value={item}>
-                  {item}
-                </option>
-              ))}
+              <optgroup label="Community">
+                {Object.keys(postcodes)
+                  .sort((a, b) => a.localeCompare(b))
+                  .map((ccaa) => (
+                    <option key={ccaa} value={ccaa}>
+                      {ccaa}
+                    </option>
+                  ))}
+              </optgroup>
             </select>
           </SelectAndOptions>
-
-          <SelectAndOptions>
-            <label htmlFor="province">
-              Province where the {roomType.toLowerCase()} is located.
-            </label>
-            <select
-              name="province"
-              id="province"
-              onInput={(e) => setProvince(e.target.value)}
-              {...register("province", { required: true })}
-            >
-              {Object.keys(postcodes)
-                .sort((a, b) => a.localeCompare(b))
-                .map((province) => (
-                  <option key={province} value={province}>
-                    {province}
-                  </option>
-                ))}
-            </select>
-          </SelectAndOptions>
-
-          {province && postcodes[province] && (
+          {publicLocation != "" && (
+            <>
+            <SelectAndOptions>
+              <label htmlFor="province">
+                Province where the {roomType.toLowerCase()} is located.
+              </label>
+              <select
+                name="province"
+                id="province"
+                defaultValue={province}
+                onInput={(e) => setProvince(e.target.value)}
+                {...register("province", { required: true })}
+              >
+                {Object.keys(postcodes[publicLocation])
+                  .sort((a, b) => a.localeCompare(b))
+                  .map((province) => (
+                    <option key={province} value={province}>
+                      {province}
+                    </option>
+                  ))}
+              </select>
+            </SelectAndOptions>
+            </>
+          )}
+          {province != "" && (
             <>
               <SelectAndOptions>
                 <label htmlFor="postcode">
@@ -444,8 +468,9 @@ export const CreateRoom = () => {
                   id="postcode"
                   onInput={(e) => setPostcode(e.target.value)}
                   {...register("postcode", { required: true })}
+                  defaultValue={postcode}
                 >
-                  {Object.entries(postcodes[province])
+                  {Object.entries(postcodes[publicLocation][province])
                     .sort((a, b) => a - b)
                     .map(([postcode]) => (
                       //postcode esta entre corchetes porque es destructuring de un array. Object.entries te da una
@@ -456,10 +481,12 @@ export const CreateRoom = () => {
                       </option>
                     ))}
                 </select>
-                <div
-                  id="map"
-                  style={{ width: "100%", margin: "4px", height: "50vh" }}
-                ></div>
+                {postcode != "" && (
+                  <div
+                    id="map"
+                    style={{ width: "100%", margin: "4px", height: "50vh" }}
+                  ></div>
+                )}
               </SelectAndOptions>
             </>
           )}
@@ -473,35 +500,3 @@ export const CreateRoom = () => {
     </FlexDir>
   );
 };
-
-/**
-    type: {type: String, required: true, enum: [
-      "Apartment",
-      "House",
-      "Condo",
-      "Townhouse",
-      "Studio",
-      "Loft",
-      "Duplex",
-      "Flat",
-    ]},
-    available: {type: boolean, required: true, default: true},
-    bathroom: {type: Boolean, required: true},
-    publicLocation: {type: String, required: true},
-    postcode: {type: Number, required: true},
-    petsAllowed: {type: Boolean, required: true},
-    exterior: {type: Boolean, required: true},
-    // deposit: {type: Boolean, required: true},
-    // depositPrice: {type: Number},
-    roomates: {type: Number, required: true},
-    commoditiesRoom: {type: String, required: true, enum: [ 
-    ]},
-    commoditiesHome: {type: String, required: true, enum: [
-    ]},
-    // price: {type: Number, required: true},
-    postedBy: [{ type: mongoose.Schema.Types.ObjectId, ref: "User"}],
-    likes: [{ type: mongoose.Schema.Types.ObjectId, ref: "User"}],
-    saved: [{ type: mongoose.Schema.Types.ObjectId, ref: 'User' }],
-    comments: [{ type: mongoose.Schema.Types.ObjectId, ref: "Comment"}],
-    image: [{type: String}]
- */

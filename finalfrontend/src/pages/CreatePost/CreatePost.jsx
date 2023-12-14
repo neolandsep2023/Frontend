@@ -35,7 +35,8 @@ export const CreatePost = () => {
 
   //estos estados son para que se rendericen condicionalmente elementos
   const [postType, setPostType] = useState("");
-  const [province, setProvince] = useState("Madrid");
+  const [publicLocation, setPublicLocation] = useState('Andalucia');
+  const [province, setProvince] = useState("");
   const [postcode, setPostcode] = useState("");
 
   //estos estados son para re-renderizar el componente si cambia la referencia
@@ -73,9 +74,10 @@ export const CreatePost = () => {
 
   useEffect(() => {
     console.log(postType);
+    console.log(publicLocation)
     console.log(postcode);
     console.log(province);
-  }, [postType, postcode, province]);
+  }, [postType, postcode, province, publicLocation]);
 
   useEffect(() => {
     useErrorCreatePost(res, setRes, setCreatedPostSuccesfully);
@@ -87,65 +89,79 @@ export const CreatePost = () => {
 
   //----------------------USE EFFECT MAPA--------------------------
   useEffect(() => {
-    const createMap = () => {
-      if (
-        province &&
-        postcode &&
-        postcodes[province] &&
-        postcodes[province][postcode]
-      ) {
-        //solo si existen todos los datos que necesitamos!!
-        if (!mapRef.current) {
-          //si NO HAY un mapa creado (mapRef.current se dirige al estado ACTUAL de mapRef),
-          //solo si es null entramos en esta primera clausula
-          //vamos a inicializar una instancia de leaflet.map en el div con el id 'map'. Vamos a meterle un
-          //centro, que son las coordenadas latitud y longitud del codigo postal seleccionado
-          const map = L.map("map", {
-            center: [
-              parseFloat(postcodes[province][postcode].latitude),
-              parseFloat(postcodes[province][postcode].longitude),
-            ],
-            zoom: 15,
-          });
-          //esto es solamente la atribucion a leaflet, gracias leaflet <3
-          L.tileLayer("https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png", {
-            attribution: "© OpenStreetMap contributors",
-          }).addTo(map);
-
-          // guardamos la instancia del mapa en el current mapRef, para poder juzgar despues si hay que crear
-          //una nueva instancia o solo modificar el mapa que ya hay
-          mapRef.current = map;
-
-          // este es el puntero lindo azulin que hay en el mapa. Decidi ponerlo porque hay veces que los codigos
-          //postales estan tan cerca que el mapa no cambia de posicion. Con esto, al menos cambia el puntero.
-          //se le asignan las coordenadas del codigo postal y se anade al mapa (addTo(map))
-          //Luego al igual que con el mapa, lo guardamos como primera instancia de markerRef
-          const marker = L.marker([
-            parseFloat(postcodes[province][postcode].latitude),
-            parseFloat(postcodes[province][postcode].longitude),
-          ]).addTo(map);
-          markerRef.current = marker;
-        } else {
-          // esto se hace si SI hay mapRef.current, que es settear la vista, es decir, actualizar la vista del mapa
-          mapRef.current.setView(
-            [
-              parseFloat(postcodes[province][postcode].latitude),
-              parseFloat(postcodes[province][postcode].longitude),
-            ],
-            15
-          );
-
-          //y se actualiza el markerRef si en efecto hay markerRef. Lo que hace es un metodo de set lat(itude) y
-          // LoNGitude.
-          if (markerRef.current) {
-            markerRef.current.setLatLng([
-              parseFloat(postcodes[province][postcode].latitude),
-              parseFloat(postcodes[province][postcode].longitude),
-            ]);
+      const createMap = () => {
+        if (
+          publicLocation &&
+          province &&
+          postcode &&
+          postcodes[publicLocation] &&
+          postcodes[publicLocation][province] &&
+          postcodes[publicLocation][province][postcode]
+        ) {
+          //solo si existen todos los datos que necesitamos!!
+          if (!mapRef.current) {
+            //si NO HAY un mapa creado (mapRef.current se dirige al estado ACTUAL de mapRef),
+            //solo si es null entramos en esta primera clausula
+            //vamos a inicializar una instancia de leaflet.map en el div con el id 'map'. Vamos a meterle un
+            //centro, que son las coordenadas latitud y longitud del codigo postal seleccionado
+            const map = L.map("map", {
+              center: [
+                parseFloat(
+                  postcodes[publicLocation][province][postcode].latitude
+                ),
+                parseFloat(
+                  postcodes[publicLocation][province][postcode].longitude
+                ),
+              ],
+              zoom: 15,
+            });
+            //esto es solamente la atribucion a leaflet, gracias leaflet <3
+            L.tileLayer("https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png", {
+              attribution: "© OpenStreetMap contributors",
+            }).addTo(map);
+  
+            // guardamos la instancia del mapa en el current mapRef, para poder juzgar despues si hay que crear
+            //una nueva instancia o solo modificar el mapa que ya hay
+            mapRef.current = map;
+  
+            // este es el puntero lindo azulin que hay en el mapa. Decidi ponerlo porque hay veces que los codigos
+            //postales estan tan cerca que el mapa no cambia de posicion. Con esto, al menos cambia el puntero.
+            //se le asignan las coordenadas del codigo postal y se anade al mapa (addTo(map))
+            //Luego al igual que con el mapa, lo guardamos como primera instancia de markerRef
+            const marker = L.marker([
+              parseFloat(postcodes[publicLocation][province][postcode].latitude),
+              parseFloat(postcodes[publicLocation][province][postcode].longitude),
+            ]).addTo(map);
+            markerRef.current = marker;
+          } else {
+            // esto se hace si SI hay mapRef.current, que es settear la vista, es decir, actualizar la vista del mapa
+            mapRef.current.setView(
+              [
+                parseFloat(
+                  postcodes[publicLocation][province][postcode].latitude
+                ),
+                parseFloat(
+                  postcodes[publicLocation][province][postcode].longitude
+                ),
+              ],
+              15
+            );
+  
+            //y se actualiza el markerRef si en efecto hay markerRef. Lo que hace es un metodo de set lat(itude) y
+            // LoNGitude.
+            if (markerRef.current) {
+              markerRef.current.setLatLng([
+                parseFloat(
+                  postcodes[publicLocation][province][postcode].latitude
+                ),
+                parseFloat(
+                  postcodes[publicLocation][province][postcode].longitude
+                ),
+              ]);
+            }
           }
         }
-      }
-    };
+      };
 
     createMap();
     //y al final de todo llamamos a la funcion que hace todo esto, y tiene dependencias en postcode, para que se
@@ -324,6 +340,29 @@ export const CreatePost = () => {
           </RadioInput>
         </LabelAndInput>
 
+        <SelectAndOptions>
+            <label htmlFor="publicLocation">
+              Community where the property is located.
+            </label>
+            <select
+              name="publicLocation"
+              id="publicLocation"
+              defaultValue={publicLocation}
+              onInput={(e) => setPublicLocation(e.target.value)}
+              {...register("publicLocation", { required: true })}
+            >
+              <optgroup label="Community">
+                {Object.keys(postcodes)
+                  .sort((a, b) => a.localeCompare(b))
+                  .map((ccaa) => (
+                    <option key={ccaa} value={ccaa}>
+                      {ccaa}
+                    </option>
+                  ))}
+              </optgroup>
+            </select>
+          </SelectAndOptions>
+
           <SelectAndOptions>
             <label htmlFor="province">
               Province where the property is located.
@@ -334,7 +373,7 @@ export const CreatePost = () => {
               onInput={(e) => setProvince(e.target.value)}
               {...register("province", { required: true })}
             >
-              {Object.keys(postcodes)
+              {Object.keys(postcodes[publicLocation])
                 .sort((a, b) => a.localeCompare(b))
                 .map((province) => (
                   <option key={province} value={province}>
@@ -344,32 +383,36 @@ export const CreatePost = () => {
             </select>
           </SelectAndOptions>
 
-          
-            <>
-              <SelectAndOptions>
-                <label htmlFor="postcode">
-                  Postcode the property belongs to.
-                </label>
-                <select
-                  name="postcode"
-                  id="postcode"
-                  onInput={(e) => setPostcode(e.target.value)}
-                  {...register("postcode", { required: true })}
-                >
-                  {Object.entries(postcodes[province])
-                    .sort((a, b) => a - b)
-                    .map(([postcode]) => (
-                      <option key={postcode} value={postcode}>
-                        {postcode}
-                      </option>
-                    ))}
-                </select>
-                <div
-                  id="map"
-                  style={{ width: "100%", margin: "4px", height: "50vh" }}
-                ></div>
-              </SelectAndOptions>
-            </>
+          {province != "" && (
+
+<>
+<SelectAndOptions>
+  <label htmlFor="postcode">
+    Postcode the property belongs to.
+  </label>
+  <select
+    name="postcode"
+    id="postcode"
+    onInput={(e) => setPostcode(e.target.value)}
+    {...register("postcode", { required: true })}
+  >
+    {Object.entries(postcodes[publicLocation][province])
+      .sort((a, b) => a - b)
+      .map(([postcode]) => (
+        <option key={postcode} value={postcode}>
+          {postcode}
+        </option>
+      ))}
+  </select>
+ {postcode != "" && (
+   <div
+   id="map"
+   style={{ width: "100%", margin: "4px", height: "50vh" }}
+ ></div>
+ )}
+</SelectAndOptions>
+</>
+          )}
           
         </>
      )}
