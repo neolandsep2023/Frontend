@@ -3,29 +3,10 @@ import { ButtonPrimary, FlexDir, Form, MiniCards } from '../../components/StyleC
 <Link to="/register"></Link>
 import './Home.css'
 import { Link } from 'react-router-dom';
+import { BotonArriba } from '../../components/BotonArriba/BotonArriba';
 
 export const Home = () => {
-  const [showBackToTop, setShowBackToTop] = useState(false);
-
-  const handleScroll = () => {
-    if (window.scrollY > 20) {
-      setShowBackToTop(true);
-    } else {
-      setShowBackToTop(false);
-    }
-  };
-
-  const scrollToTop = () => {
-    window.scrollTo({ top: 0, behavior: 'smooth' });
-  };
-
-  useEffect(() => {
-    window.addEventListener('scroll', handleScroll);
-
-    return () => {
-      window.removeEventListener('scroll', handleScroll);
-    };
-  }, []);
+ 
 
 
   return (
@@ -98,11 +79,7 @@ export const Home = () => {
       </article>
 
     </section>
-    {showBackToTop && (
-        <ButtonPrimary className="back-to-top" onClick={scrollToTop}>
-          Back to Top
-        </ButtonPrimary>
-      )}
+   <BotonArriba/>
 </div>
   )
 }

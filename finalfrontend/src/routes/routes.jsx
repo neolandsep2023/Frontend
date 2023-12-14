@@ -12,6 +12,7 @@ import { MapCreation, ForgotPassword, ByIdMap, Home, RoomSearch, CreateRoom, Log
 import { AppCarousel } from "../components/Carousel/Carousel";
 import { RoomReview } from "../components/Review/RoomReview";
 import { CreatePost } from "../pages/CreatePost/CreatePost";
+import { About } from "../pages/About/About";
 
 
 
@@ -27,7 +28,7 @@ export const router = createBrowserRouter ([
               },
               {
                 path: "/about",
-                // element: <About />,
+                element: <About />,
               },
               {
                 path: "/register",
