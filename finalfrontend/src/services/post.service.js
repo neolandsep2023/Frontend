@@ -2,9 +2,12 @@ import { extraConfig } from "./serviceApiGeneral.config";
 
 //! ------------------ CREATE ------------------
 export const createPost = async (formData) => {
+  console.log("en el servicio",formData)
   const APIGeneral = extraConfig();
 
-  return APIGeneral.post(`/posts/create`, formData)
+  return APIGeneral.post(`/posts/create`, formData, {
+    headers: { "Content-Type": "multipart/form-data" },
+  })
     .then((res) => res)
     .catch((error) => error);
 };

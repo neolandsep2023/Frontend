@@ -5,7 +5,6 @@ import { useEffect, useRef, useState } from "react";
 import "leaflet/dist/leaflet.css";
 import { Navigate, useNavigate } from "react-router-dom";
 
-
 //<!--IMP                     Components                            -->
 import {
   FlexDir,
@@ -29,7 +28,7 @@ export const CreateRoom = () => {
   //<!--sec                     Estados                         -->
   const [send, setSend] = useState(null);
   const [res, setRes] = useState({});
-  const [createdRoomSuccesfully, setCreatedRoomSuccesfully] = useState(false)
+  const [createdRoomSuccesfully, setCreatedRoomSuccesfully] = useState(false);
   const { register, handleSubmit } = useForm();
   const navigate = useNavigate();
 
@@ -45,14 +44,18 @@ export const CreateRoom = () => {
   //<!--sec                     Funciones pagina                         -->
   const formSubmit = async (formData) => {
     const inputFile = document.getElementById("file-upload").files;
-console.log(formData)
+    console.log("formData en el componente", formData);
+    console.log("inputFile en el componente", inputFile);
     if (inputFile.length != 0) {
-      //- !=0 -- hay una imagen en el form
-      const customFormData = {
+      let customFormData = {
         ...formData,
         image: inputFile,
       };
+      for (let i = 0; i < inputFile.length; i++) {
+        // customFormData = {...customFormData, ['image'] : inputFile[i]}
+      }
 
+      console.log("custom form data con imagen", customFormData);
       setSend(true);
       setRes(await createRoom(customFormData));
       setSend(false);
@@ -77,16 +80,12 @@ console.log(formData)
   }, [roomType, postcode, province]);
 
   useEffect(() => {
-    useErrorCreateRoom(res, setRes, setCreatedRoomSuccesfully)
-  }, [res])
-  
+    useErrorCreateRoom(res, setRes, setCreatedRoomSuccesfully);
+  }, [res]);
 
-
-if(createdRoomSuccesfully) {
-  <Navigate to='/profile'/>
-}
-
-
+  if (createdRoomSuccesfully) {
+    <Navigate to="/profile" />;
+  }
 
   //----------------------USE EFFECT MAPA--------------------------
   useEffect(() => {
@@ -156,330 +155,321 @@ if(createdRoomSuccesfully) {
   }, [postcode]);
   //---------------------------------------------------------------
 
-
-
-//<!--Sec                       RETURN                                                             -->
+  //<!--Sec                       RETURN                                                             -->
   return (
-    <FlexDir direction='column'>
-    <Form onSubmit={handleSubmit(formSubmit)} width='90%'>
-      <FlexDir direction={"column"} gap={"2rem"}>
-        <LabelAndInput>
-          <label htmlFor="title">Room title</label>
-          <input
-            id="title"
-            name="title"
-            placeholder="Spacious flat in Chamartin"
-            {...register("title", { required: true, maxLength: 50 })}
-          />
-        </LabelAndInput>
-
-        <LabelAndInput>
-          <label htmlFor="description">Description</label>
-          <textarea
-            id="description"
-            name="description"
-            style={{ width: "100%" }}
-            placeholder="Lovely flat in the middle of Chamartin, near the train station, and with a shopping mall 200m away. The flat has full commodities and fees ar..."
-            {...register("description", {
-              required: true,
-              minLength: 50,
-              maxLength: 300,
-            })}
-          />
-        </LabelAndInput>
-
-        <SelectAndOptions>
-          <label htmlFor="type">Location type.</label>
-          <select
-            name="type"
-            id="type"
-            defaultValue="Apartment"
-            onInput={(e) => {
-              //no se puede hacer un onChange, no funciona
-              console.log("soy target", e.target.value);
-              setRoomType(e.target.value);
-            }}
-            {...register("type", { required: true })}
-          >
-            {roomData?.type?.map((item) => (
-              <option key={item} value={item}>
-                {item}
-              </option>
-            ))}
-          </select>
-        </SelectAndOptions>
-
-        <LabelAndInput alignItems={"center"}>
-          <label htmlFor="available">
-            Is the {roomType.toLowerCase()} available right now?
-          </label>
-          <RadioInput minW="calc(100% / 1.4)">
+    <FlexDir direction="column">
+      <Form onSubmit={handleSubmit(formSubmit)} width="90%">
+        <FlexDir direction={"column"} gap={"2rem"}>
+          <LabelAndInput>
+            <label htmlFor="title">Room title</label>
             <input
-              defaultChecked
-              type="radio"
-              name="available"
-              id="Yes"
-              value="true"
-              {...register("available", { required: true })}
+              id="title"
+              name="title"
+              placeholder="Spacious flat in Chamartin"
+              {...register("title", { required: true, maxLength: 50 })}
             />
-            <label htmlFor="Yes">Yes, it is ready for rental.</label>
-            <input
-              type="radio"
-              name="available"
-              id="No"
-              value="false"
-              {...register("available", { required: true })}
-            />
-            <label htmlFor="No">
-              No, this {roomType.toLowerCase()} is occupied.
-            </label>
-          </RadioInput>
-        </LabelAndInput>
-
-        <LabelAndInput>
-          <label htmlFor="surface">{roomType} surface in square meters.</label>
-          <input
-            type="number"
-            id="surface"
-            name="surface"
-            placeholder="150m2"
-            defaultValue={"100"}
-            {...register("surface", { required: true })}
-          />
-        </LabelAndInput>
-
-        <LabelAndInput alignItems={"center"}>
-          <label htmlFor="bathrooms">
-            How many bathrooms are there in the {roomType.toLowerCase()}?
-          </label>
-          <RadioInput minW="calc(100% / 3)">
-            <input
-              type="radio"
-              name="bathrooms"
-              id="0"
-              value="0"
-              {...register("bathrooms", { required: true })}
-            />
-            <label htmlFor="0">0</label>
-
-            <input
-              type="radio"
-              name="bathrooms"
-              id="1"
-              value="1"
-              {...register("bathrooms", { required: true })}
-            />
-            <label htmlFor="1">1</label>
-
-            <input
-              type="radio"
-              name="bathrooms"
-              id="2"
-              value="2"
-              {...register("bathrooms", { required: true })}
-            />
-            <label htmlFor="2">2</label>
-
-            <input
-              type="radio"
-              name="bathrooms"
-              id="3+"
-              value="3+"
-              {...register("bathrooms", { required: true })}
-            />
-            <label htmlFor="3+">3 +</label>
-          </RadioInput>
-        </LabelAndInput>
-
-
-        <LabelAndInput>
-          <label htmlFor="roommates">
-            How many people can the {roomType.toLowerCase()} hold?
-          </label>
-          <input
-            type="number"
-            id="roommates"
-            name="roommates"
-            {...register("roommates", { required: true })}
-          />
-        </LabelAndInput>
-
-        <LabelAndInput alignItems={"center"}>
-          <label htmlFor="petsAllowed">
-            Are pets allowed in the {roomType.toLowerCase()}?
-          </label>
-          <RadioInput minW="calc(100% / 1.4)">
-            <input
-              type="radio"
-              name="petsAllowed"
-              id="YesPetsAllowed"
-              value="true"
-              {...register("petsAllowed", { required: true })}
-            />
-            <label htmlFor="YesPetsAllowed">Yes, pets are allowed!</label>
-            <input
-              type="radio"
-              name="petsAllowed"
-              id="NoPetsAllowed"
-              value="false"
-              {...register("petsAllowed", { required: true })}
-            />
-            <label htmlFor="NoPetsAllowed">No, pets are not allowed.</label>
-          </RadioInput>
-        </LabelAndInput>
-
-        <LabelAndInput alignItems={"center"}>
-          <label htmlFor="exterior">
-            Does the {roomType.toLowerCase()} have a balcony, patio, or any
-            other outside structure?
-          </label>
-          <RadioInput minW="calc(100% / 1.4)">
-            <input
-              type="radio"
-              name="exterior"
-              id="YesOutside"
-              value="true"
-              {...register("exterior", { required: true })}
-            />
-            <label htmlFor="YesOutside">Yes, it has one.</label>
-            <input
-              type="radio"
-              name="exterior"
-              id="NoOutside"
-              value="false"
-              {...register("exterior", { required: true })}
-            />
-            <label htmlFor="NoOutside">No, it does not have it.</label>
-          </RadioInput>
-        </LabelAndInput>
-
-        <FlexDir direction='row' width={"100%"}>
-          <LabelAndInput gap={"4px"} width={"100%"} wrap="wrap">
-          <label>
-              What commodities does the house offer?
-            </label>
-          {roomData?.commoditiesHome?.map((item) => (
-              <div 
-              key={item}
-              className="inputContainer"
-              style={{width: '300px'}}>
-                
-              <label className="inputLabel inputLabel--checkbox">
-                {item}
-                <input
-                  type="checkbox"
-                  name={item}
-                  value={item}
-                  {...register("commoditiesHome")}
-                />
-                <div className="div"></div>
-              </label>
-            </div>
-          ))}
           </LabelAndInput>
-        </FlexDir>
 
-        <FlexDir>
-          <LabelAndInput gap={"4px"}>
-            <label>
-              What commodities do the rooms offer?
-            </label>
-          {roomData?.commoditiesRoom?.map((item) => (
-              <div 
-              key={item}
-              className="inputContainer">
-              <label className="inputLabel inputLabel--checkbox">
-                {item}
-                <input
-                  type="checkbox"
-                  name={item}
-                  value={item}
-                  {...register("commoditiesRoom")}
-                />
-                <div className="div"></div>
-              </label>
-            </div>
-          ))}
+          <LabelAndInput>
+            <label htmlFor="description">Description</label>
+            <textarea
+              id="description"
+              name="description"
+              style={{ width: "100%" }}
+              placeholder="Lovely flat in the middle of Chamartin, near the train station, and with a shopping mall 200m away. The flat has full commodities and fees ar..."
+              {...register("description", {
+                required: true,
+                minLength: 50,
+                maxLength: 300,
+              })}
+            />
           </LabelAndInput>
-        </FlexDir>
 
-
-
-        <SelectAndOptions>
-          <label htmlFor="publicLocation">
-            Community where the {roomType.toLowerCase()} is located.
-          </label>
-          <select
-            name="publicLocation"
-            id="publicLocation"
-            defaultValue="Madrid"
-            {...register("publicLocation", { required: true })}
-          >
-            {roomData?.publicLocation?.map((item) => (
-              <option key={item} value={item}>
-                {item}
-              </option>
-            ))}
-          </select>
-        </SelectAndOptions>
-
-        <SelectAndOptions>
-          <label htmlFor="province">
-            Province where the {roomType.toLowerCase()} is located.
-          </label>
-          <select
-            name="province"
-            id="province"
-            onInput={(e) => setProvince(e.target.value)}
-            {...register("province", { required: true })}
-          >
-            {Object.keys(postcodes)
-              .sort((a, b) => a.localeCompare(b))
-              .map((province) => (
-                <option key={province} value={province}>
-                  {province}
+          <SelectAndOptions>
+            <label htmlFor="type">Location type.</label>
+            <select
+              name="type"
+              id="type"
+              defaultValue="Apartment"
+              onInput={(e) => {
+                //no se puede hacer un onChange, no funciona
+                console.log("soy target", e.target.value);
+                setRoomType(e.target.value);
+              }}
+              {...register("type", { required: true })}
+            >
+              {roomData?.type?.map((item) => (
+                <option key={item} value={item}>
+                  {item}
                 </option>
               ))}
-          </select>
-        </SelectAndOptions>
+            </select>
+          </SelectAndOptions>
 
-        {province && postcodes[province] && (
-          <>
-            <SelectAndOptions>
-              <label htmlFor="postcode">
-                Community where the {roomType.toLowerCase()} is located.
+          <LabelAndInput alignItems={"center"}>
+            <label htmlFor="available">
+              Is the {roomType.toLowerCase()} available right now?
+            </label>
+            <RadioInput minW="calc(100% / 1.4)">
+              <input
+                defaultChecked
+                type="radio"
+                name="available"
+                id="Yes"
+                value="true"
+                {...register("available", { required: true })}
+              />
+              <label htmlFor="Yes">Yes, it is ready for rental.</label>
+              <input
+                type="radio"
+                name="available"
+                id="No"
+                value="false"
+                {...register("available", { required: true })}
+              />
+              <label htmlFor="No">
+                No, this {roomType.toLowerCase()} is occupied.
               </label>
-              <select
-                name="postcode"
-                id="postcode"
-                onInput={(e) => setPostcode(e.target.value)}
-            {...register("postcode", { required: true })}
-              >
-                {Object.entries(postcodes[province])
-                  .sort((a, b) => a - b)
-                  .map(([postcode]) => (
-                    //postcode esta entre corchetes porque es destructuring de un array. Object.entries te da una
-                    //serie de arrays con estructura [clave: valor], y al hacer destructuring de esos pares,
-                    //sobreentiende que si solo se pone un elemento, sera del primero
-                    <option key={postcode} value={postcode}>
-                      {postcode}
-                    </option>
-                  ))}
-              </select>
-              <div
-                id="map"
-                style={{ width: "100%", margin: "4px", height: "50vh" }}
-              ></div>
-            </SelectAndOptions>
-          </>
-        )}
+            </RadioInput>
+          </LabelAndInput>
 
-        <UploadFile multipleUpload={true} />
-        <button type="submit" disabled={send}>
-          {send ? "Loading..." : "Upload Room"}
-        </button>
-      </FlexDir>
-    </Form>
+          <LabelAndInput>
+            <label htmlFor="surface">
+              {roomType} surface in square meters.
+            </label>
+            <input
+              type="number"
+              id="surface"
+              name="surface"
+              placeholder="150m2"
+              defaultValue={"100"}
+              {...register("surface", { required: true })}
+            />
+          </LabelAndInput>
+
+          <LabelAndInput alignItems={"center"}>
+            <label htmlFor="bathrooms">
+              How many bathrooms are there in the {roomType.toLowerCase()}?
+            </label>
+            <RadioInput minW="calc(100% / 3)">
+              <input
+                type="radio"
+                name="bathrooms"
+                id="0"
+                value="0"
+                {...register("bathrooms", { required: true })}
+              />
+              <label htmlFor="0">0</label>
+
+              <input
+                type="radio"
+                name="bathrooms"
+                id="1"
+                value="1"
+                {...register("bathrooms", { required: true })}
+              />
+              <label htmlFor="1">1</label>
+
+              <input
+                type="radio"
+                name="bathrooms"
+                id="2"
+                value="2"
+                {...register("bathrooms", { required: true })}
+              />
+              <label htmlFor="2">2</label>
+
+              <input
+                type="radio"
+                name="bathrooms"
+                id="3+"
+                value="3+"
+                {...register("bathrooms", { required: true })}
+              />
+              <label htmlFor="3+">3 +</label>
+            </RadioInput>
+          </LabelAndInput>
+
+          <LabelAndInput>
+            <label htmlFor="roommates">
+              How many people can the {roomType.toLowerCase()} hold?
+            </label>
+            <input
+              type="number"
+              id="roommates"
+              name="roommates"
+              {...register("roommates", { required: true })}
+            />
+          </LabelAndInput>
+
+          <LabelAndInput alignItems={"center"}>
+            <label htmlFor="petsAllowed">
+              Are pets allowed in the {roomType.toLowerCase()}?
+            </label>
+            <RadioInput minW="calc(100% / 1.4)">
+              <input
+                type="radio"
+                name="petsAllowed"
+                id="YesPetsAllowed"
+                value="true"
+                {...register("petsAllowed", { required: true })}
+              />
+              <label htmlFor="YesPetsAllowed">Yes, pets are allowed!</label>
+              <input
+                type="radio"
+                name="petsAllowed"
+                id="NoPetsAllowed"
+                value="false"
+                {...register("petsAllowed", { required: true })}
+              />
+              <label htmlFor="NoPetsAllowed">No, pets are not allowed.</label>
+            </RadioInput>
+          </LabelAndInput>
+
+          <LabelAndInput alignItems={"center"}>
+            <label htmlFor="exterior">
+              Does the {roomType.toLowerCase()} have a balcony, patio, or any
+              other outside structure?
+            </label>
+            <RadioInput minW="calc(100% / 1.4)">
+              <input
+                type="radio"
+                name="exterior"
+                id="YesOutside"
+                value="true"
+                {...register("exterior", { required: true })}
+              />
+              <label htmlFor="YesOutside">Yes, it has one.</label>
+              <input
+                type="radio"
+                name="exterior"
+                id="NoOutside"
+                value="false"
+                {...register("exterior", { required: true })}
+              />
+              <label htmlFor="NoOutside">No, it does not have it.</label>
+            </RadioInput>
+          </LabelAndInput>
+
+          <FlexDir direction="row" width={"100%"}>
+            <LabelAndInput gap={"4px"} width={"100%"} wrap="wrap">
+              <label>What commodities does the house offer?</label>
+              {roomData?.commoditiesHome?.map((item) => (
+                <div
+                  key={item}
+                  className="inputContainer"
+                  style={{ width: "300px" }}
+                >
+                  <label className="inputLabel inputLabel--checkbox">
+                    {item}
+                    <input
+                      type="checkbox"
+                      name={item}
+                      value={item}
+                      {...register("commoditiesHome")}
+                    />
+                    <div className="div"></div>
+                  </label>
+                </div>
+              ))}
+            </LabelAndInput>
+          </FlexDir>
+
+          <FlexDir>
+            <LabelAndInput gap={"4px"}>
+              <label>What commodities do the rooms offer?</label>
+              {roomData?.commoditiesRoom?.map((item) => (
+                <div key={item} className="inputContainer">
+                  <label className="inputLabel inputLabel--checkbox">
+                    {item}
+                    <input
+                      type="checkbox"
+                      name={item}
+                      value={item}
+                      {...register("commoditiesRoom")}
+                    />
+                    <div className="div"></div>
+                  </label>
+                </div>
+              ))}
+            </LabelAndInput>
+          </FlexDir>
+
+          <SelectAndOptions>
+            <label htmlFor="publicLocation">
+              Community where the {roomType.toLowerCase()} is located.
+            </label>
+            <select
+              name="publicLocation"
+              id="publicLocation"
+              defaultValue="Madrid"
+              {...register("publicLocation", { required: true })}
+            >
+              {roomData?.publicLocation?.map((item) => (
+                <option key={item} value={item}>
+                  {item}
+                </option>
+              ))}
+            </select>
+          </SelectAndOptions>
+
+          <SelectAndOptions>
+            <label htmlFor="province">
+              Province where the {roomType.toLowerCase()} is located.
+            </label>
+            <select
+              name="province"
+              id="province"
+              onInput={(e) => setProvince(e.target.value)}
+              {...register("province", { required: true })}
+            >
+              {Object.keys(postcodes)
+                .sort((a, b) => a.localeCompare(b))
+                .map((province) => (
+                  <option key={province} value={province}>
+                    {province}
+                  </option>
+                ))}
+            </select>
+          </SelectAndOptions>
+
+          {province && postcodes[province] && (
+            <>
+              <SelectAndOptions>
+                <label htmlFor="postcode">
+                  Community where the {roomType.toLowerCase()} is located.
+                </label>
+                <select
+                  name="postcode"
+                  id="postcode"
+                  onInput={(e) => setPostcode(e.target.value)}
+                  {...register("postcode", { required: true })}
+                >
+                  {Object.entries(postcodes[province])
+                    .sort((a, b) => a - b)
+                    .map(([postcode]) => (
+                      //postcode esta entre corchetes porque es destructuring de un array. Object.entries te da una
+                      //serie de arrays con estructura [clave: valor], y al hacer destructuring de esos pares,
+                      //sobreentiende que si solo se pone un elemento, sera del primero
+                      <option key={postcode} value={postcode}>
+                        {postcode}
+                      </option>
+                    ))}
+                </select>
+                <div
+                  id="map"
+                  style={{ width: "100%", margin: "4px", height: "50vh" }}
+                ></div>
+              </SelectAndOptions>
+            </>
+          )}
+
+          <UploadFile multipleUpload={true} />
+          <button type="submit" disabled={send}>
+            {send ? "Loading..." : "Upload Room"}
+          </button>
+        </FlexDir>
+      </Form>
     </FlexDir>
   );
 };

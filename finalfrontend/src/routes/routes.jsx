@@ -11,6 +11,7 @@ import App from "../App";
 import { MapCreation, ForgotPassword, ByIdMap, Home, RoomSearch, CreateRoom, Login, VerifyCode,Registerpt2, Profile,UserProfileData,FavGallery,EditProfile, AccountSettings, RoomById, Feed } from "../pages";
 import { AppCarousel } from "../components/Carousel/Carousel";
 import { RoomReview } from "../components/Review/RoomReview";
+import { CreatePost } from "../pages/CreatePost/CreatePost";
 
 
 
@@ -80,6 +81,13 @@ export const router = createBrowserRouter ([
               {
                 path: "/createRoom",
                 element: <CreateRoom />
+                // (<Protected>
+                //   {/* </> */}
+                // </Protected>),
+              },
+              {
+                path: "/createPost",
+                element: <CreatePost />
                 // (<Protected>
                 //   {/* </> */}
                 // </Protected>),

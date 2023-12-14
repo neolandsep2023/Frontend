@@ -12,7 +12,7 @@ export const useErrorCreateRoom = (res, setRes, setCreatedRoomSuccesfully) => {
      setRes({});
   }
 
-  if (res?.response?.data?.error.includes("Error updating user")) {
+  if (res?.response?.data?.error?.includes("Error updating user")) {
     Swal.fire({
       icon: "error",
       title: "Server problems!",
@@ -23,7 +23,7 @@ export const useErrorCreateRoom = (res, setRes, setCreatedRoomSuccesfully) => {
     setRes({});
   }
 
-  if (res?.response?.data?.error.includes("Error creating room")) {
+  if (res?.response?.data?.error?.includes("Error creating room")) {
     Swal.fire({
       icon: "error",
       title: "Server problems!",
