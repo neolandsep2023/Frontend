@@ -9,6 +9,7 @@ import { Registerpt1 } from "../pages/Register/Registerpt1/Registerpt1";
 import App from "../App";
 
 import { MapCreation, ForgotPassword, ByIdMap, Home, RoomSearch, CreateRoom, Login, VerifyCode,Registerpt2, Profile,UserProfileData,FavGallery,EditProfile, AccountSettings, RoomById, Feed } from "../pages";
+import { AppCarousel } from "../components/Carousel/Carousel";
 
 
 
@@ -136,6 +137,10 @@ export const router = createBrowserRouter ([
             element: <MapCreation/>},
             {path: "/pruebas/view",
           element: <ByIdMap/>},
+          {
+            path: "/pruebas/styledcomponents",
+            element: <AppCarousel/>
+          }
         ],
     },
 ]);

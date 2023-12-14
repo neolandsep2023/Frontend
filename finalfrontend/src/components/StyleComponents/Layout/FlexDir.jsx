@@ -6,14 +6,14 @@ const FlexStyle = styled.div`
   flex-direction: ${({ direction }) => direction};
   justify-content: center;
   align-items: center;
-  flex-wrap: ${({ wrap }) => (wrap ? wrap : "nowrap")};
+  flex-wrap: ${({ wrap }) => (wrap ? wrap : "no-wrap")};
   gap: ${({ gap, theme }) => (gap ? gap : theme.spacing(1.5))};
   margin: ${({ margin, theme }) => (margin ? margin : theme.spacing(1))};
   padding: ${({ padding, theme }) => (padding ? padding : theme.spacing(0))};
   height: ${({ height }) => (height ? height : "auto")};
   width: ${({ width }) => (width ? width : "auto")};
   min-height: ${({ minHeight }) => (minHeight ? minHeight : "auto")};
-
+  
   ${({ theme }) => theme.mediaquery.laptop} {
     /* flex-direction: ${({ mediaqueryDir, direction }) =>
       mediaqueryDir ? mediaqueryDir : direction}; */

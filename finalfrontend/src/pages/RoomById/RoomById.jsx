@@ -8,6 +8,7 @@ import { ConnectButtonCustom } from "../../components/StyleComponents/Buttons/Co
 import { Description } from "../../components/StyleComponents/Text/Small/Description";
 import { ByIdMap } from "../Pruebas/ByIdMap";
 import { printHomeIcons, printRoomIcons } from "../../utils/enumIcons";
+import { AppCarousel } from "../../components/Carousel/Carousel";
 
 export const RoomById = () => {
   //! ---------- Estados ----------
@@ -32,7 +33,7 @@ export const RoomById = () => {
         <h1 style={{fontSize: "4vw"}}>{res?.data?.title}</h1>
         <FlexDir direction="row" gap="2rem" mediaqueryDirMobile="column">
           <FlexDir width="60vw">
-            <ByIdImageCustom src={res?.data?.image} alt={res?.data?.title}/>
+            <AppCarousel src={res?.data?.image} alt={res?.data?.title}/>
           </FlexDir>
           <FlexDir direction="column" height="100%" width="25vw" mediaqueryWidthMobile="100vw" mediaqueryMarginMobile="-1rem 0 0 0">
             <UlCustom  mediaqueryDirMobile="row">
@@ -63,7 +64,7 @@ export const RoomById = () => {
             </UlCustom>
           </FlexDir>
         </FlexDir>
-        <FlexDir direction="column" margin="0">
+        <FlexDir direction="column" margin="0" width="100vw">
           <H3Custom padding="0 0 0 5vw">Description</H3Custom>
           <Description>{res?.data?.description}</Description>
         </FlexDir>

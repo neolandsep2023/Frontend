@@ -1,4 +1,7 @@
+import { useThemeApp } from "../context/themeContext";
+
 export const printHomeIcons = (commodity) => {
+  const  {theme}  = useThemeApp()
   let src = '';
 
   switch (commodity) {
@@ -70,7 +73,7 @@ export const printHomeIcons = (commodity) => {
       break;
   }
 
-  return <img src={src} alt={commodity} style={{width: "2vw", margin: "0 1vw 0 0", padding: "3px 0 0 0"}}/>;
+  return <img src={src} alt={commodity} style={{width: "3vw", margin: "0 1vw 0 0", padding: "0.25vw", backgroundColor: theme == "dark" ? "white" : "transparent" }}/>;
   }
 
 
@@ -101,6 +104,7 @@ const commoditiesHomeIcon = [
 ]
 
 export const printRoomIcons = (commodity) => {
+  const  {theme}  = useThemeApp()
   let src = '';
 
   switch (commodity) {
@@ -127,7 +131,7 @@ export const printRoomIcons = (commodity) => {
       break;
   }
 
-  return <img src={src} alt={commodity} style={{width: "2vw", margin: "0 1vw 0 0", padding: "3px 0 0 0"}}/>;
+  return <img src={src} alt={commodity} style={{width: "3vw", margin: "0 1vw 0 0", padding: "0.25vw", backgroundColor: theme == "dark" ? "white" : "transparent" }}/>;
 }
 
 const commoditiesRoomIcon = [

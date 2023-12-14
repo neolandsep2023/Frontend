@@ -12,6 +12,8 @@ const UlStyles = styled.ul`
   li{
     list-style: none;
     font-size: 2vw;
+    display: flex;
+    justify-content: center;
   }
   span{
     font-size: 2.5vw;
