@@ -9,7 +9,7 @@ import { Description } from "../../components/StyleComponents/Text/Small/Descrip
 import { ByIdMap } from "../Pruebas/ByIdMap";
 import { printHomeIcons, printRoomIcons } from "../../utils/enumIcons";
 import { AppCarousel } from "../../components/Carousel/Carousel";
-
+import { RoomReview } from "../../components/Review/RoomReview";
 export const RoomById = () => {
   //! ---------- Estados ----------
   const [res, setRes] = useState();
@@ -70,7 +70,10 @@ export const RoomById = () => {
         </FlexDir>
         <FlexDir direction="column" margin="7vh">
           <H3Custom padding="0 0 0 5vw" margin="0 0 -2.5rem 0">Location</H3Custom>
-          {res && <ByIdMap postcode = {res?.data?.postcode} province = {res?.data?.province}/>}
+          {res && <ByIdMap postcode = {res?.data?.postcode} province = {res?.data?.province} ccaa={res?.data?.publicLocation}/>}
+        </FlexDir>
+        <FlexDir>
+          <RoomReview roomId = {res?.data?._id}/>
         </FlexDir>
       </FlexDir>
       }
