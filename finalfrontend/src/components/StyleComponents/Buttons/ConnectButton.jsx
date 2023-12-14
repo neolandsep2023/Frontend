@@ -15,7 +15,7 @@ const ConnectButtonStyles = styled.button`
 
   ${({ theme }) => theme.mediaquery.mobile} {
     width: 80%;
-    aspect-ratio: 10/1
+    aspect-ratio: 13/1
   }
 `
 

@@ -2,7 +2,7 @@ import { useTheme } from "@emotion/react";
 import styled from "@emotion/styled";
 
 const DescriptionStyles = styled.small`
-font-size: 2vw;
+font-size: 1.7vw;
 width: 75%;
 text-align: justify;
 /* background-color: ${({theme}) => theme.palette.button.mediumGreenOpaco}; */

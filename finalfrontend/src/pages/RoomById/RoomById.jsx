@@ -43,7 +43,7 @@ export const RoomById = () => {
               <li>🗺️ {res?.data?.province}, {res?.data?.publicLocation}</li>
               <li>🪟 {res?.data?.exterior && "Exterior Room"}</li>
             </UlCustom>
-            <ConnectButtonCustom>connect</ConnectButtonCustom>
+            <ConnectButtonCustom>Connect</ConnectButtonCustom>
           </FlexDir>
         </FlexDir>
         <FlexDir direction = "row" width="100vw" margin="2.5rem 0 1rem 0" mediaqueryMarginMobile="0.3rem 0 0 0">
@@ -64,7 +64,7 @@ export const RoomById = () => {
             </UlCustom>
           </FlexDir>
         </FlexDir>
-        <FlexDir direction="column" margin="0" width="100vw">
+        <FlexDir direction="column" margin="5rem 0 0 0" width="100vw">
           <H3Custom padding="0 0 0 5vw">Description</H3Custom>
           <Description>{res?.data?.description}</Description>
         </FlexDir>

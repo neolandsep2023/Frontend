@@ -1,5 +1,3 @@
-// import React, {useState} from 'https://cdn.skypack.dev/react';
-// import ReactDOM from 'https://cdn.skypack.dev/react-dom';
 import {TiChevronLeftOutline, TiChevronRightOutline} from 'https://cdn.skypack.dev/react-icons/ti';
 
 import React, { useState } from "react";

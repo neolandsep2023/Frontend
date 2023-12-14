@@ -1,39 +1,14 @@
-/* root{
-  --color-gray: #9CA3AF;
-  --color-black: #1F2937;
-  --card-size: 23rem;
-} */
-
-
-/* body {
-  width: 100vw;
-  height: 100vh;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  overflow: hidden;
-  background-image: linear-gradient(45deg, --color-purple, --color-pink);
-  font-family: 'Montserrat', sans-serif;
-} */
-
-/*  {
-  box-sizing: border-box;
-} */
-
-/* #carouselPage{
-  height: 100vh;
-  width: 100vw;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-} */
-
 .carousel {
   position: relative;
   width: 40vw;
   height: 30vw;
   perspective: 200px;
   transform-style: preserve-3d;
+
+  @media screen and (max-width: 576px){
+    width: 65vw;
+    height: 44vw;
+  }
 }
 
 #card-container {
