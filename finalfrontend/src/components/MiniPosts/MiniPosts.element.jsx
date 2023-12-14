@@ -14,18 +14,53 @@ padding: ${({theme }) => (theme.spacing(1))};
 width: 45vw;
 height: 300px;
 margin: ${({ margin, theme }) => (margin ? margin : theme.spacing(1.5))};
+& img{
+    width: 40%;
+    border-radius: 10px;
+    border: ${({ theme }) => theme.spacing(0.5)} solid
+    ${({ theme }) => theme.palette.border.main};
+
+  }
+
+  & p, h3, h4{
+    margin: 0;
+  }
+
+  & p {
+    max-height: 50px;
+    max-width: 100%;
+    font-size: 15px;
+    text-overflow: ellipsis;
+    overflow-wrap: break-word;
+    white-space: nowrap;
+  overflow: hidden;
+  }
+
 
 ${({ theme }) => theme.mediaquery.tablet} {
     width: 45vw;
     height: 25vh;
+    & img{
+    width: 30%;
+  }
     margin: ${({ margin, theme }) => (margin ? margin : theme.spacing(1))};
   }
 
   ${({ theme }) => theme.mediaquery.mobile} {
     margin: ${({ margin, theme }) => (margin ? margin : theme.spacing(1))};
     width: 90vw;
-    height: 37vh;
+    height: 80vh;
+
+    & img{
+    width: 80%;
+
   }
+
+
+  }
+
+
+
 
 `
 

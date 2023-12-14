@@ -6,6 +6,7 @@ export const usePaginacion = (num) => {
   const itemsPerPage = num || 6;
   const [currentPage, setCurrentPage] = useState(1);
 
+
   const currentItems = galeriaItems?.slice(
     (currentPage - 1) * itemsPerPage,
     currentPage * itemsPerPage
@@ -59,6 +60,7 @@ export const usePaginacion = (num) => {
           </Pagination>
           {totalPagesArr.map((page) => (
             <Pagination
+            key={page}
               onClick={() => setPage(page + 1)}
               variant={currentPage === page + 1 ? "clicked" : "normal"}
             >

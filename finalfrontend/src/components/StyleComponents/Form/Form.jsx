@@ -15,9 +15,10 @@ const FormStyle = styled.form`
     /* width: 70%; */
     height: ${({ theme }) => theme.spacing(3.5)};
   }
-  &textarea {
+  & textarea {
     width: 100%;
   }
+
   ${({ theme }) => theme.mediaquery.mobile} {
     display: flex;
     flex-direction: column;

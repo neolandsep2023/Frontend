@@ -25,7 +25,7 @@ ${({ theme }) => theme.mediaquery.tablet} {
   }
 
   ${({ theme }) => theme.mediaquery.mobile} {
-    height: 250vh;
+    height: 520vh;
     flex-direction: row;
     /* flex-wrap: wrap; */
   }

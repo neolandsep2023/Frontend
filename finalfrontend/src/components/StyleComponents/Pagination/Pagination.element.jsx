@@ -26,6 +26,7 @@ background-color: ${({variant, theme}) =>
 &:hover{
   border: ${({ variant , theme}) => 
   variant == "normal" && `2px solid ${theme.palette.form.light}` }; 
+  cursor: ${({variant})=> variant == "normal" && "pointer"} ;
   
 /*   */
 }

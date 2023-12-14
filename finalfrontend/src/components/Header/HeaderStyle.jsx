@@ -10,6 +10,9 @@ const HeaderStyles = styled.header`
   theme.spacing(1)};
   height: 12vh;
   width: 100vw;
+  & img {
+    height: 50px;
+  }
 `;
 
 

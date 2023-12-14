@@ -22,8 +22,8 @@ setIsLoading(false)
 
 
 useEffect(() => {
-    res?.status == 200 && setGaleriaItems(res?.data)
-    console.log(res)
+    res?.status == 200 && setGaleriaItems(res?.data?.allPosts)
+    console.log(res?.data?.allPosts)
   }, [res]); 
 
   useEffect(() => {
