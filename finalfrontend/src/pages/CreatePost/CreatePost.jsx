@@ -36,8 +36,8 @@ export const CreatePost = () => {
   //estos estados son para que se rendericen condicionalmente elementos
   const [postType, setPostType] = useState("");
   const [publicLocation, setPublicLocation] = useState('Andalucia');
-  const [province, setProvince] = useState("");
-  const [postcode, setPostcode] = useState("");
+  const [province, setProvince] = useState("Almería");
+  const [postcode, setPostcode] = useState("04001");
 
   //estos estados son para re-renderizar el componente si cambia la referencia
   const mapRef = useRef(null);
