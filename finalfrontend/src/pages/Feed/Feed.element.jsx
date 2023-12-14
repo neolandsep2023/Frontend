@@ -2,10 +2,12 @@ import styled from "@emotion/styled"
 
 const FeedStyled = styled.div`
 display: flex;
-max-width: 100vw;
-height: 160vh;
+width: 100vw;
+max-height: 160vh;
+min-height: 60vh;
 flex-wrap: wrap;
 justify-content: center;
+align-items: start ;
 gap: 4px;
 margin: 0 1rem 0 1rem ;
 
@@ -20,12 +22,12 @@ ${({ theme }) => theme.mediaquery.laptop} {
 ${({ theme }) => theme.mediaquery.tablet} {
     
     flex-direction: row;
-    height: 85vh;
+    max-height: 85vh;
 
   }
 
   ${({ theme }) => theme.mediaquery.mobile} {
-    height: 520vh;
+    max-height: 520vh;
     flex-direction: row;
     margin: 0 ${({ theme }) => theme.spacing(0.5)} 0 ${({ theme }) => theme.spacing(0.5)};
   }

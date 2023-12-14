@@ -3,23 +3,24 @@ import styled from "@emotion/styled";
 import { useThemeApp } from "../../../context/themeContext";
 
 const SearchInputStyles = styled.input`
-  border-radius: 30px;
-  border: 3px solid /*${({theme}) => theme.palette.border.main}*/ #396644;
-  background-color: ${({theme}) => theme.palette.button.mediumGreen};
-  height: 55px;
-  min-width: 30vw;
+  border-radius: ${({ theme }) => theme.spacing(1)};
+  border: 2px solid ${({theme}) => theme.palette.button.mediumGreen};
+  background-color: ${({theme}) => theme.palette.form.main};
+  height: 45px;
+  min-width: 38vw;
   font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
-  -webkit-box-shadow: 2px 10px 25px -7px ${({theme}) => theme.palette.shadow.main};
+  /* -webkit-box-shadow: 2px 10px 25px -7px ${({theme}) => theme.palette.shadow.main};
   -moz-box-shadow: 2px 10px 25px -7px ${({theme}) => theme.palette.shadow.main};
-  box-shadow: 2px 10px 25px -7px ${({theme}) => theme.palette.shadow.main};
+  box-shadow: 2px 10px 25px -7px ${({theme}) => theme.palette.shadow.main}; */
 
   ::placeholder{
-    color: ${({darkOrLight}) => darkOrLight == "dark" ? "white" : "black" };
-    font-family: ${({theme}) => theme.typography.fonts.italic};
+    color: ${({ theme }) => theme.palette.textColor.main};
+    /* font-family: ${({theme}) => theme.typography.fonts.italic}; */
     font-size: 15px;
     font-weight: 300;
     letter-spacing: 0.7px;
-    text-align: center
+    text-align: center;
+    margin: 0 0 0 1rem;
   }
 
   ${({ theme }) => theme.mediaquery.tablet} {
@@ -32,8 +33,8 @@ const SearchInputStyles = styled.input`
   }
 
   ${({ theme }) => theme.mediaquery.mobile} {
-    height: 8vw;
-    min-width: 45vw;
+    height: 10vw;
+    min-width: 60vw;
 
     ::placeholder{
       font-size: 3vw
@@ -46,6 +47,6 @@ export const SearchInputCustom = ({ onChange }) => {
   const darkOrLight = themeObject.theme
 
   return (
-    <SearchInputStyles onChange={onChange} darkOrLight = {darkOrLight} theme = {theme} placeholder="enter location or postcode..." ></SearchInputStyles>
+    <SearchInputStyles onChange={onChange} darkOrLight = {darkOrLight} theme = {theme} placeholder="Search..." ></SearchInputStyles>
   )
 }

@@ -4,7 +4,7 @@ import { FlexDir, FlexEnd } from "../StyleComponents"
 import { useEffect, useState } from "react"
 
 
-export const MiniPosts = ({id, title, text, image, location, price, author, type}) => {
+export const MiniPosts = ({id, title, text, image, province, price, author, type}) => {
 const path = `/feed/${id}`
 
 
@@ -27,8 +27,7 @@ const path = `/feed/${id}`
             <h4 className="author">{author[0]?.name ? author[0]?.name : author[0]?.username}</h4>
             </FlexDir>
             <h4 className="price">{price}€</h4>
-            <h4>{type}</h4>
-            <h4 className="location">📍{location}</h4>
+            <h4 className="location">📍{province}</h4>
         </FlexEnd>
         </FlexDir>
      </MiniPostStyle>

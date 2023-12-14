@@ -8,7 +8,7 @@ import { ProtectedCheckChildren } from "../components/ProtectedRoutes/ProtectedC
 import { Registerpt1 } from "../pages/Register/Registerpt1/Registerpt1";
 import App from "../App";
 
-import { MapCreation, ForgotPassword, ByIdMap, Home, RoomSearch, CreateRoom, Login, VerifyCode,Registerpt2, Profile,UserProfileData,FavGallery,EditProfile, AccountSettings, RoomById, Feed } from "../pages";
+import { MapCreation, ForgotPassword, ByIdMap, Home, RoomSearch, CreateRoom, Login, VerifyCode,Registerpt2, Profile,UserProfileData,FavGallery,EditProfile, AccountSettings, RoomById, Feed, NotFound } from "../pages";
 import { AppCarousel } from "../components/Carousel/Carousel";
 import { RoomReview } from "../components/Review/RoomReview";
 import { CreatePost } from "../pages/CreatePost/CreatePost";
@@ -142,7 +142,7 @@ export const router = createBrowserRouter ([
               },
               {
                 path: "*",
-                // element: <NotFound />,
+                element: <NotFound />,
               },
               {path: "/pruebas/create",
             element: <MapCreation/>},
