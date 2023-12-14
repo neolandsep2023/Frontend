@@ -6,7 +6,6 @@ import { FlexDir, FlexEnd } from "../StyleComponents"
 export const MiniPosts = ({id, title, text, image, location, price, author}) => {
 const path = `/feed/${id}`
 
-console.log(author[0]?.name, author[0]?.username)
 
   return (
     <Link to={path}>
