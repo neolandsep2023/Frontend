@@ -34,8 +34,8 @@ export const CreateRoom = () => {
 
   //estos estados son para que se rendericen condicionalmente elementos
   const [roomType, setRoomType] = useState("Apartment");
-  const [province, setProvince] = useState("");
-  const [postcode, setPostcode] = useState("");
+  const [province, setProvince] = useState("Almería");
+  const [postcode, setPostcode] = useState("04001");
   const [publicLocation, setPublicLocation] = useState("Andalucia");
 
   //estos estados son para re-renderizar el componente si cambia la referencia
@@ -419,7 +419,15 @@ export const CreateRoom = () => {
               name="publicLocation"
               id="publicLocation"
               defaultValue={publicLocation}
-              onInput={(e) => setPublicLocation(e.target.value)}
+              onInput={(e) => {
+                const selectedPublicLocation = e.target.value;
+                setPublicLocation(selectedPublicLocation);
+                // Set province and postcode based on the first key inside their respective sections
+                const firstProvince = Object.keys(postcodes[selectedPublicLocation])[0];
+                setProvince(firstProvince);
+                const firstPostcode = Object.keys(postcodes[selectedPublicLocation][firstProvince])[0];
+                setPostcode(firstPostcode);
+              }}
               {...register("publicLocation", { required: true })}
             >
               <optgroup label="Community">
@@ -443,7 +451,12 @@ export const CreateRoom = () => {
                 name="province"
                 id="province"
                 defaultValue={province}
-                onInput={(e) => setProvince(e.target.value)}
+                onInput={(e) => {
+                  let selectedProvince = e.target.value;
+                setProvince(selectedProvince);
+                let firstPostcode = Object.keys(postcodes[publicLocation][selectedProvince])[0];
+                setPostcode(firstPostcode);
+                }}
                 {...register("province", { required: true })}
               >
                 {Object.keys(postcodes[publicLocation])
