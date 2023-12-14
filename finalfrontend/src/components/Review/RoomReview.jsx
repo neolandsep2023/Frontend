@@ -1,28 +1,29 @@
 import { useEffect, useState } from "react"
 import { getAllComments } from "../../services/comment.service";
+import { createRoutesFromChildren } from "react-router-dom";
+import { AppCarouselReview } from "../Carousel/ReviewsCarousel";
 
-export const RoomReview = () => {
+export const RoomReview = ({roomId}) => {
+  // console.log(roomId)
   //! ---------- Estados ----------
   const [res, setRes] = useState();
 
   //! ---------- Destructuring ----------
 
   const fetchReviews = async () => {
-    setRes(await getAllComments())
+    setRes(await getAllComments(roomId))
   }
 
   useEffect(() => {
     fetchReviews()
-
-    if (res.status == 200) {
-      
-    }
   }, [])
 
   return (
     <>
       {res && 
       <div>
+        {/* {console.log(res?.data)} */}
+          <AppCarouselReview comments = {res?.data}/>
       </div>}
     </>
   )

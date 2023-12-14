@@ -1,10 +1,10 @@
 import { extraConfig } from "./serviceApiGeneral.config";
 
 //! ------------------ GET ALL COMMENTS ------------------
-export const getAllComments = async () => {
+export const getAllComments = async (id) => {
   const APIGeneral = extraConfig();
 
-  return APIGeneral.post(`/comments/getAll`)
+  return APIGeneral.get(`/comments/getAll/${id}`)
     .then((res) => res)
     .catch((error) => error);
 };
