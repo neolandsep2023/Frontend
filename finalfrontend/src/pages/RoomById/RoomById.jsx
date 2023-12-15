@@ -37,7 +37,7 @@ export const RoomById = () => {
           </FlexDir>
           <FlexDir direction="column" height="100%" width="25vw" mediaqueryWidthMobile="100vw" mediaqueryMarginMobile="-1rem 0 0 0">
             <UlCustom  mediaqueryDirMobile="row">
-              <li><span>{res?.data?.post?.price}/month</span></li>
+              <li><span>{res?.data?.post?.price}€/month</span></li>
               <li>🏠{res?.data?.type}</li>
               <li>⬜ {res?.data?.surface}m²</li>
               <li>🗺️ {res?.data?.province}, {res?.data?.publicLocation}</li>

@@ -33,37 +33,28 @@ export const PostById = () => {
           <h1 style={{ fontSize: "4vw" }}>{res?.data?.title}</h1>
           <FlexDir direction="row" gap="2rem" mediaqueryDirMobile="column">
             <FlexDir width="60vw">
-              {/* <AppCarousel src={res?.data?.image} alt={res?.data?.title} /> */}
+              <ByIdImageCustom/>
             </FlexDir>
             <FlexDir direction="column" height="100%" width="25vw" mediaqueryWidthMobile="100vw" mediaqueryMarginMobile="-1rem 0 0 0">
               <UlCustom mediaqueryDirMobile="row">
-                <li><span>{res?.data?.price}/month</span></li>
+                <li><span>{res?.data?.price}€/month</span></li>
                 <li>🏠{res?.data?.postcode}</li>
                 <li>⬜ {res?.data?.preferredGender}m²</li>
                 <li>🗺️ {res?.data?.province}</li>
-                <li>🪟 {res?.data?.preferredAge}</li>
+                <li>⌛ {res?.data?.preferredAge}</li>
               </UlCustom>
               <ConnectButtonCustom>Connect</ConnectButtonCustom>
             </FlexDir>
           </FlexDir>
-          {/* <FlexDir direction="row" width="100vw" margin="2.5rem 0 1rem 0" mediaqueryMarginMobile="0.3rem 0 0 0">
-            <FlexDir direction="column" width="50%" height="50vh">
-              <H3Custom textAlign="center">House Commodities</H3Custom>
-              <UlCustom width="100%" height="90%" justifyContent="flex-start" alignItems="start" padding="0 0 0 30%">
-                {res?.data?.commoditiesHome?.map((commodity) => (
-                  <li key={commodity}>{printHomeIcons(commodity)}{commodity}</li>
-                ))}
-              </UlCustom>
-            </FlexDir>
-            <FlexDir direction="column" width="50%" height="50vh">
-              <H3Custom textAlign="center">Room Commodities</H3Custom>
-              <UlCustom width="100%" height="90%" justifyContent="flex-start" alignItems="start" padding="0 0 0 30%">
-                {res?.data?.commoditiesRoom?.map((commodity) => (
-                  <li key={commodity}>{printRoomIcons(commodity)}{commodity}</li>
-                ))}
-              </UlCustom>
-            </FlexDir>
-          </FlexDir> */}
+          <FlexDir direction="column" width="50%" height="50vh">
+            <H3Custom textAlign="center">House Commodities</H3Custom>
+            <UlCustom width="100%" height="90%" justifyContent="flex-start" alignItems="start" padding="0 0 0 30%">
+                <li>Private Room</li>
+                <li>{res?.data?.room?.commoditiesRoom?.includes("Double Bed") ? "Double Bed" : "Single Bed"}</li>
+                <li>{res?.data?.room?.exterior && "Exterior Room"}</li>
+                <li>{res?.data?.room?.surface}m²</li>
+            </UlCustom>
+          </FlexDir>
           <FlexDir direction="column" margin="5rem 0 0 0" width="100vw">
             <H3Custom padding="0 0 0 5vw">Description</H3Custom>
             <Description>{res?.data?.text}</Description>
