@@ -7,6 +7,7 @@ const ButtonStyles = styled.button`
   ? theme.palette.button.light
 : variant == "loading" 
 && theme.palette.button.dark};
+  color: ${({variant,theme}) => variant == "loading" && theme.palette.button.mediumGreen };
   border-radius: 5px;
   font-weight: 500;
   font-size: 22px;

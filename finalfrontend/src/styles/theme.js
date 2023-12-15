@@ -17,6 +17,7 @@ export const ZINDEX = {
 const PALETTE_COLOR_LIGHT = {
   background: "#ffffff",
   header: "#f9f9f9",
+  header1: '#f0f9f3',
   enhanced: "#72cc89", //? puesto por mario
   form: "#f5f5f5",
   lighterForm: "#d3d7db",
@@ -39,6 +40,7 @@ const PALETTE_COLOR_LIGHT = {
 const PALETTE_COLOR_DARK = {
   background: "#202124",
   header: "#2a2b2e",
+  header1: '#16281b',
   enhanced: "#396644", //? puesto por mario
   form: "#35363a",
   lighterForm: "#62676c",
@@ -67,6 +69,7 @@ export const themeLight = {
     },
     header: {
       main: PALETTE_COLOR_LIGHT.header,
+      try:  PALETTE_COLOR_LIGHT.header1,
     },
     enhanced: {
       main: PALETTE_COLOR_LIGHT.enhanced,
@@ -128,6 +131,8 @@ export const themeDark = {
     },
     header: {
       main: PALETTE_COLOR_DARK.header,
+      try:  PALETTE_COLOR_DARK.header,
+
     },
     enhanced: {
       main: PALETTE_COLOR_DARK.enhanced,

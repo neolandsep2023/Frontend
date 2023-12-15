@@ -4,7 +4,7 @@ import styled from "@emotion/styled";
 import { useThemeApp } from "../../context/themeContext";
 
 const HeaderStyles = styled.header`
-  background-color: ${({theme}) => theme.palette.header.main};
+  background-color: ${({theme}) => theme.palette.header.try};
   text-align: center;
   padding: ${({theme})=>
   theme.spacing(1)};
