@@ -22,6 +22,7 @@ import { createRoom } from "../../services/room.service";
 import { roomData } from "../../data/Rooms.data";
 import { useErrorCreateRoom } from "../../hooks/useErrorCreateRoom";
 import { postcodes } from "../../../data/noAbrirElArchivoEsDemasiadoLargo/shortPostcodes";
+import { useAuth } from "../../context/authContext";
 
 //<!--IMP                     Component                            -->
 export const CreateRoom = () => {
@@ -31,6 +32,7 @@ export const CreateRoom = () => {
   const [createdRoomSuccesfully, setCreatedRoomSuccesfully] = useState(false);
   const { register, handleSubmit } = useForm();
   const navigate = useNavigate();
+  const {logout} = useAuth();
 
   //estos estados son para que se rendericen condicionalmente elementos
   const [roomType, setRoomType] = useState("Apartment");
@@ -83,7 +85,7 @@ export const CreateRoom = () => {
   }, [roomType, postcode, province, publicLocation]);
 
   useEffect(() => {
-    useErrorCreateRoom(res, setRes, setCreatedRoomSuccesfully, setId);
+    useErrorCreateRoom(res, setRes, setCreatedRoomSuccesfully, setId, logout, navigate);
   }, [res]);
 
   //----------------------USE EFFECT MAPA--------------------------

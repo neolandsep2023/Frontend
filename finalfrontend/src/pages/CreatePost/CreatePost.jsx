@@ -23,6 +23,7 @@ import { createPost } from "../../services/post.service";
 import { postcodes } from "../../../data/noAbrirElArchivoEsDemasiadoLargo/shortPostcodes";
 import { useErrorCreatePost } from "../../hooks/useErrorCreatePost";
 import { postData } from "../../data/Posts.data";
+import { useAuth } from "../../context/authContext";
 
 //<!--IMP                     Component                            -->
 export const CreatePost = () => {
@@ -32,6 +33,7 @@ export const CreatePost = () => {
   const [createdPostSuccesfully, setCreatedPostSuccesfully] = useState(false);
   const [id, setId] = useState(null)
   const { register, handleSubmit } = useForm();
+  const { logout } = useAuth();
   const navigate = useNavigate();
 
 
@@ -82,7 +84,7 @@ export const CreatePost = () => {
   }, [postType, postcode, province, publicLocation]);
 
   useEffect(() => {
-    useErrorCreatePost(res, setRes, setCreatedPostSuccesfully);
+    useErrorCreatePost(res, setRes, setCreatedPostSuccesfully, navigate, logout);
   }, [res]);
 
 //   if (createdPostSuccesfully) {
