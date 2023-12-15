@@ -37,6 +37,7 @@ export const CreateRoom = () => {
   const [province, setProvince] = useState("Almería");
   const [postcode, setPostcode] = useState("04001");
   const [publicLocation, setPublicLocation] = useState("Andalucia");
+  const [id, setId] = useState(null);
 
   //estos estados son para re-renderizar el componente si cambia la referencia
   const mapRef = useRef(null);
@@ -82,12 +83,8 @@ export const CreateRoom = () => {
   }, [roomType, postcode, province, publicLocation]);
 
   useEffect(() => {
-    useErrorCreateRoom(res, setRes, setCreatedRoomSuccesfully);
+    useErrorCreateRoom(res, setRes, setCreatedRoomSuccesfully, setId);
   }, [res]);
-
-  if (createdRoomSuccesfully) {
-    <Navigate to="/profile" />;
-  }
 
   //----------------------USE EFFECT MAPA--------------------------
   useEffect(() => {
@@ -170,6 +167,10 @@ export const CreateRoom = () => {
     //actualice cada vez que cambia
   }, [postcode]);
   //---------------------------------------------------------------
+
+  if (createdRoomSuccesfully) {
+    return <Navigate to={`/roomFinds/${id}` }/>;
+ }
 
   //<!--Sec                       RETURN                                                             -->
   return (

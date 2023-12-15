@@ -117,7 +117,7 @@ export const Registerpt2 = () => {
             </LabelAndInput>
 
             <LabelAndInput inputHeight={"60px"}>
-              Brief description of you
+              Brief description of yourself
               <textarea
                 type="text" 
                 placeholder="I'm very clean and organized and love cats..."

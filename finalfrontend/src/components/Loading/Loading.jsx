@@ -1,7 +1,9 @@
-
+import CircularProgress from '@mui/material/CircularProgress';
 
 export const Loading = () => {
   return (
-    <div>Loading</div>
+    <>
+    {/*  <CircularProgress /> */}
+    </>
   )
 }

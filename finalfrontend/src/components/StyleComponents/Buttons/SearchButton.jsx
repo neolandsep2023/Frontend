@@ -3,14 +3,15 @@ import styled from "@emotion/styled"
 import { useThemeApp } from "../../../context/themeContext"
 
 const SearchButtonStyles = styled.button`
-  border-radius: 50%;
+  /* border-radius: 50%; */
   border: 2px solid ${({theme}) => theme.palette.border.main};
   width: 50px;
+  height: 47px;
   aspect-ratio: 1/1;
   background-color:  ${({theme}) => theme.palette.button.mediumGreen};
   font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
   text-transform: uppercase;
-  margin-left: 15px;
+  /* margin-left: 10px; */
 `
 
 export const SearchButtonCustom = ({ children, onClick }) => {
