@@ -1,6 +1,6 @@
 import {TiChevronLeftOutline, TiChevronRightOutline} from 'https://cdn.skypack.dev/react-icons/ti';
 
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import "./Carousel.css"
 
 let CARDS
@@ -15,6 +15,10 @@ const Image = ({src, alt}) => (
 const Carousel = ({children}) => {
   const [active, setActive] = useState(2);
   const count = React.Children.count(children);
+
+  useEffect(() => {
+    setActive(0)
+  }, [])
   
   return (
     <div className='carousel'>

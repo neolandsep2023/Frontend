@@ -1,6 +1,6 @@
 import {TiChevronLeftOutline, TiChevronRightOutline} from 'https://cdn.skypack.dev/react-icons/ti';
 import { Rating } from 'primereact/rating';
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import "./ReviewsCarousel.css"
 
 let CARDS
@@ -8,17 +8,22 @@ const MAX_VISIBILITY = 3;
 
 const Review = ({src, alt, name, lastname, textComment, rating}) => (
   <div className='cardReview'>
-    {/* {console.log(rating)} */}
-    <img src = {src} alt = {alt}/>
+    <img id="userPhotoReview" src = {src} alt = {alt}/>
     <h4>{name}{lastname}</h4>
-    <Rating value={rating} readOnly cancel={false} />
+    <Rating className="rating" value={rating} readOnly cancel={false} />
     <p >"{textComment}"</p>
+    <img className="quotationMarkImage firstQuotation" src="https://cdn-icons-png.flaticon.com/512/1633/1633659.png" alt="quotation mark" />
+    <img className="quotationMarkImage secondQuotation" src="https://cdn-icons-png.flaticon.com/512/1633/1633659.png" alt="qutation mark" />
   </div>
 );
 
 const Carousel = ({children}) => {
   const [active, setActive] = useState(2);
   const count = React.Children.count(children);
+
+  useEffect(() => {
+    setActive(0)
+  }, [])
   
   return (
     <div className='carouselReview'>

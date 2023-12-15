@@ -72,11 +72,7 @@ export const RoomById = () => {
           <H3Custom padding="0 0 0 5vw" margin="0 0 -2.5rem 0">Location</H3Custom>
           {res && <ByIdMap postcode = {res?.data?.postcode} province = {res?.data?.province} ccaa={res?.data?.publicLocation}/>}
         </FlexDir>
-        <FlexDir>
-          <RoomReview roomId = {res?.data?._id}/>
-          {res && <ByIdMap postcode = {res?.data?.postcode} province = {res?.data?.province} ccaa={res?.data?.publicLocation}/>}
-        </FlexDir>
-        <FlexDir>
+        <FlexDir mediaqueryMarginMobile="0" mediaqueryMarginTablet="1rem 0 0 0" margin="5rem 0 0 0">
           <RoomReview roomId = {res?.data?._id}/>
         </FlexDir>
       </FlexDir>

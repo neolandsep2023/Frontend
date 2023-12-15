@@ -38,7 +38,7 @@
 
 .nav {
   color: white;
-  font-size: 5rem;
+  font-size: 3.5rem;
   position: absolute;
   display: flex;
   align-items: center;
@@ -51,11 +51,12 @@
   border: unset;
   
   &.left {
+    left: 15%;
     transform: translateX(-100%) translatey(-50%);
   }
   
   &.right {
-    right: 0;
+    right: 15%;
     transform: translateX(100%) translatey(-50%);
   }
 }
