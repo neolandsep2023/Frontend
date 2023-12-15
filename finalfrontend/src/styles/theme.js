@@ -91,6 +91,7 @@ export const themeLight = {
       dark: PALETTE_COLOR_LIGHT.darkGreen,
       mediumGreen: PALETTE_COLOR_LIGHT.mediumGreen,
       mediumGreenOpaco: PALETTE_COLOR_LIGHT.mediumGreenOpaco,
+      saved: PALETTE_COLOR_LIGHT.darkishGreen,
     },
     border: {
       main: PALETTE_COLOR_LIGHT.border,
@@ -156,6 +157,7 @@ export const themeDark = {
       dark: PALETTE_COLOR_DARK.darkGreen,
       mediumGreen: PALETTE_COLOR_DARK.mediumGreen,
       mediumGreenOpaco: PALETTE_COLOR_DARK.mediumGreenOpaco,
+      saved: PALETTE_COLOR_DARK.lightGreen,
     },
     border: {
       main: PALETTE_COLOR_DARK.border,
@@ -171,10 +173,12 @@ export const themeDark = {
     }
   },
   mediaquery: {
-    mobile: `@media (max-width: ${BREAKPOINTS.mobile}px)`,
+    miniMobile: `@media (max-width: ${BREAKPOINTS.extraSmall}px)`,
+    mobile: `@media (min-width: ${BREAKPOINTS.extraSmall}px) and (max-width: ${BREAKPOINTS.mobile}px)`,
     tablet: `@media (min-width: ${BREAKPOINTS.mobile}px) and (max-width: ${BREAKPOINTS.laptop}px)`,
     laptop: `@media (min-width: ${BREAKPOINTS.laptop}px) and (max-width: ${BREAKPOINTS.desktop}px)`,
-    desktop: `@media (min-width: ${BREAKPOINTS.desktop}px)`,
+    desktop: `@media (min-width: ${BREAKPOINTS.desktop}px) and (max-width: ${BREAKPOINTS.bigScreen}px) `,
+    bigScreen: `@media (max-width: ${BREAKPOINTS.bigScreen}px) `
   },
   typography: {
     fonts: {

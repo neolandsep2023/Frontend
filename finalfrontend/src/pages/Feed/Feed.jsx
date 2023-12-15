@@ -63,15 +63,15 @@ export const Feed = () => {
 
 
 const addToSaved = async (id) => {
-    setResLike(await addFavPost(id));
-    console.log("id",id)
+    const response = await addFavPost(id);      //! TIENE QUE IR EN CONSTANTE, NO EN USE STATE
+    console.log("LE HE DADO A LIKE", response) //bien
     setUpdatedLikes(!updatedLikes);
     // console.log(resLike)
   };
 
   const getSavedPosts = async () => {
-    setUserLikesRes( await getUserById(user._id)); 
-    setUserLikedPosts(userLikesRes?.data?.likedPosts)      //! tiene que ser un array
+    const userSavedPosts = await getUserById(user._id);   //! TIENE QUE IR EN CONSTANTE, NO EN USE STATE
+    setUserLikedPosts(userSavedPosts?.data?.likedPosts)      //! tiene que ser un array
     console.log(userLikedPosts)
   };
 
@@ -99,7 +99,7 @@ const addToSaved = async (id) => {
 
   useEffect(() => {
     getSavedPosts();
-  }, [updatedLikes, feed, res]);
+  }, [updatedLikes, feed]);
 
 
   return (
