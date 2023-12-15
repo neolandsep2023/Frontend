@@ -12,24 +12,21 @@ export const About = () => {
   <div className='figureContainer'>
  <figure className='persona'>
   <img src="https://pic.onlinewebfonts.com/svg/img_181369.png" alt="" />
-  <h3>Nombre</h3>
+  <h3>Abel</h3>
  </figure>
  <figure className='persona'>
   <img src="https://pic.onlinewebfonts.com/svg/img_181369.png" alt="" />
-  <h3>Nombre</h3>
+  <h3>Lucía</h3>
  </figure>
  <figure className='persona'>
   <img src="https://pic.onlinewebfonts.com/svg/img_181369.png" alt="" />
-  <h3>Nombre</h3>
+  <h3>Mario</h3>
  </figure>
  <figure className='persona'>
   <img src="https://pic.onlinewebfonts.com/svg/img_181369.png" alt="" />
-  <h3>Nombre</h3>
+  <h3>Natalia</h3>
  </figure>
- <figure className='persona'>
-  <img src="https://pic.onlinewebfonts.com/svg/img_181369.png" alt="" />
-  <h3>Nombre</h3>
- </figure>
+
  
   </div>
  
@@ -52,7 +49,8 @@ export const About = () => {
        
          <article>
         <h2>Contact Us</h2>
-        <p>If you have any questions or inquiries, feel free to <a href="contact.html">contact us</a>.</p>
+        <p>If you have any questions or inquiries, feel free to <a href="#">contact us</a>.</p>
+        <p>Neolandprogramacion@gmail.com</p>
         </article>
         <BotonArriba/>
     </section>

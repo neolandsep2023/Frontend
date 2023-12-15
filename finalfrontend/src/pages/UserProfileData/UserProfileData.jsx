@@ -1,7 +1,11 @@
 import { useEffect, useState } from "react";
 import { useAuth } from "../../context/authContext";
-import { getById, getUserById } from "../../services/user.service";
-import { ButtonPrimary, FlexDir } from "../../components/StyleComponents";
+import { getById, getUserByIdP } from "../../services/user.service";
+import {
+  ButtonPrimary,
+  FlexDir,
+  MiniCards,
+} from "../../components/StyleComponents";
 
 export const UserProfileData = () => {
   const { user } = useAuth();
@@ -10,30 +14,68 @@ export const UserProfileData = () => {
   const [displaySection, setDisplaySection] = useState("followed");
 
   const fetchData = async () => {
-    const dataForState = await getUserById(user?._id);
+    const dataForState = await getUserByIdP(user?._id);
     setData(dataForState);
     setIsDataReady(true);
   };
   useEffect(() => {
     fetchData();
   }, []);
+  console.log(data?.data?.myRooms);
 
   const renderSection = () => {
     switch (displaySection) {
-      case "followers":
-        return <div>Componente followers</div>;
-      case "followed":
-        return <div>Componente followed</div>;
-      case "comments":
-        return <div>Componente comments</div>;
+      case "myRooms":
+        return (
+          <FlexDir direction={"column"}>
+            {data?.data?.myRooms?.map((room) => (
+              <MiniCards key={room}>
+                <img src={room?.image} />
+                <h3>{room?.title}</h3>
+              </MiniCards>
+            ))}
+          </FlexDir>
+        );
+      case "myPosts":
+        return (
+          <FlexDir direction={"column"}>
+            {data?.data?.myPosts?.map((room) => (
+              <MiniCards key={room}>
+                <img src={room?.image} />
+                <h3>{room?.title}</h3>
+              </MiniCards>
+            ))}
+          </FlexDir>
+        );
+      case "sentComments":
+        return (
+          <FlexDir direction={"column"}>
+            <h3>Comentarios enviados</h3>
+          </FlexDir>
+        );
+      case "receivedComments":
+        return (
+          <FlexDir direction={"column"}>
+            <h3>Comentarios recibidos</h3>
+          </FlexDir>
+        );
       default:
-        return <div>DDDD</div>;
+        return (
+          <FlexDir direction={"column"}>
+            {data?.data?.myRooms?.map((room) => (
+              <MiniCards key={room}>
+                <img src={room?.image} />
+                <h3>{room?.title}</h3>
+              </MiniCards>
+            ))}
+          </FlexDir>
+        );
     }
   };
 
   return (
     <>
-      <FlexDir gap={"40vw"} minHeight={"80vh"}>
+      <FlexDir gap={"0vw"} minHeight={"80vh"}>
         <FlexDir direction={"column"}>
           <figure>
             <img
@@ -46,17 +88,33 @@ export const UserProfileData = () => {
             </div>
           </figure>
           <FlexDir direction={"column"}>
-            <ButtonPrimary onClick={() => setDisplaySection("followers")}>
-              followers
+            <ButtonPrimary
+              width={"200px"}
+              onClick={() => setDisplaySection("myRooms")}
+            >
+              My rooms
             </ButtonPrimary>
-            <ButtonPrimary onClick={() => setDisplaySection("followed")}>
-              following
+            <ButtonPrimary
+              width={"200px"}
+              onClick={() => setDisplaySection("myPosts")}
+            >
+              My posts
             </ButtonPrimary>
-            <ButtonPrimary onClick={() => setDisplaySection("comments")}>
-              comments
+            <ButtonPrimary
+              width={"200px"}
+              onClick={() => setDisplaySection("sentComments")}
+            >
+              Sent comments
+            </ButtonPrimary>
+            <ButtonPrimary
+              width={"200px"}
+              onClick={() => setDisplaySection("receivedComments")}
+            >
+              Comments
             </ButtonPrimary>
           </FlexDir>
         </FlexDir>
+
         {renderSection()}
       </FlexDir>
     </>

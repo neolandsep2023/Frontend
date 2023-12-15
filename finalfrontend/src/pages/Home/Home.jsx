@@ -63,7 +63,7 @@ export const Home = () => {
       <article className='textoGrandeL'>
         <h3 className='hHome'>Otra de las cosas grandes</h3>
        <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. In nam reiciendis, quaerat temporibus 
-        neque quidem! </p>
+       </p>
         <Link className="link"to={"/"}>No logado lleva a Login</Link>
       </article>
 
