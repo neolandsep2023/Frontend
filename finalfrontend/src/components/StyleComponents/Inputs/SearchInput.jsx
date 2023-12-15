@@ -47,6 +47,6 @@ export const SearchInputCustom = ({ onChange }) => {
   const darkOrLight = themeObject.theme
 
   return (
-    <SearchInputStyles onChange={onChange} darkOrLight = {darkOrLight} theme = {theme} placeholder="Search..." ></SearchInputStyles>
+    <SearchInputStyles onChange={onChange} darkOrLight = {darkOrLight} theme = {theme} placeholder="Search..." autoCapitalize="words"></SearchInputStyles>
   )
 }

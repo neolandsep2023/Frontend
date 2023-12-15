@@ -23,7 +23,7 @@ export const useErrorCreatePost = (res, setRes, setCreatedPostSuccesfully) => {
     setRes({});
   }
 
-  if (res?.response?.data?.error.includes( "no se encontro por id")) {
+  if (res?.response?.data?.error?.includes( "no se encontro por id")) {
     Swal.fire({
       icon: "error",
       title: "Server problems!",

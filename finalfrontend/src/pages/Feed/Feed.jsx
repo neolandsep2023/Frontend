@@ -125,6 +125,7 @@ search
             <FeedStyle>
               {dataPag
                 ? dataPag.map((item) => (
+                  <Link to = {`/feed/${item._id}`}>
                     <MiniPosts
                       key={item?._id}
                       id={item?._id}
@@ -135,6 +136,7 @@ search
                       price={item?.price}
                       author={item?.author}
                     ></MiniPosts>
+                  </Link>
                   ))
                 : (res?.response?.status == 404 ||
                     res?.response?.status == 500 ||

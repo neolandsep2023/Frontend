@@ -15,6 +15,7 @@ import { CreatePost } from "../pages/CreatePost/CreatePost";
 import { AppCarouselReview } from "../components/Carousel/ReviewsCarousel";
 import { Estrellas } from "../components/Estrellas/Estrellas";
 import { About } from "../pages/About/About";
+import { PostById } from "../pages/PostById/PostById";
 
 
 
@@ -72,7 +73,7 @@ export const router = createBrowserRouter ([
                 path: "/feed/:id",
                 element: 
                 (<Protected>
-                  {/* < /> */}
+                  <PostById/>
                 </Protected>),
               },
               {
