@@ -14,6 +14,8 @@ import { RoomReview } from "../components/Review/RoomReview";
 import { CreatePost } from "../pages/CreatePost/CreatePost";
 import { AppCarouselReview } from "../components/Carousel/ReviewsCarousel";
 import { Estrellas } from "../components/Estrellas/Estrellas";
+import { About } from "../pages/About/About";
+
 
 
 
