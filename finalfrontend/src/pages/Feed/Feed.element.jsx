@@ -2,7 +2,7 @@ import styled from "@emotion/styled"
 
 const FeedStyled = styled.div`
 display: flex;
-width: 100vw;
+width: 98vw;
 max-height: 160vh;
 min-height: 60vh;
 flex-wrap: wrap;
@@ -15,7 +15,7 @@ border-radius: ${({ theme }) => theme.spacing(2)};
   border: ${({ theme }) => theme.spacing(0.5)} solid
     ${({ theme }) => theme.palette.border.main};
 
-${({ theme }) => theme.mediaquery.laptop} {
+${({ theme }) => theme.mediaquery.bigScreen} {
 
   }
 

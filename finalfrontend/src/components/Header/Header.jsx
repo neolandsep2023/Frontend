@@ -12,7 +12,7 @@
     const { user, logout } = useAuth();
     const navigate = useNavigate();
 
-    console.log(user);
+    // console.log(user);
     const navigateToLogin = () => {
       navigate("/login");
     };

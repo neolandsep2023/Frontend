@@ -18,11 +18,12 @@ import {
 } from "../../components/StyleComponents";
 import { Link } from "react-router-dom";
 import { useAuth } from "../../context/authContext";
+import { addFavPost, getUserById, getUserByIdPLikes } from "../../services/user.service";
 
 export const Feed = () => {
   const [res, setRes] = useState(null);  //!useState de todas las res
  
-  const [feed, setFeed] = useState("RoomSeeker");   //!useState del feed
+  const [feed, setFeed] = useState(null);   //!useState del feed
   const [send, setSend] = useState(false);
   const [isLoading, setIsLoading] = useState(true);
 
@@ -32,10 +33,13 @@ export const Feed = () => {
 
   const [userLikedPosts, setUserLikedPosts] = useState([]); //! useState de los likes
   const [updatedLikes, setUpdatedLikes] = useState(false);
+  const [resLike, setResLike] = useState([])
+  const [userLikesRes, setUserLikesRes] = useState([])
 
   const { ComponentPaginacion, setGaleriaItems, dataPag } = usePaginacion(6);
   const { user } = useAuth();
 
+  //-------------------------------- set Gallery segun el tipo (feed)
   const setGallery = async () => {
     setSend(true);
     setRes(await getAllPostByType(feed));
@@ -44,8 +48,8 @@ export const Feed = () => {
     setSend(false);
   };
 
-  // ['RoomSeeker', 'RoommateSeeker']
 
+//------------------------------------ hace el search segun el tipo
   const handleSearch = async () => {
     setIsLoading(true);
     setSendSearch(true);
@@ -55,12 +59,29 @@ export const Feed = () => {
     setIsLoading(false);
   };
 
+//------------------------------------ save post
+
+
+const addToSaved = async (id) => {
+    setResLike(await addFavPost(id));
+    console.log("id",id)
+    setUpdatedLikes(!updatedLikes);
+    // console.log(resLike)
+  };
+
+  const getSavedPosts = async () => {
+    setUserLikesRes( await getUserById(user._id)); 
+    setUserLikedPosts(userLikesRes?.data?.likedPosts)      //! tiene que ser un array
+    console.log(userLikedPosts)
+  };
+
+
   useEffect(() => {
     if (sendSearch == true && resSearch?.status == 200) {
       console.log(feed, resSearch?.data);
 
       feed == "RoomSeeker"
-        ? setGaleriaItems(resSearch?.data?.resArrayRoommSeeker)
+        ? setGaleriaItems(resSearch?.data?.resArrayRoommSeeker)  //aqui se setea la respuesta del search segun estes en room o roommate
         : setGaleriaItems(resSearch?.data?.resArrayRoommateSeeker);
     } else {
       res?.status == 200 && setGaleriaItems(res?.data?.allPosts);
@@ -76,14 +97,19 @@ export const Feed = () => {
     setGallery();
   }, [feed]);
 
+  useEffect(() => {
+    getSavedPosts();
+  }, [updatedLikes, feed, res]);
+
+
   return (
     <>
       {isLoading ? (
         <Loading />
       ) : (
         <>
-          <FlexDir direction={"column"} margin={"0"}>
-            <LabelAndInput alignItems={"center"}>
+          <FlexDir direction={"column"} >
+            <LabelAndInput alignItems={"center"} margin={(feed == null && "30vh")}>
               I'm looking for a
               <RadioInput minW="calc(100%/2.4)">
                 <input
@@ -113,19 +139,26 @@ export const Feed = () => {
               </RadioInput>
             </LabelAndInput>
             <FlexDir>
-              <SearchInputCustom
-                onChange={(e) => setSearchInput(e.target.value)}
-              />
-              <SearchButtonCustom onClick={handleSearch}><span class="material-symbols-outlined">
-search
-</span></SearchButtonCustom>
+
+                { (feed != null) && (
+                    <>
+                    <SearchInputCustom
+                    onChange={(e) => setSearchInput(e.target.value)}
+                  />
+                  <SearchButtonCustom onClick={handleSearch}><span className="material-symbols-outlined">
+    search
+    </span></SearchButtonCustom>
+    </>
+                )}
+              
             </FlexDir>
 
-            {dataPag && <ComponentPaginacion />}
+            {dataPag && (feed != null)  && (
+                <>
+            <ComponentPaginacion />
             <FeedStyle>
               {dataPag
                 ? dataPag.map((item) => (
-                  <Link to = {`/feed/${item._id}`}>
                     <MiniPosts
                       key={item?._id}
                       id={item?._id}
@@ -135,8 +168,10 @@ search
                       province={item?.province}
                       price={item?.price}
                       author={item?.author}
+                      addToSaved={addToSaved}
+                      userLikedPosts={userLikedPosts}
+                      updatedLikes={updatedLikes}
                     ></MiniPosts>
-                  </Link>
                   ))
                 : (res?.response?.status == 404 ||
                     res?.response?.status == 500 ||
@@ -146,6 +181,9 @@ search
              <AddElement/>
              </Link>
             </FeedStyle>
+            </>
+            )
+}
           </FlexDir>
         </>
       )}

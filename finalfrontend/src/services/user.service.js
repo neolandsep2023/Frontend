@@ -216,47 +216,24 @@ export const getUserByIdPLikes = async (id) => {
 
 //!-------- ADD FAVS ---------------
 
-export const addFavLifter = async (idLifter) => {
+export const addFavComment = async (idComment) => {
   const APIGeneral = extraConfig();
-  return APIGeneral.patch(`/users/lifter/toggleLifter/${idLifter}`)
+  return APIGeneral.patch(`/users/likeComment/${idComment}`)
     .then((res) => res)
     .catch((error) => error);
 };
 
-export const addFavPlayers = async (idPlayer) => {
+export const addFavPost= async (idPost) => {
   const APIGeneral = extraConfig();
-  return APIGeneral.patch(`/users/togglePlayer/${idPlayer}`)
+  return APIGeneral.patch(`/users/likePost/${idPost}`)
     .then((res) => res)
     .catch((error) => error);
 };
 
-export const addFavRiders = async (idRider) => {
+export const addFavRoom = async (idRoom) => {
   const APIGeneral = extraConfig();
-  return APIGeneral.patch(`/users/toggleRider/${idRider}`)
+  return APIGeneral.patch(`/users/saveRoom/${idRoom}`)
     .then((res) => res)
     .catch((error) => error);
 };
-
-
-export const addFavCircuits = async (idCircuit) => {
-  const APIGeneral = extraConfig();
-  return APIGeneral.patch(`/users/toggleCircuit/${idCircuit}`)
-    .then((res) => res)
-    .catch((error) => error);
-};
-export const addFavTeams = async (idTeam) => {
-  const APIGeneral = extraConfig();
-  return APIGeneral.patch(`/users/toggleTeam/${idTeam}`)
-    .then((res) => res)
-    .catch((error) => error);
-};
-
-export const toggleFollow = async (idUser) => {
-  const APIGeneral = extraConfig();
-  return APIGeneral.patch(`/users/toggleFollow/${idUser}`)
-    .then((res) => res)
-    .catch((error) => error);
-};
-
-
 

@@ -76,7 +76,7 @@ export const AddElement = () => {
 
   return (
    <AddElementStyle theme={theme}>
-    <span class="material-symbols-outlined">
+    <span className="material-symbols-outlined">
 add
 </span>
 </AddElementStyle>

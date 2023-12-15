@@ -6,6 +6,7 @@ export const BREAKPOINTS = {
   tablet: 768,
   laptop: 992,
   desktop: 1200,
+  bigScreen: 2400,
 };
 
 export const ZINDEX = {
@@ -110,7 +111,8 @@ export const themeLight = {
     mobile: `@media (min-width: ${BREAKPOINTS.extraSmall}px) and (max-width: ${BREAKPOINTS.mobile}px)`,
     tablet: `@media (min-width: ${BREAKPOINTS.mobile}px) and (max-width: ${BREAKPOINTS.laptop}px)`,
     laptop: `@media (min-width: ${BREAKPOINTS.laptop}px) and (max-width: ${BREAKPOINTS.desktop}px)`,
-    desktop: `@media (min-width: ${BREAKPOINTS.desktop}px)`,
+    desktop: `@media (min-width: ${BREAKPOINTS.desktop}px) and (max-width: ${BREAKPOINTS.bigScreen}px) `,
+    bigScreen: `@media (max-width: ${BREAKPOINTS.bigScreen}px) `
   },
   typography: {
     fonts: {

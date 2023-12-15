@@ -4,17 +4,31 @@ import { AddElement, FlexDir, FlexEnd, SaveElement } from "../StyleComponents"
 import { useEffect, useState } from "react"
 
 
-export const MiniPosts = ({id, title, text, image, province, price, author}) => {
+export const MiniPosts = ({id, title, text, image, province, price, author, addToSaved, userLikedPosts, updatedLikes}) => {
 const path = `/feed/${id}`
+
+const [saved, setSaved] = useState(false)
+
+
+const isSaved = userLikedPosts?.includes(id)
+
+
+useEffect(() => {
+    setSaved(userLikedPosts?.includes(id))
+     console.log("entro")
+}, [updatedLikes, saved])
+
+
+
 
 
   return (
-    <Link to={path}>
+    
         
     <MiniPostStyle>
-    <SaveElement onClick={""}/>
+    <SaveElement onClick={()=> addToSaved(id)} variant={saved ? "saved" : "normal"}/>
         <FlexDir  direction={"column"}>
-        
+        <Link to={path}>
             <FlexDir  width={"100%"} height={"70%"} mediaqueryHeightMobile={"100%"} mediaqueryDirMobile={"column"}>
         <img src={image} alt="img post" />
     <FlexDir width={"60%"} mediaqueryWidthMobile={"90%"} height={"100%"} direction={"column"}>
@@ -32,8 +46,9 @@ const path = `/feed/${id}`
             <h4 className="price">{price}€</h4>
             <h4 className="location">📍{province}</h4>
         </FlexEnd>
+        </Link>
         </FlexDir>
      </MiniPostStyle>
-    </Link>
+    
   )
 }

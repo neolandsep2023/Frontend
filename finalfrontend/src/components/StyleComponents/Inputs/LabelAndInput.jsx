@@ -3,6 +3,7 @@ import styled from "@emotion/styled"
 
 const LabelAndInputStyle = styled.div`
 
+margin: ${({margin})=> margin ? margin : "0"};
 display: flex;
     flex-direction: column;
     align-items: ${({alignItems}) => alignItems ? alignItems : "flex-start"} ;
@@ -23,9 +24,9 @@ gap: ${({ gap }) => (gap ? gap : null)};
 
 `
 
-export const LabelAndInput = ({children, alignItems, parentWidth, inputHeight, gap}) => {
+export const LabelAndInput = ({children, alignItems, parentWidth, inputHeight, gap, margin}) => {
   const { theme } = useTheme()
   return (
-    <LabelAndInputStyle theme={theme} alignItems={alignItems} parentWidth={parentWidth} gap={gap} inputHeight={inputHeight}>{children}</LabelAndInputStyle>
+    <LabelAndInputStyle theme={theme} alignItems={alignItems} margin={margin} parentWidth={parentWidth} gap={gap} inputHeight={inputHeight}>{children}</LabelAndInputStyle>
   )
 }

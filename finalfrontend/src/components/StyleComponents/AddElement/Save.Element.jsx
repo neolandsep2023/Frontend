@@ -21,6 +21,11 @@ color: ${({theme})=> theme.palette.button.dark};
 
 }
 
+${({ theme }) => theme.mediaquery.bigScreen} {
+    top: 19%;
+left: 94%;
+}
+
 ${({ theme }) => theme.mediaquery.laptop} {
 
 }
@@ -66,19 +71,28 @@ font-size: 38px;
 }
 
 & .material-symbols-outlined {
-  font-variation-settings:
+  /* font-variation-settings:
   'FILL' 0,
   'wght' 300,
   'GRAD' -25,
-  'opsz' 48
+  'opsz' 48, */
+
+
+font-variation-settings: ${({variant}) =>
+  variant == "normal" 
+  ? "'FILL' 0"
+: variant == "saved" 
+&& "'FILL' 1"};
+
 }
+
 
 `
 
 
-export const SaveElement = ({onClick}) => {
+export const SaveElement = ({onClick, variant}) => {
   return (
-    <SaveElementStyle onClick={onClick}><span class="material-symbols-outlined">
+    <SaveElementStyle onClick={onClick} variant={variant}><span className="material-symbols-outlined">
     bookmark
     </span></SaveElementStyle>
   )
