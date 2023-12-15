@@ -97,7 +97,7 @@ export const AccountSettings = () => {
             </LabelAndInput>
             <LabelAndInput direction={"column"}>
               <label htmlFor="custom-input" >
-                Confirm new password
+                Confirm password
               </label>
               <input
                
