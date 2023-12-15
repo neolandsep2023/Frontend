@@ -5,12 +5,14 @@ import {
   getAllPostByType,
   getAllPosts,
   getAllPostsPopulated,
+  getPostByProvince,
   search,
 } from "../../services/post.service";
 import { usePaginacion } from "../../hooks/usePaginacion";
 import {
     AddElement,
   FlexDir,
+  H1Posts,
   LabelAndInput,
   RadioInput,
   SearchButtonCustom,
@@ -19,6 +21,7 @@ import {
 import { Link } from "react-router-dom";
 import { useAuth } from "../../context/authContext";
 import { addFavPost, getUserById, getUserByIdPLikes } from "../../services/user.service";
+import { provinceEnum } from "../../utils/provinceEnum";
 
 export const Feed = () => {
   const [res, setRes] = useState(null);  //!useState de todas las res
@@ -33,8 +36,9 @@ export const Feed = () => {
 
   const [userLikedPosts, setUserLikedPosts] = useState([]); //! useState de los likes
   const [updatedLikes, setUpdatedLikes] = useState(false);
-  const [resLike, setResLike] = useState([])
-  const [userLikesRes, setUserLikesRes] = useState([])
+
+  const [province, setProvince] = useState(false)   //! useState del input de provincias
+  const [resFilterProvince, setResFilterProvince] = useState([]);
 
   const { ComponentPaginacion, setGaleriaItems, dataPag } = usePaginacion(6);
   const { user } = useAuth();
@@ -53,27 +57,37 @@ export const Feed = () => {
   const handleSearch = async () => {
     setIsLoading(true);
     setSendSearch(true);
-    // console.log(searchInput)
     setResSearch(await search(searchInput));
     console.log(resSearch);
     setIsLoading(false);
   };
 
+//------------------------------------ filtra por provincia
+
+const filterByProvince = async (provinceConst) =>{
+    setIsLoading(true);
+     setProvince(true)
+    setResFilterProvince(await getPostByProvince(provinceConst));
+    setIsLoading(false);
+}
+
+
 //------------------------------------ save post
 
 
 const addToSaved = async (id) => {
-    const response = await addFavPost(id);      //! TIENE QUE IR EN CONSTANTE, NO EN USE STATE
-    console.log("LE HE DADO A LIKE", response) //bien
+    const response = await addFavPost(id);      //! TIENE QUE IR EN CONSTANTE POR ASINCRONIA DE REACT, NO EN USE STATE
     setUpdatedLikes(!updatedLikes);
-    // console.log(resLike)
+
   };
 
   const getSavedPosts = async () => {
-    const userSavedPosts = await getUserById(user._id);   //! TIENE QUE IR EN CONSTANTE, NO EN USE STATE
-    setUserLikedPosts(userSavedPosts?.data?.likedPosts)      //! tiene que ser un array
-    console.log(userLikedPosts)
+    const userSavedPosts = await getUserById(user._id);   //! TIENE QUE IR EN CONSTANTE POR ASINCRONIA DE REACT, NO EN USE STATE
+    setUserLikedPosts(userSavedPosts?.data?.likedPosts)      //! tiene que ser un array - BACK NO POPULADO
+  
   };
+
+//! useEffects
 
 
   useEffect(() => {
@@ -83,11 +97,14 @@ const addToSaved = async (id) => {
       feed == "RoomSeeker"
         ? setGaleriaItems(resSearch?.data?.resArrayRoommSeeker)  //aqui se setea la respuesta del search segun estes en room o roommate
         : setGaleriaItems(resSearch?.data?.resArrayRoommateSeeker);
+    } else if ( province == true && resFilterProvince?.status == 200 ){
+        console.log("entro")
+        setGaleriaItems(resFilterProvince?.data)
     } else {
       res?.status == 200 && setGaleriaItems(res?.data?.allPosts);
       // console.log(res?.data?.allPosts)
     }
-  }, [res, resSearch]);
+  }, [res, resSearch, resFilterProvince]);
 
   useEffect(() => {
     res?.status == 200 && setGaleriaItems(res?.data);
@@ -102,6 +119,8 @@ const addToSaved = async (id) => {
   }, [updatedLikes, feed]);
 
 
+  let provinceConst 
+
   return (
     <>
       {isLoading ? (
@@ -109,8 +128,9 @@ const addToSaved = async (id) => {
       ) : (
         <>
           <FlexDir direction={"column"} >
-            <LabelAndInput alignItems={"center"} margin={(feed == null && "30vh")}>
-              I'm looking for a
+            
+            <LabelAndInput alignItems={"center"} margin={(feed == null && "22vh 0 30vh 0")}>
+            <H1Posts>{ feed == null && "I'm looking for a" } </H1Posts>
               <RadioInput minW="calc(100%/2.4)">
                 <input
                   type="radio"
@@ -122,7 +142,7 @@ const addToSaved = async (id) => {
                   htmlFor="RoomSeeker"
                   onClick={() => setFeed("RoomSeeker")}
                 >
-                  Room
+                  Roomie
                 </label>
                 <input
                   type="radio"
@@ -134,7 +154,7 @@ const addToSaved = async (id) => {
                   htmlFor="RoommateSeeker"
                   onClick={() => setFeed("RoommateSeeker")}
                 >
-                  Roommie
+                  Room
                 </label>
               </RadioInput>
             </LabelAndInput>
@@ -148,6 +168,16 @@ const addToSaved = async (id) => {
                   <SearchButtonCustom onClick={handleSearch}><span className="material-symbols-outlined">
     search
     </span></SearchButtonCustom>
+
+<select onInput={(e)=>{
+     const provinceConst = e.target.value
+    filterByProvince(provinceConst)
+}}>
+    {provinceEnum.map((province)=>(
+        <option key={province} value={province}>{province}</option>
+    ))}
+</select>
+
     </>
                 )}
               
