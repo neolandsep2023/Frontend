@@ -9,23 +9,32 @@ import {
 } from "../../services/post.service";
 import { usePaginacion } from "../../hooks/usePaginacion";
 import {
+    AddElement,
   FlexDir,
   LabelAndInput,
   RadioInput,
   SearchButtonCustom,
   SearchInputCustom,
 } from "../../components/StyleComponents";
+import { Link } from "react-router-dom";
+import { useAuth } from "../../context/authContext";
 
 export const Feed = () => {
-  const [res, setRes] = useState(null);
-  const [sendSearch, setSendSearch] = useState(false);
-  const [searchInput, setSearchInput] = useState(null);
-  const [resSearch, setResSearch] = useState([]);
-  const [feed, setFeed] = useState("RoomSeeker");
+  const [res, setRes] = useState(null);  //!useState de todas las res
+ 
+  const [feed, setFeed] = useState("RoomSeeker");   //!useState del feed
   const [send, setSend] = useState(false);
   const [isLoading, setIsLoading] = useState(true);
 
+  const [sendSearch, setSendSearch] = useState(false); //! useState del Search
+  const [searchInput, setSearchInput] = useState(null);
+  const [resSearch, setResSearch] = useState([]);
+
+  const [userLikedPosts, setUserLikedPosts] = useState([]); //! useState de los likes
+  const [updatedLikes, setUpdatedLikes] = useState(false);
+
   const { ComponentPaginacion, setGaleriaItems, dataPag } = usePaginacion(6);
+  const { user } = useAuth();
 
   const setGallery = async () => {
     setSend(true);
@@ -117,7 +126,6 @@ search
               {dataPag
                 ? dataPag.map((item) => (
                     <MiniPosts
-                      type={item?.type}
                       key={item?._id}
                       id={item?._id}
                       title={item?.title}
@@ -132,8 +140,9 @@ search
                     res?.response?.status == 500 ||
                     resSearch?.response?.status == 404 ||
                     resSearch?.response?.status == 500) && <h1>Error 404</h1>}
-
-              {console.log(resSearch)}
+            <Link to='/createPost'>
+             <AddElement/>
+             </Link>
             </FeedStyle>
           </FlexDir>
         </>

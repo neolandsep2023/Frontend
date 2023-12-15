@@ -205,6 +205,15 @@ export const getUserByIdP = async (id) => {
 };
 
 
+//! -------------------> Get User By Id Populated Likes
+export const getUserByIdPLikes = async (id) => {
+  const APIGeneral = extraConfig();
+  return APIGeneral.get(`/users/getByIdPopulatedLikes/${id}`)
+    .then((res) => res)
+    .catch((error) => error);
+};
+
+
 //!-------- ADD FAVS ---------------
 
 export const addFavLifter = async (idLifter) => {

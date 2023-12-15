@@ -26,6 +26,14 @@ const FormStyle = styled.form`
     height: ${({ heightMobile }) =>
       heightMobile ? heightMobile : "fit-content"};
   }
+  ${({ theme }) => theme.mediaquery.miniMobile} {
+    display: flex;
+    flex-direction: column;
+    width: 95vw;
+    height: ${({ heightMobile }) =>
+      heightMobile ? heightMobile : "fit-content"};
+  }
+
 
   ${({ theme }) => theme.mediaquery.tablet} {
     width: ${({ mediaqueryWidth }) =>

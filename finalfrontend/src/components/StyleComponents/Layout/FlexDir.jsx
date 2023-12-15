@@ -37,6 +37,15 @@ const FlexStyle = styled.div`
       mediaqueryHeightMobile ? mediaqueryHeightMobile : height};
     margin: ${({mediaqueryMarginMobile, margin}) => mediaqueryMarginMobile ? mediaqueryMarginMobile : margin}
   }
+  ${({ theme }) => theme.mediaquery.miniMobile} {
+    flex-direction: ${({ mediaqueryDirMobile, direction }) =>
+      mediaqueryDirMobile ? mediaqueryDirMobile : direction};
+    width: ${({ mediaqueryWidthMobile, width }) =>
+      mediaqueryWidthMobile ? mediaqueryWidthMobile : width};
+      height: ${({ mediaqueryHeightMobile, height }) =>
+      mediaqueryHeightMobile ? mediaqueryHeightMobile : height};
+    margin: ${({mediaqueryMarginMobile, margin}) => mediaqueryMarginMobile ? mediaqueryMarginMobile : margin}
+  }
 `;
 
 export const FlexDir = ({

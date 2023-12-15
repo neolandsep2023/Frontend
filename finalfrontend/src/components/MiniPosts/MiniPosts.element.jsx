@@ -49,15 +49,10 @@ margin: ${({ margin, theme }) => (margin ? margin : theme.spacing(1.5))};
 
 ${({ theme }) => theme.mediaquery.laptop} {
     margin: ${({ margin, theme }) => (margin ? margin : theme.spacing(1))};
-    /* background: red; */
+
 
 
   }
-
-
-
-
-
 
 
 ${({ theme }) => theme.mediaquery.tablet} {
@@ -84,6 +79,30 @@ ${({ theme }) => theme.mediaquery.tablet} {
   }
 
   ${({ theme }) => theme.mediaquery.mobile} {
+    margin: ${({ margin, theme }) => (margin ? margin : theme.spacing(1))};
+    width: 90vw;
+    height: 60vh;
+
+    & img{
+    width: 70%;
+
+  }
+
+  & p {
+    max-height: 70%;
+    max-width: 100%;
+    font-size: 16px;
+  }
+  & h3 {
+    height: 30%;
+    font-size: 18px;
+
+  }
+
+
+  }
+
+  ${({ theme }) => theme.mediaquery.miniMobile} {
     margin: ${({ margin, theme }) => (margin ? margin : theme.spacing(1))};
     width: 90vw;
     height: 80vh;

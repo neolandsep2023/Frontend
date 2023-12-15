@@ -22,11 +22,17 @@ ${({ theme }) => theme.mediaquery.laptop} {
 ${({ theme }) => theme.mediaquery.tablet} {
     
     flex-direction: row;
-    max-height: 85vh;
+    max-height: 97vh;
 
   }
 
   ${({ theme }) => theme.mediaquery.mobile} {
+    max-height: 520vh;
+    flex-direction: row;
+    margin: 0 ${({ theme }) => theme.spacing(0.5)} 0 ${({ theme }) => theme.spacing(0.5)};
+  }
+
+  ${({ theme }) => theme.mediaquery.miniMobile} {
     max-height: 520vh;
     flex-direction: row;
     margin: 0 ${({ theme }) => theme.spacing(0.5)} 0 ${({ theme }) => theme.spacing(0.5)};

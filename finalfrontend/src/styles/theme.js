@@ -1,7 +1,7 @@
 import { spacing } from "./utils";
 
 export const BREAKPOINTS = {
-  extraSmall: 320,
+  extraSmall: 400,
   mobile: 576,
   tablet: 768,
   laptop: 992,
@@ -106,7 +106,8 @@ export const themeLight = {
 
   },
   mediaquery: {
-    mobile: `@media (max-width: ${BREAKPOINTS.mobile}px)`,
+    miniMobile: `@media (max-width: ${BREAKPOINTS.extraSmall}px)`,
+    mobile: `@media (min-width: ${BREAKPOINTS.extraSmall}px) and (max-width: ${BREAKPOINTS.mobile}px)`,
     tablet: `@media (min-width: ${BREAKPOINTS.mobile}px) and (max-width: ${BREAKPOINTS.laptop}px)`,
     laptop: `@media (min-width: ${BREAKPOINTS.laptop}px) and (max-width: ${BREAKPOINTS.desktop}px)`,
     desktop: `@media (min-width: ${BREAKPOINTS.desktop}px)`,
