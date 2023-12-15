@@ -65,7 +65,7 @@ font-size: 38px;
 }
 
  :hover{
-    transform: scale(1.02);
+    transform: scale(1.1);
     cursor: pointer;
 
 }

@@ -44,7 +44,7 @@ useEffect(() => {
             <h4 className="author">{author[0]?.name ? author[0]?.name : author[0]?.username}</h4>
             </FlexDir>
             <h4 className="price">{price}€</h4>
-            <h4 className="location">📍{province}</h4>
+            <h4 className="location">📍{" "}{province}</h4>
         </FlexEnd>
         </Link>
         </FlexDir>

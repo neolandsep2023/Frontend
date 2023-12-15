@@ -33,7 +33,7 @@ export const PostById = () => {
           <h1 style={{ fontSize: "4vw" }}>{res?.data?.title}</h1>
           <FlexDir direction="row" gap="2rem" mediaqueryDirMobile="column">
             <FlexDir width="60vw">
-              <AppCarousel src={res?.data?.image} alt={res?.data?.title} />
+              {/* <AppCarousel src={res?.data?.image} alt={res?.data?.title} /> */}
             </FlexDir>
             <FlexDir direction="column" height="100%" width="25vw" mediaqueryWidthMobile="100vw" mediaqueryMarginMobile="-1rem 0 0 0">
               <UlCustom mediaqueryDirMobile="row">
