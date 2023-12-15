@@ -3,7 +3,7 @@
     color: rgb(111, 194, 131) ;
 }
 .link{
-    color: rgb(58, 90, 77);
+    color: rgb(36, 216, 240);
 }
 .home{
     display: flex;
@@ -313,6 +313,10 @@ body.light .leftSection{
   }
 body.light .articleSmall{
     border: 1px solid grey;;
+ 
+  }
+body.light .link{
+    color:rgb(29, 54, 31)
  
   }
 

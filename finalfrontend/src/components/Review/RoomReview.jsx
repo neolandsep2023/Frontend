@@ -13,6 +13,7 @@ export const RoomReview = ({roomId}) => {
 
   const fetchReviews = async () => {
     setRes(await getAllComments(roomId))
+    setRes(await getAllComments(roomId))
   }
 
   useEffect(() => {

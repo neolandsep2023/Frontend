@@ -74,6 +74,10 @@ export const RoomById = () => {
         </FlexDir>
         <FlexDir>
           <RoomReview roomId = {res?.data?._id}/>
+          {res && <ByIdMap postcode = {res?.data?.postcode} province = {res?.data?.province} ccaa={res?.data?.publicLocation}/>}
+        </FlexDir>
+        <FlexDir>
+          <RoomReview roomId = {res?.data?._id}/>
         </FlexDir>
       </FlexDir>
       }
