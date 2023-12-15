@@ -177,11 +177,11 @@ export const CreatePost = () => {
       <Form onSubmit={handleSubmit(formSubmit)} width="90%">
         <FlexDir direction={"column"} gap={"2rem"}>
           <LabelAndInput>
-            <label htmlFor="title">Room title</label>
+            <label htmlFor="title">Post title</label>
             <input
               id="title"
               name="title"
-              placeholder="Spacious flat in Chamartin"
+              placeholder="Looking for..."
               {...register("title", { required: true, maxLength: 50 })}
             />
           </LabelAndInput>
