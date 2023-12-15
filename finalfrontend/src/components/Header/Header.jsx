@@ -27,12 +27,6 @@
             <Link to="/">
             <img
               alt="logo"
-              src="https://res.cloudinary.com/daxddugwt/image/upload/v1702550400/Untitled_Artwork_34_nlwysx.png"
-            />
-            </Link>
-            <Link to="/">
-            <img
-              alt="logo"
               src="https://res.cloudinary.com/daxddugwt/image/upload/v1702550399/Untitled_Artwork_33_nmkluc.png"
             />
             </Link>
