@@ -34,7 +34,7 @@ export const EditProfile = () => {
     const dataForState = await getUserById(user?._id);
     setData(dataForState);
     setIsDataReady(true);
-    console.log(dataForState);
+
   };
   useEffect(() => {
     fetchData();
@@ -77,7 +77,6 @@ export const EditProfile = () => {
 
   useEffect(() => {
     useErrorUpdate(resEdit, setResEdit, logout);
-    console.log(data);
   }, [resEdit]);
 
   return (

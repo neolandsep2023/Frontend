@@ -1,11 +1,11 @@
 import Swal from "sweetalert2/dist/sweetalert2.all.js";
 
 export const useErrorUpdate = (res, setRes, logout) => {
-
+console.log(res)
 let acc
 if(res?.data){
     acc = 0
-    res?.data?.testUpdate?.map((item)=>{
+    res?.data?.testingUpdate?.map((item)=>{
         for (let key in item){
             if (item[key] == false){ 
                 acc++
@@ -17,7 +17,7 @@ if(res?.data){
 if(acc == 0){
     let check = ""
 
-    res?.data?.testUpdate?.forEach((item)=>{
+    res?.data?.testingUpdate?.forEach((item)=>{
         for (let key in item){
             if (item[key] == true ){
                 check += `${key}`
