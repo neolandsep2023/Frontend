@@ -6,7 +6,7 @@ const LabelAndInputStyle = styled.div`
 margin: ${({margin})=> margin ? margin : "0"};
 display: flex;
     flex-direction: column;
-    align-items: ${({alignItems}) => alignItems ? alignItems : "center"} ;
+    align-items: ${({alignItems}) => alignItems ? alignItems : "flex-start"} ;
     justify-content: center;
 width: ${({parentWidth}) => parentWidth ? parentWidth : '70%'};
 gap: ${({ gap }) => (gap ? gap : null)};
