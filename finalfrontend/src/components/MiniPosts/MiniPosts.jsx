@@ -15,7 +15,7 @@ const isSaved = userLikedPosts?.includes(id)
 
 useEffect(() => {
     setSaved(userLikedPosts?.includes(id))
-     console.log("entro")
+    //  console.log("entro")
 }, [updatedLikes, saved])
 
 
@@ -26,7 +26,7 @@ useEffect(() => {
     
         
     <MiniPostStyle>
-    <SaveElement onClick={()=> addToSaved(id)} variant={saved ? "saved" : "normal"}/>
+    <SaveElement onClick={()=> addToSaved(id)} variant={isSaved ? "saved" : "normal"}/>
         <FlexDir  direction={"column"}>
         <Link to={path}>
             <FlexDir  width={"100%"} height={"70%"} mediaqueryHeightMobile={"100%"} mediaqueryDirMobile={"column"}>

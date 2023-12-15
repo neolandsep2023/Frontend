@@ -17,7 +17,7 @@ left: 93%;
 
 & span{
 font-size: 30px;
-color: ${({theme})=> theme.palette.button.dark};
+color: ${({theme})=> theme.palette.button.saved};
 
 }
 
