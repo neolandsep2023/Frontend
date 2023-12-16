@@ -6,7 +6,7 @@ import Swal from "sweetalert2/dist/sweetalert2.all.js";
 import { useErrorChangePassword } from "../../hooks/useErrorChangePassword";
 import { useDeleteUser } from "../../hooks/useDeleteUser";
 import { changePasswordAuth} from "../../services/user.service";
-import { ButtonPrimary, FlexDir, Form, H1Form, LabelAndInput } from "../../components/StyleComponents";
+import { ButtonPrimary, FlexDir, Form, H1Form, H1Profile, LabelAndInput } from "../../components/StyleComponents";
 
 
 export const AccountSettings = () => {
@@ -66,8 +66,9 @@ export const AccountSettings = () => {
 
  
         <FlexDir direction={"column"} >
-          <H1Form >Change your password</H1Form>
-          <Form onSubmit={handleSubmit(changePasswordFormSubmit)}>
+          
+          <Form  width={"40vw"} onSubmit={handleSubmit(changePasswordFormSubmit)}>
+          <H1Profile >Change your password</H1Profile>
             <FlexDir direction={"column"} >
             <LabelAndInput direction={"column"}>
               <label htmlFor="custom-input" >
@@ -108,18 +109,26 @@ export const AccountSettings = () => {
                 {...register("confirmPassword", { required: true })}
               />
             </LabelAndInput>
-            <FlexDir >
-            <ButtonPrimary type="submit"
+     
+            <ButtonPrimary 
+            type="submit" width={"70%"}
+              
+            disabled={sendPassword}
+            variant={sendPassword ? "loading" : "normal"} 
              >
 Change Password
 </ButtonPrimary>
 
-            </FlexDir>
+
             </FlexDir>
           </Form>
         </FlexDir>
         <FlexDir>
-        <ButtonPrimary  onClick={() => useDeleteUser(setUser, setIsDeletedUser)}>
+        <ButtonPrimary  
+              variant={"delete"} width={"50%"} onClick={() => useDeleteUser(setUser, setIsDeletedUser)}>
+                <span class="material-symbols-outlined">
+delete
+</span>
         Delete account
       </ButtonPrimary>
 

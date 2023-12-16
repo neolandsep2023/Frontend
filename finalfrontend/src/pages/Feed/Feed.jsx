@@ -14,6 +14,7 @@ import {
   FlexDir,
   H1Posts,
   LabelAndInput,
+  Pagination,
   RadioInput,
   SearchButtonCustom,
   SearchInputCustom,
@@ -22,6 +23,7 @@ import { Link } from "react-router-dom";
 import { useAuth } from "../../context/authContext";
 import { addFavPost, getUserById, getUserByIdPLikes } from "../../services/user.service";
 import { provinceEnum } from "../../utils/provinceEnum";
+
 
 export const Feed = () => {
   const [res, setRes] = useState(null);  //!useState de todas las res
@@ -130,33 +132,27 @@ const addToSaved = async (id) => {
           <FlexDir direction={"column"} >
             
             <LabelAndInput alignItems={"center"} margin={(feed == null && "22vh 0 30vh 0")}>
-            <H1Posts>{ feed == null && "I'm looking for a" } </H1Posts>
-              <RadioInput minW="calc(100%/2.4)">
-                <input
-                  type="radio"
-                  name="postType"
-                  id="RoomSeeker"
-                  value="RoomSeeker"
-                />
-                <label
-                  htmlFor="RoomSeeker"
-                  onClick={() => setFeed("RoomSeeker")}
-                >
-                  Roomie
-                </label>
-                <input
-                  type="radio"
-                  name="postType"
-                  id="RoommateSeeker"
-                  value="RoommateSeeker"
-                />
-                <label
-                  htmlFor="RoommateSeeker"
-                  onClick={() => setFeed("RoommateSeeker")}
-                >
-                  Room
-                </label>
-              </RadioInput>
+            { feed == null && (<H1Posts >I'm looking for a  </H1Posts>)}
+            <FlexDir>
+            <Pagination
+            width={"9.5vw"}
+            mediaQueryWTablet={"15.75vw"}
+            mediaQueryWMobile={"23vw"}
+            onClick={() => setFeed("RoomSeeker")}
+            variant={feed == "RoomSeeker" ? "clicked" : "normal"}
+          >
+             Roomie
+          </Pagination>
+          <Pagination
+            width={"9.5vw"}
+            mediaQueryWTablet={"15.75vw"}
+            mediaQueryWMobile={"23vw"}
+            onClick={() => setFeed("RoommateSeeker")}
+            variant={feed == "RoommateSeeker" ? "clicked" : "normal"}
+          >
+            Room
+          </Pagination>
+          </FlexDir>
             </LabelAndInput>
             <FlexDir>
 

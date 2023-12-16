@@ -11,6 +11,7 @@ import {
   FlexDir,
   Form,
   H1Form,
+  H1Profile,
   LabelAndInput,
   RadioInput,
 } from "../../components/StyleComponents";
@@ -82,8 +83,9 @@ export const EditProfile = () => {
   return (
     <>
       <FlexDir direction={"column"}>
-        <H1Form>Edit your information </H1Form>
-        <Form width={"40vw"} onSubmit={handleSubmit(editProfileFormSubmit)}>
+      <Form width={"40vw"} onSubmit={handleSubmit(editProfileFormSubmit)}>
+        <H1Profile>Edit your information </H1Profile>
+       
           <FlexDir direction={"column"}>
             <img
               style={{ width: "200px" }}
@@ -448,7 +450,10 @@ export const EditProfile = () => {
             </FlexDir>
           </FlexDir>
           <FlexDir>
-            <ButtonPrimary type="submit">Save changes</ButtonPrimary>
+            <ButtonPrimary type="submit" width={"70%"}
+              
+              disabled={sendEdit}
+              variant={sendEdit ? "loading" : "normal"}>SAVE CHANGES</ButtonPrimary>
           </FlexDir>
         </Form>
       </FlexDir>

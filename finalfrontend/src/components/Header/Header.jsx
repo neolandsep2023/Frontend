@@ -1,14 +1,14 @@
   import { Link, NavLink, Navigate, useNavigate } from "react-router-dom";
   import { useThemeApp } from "../../context/themeContext";
   import { Login } from "../../pages/Login/Login";
-  import { ButtonPrimary, FlexDir } from "../StyleComponents";
+  import { ButtonHeader, ButtonPrimary, FlexDir } from "../StyleComponents";
   import { HeaderStyle } from "./HeaderStyle";
   import { NavProfile } from "../NavProfile/NavProfile";
   import { useAuth } from "../../context/authContext";
   import { useEffect } from "react";
 
   export const Header = () => {
-    const { toggleTheme } = useThemeApp();
+    const { toggleTheme, theme } = useThemeApp();
     const { user, logout } = useAuth();
     const navigate = useNavigate();
 
@@ -17,7 +17,7 @@
       navigate("/login");
     };
     const navigateToProfile = () => {
-      navigate("/profile");
+      navigate("/profile/user");
     }
 
     return (
@@ -30,31 +30,28 @@
               src="https://res.cloudinary.com/daxddugwt/image/upload/v1702550399/Untitled_Artwork_33_nmkluc.png"
             />
             </Link>
-            <ButtonPrimary
-              variant={"normal"}
-              size={"large"}
+            <ButtonHeader
+              
               onClick={toggleTheme}
-            >
-              TOGGLE THEME
-            </ButtonPrimary>
+            >{theme == "dark" ? "☀️" : "🌙"}
+              
+            </ButtonHeader>
 
-              <ButtonPrimary
-                variant={user == null ? "normal" : "loading"}
-                size={"normal"}
+              <ButtonHeader
+                
                 onClick={user == null ? navigateToLogin : logout}
               >
                 {user == null ? "LOG IN" : "LOG OUT"}
-              </ButtonPrimary>
+              </ButtonHeader>
 
               <>
                 {user !== null && (
-                  <ButtonPrimary
-                    variant="normal"
-                    size="normal"
+                  <ButtonHeader
+                   
                     onClick={navigateToProfile}
                   >
                     PROFILE
-                  </ButtonPrimary>
+                  </ButtonHeader>
                 )}
               </>
               {/* //no puede haber un navLink y un boton que te redirija. Si hay un navLink y le pones al navLink el redirect en onCLick

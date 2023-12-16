@@ -36,6 +36,7 @@ const PALETTE_COLOR_LIGHT = {
   darkGreen: "#396644",
   ultraDarkGreen: "#2a2f2b",
   cardBackground: "#ddffe6",
+  shadow: "rgba(50, 50, 93, 0.25) 0px 2px 5px -1px, rgba(0, 0, 0, 0.3) 0px 1px 3px -1px",
 };
 
 const PALETTE_COLOR_DARK = {
@@ -59,6 +60,7 @@ const PALETTE_COLOR_DARK = {
   darkGreen: "#396644",
   ultraDarkGreen: "#2a2f2b",
   cardBackground: "#ddffe6",
+  shadow: "2px 2px 4px rgba(0,0,0,0.4)",
 };
 
 export const themeLight = {
@@ -81,6 +83,7 @@ export const themeLight = {
     },
     textColor: {
       main: PALETTE_COLOR_LIGHT.textColor,
+      form: PALETTE_COLOR_LIGHT.mediumGreen,
     },
     greenTextColor: {
       main: PALETTE_COLOR_LIGHT.mediumLightGreen,
@@ -104,6 +107,9 @@ export const themeLight = {
     },
     anchor: {
       main: PALETTE_COLOR_LIGHT.darkishGreen,
+    },
+    shadow: {
+      main: PALETTE_COLOR_LIGHT.shadow,
     }
 
   },
@@ -147,6 +153,7 @@ export const themeDark = {
     },
     textColor: {
       main: PALETTE_COLOR_DARK.textColor,
+      form: PALETTE_COLOR_LIGHT.lightGreen,
     },
     greenTextColor: {
       main: PALETTE_COLOR_DARK.lightGreen,
@@ -170,6 +177,9 @@ export const themeDark = {
     },
     anchor: {
       main: PALETTE_COLOR_DARK.mediumGreen,
+    },
+    shadow: {
+      main: PALETTE_COLOR_DARK.shadow,
     }
   },
   mediaquery: {

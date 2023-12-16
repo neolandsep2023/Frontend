@@ -18,11 +18,12 @@ const H1Styles = styled.h1`
     font-size: 25px;
 
   }
+
 `
 
-export const H1Posts = ({children, margin}) => {
+export const H1Posts = ({children, margin, variant}) => {
     const { theme } = useTheme()
   return (
-    <H1Styles margin={margin} theme={theme}>{children}</H1Styles>
+    <H1Styles margin={margin} theme={theme} variant={variant}>{children}</H1Styles>
   )
 }
