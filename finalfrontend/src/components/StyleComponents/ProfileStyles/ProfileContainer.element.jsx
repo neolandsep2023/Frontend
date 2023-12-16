@@ -22,7 +22,18 @@ ${({ theme }) => theme.mediaquery.tablet} {
 
   }
 
+  ${({ theme }) => theme.mediaquery.mobile} {
+    width: 98vw;
+    margin: 0;
+    height: 97vh;
 
+  }
+  ${({ theme }) => theme.mediaquery.miniMobile} {
+    width: 98vw;
+    margin: 0;
+    height: 97vh;
+
+  }
 
 
 `

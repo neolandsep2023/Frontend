@@ -6,6 +6,7 @@ import { UserProfileData } from "./UserProfileData/UserProfileData"
 import { useAuth } from "../../context/authContext"
 import { useThemeApp } from "../../context/themeContext"
 import { useTheme } from "@emotion/react"
+import { ProfileDataDesktop, ProfileDataMobile } from "../../components"
 
 export const Profile = () => {
   const { theme } = useTheme();
@@ -15,21 +16,19 @@ export const Profile = () => {
   const isDesktop = window.innerWidth < 4000 ? true : false
   const isTablet = window.innerWidth < 768 ? true : false
   const isMobile = window.innerWidth < 576 ? true : false 
-  console.log(isDesktop, isTablet, isMobile)
+  
   console.log(user)
 
   return (
     <>
-    <FlexDir width={"98vw"} height={"86vh"} mediaqueryDirTablet={"column"}>
+    <FlexDir width={"98vw"} height={"86vh"} mediaqueryDirTablet={"column"} mediaqueryMarginMobile={"0"} mediaqueryWidthMobile={"100vw"} mediaqueryWidthminiMobile={"100vw"} mediaqueryHeightMobile={"100vh"}>
       {/* <UserProfileData/> */}
       <ProfileContainer  width={"32vw"} height={"83vh"} margin={"10px 0 10px 20px"} heightTablet={"38vh"}>
-<FlexDir direction={"column"} mediaqueryDirTablet={"row"}>
-        <h3> hola </h3>
- <h3> hola </h3>
- <h3> hola </h3>
- <h3> hola </h3>
- <h3> hola </h3>
- </FlexDir>
+
+
+{!isMobile && <ProfileDataDesktop/>}
+{isMobile && <ProfileDataMobile/>}
+
       </ProfileContainer>
 
     

@@ -6,9 +6,14 @@ const ButtonStyles = styled.button`
     variant == "normal"
       ? theme.palette.button.mediumGreen :
       variant == "delete" ?
-      "red"
+      "red" :
+      variant == "inverted" ? "white"
       : variant == "loading" && theme.palette.button.dark};
-  color: WHITE;
+  color:${({ variant, theme }) =>
+    variant == "normal"
+      ? "white" :
+      variant == "inverted" && theme.palette.button.mediumGreen
+      };
   border-radius: 5px;
   border: none;
   font-weight: 600;

@@ -151,6 +151,20 @@ export const router = createBrowserRouter ([
                 ],
               },
               {
+                path: "/profile/mobile/edit",
+                element: 
+                (<Protected>
+                  <EditProfile />
+                  </Protected>)
+              },
+              {
+                path: "/profile/mobile/settings",
+                element: 
+                (<Protected>
+                  <AccountSettings />
+                  </Protected>)
+              },
+              {
                 path: "*",
                 element: <NotFound />,
               },

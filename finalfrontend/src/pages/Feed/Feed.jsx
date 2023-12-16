@@ -10,7 +10,7 @@ import {
 } from "../../services/post.service";
 import { usePaginacion } from "../../hooks/usePaginacion";
 import {
-    AddElement,
+  AddElement,
   FlexDir,
   H1Posts,
   LabelAndInput,
@@ -21,14 +21,17 @@ import {
 } from "../../components/StyleComponents";
 import { Link } from "react-router-dom";
 import { useAuth } from "../../context/authContext";
-import { addFavPost, getUserById, getUserByIdPLikes } from "../../services/user.service";
+import {
+  addFavPost,
+  getUserById,
+  getUserByIdPLikes,
+} from "../../services/user.service";
 import { provinceEnum } from "../../utils/provinceEnum";
 
-
 export const Feed = () => {
-  const [res, setRes] = useState(null);  //!useState de todas las res
- 
-  const [feed, setFeed] = useState(null);   //!useState del feed
+  const [res, setRes] = useState(null); //!useState de todas las res
+
+  const [feed, setFeed] = useState(null); //!useState del feed
   const [send, setSend] = useState(false);
   const [isLoading, setIsLoading] = useState(true);
 
@@ -39,7 +42,7 @@ export const Feed = () => {
   const [userLikedPosts, setUserLikedPosts] = useState([]); //! useState de los likes
   const [updatedLikes, setUpdatedLikes] = useState(false);
 
-  const [province, setProvince] = useState(false)   //! useState del input de provincias
+  const [province, setProvince] = useState(false); //! useState del input de provincias
   const [resFilterProvince, setResFilterProvince] = useState([]);
 
   const { ComponentPaginacion, setGaleriaItems, dataPag } = usePaginacion(6);
@@ -54,8 +57,7 @@ export const Feed = () => {
     setSend(false);
   };
 
-
-//------------------------------------ hace el search segun el tipo
+  //------------------------------------ hace el search segun el tipo
   const handleSearch = async () => {
     setIsLoading(true);
     setSendSearch(true);
@@ -64,44 +66,39 @@ export const Feed = () => {
     setIsLoading(false);
   };
 
-//------------------------------------ filtra por provincia
+  //------------------------------------ filtra por provincia
 
-const filterByProvince = async (provinceConst) =>{
+  const filterByProvince = async (provinceConst) => {
     setIsLoading(true);
-     setProvince(true)
+    setProvince(true);
     setResFilterProvince(await getPostByProvince(provinceConst));
     setIsLoading(false);
-}
+  };
 
+  //------------------------------------ save post
 
-//------------------------------------ save post
-
-
-const addToSaved = async (id) => {
-    const response = await addFavPost(id);      //! TIENE QUE IR EN CONSTANTE POR ASINCRONIA DE REACT, NO EN USE STATE
+  const addToSaved = async (id) => {
+    const response = await addFavPost(id); //! TIENE QUE IR EN CONSTANTE POR ASINCRONIA DE REACT, NO EN USE STATE
     setUpdatedLikes(!updatedLikes);
-
   };
 
   const getSavedPosts = async () => {
-    const userSavedPosts = await getUserById(user._id);   //! TIENE QUE IR EN CONSTANTE POR ASINCRONIA DE REACT, NO EN USE STATE
-    setUserLikedPosts(userSavedPosts?.data?.likedPosts)      //! tiene que ser un array - BACK NO POPULADO
-  
+    const userSavedPosts = await getUserById(user._id); //! TIENE QUE IR EN CONSTANTE POR ASINCRONIA DE REACT, NO EN USE STATE
+    setUserLikedPosts(userSavedPosts?.data?.likedPosts); //! tiene que ser un array - BACK NO POPULADO
   };
 
-//! useEffects
-
+  //! useEffects
 
   useEffect(() => {
     if (sendSearch == true && resSearch?.status == 200) {
       console.log(feed, resSearch?.data);
 
       feed == "RoomSeeker"
-        ? setGaleriaItems(resSearch?.data?.resArrayRoommSeeker)  //aqui se setea la respuesta del search segun estes en room o roommate
+        ? setGaleriaItems(resSearch?.data?.resArrayRoommSeeker) //aqui se setea la respuesta del search segun estes en room o roommate
         : setGaleriaItems(resSearch?.data?.resArrayRoommateSeeker);
-    } else if ( province == true && resFilterProvince?.status == 200 ){
-        console.log("entro")
-        setGaleriaItems(resFilterProvince?.data)
+    } else if (province == true && resFilterProvince?.status == 200) {
+      console.log("entro");
+      setGaleriaItems(resFilterProvince?.data);
     } else {
       res?.status == 200 && setGaleriaItems(res?.data?.allPosts);
       // console.log(res?.data?.allPosts)
@@ -120,8 +117,7 @@ const addToSaved = async (id) => {
     getSavedPosts();
   }, [updatedLikes, feed]);
 
-
-  let provinceConst 
+  let provinceConst;
 
   return (
     <>
@@ -129,87 +125,91 @@ const addToSaved = async (id) => {
         <Loading />
       ) : (
         <>
-          <FlexDir direction={"column"} >
-            
-            <LabelAndInput alignItems={"center"} margin={(feed == null && "22vh 0 30vh 0")}>
-            { feed == null && (<H1Posts >I'm looking for a  </H1Posts>)}
-            <FlexDir>
-            <Pagination
-            width={"9.5vw"}
-            mediaQueryWTablet={"15.75vw"}
-            mediaQueryWMobile={"23vw"}
-            onClick={() => setFeed("RoomSeeker")}
-            variant={feed == "RoomSeeker" ? "clicked" : "normal"}
-          >
-             Roomie
-          </Pagination>
-          <Pagination
-            width={"9.5vw"}
-            mediaQueryWTablet={"15.75vw"}
-            mediaQueryWMobile={"23vw"}
-            onClick={() => setFeed("RoommateSeeker")}
-            variant={feed == "RoommateSeeker" ? "clicked" : "normal"}
-          >
-            Room
-          </Pagination>
-          </FlexDir>
+          <FlexDir direction={"column"}>
+            <LabelAndInput
+              alignItems={"center"}
+              margin={feed == null && "22vh 0 30vh 0"}
+            >
+              {feed == null && <H1Posts>I'm looking for a </H1Posts>}
+              <FlexDir>
+                <Pagination
+                  width={"9.5vw"}
+                  mediaQueryWTablet={"15.75vw"}
+                  mediaQueryWMobile={"23vw"}
+                  onClick={() => setFeed("RoomSeeker")}
+                  variant={feed == "RoomSeeker" ? "clicked" : "normal"}
+                >
+                  Roomie
+                </Pagination>
+                <Pagination
+                  width={"9.5vw"}
+                  mediaQueryWTablet={"15.75vw"}
+                  mediaQueryWMobile={"23vw"}
+                  onClick={() => setFeed("RoommateSeeker")}
+                  variant={feed == "RoommateSeeker" ? "clicked" : "normal"}
+                >
+                  Room
+                </Pagination>
+              </FlexDir>
             </LabelAndInput>
             <FlexDir>
-
-                { (feed != null) && (
-                    <>
-                    <SearchInputCustom
+              {feed != null && (
+                <>
+                  <SearchInputCustom
                     onChange={(e) => setSearchInput(e.target.value)}
                   />
-                  <SearchButtonCustom onClick={handleSearch}><span className="material-symbols-outlined">
-    search
-    </span></SearchButtonCustom>
+                  <SearchButtonCustom onClick={handleSearch}>
+                    <span className="material-symbols-outlined">search</span>
+                  </SearchButtonCustom>
 
-<select onInput={(e)=>{
-     const provinceConst = e.target.value
-    filterByProvince(provinceConst)
-}}>
-    {provinceEnum.map((province)=>(
-        <option key={province} value={province}>{province}</option>
-    ))}
-</select>
-
-    </>
-                )}
-              
+                  <select
+                    onInput={(e) => {
+                      const provinceConst = e.target.value;
+                      filterByProvince(provinceConst);
+                    }}
+                  >
+                    {provinceEnum.map((province) => (
+                      <option key={province} value={province}>
+                        {province}
+                      </option>
+                    ))}
+                  </select>
+                </>
+              )}
             </FlexDir>
 
-            {dataPag && (feed != null)  && (
-                <>
-            <ComponentPaginacion />
-            <FeedStyle>
-              {dataPag
-                ? dataPag.map((item) => (
-                    <MiniPosts
-                      key={item?._id}
-                      id={item?._id}
-                      title={item?.title}
-                      text={item?.text}
-                      image={item?.image}
-                      province={item?.province}
-                      price={item?.price}
-                      author={item?.author}
-                      addToSaved={addToSaved}
-                      userLikedPosts={userLikedPosts}
-                      updatedLikes={updatedLikes}
-                    ></MiniPosts>
-                  ))
-                : (res?.response?.status == 404 ||
-                    res?.response?.status == 500 ||
-                    resSearch?.response?.status == 404 ||
-                    resSearch?.response?.status == 500) && <h1>Error 404</h1>}
-            <Link to='/createPost'>
-             <AddElement/>
-             </Link>
-            </FeedStyle>
-            </>
-            )
-}
+            {dataPag && feed != null && (
+              <>
+                <ComponentPaginacion />
+                <FeedStyle>
+                  {dataPag
+                    ? dataPag.map((item) => (
+                        <MiniPosts
+                          key={item?._id}
+                          id={item?._id}
+                          title={item?.title}
+                          text={item?.text}
+                          image={item?.image}
+                          province={item?.province}
+                          price={item?.price}
+                          author={item?.author}
+                          addToSaved={addToSaved}
+                          userLikedPosts={userLikedPosts}
+                          updatedLikes={updatedLikes}
+                        ></MiniPosts>
+                      ))
+                    : (res?.response?.status == 404 ||
+                        res?.response?.status == 500 ||
+                        resSearch?.response?.status == 404 ||
+                        resSearch?.response?.status == 500) && (
+                        <h1>Error 404</h1>
+                      )}
+                  <Link to="/createPost">
+                    <AddElement />
+                  </Link>
+                </FeedStyle>
+              </>
+            )}
           </FlexDir>
         </>
       )}

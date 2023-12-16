@@ -84,6 +84,7 @@ export const themeLight = {
     textColor: {
       main: PALETTE_COLOR_LIGHT.textColor,
       form: PALETTE_COLOR_LIGHT.mediumGreen,
+      inverted: PALETTE_COLOR_LIGHT.lightGreen,
     },
     greenTextColor: {
       main: PALETTE_COLOR_LIGHT.mediumLightGreen,
@@ -153,7 +154,8 @@ export const themeDark = {
     },
     textColor: {
       main: PALETTE_COLOR_DARK.textColor,
-      form: PALETTE_COLOR_LIGHT.lightGreen,
+      form: PALETTE_COLOR_DARK.lightGreen,
+      inverted: PALETTE_COLOR_LIGHT.mediumGreen,
     },
     greenTextColor: {
       main: PALETTE_COLOR_DARK.lightGreen,
