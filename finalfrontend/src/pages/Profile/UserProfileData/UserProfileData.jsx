@@ -1,11 +1,11 @@
 import { useEffect, useState } from "react";
-import { useAuth } from "../../context/authContext";
-import { getById, getUserByIdP } from "../../services/user.service";
+import { useAuth } from "../../../context/authContext";
+import { getById, getUserByIdP } from "../../../services/user.service";
 import {
   ButtonPrimary,
   FlexDir,
   MiniCards,
-} from "../../components/StyleComponents";
+} from "../../../components/StyleComponents";
 
 export const UserProfileData = () => {
   const { user } = useAuth();

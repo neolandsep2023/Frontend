@@ -1,11 +1,11 @@
 import { useState, useEffect } from "react";
 import { useForm } from "react-hook-form";
-import { useAuth } from "../../context/authContext";
-import { UploadFile } from "../../components";
+import { useAuth } from "../../../context/authContext";
+import { UploadFile } from "../../../components";
 
 import Swal from "sweetalert2/dist/sweetalert2.all.js";
-import { useErrorUpdate } from "../../hooks/useErrorUpdate";
-import { getUserById, updateUser } from "../../services/user.service";
+import { useErrorUpdate } from "../../../hooks/useErrorUpdate";
+import { getUserById, updateUser } from "../../../services/user.service";
 import {
   ButtonPrimary,
   FlexDir,
@@ -14,7 +14,7 @@ import {
   H1Profile,
   LabelAndInput,
   RadioInput,
-} from "../../components/StyleComponents";
+} from "../../../components/StyleComponents/index";
 
 export const EditProfile = () => {
   //! ---- estados

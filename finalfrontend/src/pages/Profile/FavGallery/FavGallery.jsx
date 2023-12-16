@@ -1,8 +1,8 @@
 import React, { useEffect, useState } from 'react'
-import { GalleryCustom, NavFav } from '../../components'
-import { useAuth } from '../../context/authContext';
-import { getUserByIdP } from '../../services/user.service';
-import { FlexDir } from '../../components/StyleComponents';
+import { GalleryCustom, NavFav } from '../../../components'
+import { useAuth } from '../../../context/authContext';
+import { getUserByIdP } from '../../../services/user.service';
+import { FlexDir } from '../../../components/StyleComponents';
 
 export const FavGallery = () => {
   const { user } = useAuth();

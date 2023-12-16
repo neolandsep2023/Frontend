@@ -1,12 +1,12 @@
 import { useState, useEffect } from "react";
 import { useForm } from "react-hook-form";
-import { useAuth } from "../../context/authContext";
+import { useAuth } from "../../../context/authContext";
 
 import Swal from "sweetalert2/dist/sweetalert2.all.js";
-import { useErrorChangePassword } from "../../hooks/useErrorChangePassword";
-import { useDeleteUser } from "../../hooks/useDeleteUser";
-import { changePasswordAuth} from "../../services/user.service";
-import { ButtonPrimary, FlexDir, Form, H1Form, H1Profile, LabelAndInput } from "../../components/StyleComponents";
+import { useErrorChangePassword } from "../../../hooks/useErrorChangePassword";
+import { useDeleteUser } from "../../../hooks/useDeleteUser";
+import { changePasswordAuth} from "../../../services/user.service";
+import { ButtonPrimary, FlexDir, Form, H1Form, H1Profile, LabelAndInput } from "../../../components/StyleComponents";
 
 
 export const AccountSettings = () => {

@@ -11,13 +11,17 @@
     const { toggleTheme, theme } = useThemeApp();
     const { user, logout } = useAuth();
     const navigate = useNavigate();
+    const isDesktop = window.innerWidth < 4000 ? true : false
+    const isTablet = window.innerWidth < 768 ? true : false
+    const isMobile = window.innerWidth < 576 ? true : false 
 
     // console.log(user);
     const navigateToLogin = () => {
       navigate("/login");
     };
     const navigateToProfile = () => {
-      navigate("/profile/user");
+      (isDesktop || isTablet) && navigate("/profile/posted");
+      isMobile && navigate("/profile")
     }
 
     return (

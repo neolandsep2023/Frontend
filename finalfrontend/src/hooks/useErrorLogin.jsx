@@ -4,14 +4,19 @@ export const useErrorLogin = (res, setRes, login, setSuccessfulLogin) => {
     if (res?.status == 200) {
         const updatedUser = {   
           token: res.data.token,
-          userName: res.data.user.userName,
+          username: res.data.user.username,
+          name: res.data.user.name,
+          lastName: res.data.user.lastName,
           email: res.data.user.email,
           image: res.data.user.image,
           check: res.data.user.check,
           _id: res.data.user._id,
-          role: res.data.user.rol,
+          role: res.data.user.role,
           gender: res.data.user.gender,
-          
+          birthYear: res.data.user.birthYear,
+          interests: res.data.user.interests,
+          description: res.data.user.description,
+
         };
     
         const userString = JSON.stringify(updatedUser);

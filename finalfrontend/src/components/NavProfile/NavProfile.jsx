@@ -3,62 +3,51 @@ import { ButtonPrimary, FlexDir, Pagination } from "../StyleComponents";
 import { useState } from "react";
 
 export const NavProfile = () => {
-  const navigate = useNavigate();
-  const [page, setPage] = useState("profile");
+  const [page, setPage] = useState("posted");
 
   return (
     <>
       <FlexDir
-        width={"100vw"}
+        
         gap={"0.5vw"}
-        margin={"16px 0 0 0 "}
-        height={"40px"}
+        // margin={"16px 0 0 0 "}
+        // height={"20%"}
       >
-        <NavLink to="/profile/user">
+        <NavLink to="/profile/posted">
           <Pagination
             width={"9.5vw"}
             mediaQueryWTablet={"15.75vw"}
             mediaQueryWMobile={"23vw"}
             height={""}
-            onClick={() => setPage("profile")}
-            variant={page == "profile" ? "clicked" : "normal"}
+            onClick={() => setPage("posted")}
+            variant={page == "posted" ? "clicked" : "normal"}
           >
-            Profile
+            Posted
           </Pagination>
         </NavLink>
-        <NavLink to="/profile/favourites">
+        <NavLink to="/profile/reviews">
           <Pagination
             width={"9.5vw"}
             mediaQueryWTablet={"15.75vw"}
             mediaQueryWMobile={"23vw"}
-            onClick={() => setPage("favourites")}
-            variant={page == "favourites" ? "clicked" : "normal"}
+            onClick={() => setPage("reviews")}
+            variant={page == "reviews" ? "clicked" : "normal"}
           >
-            Saved
+            Reviews
           </Pagination>
         </NavLink>
-        <NavLink to="/profile/edit">
+        <NavLink to="/profile/bookmarks">
           <Pagination
             width={"9.5vw"}
             mediaQueryWTablet={"15.75vw"}
             mediaQueryWMobile={"23vw"}
-            onClick={() => setPage("edit")}
-            variant={page == "edit" ? "clicked" : "normal"}
+            onClick={() => setPage("bookmarks")}
+            variant={page == "bookmarks" ? "clicked" : "normal"}
           >
-            Edit
+            Bookmarks
           </Pagination>
         </NavLink>
-        <NavLink to="/profile/settings">
-          <Pagination
-            width={"9.5vw"}
-            mediaQueryWTablet={"15.75vw"}
-            mediaQueryWMobile={"23vw"}
-            onClick={() => setPage("settings")}
-            variant={page == "settings" ? "clicked" : "normal"}
-          >
-            Settings
-          </Pagination>
-        </NavLink>
+
       </FlexDir>
     </>
   );

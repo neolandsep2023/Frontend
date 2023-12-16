@@ -22,3 +22,4 @@ export * from './AddElement/Add.Element'
 export * from './AddElement/Save.Element'
 export * from './Buttons/ButtonHeader'
 export * from './Text/H1/H1Profile'
+export * from "./ProfileStyles/ProfileContainer.element"

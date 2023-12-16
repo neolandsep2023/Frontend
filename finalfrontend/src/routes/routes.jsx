@@ -8,7 +8,7 @@ import { ProtectedCheckChildren } from "../components/ProtectedRoutes/ProtectedC
 import { Registerpt1 } from "../pages/Register/Registerpt1/Registerpt1";
 import App from "../App";
 
-import { MapCreation, ForgotPassword, ByIdMap, Home, RoomSearch, CreateRoom, Login, VerifyCode,Registerpt2, Profile,UserProfileData,FavGallery,EditProfile, AccountSettings, RoomById, Feed, NotFound } from "../pages";
+import { MapCreation, ForgotPassword, ByIdMap, Home, RoomSearch, CreateRoom, Login, VerifyCode,Registerpt2, Profile,UserProfileData,FavGallery,EditProfile, AccountSettings, RoomById, Feed, NotFound, PostedPage, ReviewPage, Bookmarks } from "../pages";
 import { AppCarousel } from "../components/Carousel/Carousel";
 import { RoomReview } from "../components/Review/RoomReview";
 import { CreatePost } from "../pages/CreatePost/CreatePost";
@@ -113,17 +113,24 @@ export const router = createBrowserRouter ([
               ,
                 children: [
                   {
-                    path: "/profile/user",
+                    path: "/profile/posted",
                     element: 
                     (<Protected>
-                    <UserProfileData/>
+                    <PostedPage/>
                     </Protected>),
                   },
                   {
-                    path: "/profile/favourites",
+                    path: "/profile/reviews",
                     element: 
                     (<Protected>
-            <FavGallery/>
+            <ReviewPage/>
+            </Protected>),
+                  },
+                  {
+                    path: "/profile/bookmarks",
+                    element: 
+                    (<Protected>
+            <Bookmarks/>
             </Protected>),
                   },
                   {
