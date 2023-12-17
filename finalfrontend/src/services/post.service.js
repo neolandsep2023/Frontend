@@ -34,7 +34,7 @@ export const deletePost = async (postId) => {
 export const getPostById = async (postId) => {
   const APIGeneral = extraConfig();
 
-  return APIGeneral.get(`/posts/getById/${postId}`)
+  return APIGeneral.get(`/posts/getById/populated/${postId}`)
     .then((res) => res)
     .catch((error) => error);
 };

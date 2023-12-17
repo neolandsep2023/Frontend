@@ -14,6 +14,7 @@ const UlStyles = styled.ul`
     font-size: 2vw;
     display: flex;
     justify-content: center;
+    align-items: center;
   }
   span{
     font-size: 2.5vw;

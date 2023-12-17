@@ -4,7 +4,7 @@ import React, { useEffect, useState } from "react";
 import "./Carousel.css"
 
 let CARDS
-const MAX_VISIBILITY = 3;
+const MAX_VISIBILITY = 2;
 
 const Image = ({src, alt}) => (
   <div className='card'>

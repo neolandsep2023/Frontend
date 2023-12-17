@@ -71,9 +71,12 @@ export const printHomeIcons = (commodity) => {
     case "Pool":
       src = "https://cdn-icons-png.flaticon.com/128/2784/2784593.png";
       break;
+    case "Location":
+      src = "https://cdn-icons-png.flaticon.com/128/186/186250.png";
+      break;
   }
 
-  return <img src={src} alt={commodity} style={{width: "3vw", margin: "0 1vw 0 0", padding: "0.25vw", backgroundColor: theme == "dark" ? "white" : "transparent" }}/>;
+  return <img src={src} alt={commodity} style={{width: "3vw", margin: "0 1vw 0 0", padding: "0.25vw", backgroundColor: theme == "dark" ? "white" : "transparent", borderRadius: "5px" }}/>;
   }
 
 
@@ -140,7 +143,7 @@ export const printRoomIcons = (commodity) => {
       break;
   }
 
-  return <img src={src} alt={commodity} style={{width: "3vw", margin: "0 1vw 0 0", padding: "0.25vw", backgroundColor: theme == "dark" ? "white" : "transparent" }}/>;
+  return <img src={src} alt={commodity} style={{width: "3vw", margin: "0 1vw 0 0", padding: "0.25vw", backgroundColor: theme == "dark" ? "white" : "transparent", borderRadius: "5px" }}/>;
 }
 
 const commoditiesRoomIcon = [

@@ -2,7 +2,6 @@ import { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
 import { getRoomById } from "../../services/room.service";
 import { FlexDir, H3Custom, Small } from "../../components/StyleComponents";
-import { ByIdImageCustom } from "../../components/StyleComponents/Images/ImageById";
 import { UlCustom } from "../../components/StyleComponents/UL/Ul";
 import { ConnectButtonCustom } from "../../components/StyleComponents/Buttons/ConnectButton";
 import { Description } from "../../components/StyleComponents/Text/Small/Description";

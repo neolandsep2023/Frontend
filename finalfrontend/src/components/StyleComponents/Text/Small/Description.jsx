@@ -3,7 +3,7 @@ import styled from "@emotion/styled";
 
 const DescriptionStyles = styled.small`
 font-size: 1.7vw;
-width: 75%;
+width: 90%;
 text-align: justify;
 /* background-color: ${({theme}) => theme.palette.button.mediumGreenOpaco}; */
 border-radius: 5px;
