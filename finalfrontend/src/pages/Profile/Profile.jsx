@@ -1,5 +1,5 @@
 
-import { Outlet } from "react-router-dom"
+import { Outlet, useNavigate } from "react-router-dom"
 import { NavProfile } from "../../components/NavProfile/NavProfile"
 import { ButtonPrimary, FlexDir, ProfileContainer } from "../../components/StyleComponents"
 import { UserProfileData } from "./UserProfileData/UserProfileData"
@@ -7,17 +7,27 @@ import { useAuth } from "../../context/authContext"
 import { useThemeApp } from "../../context/themeContext"
 import { useTheme } from "@emotion/react"
 import { ProfileDataDesktop, ProfileDataMobile } from "../../components"
+import { useEffect } from "react"
+import { useUserVerify } from "../../hooks/useUserVerify"
 
 export const Profile = () => {
   const { theme } = useTheme();
 
 //  console.log("hola", theme.mediaquery.mobile)
-  const { user } = useAuth()
-  const isDesktop = window.innerWidth < 4000 ? true : false
-  const isTablet = window.innerWidth < 768 ? true : false
+  const { user, logout } = useAuth()
+  const navigate = useNavigate();
+
   const isMobile = window.innerWidth < 576 ? true : false 
   
   console.log(user)
+
+
+  useEffect(() => {
+    useUserVerify(user, logout, navigate)
+  }, [])
+
+
+
 
   return (
     <>

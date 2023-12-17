@@ -22,7 +22,7 @@ const FormStyle = styled.form`
   ${({ theme }) => theme.mediaquery.mobile} {
     display: flex;
     flex-direction: column;
-    width: 95vw;
+    min-width: 95vw;
     height: ${({ heightMobile }) =>
       heightMobile ? heightMobile : "fit-content"};
   }

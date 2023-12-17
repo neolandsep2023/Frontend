@@ -8,12 +8,88 @@ display: flex;
   justify-content: center;
   align-items: center;
   text-align: justify;
+  gap: 8px;
+  padding: 14px;
 
+
+& h1{
+  font-size: 20px;
+  margin: 0;
+  font-weight: 500;
+  border: 3px solid ${({theme}) => theme.palette.button.saved};
+  border-radius: 10px;
+  padding: 2px 8px ;
+  margin: 4px;
+  background-color: ${({ theme }) => theme.palette.background.main};
+}
+
+& p{
+margin: 0;
+  text-align: justify;
+  background-color: ${({ theme }) => theme.palette.background.main};
+  border: 1px solid
+  ${({ theme }) => theme.palette.border.main};
+  border-radius: 10px;
+  padding: 8px 16px ;
+}
+
+& .pWeight{
+    font-weight: 600;
+    font-size: 16px;
+}
+
+& img{
+  width: 10vw;
+  height: 10vw;
+  object-fit: cover;
+  border-radius: 50%;
+  border: 3px solid
+  ${({ theme }) => theme.palette.border.main};
+
+}
+
+& h2{
+    margin: 0;
+}
+
+
+& .interests{
+  margin: 0 ;
+  padding: 4px 12px;
+  border: 1px solid ${({theme}) => theme.palette.button.saved};
+  background-color: ${({theme}) => theme.palette.textColor.inverted};
+  border-radius: 10px;
+  font-size: 15px;
+  font-weight: 500;
+}
 
 
 ${({ theme }) => theme.mediaquery.tablet} {
 
     flex-direction: row;
+
+    & h1{
+    font-size: 16px;
+
+    }
+
+    & .interests{
+  margin: 0 ;
+  padding: 4px 12px;
+  font-size: 14px;
+  font-weight: 500;
+}
+
+& p{
+    max-width: 40vw;
+    margin: 0;
+    font-size: 15px;
+  border-radius: 10px;
+  padding: 8px 12px ;
+}
+
+
+  
 
 
 }

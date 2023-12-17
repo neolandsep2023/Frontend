@@ -17,7 +17,7 @@ export const ProfileDataMobile = () => {
         <p>{user.description}</p>
         <FlexDir wrap={"wrap"}>
           {user.interests.map((interest) => (
-            <h3 className="interests">{interest}</h3>
+            <h3 className="interests" key={interest}>{interest}</h3>
           ))}
         </FlexDir>
 
@@ -45,7 +45,7 @@ export const ProfileDataMobile = () => {
         <div className="line"></div>
 
         <div className="links"
-        onClick={() => navigate("/profile/mobile/edit")}>
+        onClick={() => navigate("/profile/edit")}>
           <span
             class="material-symbols-outlined"
             
@@ -59,7 +59,7 @@ export const ProfileDataMobile = () => {
         <div className="line"></div>
         <div
           className="links"
-          onClick={() => navigate("/profile/mobile/settings")}
+          onClick={() => navigate("/profile/settings")}
         >
           <span class="material-symbols-outlined">settings</span> Settings
           <span class="material-symbols-outlined arrow">chevron_right</span>

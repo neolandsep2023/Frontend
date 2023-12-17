@@ -39,6 +39,18 @@ if (res?.status == 200){
 
 }
 
+if (res?.status == 200){
+    logout()
+    setRes(()=>({}))
+    return Swal.fire({
+        icon: "success",
+        title: "Your profile has been updated",
+        text: `✅ ${check} updated`,
+        timer: 3000,
+      });
+}
+
+
   //! -------------------------------------> 404 general y el 500
 
   if (res?.response?.status == 500 || res?.response?.status == 404) {

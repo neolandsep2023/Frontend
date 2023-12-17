@@ -133,32 +133,32 @@ export const router = createBrowserRouter ([
             <Bookmarks/>
             </Protected>),
                   },
-                  {
-                    path: "/profile/edit",
-                    element: 
-                    (<Protected>
-                      <EditProfile />
-                      </Protected>),
-                  },
-                  {
-                    path: "/profile/settings",
-                    element: 
-                    (<Protected>
-                     <AccountSettings/>
-                    </Protected>),
-                  },
+                  // {
+                  //   path: "/profile/edit",
+                  //   element: 
+                  //   (<Protected>
+                  //     <EditProfile />
+                  //     </Protected>),
+                  // },
+                  // {
+                  //   path: "/profile/settings",
+                  //   element: 
+                  //   (<Protected>
+                  //    <AccountSettings/>
+                  //   </Protected>),
+                  // },
         
                 ],
               },
               {
-                path: "/profile/mobile/edit",
+                path: "/profile/edit",
                 element: 
                 (<Protected>
                   <EditProfile />
                   </Protected>)
               },
               {
-                path: "/profile/mobile/settings",
+                path: "/profile/settings",
                 element: 
                 (<Protected>
                   <AccountSettings />
