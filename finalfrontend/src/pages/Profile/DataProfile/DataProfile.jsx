@@ -60,7 +60,7 @@ export const DataProfile = ({ page }) => {
                     <>
                       <MiniPostProfile
                         key={post._id}
-                        RoP="post"
+                        page={"post"}
                         id={post._id}
                         title={post.title}
                         text={post.text}
@@ -90,17 +90,18 @@ export const DataProfile = ({ page }) => {
               {/* <DataProfileElement> */}
               <MiniPostProfileContainerElement>
                 {dataPag &&
-                  dataPag.map((post) => (
+                  dataPag.map((room) => (
                     <>
                       <MiniPostProfile
-                        key={post._id}
-                        id={post._id}
-                        title={post.title}
-                        text={post.text}
-                        image={post.image[0]}
-                        province={post.province}
-                        price={post.price}
-                        type={post.type}
+                        key={room._id}
+                        page={"room"}
+                        id={room._id}
+                        title={room.title}
+                        text={room.text}
+                        image={typeof(room?.image) == 'string' ? room?.image : room?.image[0] }
+                        province={room.province}
+                        price={room.price}
+                        type={room.type}
                       ></MiniPostProfile>
                     </>
                   ))}
@@ -123,17 +124,18 @@ export const DataProfile = ({ page }) => {
               {/* <DataProfileElement> */}
               <MiniPostProfileContainerElement>
                 {dataPag &&
-                  dataPag.map((post) => (
+                  dataPag.map((review) => (
                     <>
                       <MiniPostProfile
-                        key={post._id}
-                        id={post._id}
-                        title={post.title}
-                        text={post.text}
-                        image={post.image}
-                        province={post.province}
-                        price={post.price}
-                        type={post.type}
+                        key={review._id}
+                        page={"review"}
+                        id={review._id}
+                        title={review.title}
+                        text={review.text}
+                        image={review.image}
+                        province={review.province}
+                        price={review.price}
+                        type={review.type}
                       ></MiniPostProfile>
                     </>
                   ))}
@@ -156,17 +158,18 @@ export const DataProfile = ({ page }) => {
               {/* <DataProfileElement> */}
               <MiniPostProfileContainerElement>
                 {dataPag &&
-                  dataPag.map((post) => (
+                  dataPag.map((bookmark) => (
                     <>
                       <MiniPostProfile
-                        key={post._id}
-                        id={post._id}
-                        title={post.title}
-                        text={post.text}
-                        image={post.image[0]}
-                        province={post.province}
-                        price={post.price}
-                        type={post.type}
+                        key={bookmark._id}
+                        page={"bookmark"}
+                        id={bookmark._id}
+                        title={bookmark.title}
+                        text={bookmark.text}
+                        image={bookmark.image}
+                        province={bookmark.province}
+                        price={bookmark.price}
+                        type={bookmark.type}
                       ></MiniPostProfile>
                     </>
                   ))}

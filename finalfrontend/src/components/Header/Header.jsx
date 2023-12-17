@@ -20,7 +20,7 @@
       navigate("/login");
     };
     const navigateToProfile = () => {
-      (isDesktop || isTablet) && navigate("/profile/posted");
+      (isDesktop || isTablet) && navigate("/profile");
       isMobile && navigate("/profile")
     }
 
