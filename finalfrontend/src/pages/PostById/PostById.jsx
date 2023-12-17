@@ -33,31 +33,32 @@ export const PostById = () => {
           <h1 style={{ fontSize: "4vw" }}>{res?.data?.title}</h1>
           <FlexDir direction="row" gap="2rem" mediaqueryDirMobile="column">
             <FlexDir width="60vw">
-              <ByIdImageCustom/>
+              <ByIdImageCustom src={res?.data?.image}/>
             </FlexDir>
             <FlexDir direction="column" height="100%" width="25vw" mediaqueryWidthMobile="100vw" mediaqueryMarginMobile="-1rem 0 0 0">
               <UlCustom mediaqueryDirMobile="row">
                 <li><span>{res?.data?.price}€/month</span></li>
                 <li>🏠{res?.data?.postcode}</li>
-                <li>⬜ {res?.data?.preferredGender}m²</li>
+                <li>{printRoomIcons("Surface")}{res?.data?.room?.surface}m²</li>
                 <li>🗺️ {res?.data?.province}</li>
                 <li>⌛ {res?.data?.preferredAge}</li>
               </UlCustom>
               <ConnectButtonCustom>Connect</ConnectButtonCustom>
             </FlexDir>
           </FlexDir>
-          <FlexDir direction="column" width="50%" height="50vh">
-            <H3Custom textAlign="center">House Commodities</H3Custom>
-            <UlCustom width="100%" height="90%" justifyContent="flex-start" alignItems="start" padding="0 0 0 30%">
-                <li>Private Room</li>
-                <li>{res?.data?.room?.commoditiesRoom?.includes("Double Bed") ? "Double Bed" : "Single Bed"}</li>
-                <li>{res?.data?.room?.exterior && "Exterior Room"}</li>
-                <li>{res?.data?.room?.surface}m²</li>
-            </UlCustom>
-          </FlexDir>
-          <FlexDir direction="column" margin="5rem 0 0 0" width="100vw">
+          <FlexDir direction="column" margin="0 0 0 0" width="100vw">
             <H3Custom padding="0 0 0 5vw">Description</H3Custom>
             <Description>{res?.data?.text}</Description>
+          </FlexDir>
+          <FlexDir direction="column" width="100vw">
+            <H3Custom padding="0 0 0 5vw">House Commodities</H3Custom>
+            <UlCustom width="100%" direction="row">
+                <li>{printRoomIcons("Private Room")}Private Room</li>
+                {res?.data?.room?.commoditiesRoom?.includes("Double Bed") ? <li>{printRoomIcons("Double Bed")}Double Bed</li> : <li>{printRoomIcons("Single Bed")}Single Bed</li>}
+                {res?.data?.room?.exterior ? <li>{printRoomIcons("Natural Light")}Exterior</li> : <li>{printRoomIcons("Interior")}Interior</li>}
+                <li>{printRoomIcons("Surface")}{res?.data?.room?.surface}m²</li>
+                {res?.data?.room?.commoditiesRoom?.includes("Private Bathroom") ? <li>{printRoomIcons("Private Bathroom")}Private Room</li> : <li>{printRoomIcons("Private Room")}Shared Bathroom</li>}
+            </UlCustom>
           </FlexDir>
           <FlexDir direction="column" margin="7vh">
             <H3Custom padding="0 0 0 5vw" margin="0 0 -2.5rem 0">Location</H3Custom>

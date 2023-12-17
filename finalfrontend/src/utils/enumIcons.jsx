@@ -126,8 +126,17 @@ export const printRoomIcons = (commodity) => {
     case "Natural Light":
       src = "https://cdn-icons-png.flaticon.com/128/2775/2775417.png";
       break;
+    case "Interior":
+      src = "https://cdn-icons-png.flaticon.com/128/7694/7694374.png";
+      break;
     case "Working Space":
       src = "https://cdn-icons-png.flaticon.com/128/7829/7829469.png";
+      break;
+    case "Private Room":
+      src = "https://cdn-icons-png.flaticon.com/128/263/263115.png";
+      break;
+    case "Surface":
+      src = "https://cdn-icons-png.flaticon.com/128/5442/5442154.png";
       break;
   }
 

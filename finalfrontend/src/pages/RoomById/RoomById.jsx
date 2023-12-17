@@ -39,7 +39,7 @@ export const RoomById = () => {
             <UlCustom  mediaqueryDirMobile="row">
               <li><span>{res?.data?.post?.price}€/month</span></li>
               <li>🏠{res?.data?.type}</li>
-              <li>⬜ {res?.data?.surface}m²</li>
+              <li>{printRoomIcons("Surface")}{res?.data?.room?.surface}m²</li>
               <li>🗺️ {res?.data?.province}, {res?.data?.publicLocation}</li>
               <li>🪟 {res?.data?.exterior && "Exterior Room"}</li>
             </UlCustom>
