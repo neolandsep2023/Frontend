@@ -5,7 +5,7 @@ const UlStyles = styled.ul`
   flex-direction: ${({direction}) => direction ? direction : "column"};
   justify-content: ${({justifyContent}) => justifyContent ? justifyContent : "center"};
   align-items: ${({alignItems}) => alignItems ? alignItems : "center"};
-  gap: 1rem;
+  gap: ${({gap}) => gap ? gap : "1rem"};
   padding: ${({padding}) => padding ? padding : "0"};
   width: ${({width}) => width ? width : "100%"};
   height: ${({height}) => height ? height : "100%"};
@@ -31,8 +31,8 @@ const UlStyles = styled.ul`
   }
 `
 
-export const UlCustom = ({ children, direction, width, justifyContent, alignItems, height, mediaqueryDirMobile, padding }) => {
+export const UlCustom = ({ children, direction, width, justifyContent, alignItems, height, mediaqueryDirMobile, padding, gap }) => {
   return (
-    <UlStyles padding={padding} mediaqueryDirMobile={mediaqueryDirMobile} height={height} alignItems={alignItems} justifyContent={justifyContent} width={width} direction={direction}>{children}</UlStyles>
+    <UlStyles gap={gap} padding={padding} mediaqueryDirMobile={mediaqueryDirMobile} height={height} alignItems={alignItems} justifyContent={justifyContent} width={width} direction={direction}>{children}</UlStyles>
   )
 }

@@ -52,7 +52,7 @@ export const PostById = () => {
           </FlexDir>
           <FlexDir direction="column" width="100vw">
             <H3Custom padding="0 0 0 5vw">House Commodities</H3Custom>
-            <UlCustom width="100%" direction="row">
+            <UlCustom width="100%" direction="row" gap="2rem">
                 <li>{printRoomIcons("Private Room")}Private Room</li>
                 {res?.data?.room?.commoditiesRoom?.includes("Double Bed") ? <li>{printRoomIcons("Double Bed")}Double Bed</li> : <li>{printRoomIcons("Single Bed")}Single Bed</li>}
                 {res?.data?.room?.exterior ? <li>{printRoomIcons("Natural Light")}Exterior</li> : <li>{printRoomIcons("Interior")}Interior</li>}
