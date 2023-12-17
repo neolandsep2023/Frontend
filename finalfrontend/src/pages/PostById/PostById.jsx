@@ -66,10 +66,9 @@ export const PostById = () => {
                 {res?.data?.room[0].commoditiesRoom?.includes("Private Bathroom") ? <li>{printRoomIcons("Private Bathroom")}Private Room</li> : <li>{printRoomIcons("Private Bathroom")}Shared Bathroom</li>}
             </UlCustom>
           </FlexDir>
-          <FlexDir direction="column">
+          <FlexDir direction="column" width="100vw" margin="2rem 0 0 0">
             <H3Custom padding="0 0 0 5vw">The roomates</H3Custom>
             {res && res?.data?.roommates?.map((roommate) => {
-              console.log(roommate)
               return (
                 <RoommateCard roommate={roommate}/>
               )
