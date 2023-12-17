@@ -14,6 +14,8 @@ const FlexStyle = styled.div`
   height: ${({ height }) => (height ? height : "auto")};
   width: ${({ width }) => (width ? width : "auto")};
   min-height: ${({ minHeight }) => (minHeight ? minHeight : "auto")};
+  border: ${({border}) => (border ? border : "none")};
+  border-radius: ${({borderRadius}) => borderRadius ? borderRadius : "0px"};
   
   ${({ theme }) => theme.mediaquery.laptop} {
     /* flex-direction: ${({ mediaqueryDir, direction }) =>
@@ -68,7 +70,9 @@ export const FlexDir = ({
   mediaqueryMarginMobile,
   mediaqueryMarginTablet,
   mediaqueryHeightMobile,
-  mediaqueryHeightTablet
+  mediaqueryHeightTablet,
+  border,
+  borderRadius
 }) => {
   const { theme } = useTheme();
 
@@ -92,6 +96,8 @@ export const FlexDir = ({
       mediaqueryMarginMobile={mediaqueryMarginMobile}
       mediaqueryHeightMobile={mediaqueryHeightMobile}
       mediaqueryMarginTablet={mediaqueryMarginTablet}
+      border={border}
+      borderRadius={borderRadius}
     >
       {children}
     </FlexStyle>

@@ -1,3 +1,4 @@
+import { useTheme } from "@emotion/react";
 import { useThemeApp } from "../context/themeContext";
 
 export const printHomeIcons = (commodity) => {
@@ -155,3 +156,26 @@ const commoditiesRoomIcon = [
   "https://cdn-icons-png.flaticon.com/128/2775/2775417.png",
   "https://cdn-icons-png.flaticon.com/128/7829/7829469.png",
 ]
+
+export const printIconsUser = (commodity) => {
+  const { theme } = useTheme();
+  let src = ""
+
+  switch (commodity) {
+    case "Age":
+      src = "https://cdn-icons-png.flaticon.com/128/5670/5670791.png";
+      break;
+    case "male":
+      src = "https://cdn-icons-png.flaticon.com/128/1895/1895199.png";
+      break;
+    case "female":
+      src = "https://cdn-icons-png.flaticon.com/128/4086/4086305.png";
+      break;
+    case "Interest":
+      src = "https://cdn-icons-png.flaticon.com/128/3162/3162297.png";
+      break;
+  }
+
+  return <img src={src} alt={commodity} style={{width: "3vw", margin: "0 1vw 0 0", padding: "0.25vw", backgroundColor: theme == "dark" ? "white" : "transparent", borderRadius: "5px" }}/>;
+
+}
