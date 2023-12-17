@@ -2,9 +2,9 @@ import { Link } from "react-router-dom"
 import { FlexDir, FlexEnd } from "../StyleComponents"
 import { MiniPostProfileElement } from "./MiniPostProfile.element"
 
-export const MiniPostProfile = ({id, title, text, image, province, price, type}) => {
+export const MiniPostProfile = ({id, title, text, image, province, price, type, RoP}) => {
 
-  const path = `/feed/${id}`
+  const path = RoP == "post" ? `/feed/${id}` : `/roomFinds/${id}`
 
   return (
     <>
