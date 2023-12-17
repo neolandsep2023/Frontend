@@ -29,6 +29,11 @@ const MiniPostProfileStyles = styled.div`
       ${({ theme }) => theme.palette.border.main};
   }
 
+& .type{
+  color: ${({ theme }) => theme.palette.button.mediumGreen}
+}
+
+
   & p,
   h3,
   h4 {
@@ -60,7 +65,7 @@ const MiniPostProfileStyles = styled.div`
 
   ${({ theme }) => theme.mediaquery.bigScreen} {
     width: 48%;
-    height: 75%;
+    height: 65%;
     & img {
       width: 25%;
     }

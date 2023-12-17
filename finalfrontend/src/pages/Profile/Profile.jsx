@@ -76,7 +76,17 @@ export const Profile = () => {
             onClick={() => setPage("posted")}
             variant={page == "posted" ? "clicked" : "normal"}
           >
-            Posted
+            Posts
+          </Pagination>
+          <Pagination
+            width={"9.5vw"}
+            mediaQueryWTablet={"15.75vw"}
+            mediaQueryWMobile={"23vw"}
+            height={""}
+            onClick={() => setPage("rooms")}
+            variant={page == "rooms" ? "clicked" : "normal"}
+          >
+            Rooms
           </Pagination>
 
           <Pagination
