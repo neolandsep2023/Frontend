@@ -32,7 +32,7 @@ let userAge = (2023 - user.birthYear)
 
         <FlexDir direction={"column"} margin={"0"}>
         <FlexDir wrap={"wrap"}>
-          {user.interests.map((interest) => (
+          {user?.interests?.map((interest) => (
             <h3 className="interests" key={interest}>{interest}</h3>
           ))}
         
