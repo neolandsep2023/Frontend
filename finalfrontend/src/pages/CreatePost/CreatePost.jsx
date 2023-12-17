@@ -32,7 +32,6 @@ export const CreatePost = () => {
   const [send, setSend] = useState(null);
   const [res, setRes] = useState({});
   const [createdPostSuccesfully, setCreatedPostSuccesfully] = useState(false);
-  const [id, setId] = useState(null)
   const { register, handleSubmit } = useForm();
   const { logout, user } = useAuth();
   const navigate = useNavigate();
@@ -62,7 +61,6 @@ export const CreatePost = () => {
 
       setSend(true);
       setRes(await createPost(customFormData));
-      setId(res?.data?._id)
       setSend(false);
     } else {
       // no hay imagen
@@ -72,7 +70,6 @@ export const CreatePost = () => {
 
       setSend(true);
       setRes(await createPost(customFormData));
-      setId(res?.data?._id);
       setSend(false);
     }
   };
@@ -87,7 +84,7 @@ export const CreatePost = () => {
   }, [postType, postcode, province, publicLocation]);
 
   useEffect(() => {
-    useErrorCreatePost(res, setRes, setCreatedPostSuccesfully, navigate, logout, id);
+    useErrorCreatePost(res, setRes, setCreatedPostSuccesfully, navigate);
   }, [res]);
 
   useEffect(() => {
@@ -252,6 +249,7 @@ export const CreatePost = () => {
               Show us a bit of who you are, and who you are looking for!
             </label>
             <textarea
+              minLength={100}
               id="text"
               name="text"
               style={{ width: "100%" }}

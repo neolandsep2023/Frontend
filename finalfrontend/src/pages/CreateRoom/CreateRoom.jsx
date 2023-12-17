@@ -54,6 +54,9 @@ export const CreateRoom = () => {
     if (inputFile.length != 0) {
       let customFormData = {
         ...formData,
+        publicLocation: publicLocation,
+        province: province,
+        postcode: postcode,
         image: inputFile,
       };
       for (let i = 0; i < inputFile.length; i++) {
@@ -89,9 +92,9 @@ export const CreateRoom = () => {
     useErrorCreateRoom(res, setRes, setCreatedRoomSuccesfully, setId, logout, navigate);
   }, [res]);
 
-  useEffect(() => {
-    useUserVerify(user, logout, navigate)
-    }, [])
+  // useEffect(() => {
+  //   useUserVerify(user, logout, navigate)
+  //   }, [])
 
   //----------------------USE EFFECT MAPA--------------------------
   useEffect(() => {
@@ -436,7 +439,7 @@ export const CreateRoom = () => {
                 const firstPostcode = Object.keys(postcodes[selectedPublicLocation][firstProvince])[0];
                 setPostcode(firstPostcode);
               }}
-              {...register("publicLocation", { required: true })}
+              required
             >
               <optgroup label="Community">
                 {Object.keys(postcodes)
@@ -465,7 +468,7 @@ export const CreateRoom = () => {
                 let firstPostcode = Object.keys(postcodes[publicLocation][selectedProvince])[0];
                 setPostcode(firstPostcode);
                 }}
-                {...register("province", { required: true })}
+                required
               >
                 {Object.keys(postcodes[publicLocation])
                   .sort((a, b) => a.localeCompare(b))
@@ -488,7 +491,7 @@ export const CreateRoom = () => {
                   name="postcode"
                   id="postcode"
                   onInput={(e) => setPostcode(e.target.value)}
-                  {...register("postcode", { required: true })}
+                  required
                   defaultValue={postcode}
                 >
                   {Object.entries(postcodes[publicLocation][province])

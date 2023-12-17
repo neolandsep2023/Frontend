@@ -26,7 +26,7 @@ useEffect(() => {
   const createMap = () => {
       if (!mapRef.current) {
         const map = L.map('map', {
-          center: [parseFloat(postcodes[ccaa][province][postcode].latitude), parseFloat(postcodes[ccaa][province][postcode].longitude)],
+          center: [parseFloat(postcodes[ccaa][province][postcode]?.latitude), parseFloat(postcodes[ccaa][province][postcode]?.longitude)],
           zoom: 13
         });
         L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {

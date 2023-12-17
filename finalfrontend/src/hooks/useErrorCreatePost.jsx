@@ -1,8 +1,11 @@
 import Swal from "sweetalert2"
 
-export const useErrorCreatePost = (res, setRes, setCreatedPostSuccesfully) => {
+export const useErrorCreatePost = (res, setRes, setCreatedPostSuccesfully, navigate) => {
   console.log(res);
   if (res?.status == 200) {
+    let id = (res?.data?.savedPost?._id)
+    console.log(id, "id en error")
+  navigate(`/feed/${id}`)
     setCreatedPostSuccesfully(() => true);
     Swal.fire({
       icon: "success",
