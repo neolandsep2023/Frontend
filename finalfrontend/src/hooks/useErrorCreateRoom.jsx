@@ -5,7 +5,6 @@ import { Navigate, useNavigate } from "react-router-dom";
 
 export const useErrorCreateRoom = (res, setRes, setCreatedRoomSuccesfully, setId, logout, navigate) => {
   console.log(res);
-  console.log(res.response.data);
   if (res?.status == 200) {
     setId(res.data._id)
     setCreatedRoomSuccesfully(() => true);
@@ -29,18 +28,6 @@ export const useErrorCreateRoom = (res, setRes, setCreatedRoomSuccesfully, setId
     setRes({});
   }
 
-  if (res?.response?.data?.includes("JsonWebTokenError:")) {
-    logout;
-    navigate('/login');
-    setRes(() => ({}));
-    return Swal.fire({
-      icon: "error",
-      title: "Please login.",
-      text: "Session expired, login again.",
-      showConfirmButton: false,
-      timer: 3000,
-    });
-  }
 
   if (res?.response?.data?.error?.includes("Error creating room")) {
     Swal.fire({

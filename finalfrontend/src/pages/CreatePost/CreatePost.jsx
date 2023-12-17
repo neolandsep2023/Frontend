@@ -24,6 +24,7 @@ import { postcodes } from "../../../data/noAbrirElArchivoEsDemasiadoLargo/shortP
 import { useErrorCreatePost } from "../../hooks/useErrorCreatePost";
 import { postData } from "../../data/Posts.data";
 import { useAuth } from "../../context/authContext";
+import { useUserVerify } from "../../hooks/useUserVerify";
 
 //<!--IMP                     Component                            -->
 export const CreatePost = () => {
@@ -33,7 +34,7 @@ export const CreatePost = () => {
   const [createdPostSuccesfully, setCreatedPostSuccesfully] = useState(false);
   const [id, setId] = useState(null)
   const { register, handleSubmit } = useForm();
-  const { logout } = useAuth();
+  const { logout, user } = useAuth();
   const navigate = useNavigate();
 
 
@@ -61,6 +62,7 @@ export const CreatePost = () => {
 
       setSend(true);
       setRes(await createPost(customFormData));
+      setId(res?.data?._id)
       setSend(false);
     } else {
       // no hay imagen
@@ -70,6 +72,7 @@ export const CreatePost = () => {
 
       setSend(true);
       setRes(await createPost(customFormData));
+      setId(res?.data?._id);
       setSend(false);
     }
   };
@@ -84,9 +87,13 @@ export const CreatePost = () => {
   }, [postType, postcode, province, publicLocation]);
 
   useEffect(() => {
-    useErrorCreatePost(res, setRes, setCreatedPostSuccesfully, navigate, logout);
+    useErrorCreatePost(res, setRes, setCreatedPostSuccesfully, navigate, logout, id);
   }, [res]);
 
+  useEffect(() => {
+  useUserVerify(user, logout, navigate)
+  }, [])
+  
 //   if (createdPostSuccesfully) {
 //     return <Navigate to={`/postFinds/${id}` }/>;
 //  }

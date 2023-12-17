@@ -1,7 +1,6 @@
 import Swal from "sweetalert2"
-import { useAuth } from "../context/authContext";
 
-export const useErrorCreatePost = (res, setRes, setCreatedPostSuccesfully, navigate, logout) => {
+export const useErrorCreatePost = (res, setRes, setCreatedPostSuccesfully) => {
   console.log(res);
   if (res?.status == 200) {
     setCreatedPostSuccesfully(() => true);
@@ -34,18 +33,6 @@ export const useErrorCreatePost = (res, setRes, setCreatedPostSuccesfully, navig
       timer: 3000,
     });
     setRes({});
-  }
-  if (res?.response?.data?.includes("JsonWebTokenError:")) {
-    logout;
-    navigate('/login');
-    setRes(() => ({}));
-    return Swal.fire({
-      icon: "error",
-      title: "Please login.",
-      text: "Session expired, login again.",
-      showConfirmButton: false,
-      timer: 3000,
-    });
   }
 
   if (res?.response?.status === 500) {
