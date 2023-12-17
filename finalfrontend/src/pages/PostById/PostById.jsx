@@ -17,7 +17,7 @@ export const PostById = () => {
 
   //! ---------- Destructuring ----------
   const { id } = useParams();
-  let roomData
+  let acc = 0
 
   const fetchPost = async () => {
     setRes(await getPostById(id))
@@ -69,8 +69,9 @@ export const PostById = () => {
           <FlexDir direction="column" width="100vw" margin="2rem 0 0 0">
             <H3Custom padding="0 0 0 5vw">The roomates</H3Custom>
             {res && res?.data?.roommates?.map((roommate) => {
+              acc++
               return (
-                <RoommateCard roommate={roommate}/>
+                <RoommateCard roommate={roommate} index={acc - 1}/>
               )
             })}
           </FlexDir>

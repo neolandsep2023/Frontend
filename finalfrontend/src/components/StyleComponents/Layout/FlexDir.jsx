@@ -4,7 +4,7 @@ import styled from "@emotion/styled";
 const FlexStyle = styled.div`
   display: flex;
   flex-direction: ${({ direction }) => direction};
-  justify-content: center;
+  justify-content: ${({justifyContent}) => (justifyContent ? justifyContent : "center")};;
   align-items: center;
   text-align: justify;
   flex-wrap: ${({ wrap }) => (wrap ? wrap : "no-wrap")};
@@ -16,6 +16,7 @@ const FlexStyle = styled.div`
   min-height: ${({ minHeight }) => (minHeight ? minHeight : "auto")};
   border: ${({border}) => (border ? border : "none")};
   border-radius: ${({borderRadius}) => borderRadius ? borderRadius : "0px"};
+  background-color: ${({backgroundColor}) => backgroundColor ? backgroundColor : "transparent"};
   
   ${({ theme }) => theme.mediaquery.laptop} {
     /* flex-direction: ${({ mediaqueryDir, direction }) =>
@@ -72,7 +73,9 @@ export const FlexDir = ({
   mediaqueryHeightMobile,
   mediaqueryHeightTablet,
   border,
-  borderRadius
+  borderRadius,
+  backgroundColor,
+  justifyContent
 }) => {
   const { theme } = useTheme();
 
@@ -98,6 +101,8 @@ export const FlexDir = ({
       mediaqueryMarginTablet={mediaqueryMarginTablet}
       border={border}
       borderRadius={borderRadius}
+      backgroundColor={backgroundColor}
+      justifyContent={justifyContent}
     >
       {children}
     </FlexStyle>

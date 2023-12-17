@@ -176,6 +176,6 @@ export const printIconsUser = (commodity) => {
       break;
   }
 
-  return <img src={src} alt={commodity} style={{width: "3vw", margin: "0 1vw 0 0", padding: "0.25vw", backgroundColor: theme == "dark" ? "white" : "transparent", borderRadius: "5px" }}/>;
+  return <img src={src} alt={commodity} style={{width: "1.75vw", margin: "0 1vw 0 0", padding: "0.15vw", backgroundColor: theme == "dark" ? "white" : "transparent", borderRadius: "5px" }}/>;
 
 }
