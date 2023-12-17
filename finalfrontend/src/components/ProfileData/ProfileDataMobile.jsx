@@ -23,21 +23,21 @@ export const ProfileDataMobile = () => {
 
         <div className="line"></div>
 
-        <div className="links">
+        <div className="links" onClick={() => navigate("/profile/mobile/posts")}>
           <span class="material-symbols-outlined">article</span> My Posts
           <span class="material-symbols-outlined arrow">chevron_right</span>
         </div>
 
         <div className="line"></div>
 
-        <div className="links">
+        <div className="links" onClick={() => navigate("/profile/mobile/reviews")}>
           <span class="material-symbols-outlined">star</span> Reviews
           <span class="material-symbols-outlined arrow">chevron_right</span>
         </div>
 
         <div className="line"></div>
 
-        <div className="links">
+        <div className="links" onClick={() => navigate("/profile/mobile/bookmarks")}>
           <span class="material-symbols-outlined">bookmark</span> Bookmarks
           <span class="material-symbols-outlined arrow">chevron_right</span>
         </div>

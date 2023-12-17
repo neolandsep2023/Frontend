@@ -47,6 +47,30 @@ export const usePaginacion = (num) => {
   };
 
   return {
+
+    MiniPaginacion: () => (
+      <>
+      
+          <Pagination
+            variant="normal"
+            onClick={() => {
+              prevPage();
+            }}
+          >
+            <span className="material-symbols-outlined">chevron_left</span>
+          </Pagination>
+          <Pagination
+            variant="normal"
+            onClick={() => {
+              nextPage();
+            }}
+          >
+            <span className="material-symbols-outlined">chevron_right</span>
+          </Pagination>
+  
+      </>
+    ),
+
     ComponentPaginacion: () => (
       <>
         <FlexDir width={"100vw"} gap={"2px"} margin={"4px"} height={"40px"}>

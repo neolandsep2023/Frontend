@@ -25,6 +25,7 @@ display: flex;
 
 & p{
 margin: 0;
+
   text-align: justify;
   background-color: ${({ theme }) => theme.palette.background.main};
   border: 1px solid
@@ -89,9 +90,11 @@ ${({ theme }) => theme.mediaquery.tablet} {
 }
 
 
-  
+& img{
+  width: 180px;
+  height: 180px;
 
-
+}
 }
 
 

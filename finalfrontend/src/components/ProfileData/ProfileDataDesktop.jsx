@@ -18,7 +18,7 @@ let userAge = (2023 - user.birthYear)
   return (
     <>
     <ProfileDataDesktopElement>
-        <FlexDir direction={"column"}>
+        <FlexDir direction={"column"} margin={"0"}>
     <img alt="user logo" src={user.image} />
         <h1>@{user.username}</h1>
         <FlexDir margin={"0"}>
@@ -38,15 +38,15 @@ let userAge = (2023 - user.birthYear)
         
         </FlexDir>
         
-        <FlexDir>
+        <FlexDir margin={"0"}>
            <h2> 4.75</h2>
            <h2>
         <Rating value={4.75} readOnly cancel={false} />
         </h2>
 
 
-        </FlexDir>
-<FlexDir width={"100%"} gap={"0"}>
+        </FlexDir >
+<FlexDir width={"100%"} gap={"0"} margin={"0"}>
         <ButtonPrimary variant={"normal"} width={"50%"} onClick={() => navigate("/profile/edit")}>Edit Profile</ButtonPrimary>
         <ButtonPrimary variant={"inverted"} width={"50%"} onClick={() => navigate("/profile/settings")}>Settings </ButtonPrimary>
         </FlexDir>

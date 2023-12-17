@@ -8,11 +8,16 @@ justify-content: space-between;
 align-items: center;
 width: 100%;
 height: 15%;
-background-color: ${({ theme }) => theme.palette.background.main};
+background-color: ${({ theme, variant }) => 
+variant =="normal" ? theme.palette.background.main :
+variant == "inverted" && theme.palette.form.main
+
+
+};
 border-radius: ${({ theme }) => theme.spacing(1)};
   border: ${({ theme }) => theme.spacing(0.1)} solid
     ${({ theme }) => theme.palette.border.main};
-padding: 1rem;
+padding: ${({padding}) => padding ? padding : "1rem" };
 
 & h4 {
   font-size: 15px;
@@ -44,9 +49,9 @@ ${({ theme }) => theme.mediaquery.tablet} {
 
 `
 
-export const FlexEnd = ({children}) => {
+export const FlexEnd = ({children, padding, variant}) => {
   const { theme } = useTheme();
   return (
-    <FlexEndStyles theme={theme}>{children}</FlexEndStyles>
+    <FlexEndStyles theme={theme} padding={padding} variant={variant}>{children}</FlexEndStyles>
   )
 }

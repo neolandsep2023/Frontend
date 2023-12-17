@@ -25,6 +25,8 @@ const FlexStyle = styled.div`
     mediaqueryDirTablet ? mediaqueryDirTablet : direction};
     width: ${({ mediaqueryWidthTablet, width }) =>
     mediaqueryWidthTablet ? mediaqueryWidthTablet : width};
+    height: ${({ mediaqueryHeightTablet, height }) =>
+    mediaqueryHeightTablet ? mediaqueryHeightTablet : height};
     margin: ${({mediaqueryMarginTablet, margin}) => mediaqueryMarginTablet ? mediaqueryMarginTablet : margin}
   }
 
@@ -66,6 +68,7 @@ export const FlexDir = ({
   mediaqueryMarginMobile,
   mediaqueryMarginTablet,
   mediaqueryHeightMobile,
+  mediaqueryHeightTablet
 }) => {
   const { theme } = useTheme();
 
@@ -76,6 +79,7 @@ export const FlexDir = ({
       theme={theme}
       mediaqueryWidthTablet={mediaqueryWidthTablet}
       mediaqueryWidthMobile={mediaqueryWidthMobile}
+      mediaqueryHeightTablet={mediaqueryHeightTablet}
       padding={padding}
       width={width}
       height={height}

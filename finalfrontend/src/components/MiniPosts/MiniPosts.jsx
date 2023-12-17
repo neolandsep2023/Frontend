@@ -38,7 +38,7 @@ useEffect(() => {
         </FlexDir>
         </FlexDir>
         
-        <FlexEnd>
+        <FlexEnd variant={"normal"}>
             <FlexDir >
             <img className="profilePicPost" alt="author profile img" src={author[0]?.image}/>
             <h4 className="author">{author[0]?.name ? author[0]?.name : author[0]?.username}</h4>
