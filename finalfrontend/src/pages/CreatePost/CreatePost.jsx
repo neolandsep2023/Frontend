@@ -56,6 +56,9 @@ export const CreatePost = () => {
       //- !=0 -- hay una imagen en el form
       const customFormData = {
         ...formData,
+        publicLocation: publicLocation,
+        province: province,
+        postcode: postcode,
         image: inputFile[0],
       };
 
@@ -384,8 +387,7 @@ export const CreatePost = () => {
                 const firstPostcode = Object.keys(postcodes[selectedPublicLocation][firstProvince])[0];
                 setPostcode(firstPostcode);
               }}
-              {...register("publicLocation", { required: true })}
-            >
+              required            >
               <optgroup label="Community">
                 {Object.keys(postcodes)
                   .sort((a, b) => a.localeCompare(b))
@@ -411,8 +413,8 @@ export const CreatePost = () => {
                 let firstPostcode = Object.keys(postcodes[publicLocation][selectedProvince])[0];
                 setPostcode(firstPostcode);
               }}
-              {...register("province", { required: true })}
-            >
+              required
+              >
               {Object.keys(postcodes[publicLocation])
                 .sort((a, b) => a.localeCompare(b))
                 .map((province) => (
@@ -433,8 +435,7 @@ export const CreatePost = () => {
     name="postcode"
     id="postcode"
     onInput={(e) => setPostcode(e.target.value)}
-    {...register("postcode", { required: true })}
-  >
+    required  >
     {Object.entries(postcodes[publicLocation][province])
       .sort((a, b) => a - b)
       .map(([postcode]) => (
