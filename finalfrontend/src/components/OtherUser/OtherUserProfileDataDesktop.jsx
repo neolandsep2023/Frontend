@@ -1,9 +1,10 @@
 import { useNavigate } from "react-router-dom";
 import { useAuth } from "../../context/authContext";
-import { ButtonPrimary, FlexDir } from "../StyleComponents";
 // import Rating from '@mui/material/Rating';
 import { Rating } from "primereact/rating";
 import { ProfileDataDesktopElement } from "../ProfileData/ProfileDataDesktop.element";
+import { buttonBaseClasses } from "@mui/material";
+import { ButtonPrimary, FlexDir } from "../StyleComponents";
 
 export const OtherUserProfileDataDesktop = ({ data }) => {
   const navigate = useNavigate();

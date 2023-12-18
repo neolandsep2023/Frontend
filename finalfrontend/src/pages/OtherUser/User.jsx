@@ -1,12 +1,6 @@
 import { Outlet, useNavigate, useParams } from "react-router-dom";
 import { NavProfile } from "../../components/NavProfile/NavProfile";
-import {
-  ButtonPrimary,
-  FlexDir,
-  ProfileContainer,
-} from "../../components/StyleComponents";
 import { useAuth } from "../../context/authContext";
-import { useThemeApp } from "../../context/themeContext";
 import { useTheme } from "@emotion/react";
 import { useEffect, useState } from "react";
 import { useUserVerify } from "../../hooks/useUserVerify";
@@ -14,7 +8,7 @@ import { getUserByIdP } from "../../services/user.service";
 import { OtherUserProfileDataDesktop } from "../../components/OtherUser/OtherUserProfileDataDesktop";
 import { OtherUserProfileDataMobile } from "../../components/OtherUser/OtherUserProfileDataMobile";
 import { UserDataProfile } from "./UserDataProfile";
-import { Pagination } from "@mui/material";
+import { FlexDir, Pagination, ProfileContainer } from "../../components/StyleComponents";
 
 export const User = () => {
   const { theme } = useTheme();
