@@ -52,7 +52,7 @@ export const usePaginacion = (num) => {
       <>
       
           <Pagination
-            variant="normal"
+            variant= { currentPage === 1 ? "disabled": "normal"}
             onClick={() => {
               prevPage();
             }}
@@ -60,7 +60,7 @@ export const usePaginacion = (num) => {
             <span className="material-symbols-outlined">chevron_left</span>
           </Pagination>
           <Pagination
-            variant="normal"
+            variant= { currentPage === totalPages ? "disabled": "normal"}
             onClick={() => {
               nextPage();
             }}

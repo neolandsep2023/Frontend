@@ -10,6 +10,19 @@ justify-content: center;
 
 
 
+${({ theme }) => theme.mediaquery.mobile} {
+
+  height: 88%;
+}
+
+  
+  ${({ theme }) => theme.mediaquery.miniMobile} {
+
+    height: 88%;
+  }
+
+
+
 
 
 `

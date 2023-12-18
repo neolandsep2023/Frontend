@@ -11,11 +11,15 @@ import { FlexDir, ProfileContainer } from "../../../components/StyleComponents";
 import { usePaginacion } from "../../../hooks/usePaginacion";
 
 export const DataProfile = ({ page }) => {
-  const { MiniPaginacion, setGaleriaItems, dataPag } = usePaginacion(2);
+    const isMobile = window.innerWidth < 576 ? true : false;
+
+  const { MiniPaginacion, setGaleriaItems, dataPag } = usePaginacion( isMobile ? 1 : 2);
   const { user } = useAuth();
   const [data, setData] = useState(null);
   const [res, setRes] = useState(null);
   const [isLoaded, setIsLoaded] = useState(false);
+
+  
 
   const fetchData = async () => {
     setIsLoaded(false);
@@ -45,7 +49,7 @@ export const DataProfile = ({ page }) => {
       case "posted":
         return (
           <>
-            <ProfileContainer heightTablet={"58vh"} height={"77vh"}>
+            <ProfileContainer heightTablet={"38vh"} height={"77vh"}>
               <FlexDir>
                 <h1>Posts you have made</h1>
                 <MiniPaginacion />

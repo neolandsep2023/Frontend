@@ -41,14 +41,14 @@ let userAge = data?.birthYear && (2023 - data?.birthYear)
         <FlexDir direction={"column"} margin={"0"} gap={"4px"}>
     <img alt="user logo" src={data?.image} />
         <h1>@{data?.username}</h1>
+      
+        </FlexDir>
+        <FlexDir direction={"column"} margin={"0"} >
         <FlexDir margin={"0"}>
         {data?.birthYear != null && <p className="pWeight"> {userAge}</p> }
         
         <p className="pWeight">{data?.gender}</p>
         </FlexDir>
-        </FlexDir>
-        <FlexDir direction={"column"} margin={"0"} >
-        
        { data?.description ?  <p>{data?.description}</p> : null }
         </FlexDir>
 

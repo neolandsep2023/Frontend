@@ -10,9 +10,9 @@ export const MiniPostProfile = ({id, title, text, image, province, price, type, 
     <>
     <MiniPostProfileElement>
         <Link to={path}>
-            <FlexDir  width={"100%"} height={"80%"} mediaqueryHeightMobile={"100%"} mediaqueryDirMobile={"column"} margin={"0"}>
+            <FlexDir  width={"100%"} height={"70%"} mediaqueryHeightTablet={"80%"} mediaqueryHeightMobile={"100%"} mediaqueryDirMobile={"column"} margin={"0"}>
         <img src={image} alt="img post" />
-    <FlexDir width={"60%"} mediaqueryWidthMobile={"90%"} height={"100%"} direction={"column"} margin={"0"}>
+    <FlexDir width={"60%"} mediaqueryWidthMobile={"90%"} height={"100%"} mediaqueryHeightMobile={"100%"} direction={"column"} margin={"0"}>
         
         <h3>{title}</h3>
         <p>{text}</p>

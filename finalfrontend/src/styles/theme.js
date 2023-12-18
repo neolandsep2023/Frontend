@@ -4,7 +4,7 @@ export const BREAKPOINTS = {
   extraSmall: 400,
   mobile: 576,
   tablet: 768,
-  laptop: 992,
+  laptop: 1050,
   desktop: 1200,
   bigScreen: 2400,
 };
@@ -23,7 +23,7 @@ const PALETTE_COLOR_LIGHT = {
   form: "#f5f5f5",
   lighterForm: "#d3d7db",
   textColor: "#1e1e1e",
-  secondTextColor: "#2a2b2e",
+  secondTextColor: "#c4c2c2",
   greenTextColor: "#72cc89",
   border: "#dadde0",
   shadow: "rgba(43,117,60,0.7)", //? puesto por mario
@@ -47,7 +47,7 @@ const PALETTE_COLOR_DARK = {
   form: "#35363a",
   lighterForm: "#62676c",
   textColor: "#ffffff",
-  secondTextColor: "#f9f9f9",
+  secondTextColor: "#666565",
   greenTextColor: "#72cc89",
   border: "#535459",
   shadow: "rgba(187,255,205,0.27)", //? puesto por mario
@@ -85,6 +85,7 @@ export const themeLight = {
       main: PALETTE_COLOR_LIGHT.textColor,
       form: PALETTE_COLOR_LIGHT.mediumGreen,
       inverted: PALETTE_COLOR_LIGHT.lightGreen,
+      second: PALETTE_COLOR_LIGHT.secondTextColor,
     },
     greenTextColor: {
       main: PALETTE_COLOR_LIGHT.mediumLightGreen,
@@ -156,6 +157,7 @@ export const themeDark = {
       main: PALETTE_COLOR_DARK.textColor,
       form: PALETTE_COLOR_DARK.lightGreen,
       inverted: PALETTE_COLOR_LIGHT.mediumGreen,
+      second: PALETTE_COLOR_DARK.secondTextColor,
     },
     greenTextColor: {
       main: PALETTE_COLOR_DARK.lightGreen,

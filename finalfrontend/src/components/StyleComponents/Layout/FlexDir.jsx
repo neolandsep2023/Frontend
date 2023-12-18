@@ -47,8 +47,8 @@ const FlexStyle = styled.div`
       mediaqueryDirMobile ? mediaqueryDirMobile : direction};
     width: ${({ mediaqueryWidthMobile, width }) =>
       mediaqueryWidthMobile ? mediaqueryWidthMobile : width};
-      height: ${({ mediaqueryHeightMobile, height }) =>
-      mediaqueryHeightMobile ? mediaqueryHeightMobile : height};
+      height: ${({ mediaqueryHeightMiniMobile, height }) =>
+      mediaqueryHeightMiniMobile ? mediaqueryHeightMiniMobile : height};
     margin: ${({mediaqueryMarginMobile, margin}) => mediaqueryMarginMobile ? mediaqueryMarginMobile : margin}
   }
 `;
@@ -72,6 +72,7 @@ export const FlexDir = ({
   mediaqueryMarginTablet,
   mediaqueryHeightMobile,
   mediaqueryHeightTablet,
+  mediaqueryHeightMiniMobile,
   border,
   borderRadius,
   backgroundColor,
@@ -99,6 +100,7 @@ export const FlexDir = ({
       mediaqueryMarginMobile={mediaqueryMarginMobile}
       mediaqueryHeightMobile={mediaqueryHeightMobile}
       mediaqueryMarginTablet={mediaqueryMarginTablet}
+      mediaqueryHeightMiniMobile={mediaqueryHeightMiniMobile}
       border={border}
       borderRadius={borderRadius}
       backgroundColor={backgroundColor}

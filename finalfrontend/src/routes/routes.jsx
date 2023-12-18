@@ -8,7 +8,7 @@ import { ProtectedCheckChildren } from "../components/ProtectedRoutes/ProtectedC
 import { Registerpt1 } from "../pages/Register/Registerpt1/Registerpt1";
 import App from "../App";
 
-import { MapCreation, ForgotPassword, ByIdMap, Home, RoomSearch, CreateRoom, Login, VerifyCode,Registerpt2, Profile,EditProfile, AccountSettings, RoomById, Feed, NotFound } from "../pages";
+import { MapCreation, ForgotPassword, ByIdMap, Home, RoomSearch, CreateRoom, Login, VerifyCode,Registerpt2, Profile,EditProfile, AccountSettings, RoomById, Feed, NotFound, DataProfile } from "../pages";
 import { AppCarousel } from "../components/Carousel/Carousel";
 import { RoomReview } from "../components/Review/RoomReview";
 import { CreatePost } from "../pages/CreatePost/CreatePost";
@@ -19,7 +19,6 @@ import { PostById } from "../pages/PostById/PostById";
 import { User } from "../pages/OtherUser/User";
 import { UpdatePost } from "../pages/Update/UpdatePost";
 import { UpdateRoom } from "../pages/Update/UpdateRoom";
-import { DataMobile } from "../pages/Profile/DataMobile/DataMobile";
 
 
 
@@ -158,26 +157,33 @@ export const router = createBrowserRouter ([
               ,
               },
               {
-                path: "/profile/mobile/post",
+                path: "/profile/mobile/posts",
                 element: 
                 (<Protected>
-                <DataMobile/>
+                <DataProfile page={"posted"}/>
                 </Protected>),
               },
-        //       {
-        //         path: "/profile/mobile/reviews",
-        //         element: 
-        //         (<Protected>
-        // <ReviewPage/>
-        // </Protected>),
-        //       },
-        //       {
-        //         path: "/profile/mobile/bookmarks",
-        //         element: 
-        //         (<Protected>
-        // <Bookmarks/>
-        // </Protected>),
-        //       },
+              {
+                path: "/profile/mobile/rooms",
+                element: 
+                (<Protected>
+                <DataProfile page={"rooms"}/>
+                </Protected>),
+              },
+              {
+                path: "/profile/mobile/reviews",
+                element: 
+                (<Protected>
+                <DataProfile page={"reviews"}/>
+                </Protected>),
+              },
+              {
+                path: "/profile/mobile/bookmarks",
+                element: 
+                (<Protected>
+                <DataProfile page={"bookmarks"}/>
+                </Protected>),
+              },
               {
                 path: "/profile/edit",
                 element: 

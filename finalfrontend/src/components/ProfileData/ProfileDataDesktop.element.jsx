@@ -40,8 +40,8 @@ margin: 0;
 }
 
 & img{
-  width: 10vw;
-  height: 10vw;
+  width: 8vw;
+  height: 8vw;
   object-fit: cover;
   border-radius: 50%;
   border: 3px solid

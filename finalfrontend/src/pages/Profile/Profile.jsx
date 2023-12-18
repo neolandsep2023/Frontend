@@ -44,7 +44,7 @@ export const Profile = () => {
 
   return (
     <>
-    <FlexDir width={"98vw"} height={"86vh"} mediaqueryHeightTablet={"105vh"} mediaqueryDirTablet={"column"} mediaqueryMarginMobile={"0"} mediaqueryWidthMobile={"100vw"} mediaqueryWidthminiMobile={"100vw"} mediaqueryHeightMobile={"100vh"}>
+    <FlexDir width={"98vw"} height={"86vh"} mediaqueryHeightTablet={"75vh"} mediaqueryDirTablet={"column"} mediaqueryMarginMobile={"0"} mediaqueryWidthMobile={"100vw"} mediaqueryWidthminiMobile={"100vw"} mediaqueryHeightMiniMobile={"750px"} mediaqueryHeightMobile={"950px"}>
       {/* <UserProfileData/> */}
       <ProfileContainer  width={"32vw"} height={"83vh"} margin={"10px 0 10px 20px"} heightTablet={"38vh"}>
 

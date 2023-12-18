@@ -97,7 +97,7 @@ const MiniPostProfileStyles = styled.div`
 
   ${({ theme }) => theme.mediaquery.tablet} {
     width: 48%;
-    min-height: 45%;
+    min-height: 85%;
     & img {
       width: 30%;
     }
@@ -108,9 +108,12 @@ const MiniPostProfileStyles = styled.div`
       font-size: 13px;
     }
     & h3 {
-      height: 30%;
+      height: 20%;
       font-size: 15px;
+      -webkit-line-clamp: 1;
     }
+
+  
 
     margin: ${({ margin, theme }) => (margin ? margin : theme.spacing(1))};
   }
@@ -130,8 +133,9 @@ const MiniPostProfileStyles = styled.div`
       font-size: 16px;
     }
     & h3 {
-      height: 30%;
+      height: 10%;
       font-size: 18px;
+      -webkit-line-clamp: 1;
     }
   }
 
@@ -150,8 +154,9 @@ const MiniPostProfileStyles = styled.div`
       font-size: 16px;
     }
     & h3 {
-      height: 30%;
+      height: 10%;
       font-size: 18px;
+      -webkit-line-clamp: 1;
     }
   }
 `;

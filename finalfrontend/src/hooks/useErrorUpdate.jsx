@@ -32,7 +32,7 @@ if (res?.status == 200){
     return Swal.fire({
         icon: "success",
         title: "Your profile has been updated",
-        text: `✅ ${check} updated`,
+        text: `✅ updated`,
         timer: 3000,
       });
 }
@@ -45,7 +45,7 @@ if (res?.status == 200){
     return Swal.fire({
         icon: "success",
         title: "Your profile has been updated",
-        text: `✅ ${check} updated`,
+        text: `✅  updated`,
         timer: 3000,
       });
 }

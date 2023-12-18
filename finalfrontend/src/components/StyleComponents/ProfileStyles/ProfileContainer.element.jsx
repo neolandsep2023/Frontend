@@ -16,6 +16,10 @@ border: 1px solid
 border-radius: 5px;
 background-color: ${({theme}) => theme.palette.form.main};
 
+& h1{
+  margin: 0
+}
+
 & .line {
     border-top: 2px solid  ${({theme}) => theme.palette.border.main};
     width: 95%;
@@ -30,14 +34,21 @@ ${({ theme }) => theme.mediaquery.tablet} {
 
   ${({ theme }) => theme.mediaquery.mobile} {
     width: 98vw;
-    margin: 0;
-    height: 97vh;
+    margin: 4px;
+    height: 102vh;
+
+    & h1{
+ font-size: 24px;
+}
 
   }
   ${({ theme }) => theme.mediaquery.miniMobile} {
     width: 98vw;
-    margin: 0;
-    height: 97vh;
+    margin: 4px;
+    height: 720px;
+    & h1{
+ font-size: 22px;
+}
 
   }
 
