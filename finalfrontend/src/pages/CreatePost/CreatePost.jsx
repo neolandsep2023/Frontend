@@ -25,6 +25,7 @@ import { useErrorCreatePost } from "../../hooks/useErrorCreatePost";
 import { postData } from "../../data/Posts.data";
 import { useAuth } from "../../context/authContext";
 import { useUserVerify } from "../../hooks/useUserVerify";
+import { useCanUserPost } from "../../hooks/useCanUserPost";
 
 //<!--IMP                     Component                            -->
 export const CreatePost = () => {
@@ -92,6 +93,7 @@ export const CreatePost = () => {
 
   useEffect(() => {
   useUserVerify(user, logout, navigate)
+  useCanUserPost(user, navigate)
   }, [])
   
 //   if (createdPostSuccesfully) {

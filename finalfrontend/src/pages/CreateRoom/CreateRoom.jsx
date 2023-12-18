@@ -24,6 +24,7 @@ import { useErrorCreateRoom } from "../../hooks/useErrorCreateRoom";
 import { postcodes } from "../../../data/noAbrirElArchivoEsDemasiadoLargo/shortPostcodes";
 import { useAuth } from "../../context/authContext";
 import { useUserVerify } from "../../hooks/useUserVerify";
+import { useCanUserPost } from "../../hooks/useCanUserPost";
 
 //<!--IMP                     Component                            -->
 export const CreateRoom = () => {
@@ -45,6 +46,9 @@ export const CreateRoom = () => {
   //estos estados son para re-renderizar el componente si cambia la referencia
   const mapRef = useRef(null);
   const markerRef = useRef(null);
+
+
+
 
   //<!--sec                     Funciones pagina                         -->
   const formSubmit = async (formData) => {
@@ -92,9 +96,12 @@ export const CreateRoom = () => {
     useErrorCreateRoom(res, setRes, setCreatedRoomSuccesfully, setId, logout, navigate);
   }, [res]);
 
-  // useEffect(() => {
-  //   useUserVerify(user, logout, navigate)
-  //   }, [])
+  useEffect(() => {
+    useUserVerify(user, logout, navigate)
+    useCanUserPost(user, navigate)
+    }, [])
+
+
 
   //----------------------USE EFFECT MAPA--------------------------
   useEffect(() => {
