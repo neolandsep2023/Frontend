@@ -1,6 +1,9 @@
-span,p{
+.figureNav span{
     color: rgb(74, 206, 130);
     font-weight: 700;
+}
+.headerSmall span{
+    color: rgb(74, 206, 130);
 }
 
 .headerDesktop{
@@ -13,15 +16,7 @@ span,p{
 
     background-color: #2a2b2e;
 }
-li,a{
-    list-style: none;
-    text-align: center;
-    text-decoration: none;
-    
-}
-a{
-    color: rgb(74, 206, 130);
-}
+
 
 .navs{
     display: flex;

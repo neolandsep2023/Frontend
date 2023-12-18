@@ -107,10 +107,20 @@ body.light .zonaMobile{
  
   }
 body.light .figureNav{
-    background-color: #d4d0d0;
+    background-color: #b1b1b1;
  
   }
-
+body.light .figureNav a{
+    background-color: #d1cece;
+    color: black;
+ 
+  }
+body.light .figureNav span{
+    background-color: #d1cece;
+    color: black;
+ 
+  }
+ 
 body.light .smallUno {
     background-color: #FFF;
  

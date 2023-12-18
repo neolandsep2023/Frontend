@@ -15,8 +15,8 @@ export const Header = () => {
   const { toggleTheme, theme } = useThemeApp();
   const navigate = useNavigate()
   const { user, logout } = useAuth();
-  const navigateToProfile = () => {
-    navigate("/profile");
+  const navigateToLogin = () => {
+    navigate("/login");
   };
 
 
@@ -43,8 +43,8 @@ export const Header = () => {
         <ButtonHeader onClick={toggleTheme}>
           {theme == "dark" ? "☀️" : "🌙"}
         </ButtonHeader>
-        <ButtonHeader onClick={user == null ? navigateToProfile : logout}>
-          {user == null ? "LOG IN" : "Profile"}
+        <ButtonHeader onClick={user == null ? navigateToLogin : logout}>
+          {user == null ? "LOG IN" : "LOG OUT"}
         </ButtonHeader>
         </div>
         <nav className="navDos">
