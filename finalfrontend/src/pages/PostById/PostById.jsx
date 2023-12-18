@@ -13,21 +13,38 @@ import { getPostById } from "../../services/post.service";
 import { RoommateCard } from "../../components/RoomateCard/RoommateCard";
 import { H3PerfectFit } from "../../components/StyleComponents/Text/H3/H3PerfectFit";
 import { NoRoomate } from "../../components/RoomateCard/NoRoomateCard";
+import { useAuth } from "../../context/authContext";
 export const PostById = () => {
   //! ---------- Estados ----------
   const [res, setRes] = useState();
+  const [isOwner, setIsOwner] = useState()
 
   //! ---------- Destructuring ----------
   const { id } = useParams();
+  const { user } = useAuth()
   let acc = 0
 
   const fetchPost = async () => {
     setRes(await getPostById(id))
   }
 
+  const isOwnerFunction = () => {
+    if (res?.data?.author[0]?.email == user?.email) {
+      setIsOwner(true)
+    } else {
+      setIsOwner(false)
+    }
+  }
+
   useEffect(() => {
     fetchPost()
   }, [])
+
+  useEffect(() => {
+    if (res?.status == 200) {
+      isOwnerFunction()
+    }
+  }, [res])
 
   return (
     <>
@@ -70,12 +87,16 @@ export const PostById = () => {
           </FlexDir>
           <FlexDir direction="column" width="100vw" margin="7vw 0" mediaqueryMarginMobile="4vw 0" mediaqueryMarginTablet="6vw 0">
             <H3Custom margin="0 0 1vw 0">The roomates</H3Custom>
+            {(res?.data?.roommates?.length > 0 && isOwner) && 
+              <div style={{display: "flex", flexDirection: "row"}}>
+                <NoRoomate width="5vw" height="5vw" id={res?.data?._id}/>
+              </div>}
             {res?.data?.roommates?.length > 0 ? res?.data?.roommates?.map((roommate) => {
               acc++
               return (
                 <RoommateCard key={roommate._id} roommate={roommate} index={acc - 1}/>
               )
-            }) : <NoRoomate id={res?.data?._id}/>}
+            }) : isOwner && <NoRoomate id={res?.data?._id}/>}
           </FlexDir>
           <hr style={{border: "none", borderTop:"3px dashed #72cc8999", width:"100vw", margin:"0"}}/>
           <FlexDir direction="column">

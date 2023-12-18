@@ -21,9 +21,16 @@ export const NoRoomate = ({ id, width, height }) => {
   return (
   <NoRoomateStyles width={width} height={height}>
     <FlexDir>
-      {pressed == false ? <button style={{border: "none", backgroundColor: "transparent"}} onClick={handleClick}>
-        <img src="https://cdn-icons-png.flaticon.com/128/4210/4210903.png" alt="add roommate" />
-      </button> : <FindUsers postId={id}/>}
+      {pressed == false ?
+      <>
+        <button style={{border: "none", backgroundColor: "transparent"}} onClick={handleClick}>
+          <img src="https://cdn-icons-png.flaticon.com/128/4210/4210903.png" alt="add roommate" />
+        </button> 
+        <div style={{display: "flex", alignItems: "center"}}>
+          <h4>Update Roommates</h4>
+        </div>
+      </> 
+      : <FindUsers postId={id}/>}
     </FlexDir>
   </NoRoomateStyles>
   )

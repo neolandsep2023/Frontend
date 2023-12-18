@@ -8,7 +8,8 @@ export const FindUsers = ({postId}) => {
   const [findNameValue, setFindNameValue] = useState()
   const [res, setRes] = useState()
   const [resToggle, setResToggle] = useState();
-  const [added, setAdded] = useState()
+  // const [added, setAdded] = useState()
+  const [currentUser, setCurrentUser] = useState()
 
   const handleSubmit = async (e) => {
     let resUserByName = await getUserByName(findNameValue)
@@ -18,13 +19,25 @@ export const FindUsers = ({postId}) => {
 
   const addRoommate = async (userId) => {
     setResToggle(await toggleRoommate(postId, userId))
+    isAdded(userId)
   }
 
-  useEffect(() => {
-    if (res?.status == 200) {
-      console.log(res)
+  const isAdded = (userId) => {
+    // console.log(resToggle?.data?.dataUpdate?.roommates)
+    if (resToggle?.data?.dataUpdate?.roommates?.includes(userId)) {
+      // setAdded(true)
+      return true
+    } else {
+      // setAdded(false)
+      return false
     }
-  }, [res])
+  }
+
+  // useEffect(() => { //? esto se hace para que el botón se renderize como add o unadd según ya esté o no en el post
+  //   if (res?.status == 200) {
+  //     isAdded(currentUser?._id)
+  //   }
+  // }, [currentUser])
 
   return (
     <div id="userFinderPage">
@@ -34,6 +47,7 @@ export const FindUsers = ({postId}) => {
       </div>
       <div id="padreSection">
         {res && res?.data?.map((user) => {
+          // setCurrentUser(user) //? aquí seteamos el current user para acceder a su id. nos da el error de too many rerenders
           return (
             <div className="findUserMapResult" key = {user._id} >
               <section className="findUserMapSection">
@@ -41,7 +55,7 @@ export const FindUsers = ({postId}) => {
                 <h2 className="userFinderName">{user.name}</h2>
               </section>
               <section>
-                <button className="addRoommateButton" onClick={() => addRoommate(user._id)}>{added ? "Unadd" : "Add"}</button>
+                <button className="addRoommateButton" onClick={() => addRoommate(user._id)}>{isAdded(user._id) ? "Unadd" : "Add"}</button>
               </section>
             </div>
           )
