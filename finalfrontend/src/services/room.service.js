@@ -13,10 +13,12 @@ export const createRoom = async (formData) => {
 };
 
 //! ------------------ UPDATE ------------------
-export const updateRoom = async (roomId) => {
+export const updateRoom = async (roomId, formData) => {
   const APIGeneral = extraConfig();
 
-  return APIGeneral.patch(`/rooms/${roomId}`)
+  return APIGeneral.patch(`/rooms/${roomId}`, formData, {
+    headers: { "Content-Type": "multipart/form-data" },
+  })
     .then((res) => res)
     .catch((error) => error);
 };

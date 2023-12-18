@@ -13,13 +13,16 @@ export const createPost = async (formData) => {
 };
 
 //! ------------------ UPDATE ------------------
-export const updatePost = async (postId) => {
+export const updatePost = async (postId, formData) => {
   const APIGeneral = extraConfig();
 
-  return APIGeneral.patch(`/posts/update/${postId}`)
+  return APIGeneral.patch(`/posts/update/${postId}`, formData, {
+    headers: { "Content-Type": "multipart/form-data" },
+  })
     .then((res) => res)
     .catch((error) => error);
 };
+
 
 //! ------------------ DELETE ------------------
 export const deletePost = async (postId) => {

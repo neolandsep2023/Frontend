@@ -64,7 +64,7 @@ export const CreateRoom = () => {
         image: inputFile,
       };
       for (let i = 0; i < inputFile.length; i++) {
-        // customFormData = {...customFormData, ['image'] : inputFile[i]}
+        // customFormData = {...customFormData, ['image'] : inputFile[i]} esto esta delibreadamente comentado!!
       }
 
       console.log("custom form data con imagen", customFormData);
