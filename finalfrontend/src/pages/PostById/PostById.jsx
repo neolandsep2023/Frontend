@@ -12,6 +12,7 @@ import { RoomReview } from "../../components/Review/RoomReview";
 import { getPostById } from "../../services/post.service";
 import { RoommateCard } from "../../components/RoomateCard/RoommateCard";
 import { H3PerfectFit } from "../../components/StyleComponents/Text/H3/H3PerfectFit";
+import { NoRoomate } from "../../components/RoomateCard/NoRoomateCard";
 export const PostById = () => {
   //! ---------- Estados ----------
   const [res, setRes] = useState();
@@ -69,12 +70,12 @@ export const PostById = () => {
           </FlexDir>
           <FlexDir direction="column" width="100vw" margin="7vw 0" mediaqueryMarginMobile="4vw 0" mediaqueryMarginTablet="6vw 0">
             <H3Custom margin="0 0 1vw 0">The roomates</H3Custom>
-            {res && res?.data?.roommates?.map((roommate) => {
+            {res?.data?.roommates?.length > 0 ? res?.data?.roommates?.map((roommate) => {
               acc++
               return (
                 <RoommateCard key={roommate._id} roommate={roommate} index={acc - 1}/>
               )
-            })}
+            }) : <NoRoomate id={res?.data?._id}/>}
           </FlexDir>
           <hr style={{border: "none", borderTop:"3px dashed #72cc8999", width:"100vw", margin:"0"}}/>
           <FlexDir direction="column">

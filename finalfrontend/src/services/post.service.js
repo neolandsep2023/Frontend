@@ -121,3 +121,13 @@ export const search = async (search) => {
     .then((res) => res)
     .catch((error) => error);
 };
+
+//! ---------------- TOGGLE ROOMMATE ----------------
+export const toggleRoommate = async (id, formData) => {
+  console.log(formData)
+  const APIGeneral = extraConfig();
+
+  return APIGeneral.patch(`/posts/toggleRoommates/${id}/${formData}`)
+    .then((res) => res)
+    .catch((error) => error);
+};
