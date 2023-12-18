@@ -27,6 +27,7 @@ import {
   getUserByIdPLikes,
 } from "../../services/user.service";
 import { provinceEnum } from "../../utils/provinceEnum";
+import { NothingHere } from "../../components/NothingHere/NothingHere";
 
 export const Feed = () => {
   const isMobile = window.innerWidth < 576 ? true : false;
@@ -188,7 +189,7 @@ export const Feed = () => {
               )}
             </FlexDir>
 
-            {dataPag && feed != null && (
+            { feed != null && (
               <>
 
 
@@ -196,7 +197,7 @@ export const Feed = () => {
                 {!isMobile ? (
                 <FeedStyle>
                   
-                  {dataPag
+                  {dataPag[0]
                     ? dataPag.map((item) => (
                         <MiniPosts
                           key={item?._id}
@@ -216,7 +217,7 @@ export const Feed = () => {
                         res?.response?.status == 500 ||
                         resSearch?.response?.status == 404 ||
                         resSearch?.response?.status == 500) && (
-                        <h1>Error 404</h1>
+                        <NothingHere path={"/createPost"}/>
                       )}
                   <Link to="/createPost">
                     <AddElement />
@@ -227,9 +228,10 @@ export const Feed = () => {
                 </FeedStyle>
                 ) : (
                   <>
+                  { isLoading ? ( <Loading /> ) : (
                   <FeedStyle>
                  
-                  {dataPag
+                  {dataPag[0]
                     ? dataPag.map((item) => (
                         <MiniPostProfile
                           key={item?._id}
@@ -249,11 +251,12 @@ export const Feed = () => {
                         res?.response?.status == 500 ||
                         resSearch?.response?.status == 404 ||
                         resSearch?.response?.status == 500) && (
-                        <h1>Error 404</h1>
+                          <NothingHere path={"/createPost"}/>
                       )}
 
-
+                      
                   </FeedStyle>
+                  )}
                    <Link to="/createPost">
                    <AddElement />
                  </Link>

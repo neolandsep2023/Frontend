@@ -29,6 +29,7 @@ import { useCanUserPost } from "../../hooks/useCanUserPost";
 
 //<!--IMP                     Component                            -->
 export const CreatePost = () => {
+  const isMobile = window.innerWidth < 576 ? true : false 
   //<!--sec                     Estados                         -->
   const [send, setSend] = useState(null);
   const [res, setRes] = useState({});
@@ -228,7 +229,7 @@ export const CreatePost = () => {
                 }}
                 {...register("type", { required: true })}
               />
-              <label htmlFor="RoomSeeker">I am looking for a room.</label>
+              <label htmlFor="RoomSeeker">{isMobile ? "Room" : "I am looking for a room."}</label>
               <input
                 type="radio"
                 name="postType"
@@ -243,7 +244,7 @@ export const CreatePost = () => {
                 }}
                 {...register("type", { required: true })}
               />
-              <label htmlFor="RoommateSeeker">I am looking for a roommate.</label>
+              <label htmlFor="RoommateSeeker"> {isMobile ? "Roommate" : "I am looking for a roommate."}</label>
             </RadioInput>
           </LabelAndInput>
 

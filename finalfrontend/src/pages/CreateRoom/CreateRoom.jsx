@@ -7,6 +7,7 @@ import { Navigate, useNavigate } from "react-router-dom";
 
 //<!--IMP                     Components                            -->
 import {
+  ButtonPrimary,
   FlexDir,
   Form,
   LabelAndInput,
@@ -28,6 +29,8 @@ import { useCanUserPost } from "../../hooks/useCanUserPost";
 
 //<!--IMP                     Component                            -->
 export const CreateRoom = () => {
+
+  const isMobile = window.innerWidth < 576 ? true : false 
   //<!--sec                     Estados                         -->
   const [send, setSend] = useState(null);
   const [res, setRes] = useState({});
@@ -253,7 +256,7 @@ export const CreateRoom = () => {
                 value="true"
                 {...register("available", { required: true })}
               />
-              <label htmlFor="Yes">Yes, it is ready for rental.</label>
+              <label htmlFor="Yes">{isMobile ? "Yes" : "Yes, it is ready for rental."}</label>
               <input
                 type="radio"
                 name="available"
@@ -262,7 +265,7 @@ export const CreateRoom = () => {
                 {...register("available", { required: true })}
               />
               <label htmlFor="No">
-                No, this {roomType.toLowerCase()} is occupied.
+              {isMobile ? "No" : `No, this ${roomType.toLowerCase()} is occupied.`}
               </label>
             </RadioInput>
           </LabelAndInput>
@@ -348,7 +351,7 @@ export const CreateRoom = () => {
                 value="true"
                 {...register("petsAllowed", { required: true })}
               />
-              <label htmlFor="YesPetsAllowed">Yes, pets are allowed!</label>
+              <label htmlFor="YesPetsAllowed">{isMobile ? "Yes" : "Yes, pets are allowed!"}</label>
               <input
                 type="radio"
                 name="petsAllowed"
@@ -356,7 +359,7 @@ export const CreateRoom = () => {
                 value="false"
                 {...register("petsAllowed", { required: true })}
               />
-              <label htmlFor="NoPetsAllowed">No, pets are not allowed.</label>
+              <label htmlFor="NoPetsAllowed">{isMobile ? "No" : "No, pets are not allowed."}</label>
             </RadioInput>
           </LabelAndInput>
 
@@ -373,7 +376,7 @@ export const CreateRoom = () => {
                 value="true"
                 {...register("exterior", { required: true })}
               />
-              <label htmlFor="YesOutside">Yes, it has one.</label>
+              <label htmlFor="YesOutside"> {isMobile ? "Yes" : "Yes, it has one."}</label>
               <input
                 type="radio"
                 name="exterior"
@@ -381,14 +384,15 @@ export const CreateRoom = () => {
                 value="false"
                 {...register("exterior", { required: true })}
               />
-              <label htmlFor="NoOutside">No, it does not have it.</label>
+              <label htmlFor="NoOutside">{isMobile ? "Yes" : "No, it does not have it."}</label>
             </RadioInput>
           </LabelAndInput>
 
-          <FlexDir direction="row" width={"100%"}>
+          <FlexDir direction="column" width={"100%"}>
+          <label>What commodities does the house offer?</label>
+          <FlexDir mediaqueryDirMobile="column">
             <LabelAndInput gap={"4px"} width={"100%"} wrap="wrap">
-              <label>What commodities does the house offer?</label>
-              {roomData?.commoditiesHome?.map((item) => (
+              {roomData?.commoditiesHome?.slice(0,11).map((item) => (
                 <div
                   key={item}
                   className="inputContainer"
@@ -407,11 +411,36 @@ export const CreateRoom = () => {
                 </div>
               ))}
             </LabelAndInput>
+            <LabelAndInput gap={"4px"} width={"100%"} wrap="wrap">
+              
+              {roomData?.commoditiesHome?.slice(11,21).map((item) => (
+                <div
+                  key={item}
+                  className="inputContainer"
+                  style={{ width: "300px" }}
+                >
+                  <label className="inputLabel inputLabel--checkbox">
+                    {item}
+                    <input
+                      type="checkbox"
+                      name={item}
+                      value={item}
+                      {...register("commoditiesHome")}
+                    />
+                    <div className="div"></div>
+                  </label>
+                </div>
+              ))}
+            </LabelAndInput>
+            </FlexDir>
           </FlexDir>
 
-          <FlexDir>
+          <FlexDir >
+         
+         
             <LabelAndInput gap={"4px"}>
-              <label>What commodities do the rooms offer?</label>
+            <label>What commodities do the rooms offer?</label>
+        
               {roomData?.commoditiesRoom?.map((item) => (
                 <div key={item} className="inputContainer">
                   <label className="inputLabel inputLabel--checkbox">
@@ -427,6 +456,7 @@ export const CreateRoom = () => {
                 </div>
               ))}
             </LabelAndInput>
+           
           </FlexDir>
 
           <SelectAndOptions>
@@ -523,9 +553,9 @@ export const CreateRoom = () => {
           )}
 
           <UploadFile multipleUpload={true} />
-          <button type="submit" disabled={send}>
+          <ButtonPrimary  variant="normal" type="submit" disabled={send}>
             {send ? "Loading..." : "Upload Room"}
-          </button>
+          </ButtonPrimary>
         </FlexDir>
       </Form>
     </FlexDir>

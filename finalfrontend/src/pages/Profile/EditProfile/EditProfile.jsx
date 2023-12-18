@@ -31,9 +31,12 @@ export const EditProfile = () => {
   const { handleSubmit, register } = useForm();
   const [isDataReady, setIsDataReady] = useState(false);
   const [gender, setGender] = useState(user?.gender);
+  const [interests, setInterests] = useState(user?.interests)
+ 
   const fetchData = async () => {
     const dataForState = await getUserById(user?._id);
     setData(dataForState);
+  
     setIsDataReady(true);
 
   };
@@ -79,6 +82,9 @@ export const EditProfile = () => {
   useEffect(() => {
     useErrorUpdate(resEdit, setResEdit, logout);
   }, [resEdit]);
+
+  
+
 
   return (
     <>
@@ -141,8 +147,11 @@ export const EditProfile = () => {
 
             <FlexDir direction={"column"}>
               <FlexDir>
+
                 <RadioInput minW={"68%"}>
                   <input
+                   defaultChecked={gender == "male" && true }
+                 
                     type="radio"
                     name="gender"
                     id="male"
@@ -154,6 +163,7 @@ export const EditProfile = () => {
                   </label>
 
                   <input
+                  defaultChecked={gender == "female" && true }
                     type="radio"
                     name="gender"
                     id="female"
@@ -165,13 +175,14 @@ export const EditProfile = () => {
                   </label>
 
                   <input
+                  defaultChecked={gender == "other" && true }
                     type="radio"
                     name="gender"
-                    id="otros"
-                    value="otros"
+                    id="other"
+                    value="other"
                     {...register("gender")}
                   />
-                  <label htmlFor="otros" onClick={() => setGender("otros")}>
+                  <label htmlFor="other" onClick={() => setGender("other")}>
                     Others
                   </label>
                 </RadioInput>
@@ -199,6 +210,7 @@ export const EditProfile = () => {
                     <label className="inputLabel inputLabel--checkbox">
                       Art
                       <input
+                      defaultChecked={interests.includes("Art") ? true : false}
                         type="checkbox"
                         name="Art"
                         value="Art"
@@ -212,6 +224,7 @@ export const EditProfile = () => {
                     <label className="inputLabel inputLabel--checkbox">
                       Climbing
                       <input
+                      defaultChecked={interests.includes("Climbing") ? true : false}
                         type="checkbox"
                         name="Climbing"
                         value="Climbing"
@@ -224,6 +237,7 @@ export const EditProfile = () => {
                     <label className="inputLabel inputLabel--checkbox">
                       Concerts
                       <input
+                      defaultChecked={interests.includes("Concerts") ? true : false}
                         type="checkbox"
                         name="Concerts"
                         value="Concerts"
@@ -237,6 +251,7 @@ export const EditProfile = () => {
                     <label className="inputLabel inputLabel--checkbox">
                       Cooking
                       <input
+                       defaultChecked={interests.includes("Cooking") ? true : false}
                         type="checkbox"
                         name="Cooking"
                         value="Cooking"
@@ -250,6 +265,7 @@ export const EditProfile = () => {
                     <label className="inputLabel inputLabel--checkbox">
                       Dancing
                       <input
+                      defaultChecked={interests.includes("Dancing") ? true : false}
                         type="checkbox"
                         name="Dancing"
                         value="Dancing"
@@ -263,6 +279,7 @@ export const EditProfile = () => {
                     <label className="inputLabel inputLabel--checkbox">
                       Fashion
                       <input
+                      defaultChecked={interests.includes("Fashion") ? true : false}
                         type="checkbox"
                         name="Fashion"
                         value="Fashion"
@@ -276,6 +293,7 @@ export const EditProfile = () => {
                     <label className="inputLabel inputLabel--checkbox">
                       Gaming
                       <input
+                       defaultChecked={interests.includes("Gaming") ? true : false}
                         type="checkbox"
                         name="Gaming"
                         value="Gaming"
@@ -289,6 +307,7 @@ export const EditProfile = () => {
                     <label className="inputLabel inputLabel--checkbox">
                       Gym
                       <input
+                      defaultChecked={interests.includes("Gym") ? true : false}
                         type="checkbox"
                         name="Gym"
                         value="Gym"
@@ -302,6 +321,7 @@ export const EditProfile = () => {
                     <label className="inputLabel inputLabel--checkbox">
                       Movies
                       <input
+                      defaultChecked={interests.includes("Movies") ? true : false}
                         type="checkbox"
                         name="Movies"
                         value="Movies"
@@ -314,6 +334,7 @@ export const EditProfile = () => {
                     <label className="inputLabel inputLabel--checkbox">
                       Music
                       <input
+                       defaultChecked={interests.includes("Music") ? true : false}
                         type="checkbox"
                         name="Music"
                         value="Music"
@@ -328,6 +349,7 @@ export const EditProfile = () => {
                     <label className="inputLabel inputLabel--checkbox">
                       Nature
                       <input
+                      defaultChecked={interests.includes("Nature") ? true : false}
                         type="checkbox"
                         name="Nature"
                         value="Nature"
@@ -341,6 +363,7 @@ export const EditProfile = () => {
                     <label className="inputLabel inputLabel--checkbox">
                       Party
                       <input
+                      defaultChecked={interests.includes("Party") ? true : false}
                         type="checkbox"
                         name="Party"
                         value="Party"
@@ -353,6 +376,7 @@ export const EditProfile = () => {
                     <label className="inputLabel inputLabel--checkbox">
                       Pets
                       <input
+                      defaultChecked={interests.includes("Pets") ? true : false}
                         type="checkbox"
                         name="Pets"
                         value="Pets"
@@ -365,6 +389,7 @@ export const EditProfile = () => {
                     <label className="inputLabel inputLabel--checkbox">
                       Photography
                       <input
+                      defaultChecked={interests.includes("Photography") ? true : false}
                         type="checkbox"
                         name="Photography"
                         value="Photography"
@@ -377,6 +402,7 @@ export const EditProfile = () => {
                     <label className="inputLabel inputLabel--checkbox">
                       Reading
                       <input
+                      defaultChecked={interests.includes("Reading") ? true : false}
                         type="checkbox"
                         name="Reading"
                         value="Reading"
@@ -389,6 +415,7 @@ export const EditProfile = () => {
                     <label className="inputLabel inputLabel--checkbox">
                       Socializing
                       <input
+                      defaultChecked={interests.includes("Socializing") ? true : false}
                         type="checkbox"
                         name="Socializing"
                         value="Socializing"
@@ -401,6 +428,7 @@ export const EditProfile = () => {
                     <label className="inputLabel inputLabel--checkbox">
                       Sports
                       <input
+                      defaultChecked={interests.includes("Sports") ? true : false}
                         type="checkbox"
                         name="Sports"
                         value="Sports"
@@ -413,6 +441,7 @@ export const EditProfile = () => {
                     <label className="inputLabel inputLabel--checkbox">
                       Technology
                       <input
+                      defaultChecked={interests.includes("Technology") ? true : false}
                         type="checkbox"
                         name="Technology"
                         value="Technology"
@@ -425,6 +454,7 @@ export const EditProfile = () => {
                     <label className="inputLabel inputLabel--checkbox">
                       Travel
                       <input
+                      defaultChecked={interests.includes("Travel") ? true : false}
                         type="checkbox"
                         name="Travel"
                         value="Travel"
@@ -437,6 +467,8 @@ export const EditProfile = () => {
                     <label className="inputLabel inputLabel--checkbox">
                       Writing
                       <input
+                      // defaultChecked
+                      defaultChecked={interests.includes("Writing") ? true : false}
                         type="checkbox"
                         name="Writing"
                         value="Writing"

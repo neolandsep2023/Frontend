@@ -12,8 +12,7 @@ export const MiniPostProfile = ({id, title, text, image, province, price, type, 
 
   const isSaved = userLikedPosts?.includes(id)
   
-  
-  console.log(isSaved,  userLikedPosts)
+
 
 
   return (

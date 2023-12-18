@@ -9,6 +9,7 @@ import {
 import { DataProfileElement } from "./DataProfile.element";
 import { FlexDir, ProfileContainer } from "../../../components/StyleComponents";
 import { usePaginacion } from "../../../hooks/usePaginacion";
+import { NothingHere } from "../../../components/NothingHere/NothingHere";
 
 export const DataProfile = ({ page }) => {
     const isMobile = window.innerWidth < 576 ? true : false;
@@ -45,16 +46,14 @@ const getSavedPosts = async () => {
 
 };
 
-console.log(userLikedPosts, updatedLikes)
 
 
 useEffect(() => {
-  console.log("entro")
   getSavedPosts();
 }, [updatedLikes,res]);
 
 
-
+console.log(dataPag[0] ? true : false)
 
   useEffect(() => {
     fetchData();
@@ -78,7 +77,7 @@ useEffect(() => {
       case "posted":
         return (
           <>
-            <ProfileContainer heightTablet={"38vh"} height={"77vh"}>
+            <ProfileContainer heightTablet={"38vh"} height={"77vh"} key={page}>
               <FlexDir>
                 <h1>Posts you have made</h1>
                 <MiniPaginacion />
@@ -86,7 +85,7 @@ useEffect(() => {
               <div className="line"></div>
               {/* <DataProfileElement> */}
               <MiniPostProfileContainerElement>
-                {dataPag &&
+                {dataPag[0] ?
                   dataPag.map((post) => (
                     <>
                       <MiniPostProfile
@@ -104,7 +103,9 @@ useEffect(() => {
                         
                       ></MiniPostProfile>
                     </>
-                  ))}
+                  )) :
+                  <NothingHere path={"/createPost"}/>
+                  }
               </MiniPostProfileContainerElement>
 
               {/* </DataProfileElement> */}
@@ -115,7 +116,7 @@ useEffect(() => {
       case "rooms":
         return (
           <>
-            <ProfileContainer heightTablet={"58vh"} height={"77vh"}>
+            <ProfileContainer heightTablet={"58vh"} height={"77vh"} key={page}>
               <FlexDir>
                 <h1>Rooms you have posted</h1>
                 <MiniPaginacion />
@@ -123,7 +124,7 @@ useEffect(() => {
               <div className="line"></div>
               {/* <DataProfileElement> */}
               <MiniPostProfileContainerElement>
-                {dataPag &&
+                {dataPag[0] ?
                   dataPag.map((room) => (
                     <>
                       <MiniPostProfile
@@ -141,7 +142,9 @@ useEffect(() => {
                       ></MiniPostProfile>
                       {console.log(typeof(room?.image))}
                     </>
-                  ))}
+                  )) :
+                  <NothingHere path={"/createRoom"}/>
+                  }
               </MiniPostProfileContainerElement>
 
               {/* </DataProfileElement> */}
@@ -152,7 +155,7 @@ useEffect(() => {
       case "reviews":
         return (
           <>
-            <ProfileContainer heightTablet={"58vh"} height={"77vh"}>
+            <ProfileContainer heightTablet={"58vh"} height={"77vh"} key={page}>
               <FlexDir>
                 <h1>Reviews of your profile</h1>
                 <MiniPaginacion />
@@ -160,7 +163,7 @@ useEffect(() => {
               <div className="line"></div>
               {/* <DataProfileElement> */}
               <MiniPostProfileContainerElement>
-                {dataPag &&
+                {dataPag[0] ?
                   dataPag.map((review) => (
                     <>
                       <MiniPostProfile
@@ -177,7 +180,9 @@ useEffect(() => {
                         userLikedPosts={userLikedPosts}
                       ></MiniPostProfile>
                     </>
-                  ))}
+                  )) :
+                  <NothingHere path={"/feed"}/>
+                  }
               </MiniPostProfileContainerElement>
 
               {/* </DataProfileElement> */}
@@ -188,7 +193,7 @@ useEffect(() => {
       case "bookmarks":
         return (
           <>
-            <ProfileContainer heightTablet={"58vh"} height={"77vh"}>
+            <ProfileContainer heightTablet={"58vh"} height={"77vh"} key={page}>
               <FlexDir>
                 <h1>Bookmarks</h1>
                 <MiniPaginacion />
@@ -196,7 +201,7 @@ useEffect(() => {
               <div className="line"></div>
               {/* <DataProfileElement> */}
               <MiniPostProfileContainerElement>
-                {dataPag &&
+                {dataPag[0] ?
                   dataPag.map((bookmark) => (
                     <>
                       <MiniPostProfile
@@ -213,7 +218,11 @@ useEffect(() => {
                         userLikedPosts={userLikedPosts}
                       ></MiniPostProfile>
                     </>
-                  ))}
+                  )) : 
+                  <NothingHere path={"/feed"}/>
+                  }
+
+                  
               </MiniPostProfileContainerElement>
 
               {/* </DataProfileElement> */}
@@ -226,5 +235,5 @@ useEffect(() => {
     }
   };
 
-  return <div>{dataPag && renderSection()}</div>;
+  return dataPag && renderSection();
 };
