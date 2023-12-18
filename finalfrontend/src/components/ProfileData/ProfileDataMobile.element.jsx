@@ -90,14 +90,14 @@ display: flex;
     & .interests{
     margin: 0;
     padding: 2px 10px;
-    font-size: 15px;
+    font-size: 14px;
     font-weight: 500;
     border: 1px solid ${({theme}) => theme.palette.button.saved};
   }
 
   & p{
-    font-size: 15px;
-    margin: 0 20px 0 20px;
+    font-size: 13px;
+    margin: 0 16px 0 16px;
     text-align: justify;
     border: 1px solid
     ${({ theme }) => theme.palette.border.main};
@@ -105,7 +105,7 @@ display: flex;
     padding: 8px 16px ;
   }
   & h1{
-    font-size: 20px;
+    font-size: 18px;
     margin: 0;
     font-weight: 400;
     border: 1px solid ${({theme}) => theme.palette.button.saved};
@@ -115,10 +115,15 @@ display: flex;
     background-color: ${({ theme }) => theme.palette.background.main};
   }
   & .links{
-    font-size: 18px;
+    font-size: 16px;
     margin: 2px;
   }
+  & .material-symbols-outlined{
+  
+  font-size: 25px;
+  margin: 0 20px 0 30px;
 
+}
 
 }
 

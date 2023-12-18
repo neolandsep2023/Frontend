@@ -24,22 +24,27 @@ export const ProfileDataMobile = () => {
         <div className="line"></div>
 
         <div className="links" onClick={() => navigate("/profile/mobile/posts")}>
-          <span class="material-symbols-outlined">article</span> My Posts
-          <span class="material-symbols-outlined arrow">chevron_right</span>
+          <span className="material-symbols-outlined">article</span> My Posts
+          <span className="material-symbols-outlined arrow">chevron_right</span>
         </div>
+        <div className="line"></div>
 
+<div className="links" onClick={() => navigate("/profile/mobile/posts")}>
+  <span className="material-symbols-outlined">meeting_room</span> My Rooms
+  <span className="material-symbols-outlined arrow">chevron_right</span>
+</div>
         <div className="line"></div>
 
         <div className="links" onClick={() => navigate("/profile/mobile/reviews")}>
-          <span class="material-symbols-outlined">star</span> Reviews
-          <span class="material-symbols-outlined arrow">chevron_right</span>
+          <span className="material-symbols-outlined">star</span> Reviews
+          <span className="material-symbols-outlined arrow">chevron_right</span>
         </div>
 
         <div className="line"></div>
 
         <div className="links" onClick={() => navigate("/profile/mobile/bookmarks")}>
-          <span class="material-symbols-outlined">bookmark</span> Bookmarks
-          <span class="material-symbols-outlined arrow">chevron_right</span>
+          <span className="material-symbols-outlined">bookmark</span> Bookmarks
+          <span className="material-symbols-outlined arrow">chevron_right</span>
         </div>
 
         <div className="line"></div>
@@ -47,13 +52,13 @@ export const ProfileDataMobile = () => {
         <div className="links"
         onClick={() => navigate("/profile/edit")}>
           <span
-            class="material-symbols-outlined"
+            className="material-symbols-outlined"
             
           >
             edit
           </span>
           Edit Profile
-          <span class="material-symbols-outlined arrow">chevron_right</span>
+          <span className="material-symbols-outlined arrow">chevron_right</span>
         </div>
 
         <div className="line"></div>
@@ -61,13 +66,13 @@ export const ProfileDataMobile = () => {
           className="links"
           onClick={() => navigate("/profile/settings")}
         >
-          <span class="material-symbols-outlined">settings</span> Settings
-          <span class="material-symbols-outlined arrow">chevron_right</span>
+          <span className="material-symbols-outlined">settings</span> Settings
+          <span className="material-symbols-outlined arrow">chevron_right</span>
         </div>
         <div className="line"></div>
         <div className="links" onClick={logout}>
-          <span class="material-symbols-outlined">move_item</span> Logout
-          <span class="material-symbols-outlined arrow">chevron_right</span>
+          <span className="material-symbols-outlined">move_item</span> Logout
+          <span className="material-symbols-outlined arrow">chevron_right</span>
         </div>
       </ProfileDataMobileElement>
     </>

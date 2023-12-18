@@ -1,16 +1,12 @@
-import React, { useEffect, useState } from "react";
-import { getUserByIdP } from "../../../services/user.service";
+import { useState } from "react";
 import { useAuth } from "../../../context/authContext";
-import {
-  MiniPostProfile,
-  MiniPostProfileContainerElement,
-  MiniPosts,
-} from "../../../components";
-import { DataProfileElement } from "./DataProfile.element";
-import { FlexDir, ProfileContainer } from "../../../components/StyleComponents";
 import { usePaginacion } from "../../../hooks/usePaginacion";
+import { getUserByIdP } from "../../../services/user.service";
+import { FlexDir, ProfileContainer } from "../../../components/StyleComponents";
+import { MiniPostProfile, MiniPostProfileContainerElement } from "../../../components";
 
-export const DataProfile = ({ page }) => {
+
+export const DataMobile = ({ page }) => {
   const { MiniPaginacion, setGaleriaItems, dataPag } = usePaginacion(2);
   const { user } = useAuth();
   const [data, setData] = useState(null);
@@ -20,6 +16,7 @@ export const DataProfile = ({ page }) => {
   const fetchData = async () => {
     setIsLoaded(false);
     setRes(await getUserByIdP(user?._id));
+    console.log(res?.data);
     setIsLoaded(true);
   };
 
@@ -29,6 +26,7 @@ export const DataProfile = ({ page }) => {
 
   useEffect(() => {
     if (res?.status == 200) {
+      console.log(res);
       page == "posted"
         ? setGaleriaItems(res?.data?.myPosts)
         : page == "rooms"
@@ -36,7 +34,7 @@ export const DataProfile = ({ page }) => {
         : page == "reviews"
         ? setGaleriaItems(res?.data?.receivedComments)
         : page == "bookmarks" && setGaleriaItems(res?.data?.likedPosts);
-    
+      console.log(dataPag);
     }
   }, [res, page]);
 

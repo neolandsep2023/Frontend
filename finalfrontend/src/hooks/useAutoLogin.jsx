@@ -14,11 +14,12 @@ const {login} = useAuth();
 
     const sentAutoLoginData = await autoLoginUser(customFormData);
     if (sentAutoLoginData?.status == 200) {
-      const { name, email, image, isVerified, gender} = sentAutoLoginData.data.user;
+      console.log(sentAutoLoginData)
+      const { username, email, image, isVerified, gender} = sentAutoLoginData.data.user;
         
       const customUser = {
         token: sentAutoLoginData.data.token,
-        name,
+        username,
         email,
         image,
         isVerified,

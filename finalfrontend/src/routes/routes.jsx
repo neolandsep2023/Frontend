@@ -8,7 +8,7 @@ import { ProtectedCheckChildren } from "../components/ProtectedRoutes/ProtectedC
 import { Registerpt1 } from "../pages/Register/Registerpt1/Registerpt1";
 import App from "../App";
 
-import { MapCreation, ForgotPassword, ByIdMap, Home, RoomSearch, CreateRoom, Login, VerifyCode,Registerpt2, Profile,UserProfileData,FavGallery,EditProfile, AccountSettings, RoomById, Feed, NotFound, PostedPage, ReviewPage, Bookmarks } from "../pages";
+import { MapCreation, ForgotPassword, ByIdMap, Home, RoomSearch, CreateRoom, Login, VerifyCode,Registerpt2, Profile,EditProfile, AccountSettings, RoomById, Feed, NotFound } from "../pages";
 import { AppCarousel } from "../components/Carousel/Carousel";
 import { RoomReview } from "../components/Review/RoomReview";
 import { CreatePost } from "../pages/CreatePost/CreatePost";
@@ -19,6 +19,7 @@ import { PostById } from "../pages/PostById/PostById";
 import { User } from "../pages/OtherUser/User";
 import { UpdatePost } from "../pages/Update/UpdatePost";
 import { UpdateRoom } from "../pages/Update/UpdateRoom";
+import { DataMobile } from "../pages/Profile/DataMobile/DataMobile";
 
 
 
@@ -133,7 +134,7 @@ export const router = createBrowserRouter ([
                     path: "/user/:id/posted",
                     element: (
                       <Protected>
-                        <PostedPage />
+                        {/* <PostedPage /> */}
                       </Protected>
                     ),
                   },
@@ -141,7 +142,7 @@ export const router = createBrowserRouter ([
                     path: "/user/:id/reviews",
                     element: (
                       <Protected>
-                        <ReviewPage />
+                        {/* <ReviewPage /> */}
                       </Protected>
                     ),
                   },
@@ -155,52 +156,28 @@ export const router = createBrowserRouter ([
                   <Profile />
                   </Protected>)
               ,
-                children: [
-                  {
-                    path: "/profile/posted",
-                    element: 
-                    (<Protected>
-                    <PostedPage/>
-                    </Protected>),
-                  },
-                  {
-                    path: "/profile/reviews",
-                    element: 
-                    (<Protected>
-            <ReviewPage/>
-            </Protected>),
-                  },
-                  {
-                    path: "/profile/bookmarks",
-                    element: 
-                    (<Protected>
-            <Bookmarks/>
-            </Protected>),
-                  },
-        
-                ],
               },
               {
-                path: "/profile/mobile/posts",
+                path: "/profile/mobile/post",
                 element: 
                 (<Protected>
-                <PostedPage/>
+                <DataMobile/>
                 </Protected>),
               },
-              {
-                path: "/profile/mobile/reviews",
-                element: 
-                (<Protected>
-        <ReviewPage/>
-        </Protected>),
-              },
-              {
-                path: "/profile/mobile/bookmarks",
-                element: 
-                (<Protected>
-        <Bookmarks/>
-        </Protected>),
-              },
+        //       {
+        //         path: "/profile/mobile/reviews",
+        //         element: 
+        //         (<Protected>
+        // <ReviewPage/>
+        // </Protected>),
+        //       },
+        //       {
+        //         path: "/profile/mobile/bookmarks",
+        //         element: 
+        //         (<Protected>
+        // <Bookmarks/>
+        // </Protected>),
+        //       },
               {
                 path: "/profile/edit",
                 element: 

@@ -22,7 +22,6 @@ export const Profile = () => {
 
   const isMobile = window.innerWidth < 576 ? true : false 
   
-  console.log(user)
 
 
   useEffect(() => {
