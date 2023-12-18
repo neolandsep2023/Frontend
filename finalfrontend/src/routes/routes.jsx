@@ -17,6 +17,8 @@ import { Estrellas } from "../components/Estrellas/Estrellas";
 import { About } from "../pages/About/About";
 import { PostById } from "../pages/PostById/PostById";
 import { User } from "../pages/OtherUser/User";
+import { UpdatePost } from "../pages/Update/UpdatePost";
+import { UpdateRoom } from "../pages/Update/UpdateRoom";
 
 
 
@@ -86,17 +88,31 @@ export const router = createBrowserRouter ([
               },
               {
                 path: "/createRoom",
-                element: <CreateRoom />
-                // (<Protected>
-                //   {/* </> */}
-                // </Protected>),
+                element: 
+                (<Protected>
+                  <CreateRoom />
+                </Protected>),
+              },
+              {
+                path: "/updateRoom/:id",
+                element: 
+                (<Protected>
+                  <UpdateRoom />
+                </Protected>),
               },
               {
                 path: "/createPost",
-                element: <CreatePost />
-                // (<Protected>
-                //   {/* </> */}
-                // </Protected>),
+                element: 
+                (<Protected>
+                <CreatePost />
+                </Protected>),
+              },
+              {
+                path: "/updatePost/:id",
+                element: 
+                (<Protected>
+                  <UpdatePost />
+                </Protected>),
               },
               {
                 path: "/messages",
