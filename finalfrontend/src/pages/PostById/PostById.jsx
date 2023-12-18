@@ -14,6 +14,7 @@ import { RoommateCard } from "../../components/RoomateCard/RoommateCard";
 import { H3PerfectFit } from "../../components/StyleComponents/Text/H3/H3PerfectFit";
 import { NoRoomate } from "../../components/RoomateCard/NoRoomateCard";
 import { useAuth } from "../../context/authContext";
+import { UpdateButton } from "../../components/StyleComponents/Buttons/Update";
 export const PostById = () => {
   //! ---------- Estados ----------
   const [res, setRes] = useState();
@@ -71,6 +72,7 @@ export const PostById = () => {
                 <li>⌛ {res?.data?.preferredAge}</li>
               </UlCustom>
               <ConnectButtonCustom>Connect</ConnectButtonCustom>
+              {isOwner && <UpdateButton/>}
             </FlexDir>
           </FlexDir>
           <FlexDir margin="0" width="100vw">
