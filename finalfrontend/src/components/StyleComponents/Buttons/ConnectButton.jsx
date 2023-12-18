@@ -17,6 +17,11 @@ const ConnectButtonStyles = styled.button`
     width: 80%;
     aspect-ratio: 13/1
   }
+
+  ${({ theme }) => theme.mediaquery.miniMobile} {
+    width: 80%;
+    aspect-ratio: 13/1
+  }
 `
 
 export const ConnectButtonCustom = ({ children, onClick }) => {

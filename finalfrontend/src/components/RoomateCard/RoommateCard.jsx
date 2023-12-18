@@ -8,23 +8,23 @@ import { RoommateCardStyle } from "./RoommateCard.element"
 export const RoommateCard = ({ roommate, index }) => {
   const { theme } = useTheme()
   return (
-    <RoommateCardStyle>
-      <FlexDir direction="row">
-        {index%2 == 0 && <FlexDir>
-          <img src={roommate?.image} alt="user image" style={{ objectFit: "cover", borderRadius: "50%", width:"15vw", height:"15vw"}}/>
+    <RoommateCardStyle fontSizeP="1.5vw" fontSizePTablet="1.8vw" fontSizePMobile="2vw">
+      <FlexDir direction="row" mediaqueryMarginMobile="-2vw 0 0 0" gap="0.5rem" margin="2vw">
+        {index%2 == 0 && <FlexDir mediaqueryMarginMobile="0">
+          <img className="userimagepost" src={roommate?.image} alt="user image"/>
         </FlexDir>}
-        <FlexDir direction="column">
-          <FlexDir margin="0px 32px" width="60vw" padding="0 10px" justifyContent={index%2 == 0 ? "start" : "end"}>
+        <FlexDir direction="column" mediaqueryMarginMobile="0.6rem 0">
+          <FlexDir mediaqueryMarginMobile="0px" margin="0px 32px" width="60vw" padding="0 10px" justifyContent={index%2 == 0 ? "start" : "end"}>
             <FlexDir width="fit-content" padding="4px" margin="0" border="4.5px solid #72cc89">
-              <H3Custom>{roommate?.name} {roommate?.lastName}</H3Custom>
+              <H3Custom fontSize="1.8vw">{roommate?.name} {roommate?.lastName}</H3Custom>
             </FlexDir>
           </FlexDir>
-          <FlexDir margin="0px 32px" width="60vw" backgroundColor="#72cc89" padding="0 10px" borderRadius="10px">
+          <FlexDir mediaqueryMarginMobile="0px" margin="0px 32px" width="60vw" backgroundColor="#72cc89" padding="0 10px" borderRadius="10px">
             <p>{roommate?.description}</p>
           </FlexDir>
-          <FlexDir>
+          <FlexDir width="65vw">
             <UlCustom direction="row" margin="0px" fontSize="1vw" gap="3vw">
-              <FlexDir border="2px solid #72cc89" padding="2px 6px" borderRadius="10px" margin="0px">
+              <FlexDir liWidth="fit-content" border="2px solid #72cc89" padding="2px 6px" borderRadius="10px" margin="0px">
                 <li>{printIconsUser("Age")}<b>{roommate?.birthYear && 2023 - roommate?.birthYear} y/o</b></li>
               </FlexDir>
               <FlexDir border="2px solid #72cc89" padding="2px 6px" borderRadius="10px" margin="0px">
@@ -36,8 +36,8 @@ export const RoommateCard = ({ roommate, index }) => {
             </UlCustom>
           </FlexDir>
         </FlexDir>
-        {index%2 !== 0 && <FlexDir>
-          <img src={roommate?.image} alt="user image" style={{ objectFit: "cover", borderRadius: "50%", width:"15vw", height:"15vw"}}/>
+        {index%2 !== 0 && <FlexDir mediaqueryMarginMobile="0">
+          <img className="userimagepost" src={roommate?.image} alt="user image"/>
         </FlexDir>}
       </FlexDir>
     </RoommateCardStyle>

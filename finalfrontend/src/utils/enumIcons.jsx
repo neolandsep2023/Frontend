@@ -174,6 +174,9 @@ export const printIconsUser = (commodity) => {
     case "Interest":
       src = "https://cdn-icons-png.flaticon.com/128/3162/3162297.png";
       break;
+    case "Check":
+      src = "https://cdn-icons-png.flaticon.com/128/9709/9709605.png";
+      break;
   }
 
   return <img src={src} alt={commodity} style={{width: "1.75vw", margin: "0 1vw 0 0", padding: "0.15vw", backgroundColor: theme == "dark" ? "white" : "transparent", borderRadius: "5px" }}/>;
