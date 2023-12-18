@@ -10,12 +10,16 @@ export const MiniPostProfile = ({id, title, text, image, province, price, type, 
     <>
     <MiniPostProfileElement>
         <Link to={path}>
-            <FlexDir  width={"100%"} height={"90%"} mediaqueryHeightMobile={"100%"} mediaqueryDirMobile={"column"}>
+            <FlexDir  width={"100%"} height={"80%"} mediaqueryHeightMobile={"100%"} mediaqueryDirMobile={"column"} margin={"0"}>
         <img src={image} alt="img post" />
-    <FlexDir width={"60%"} mediaqueryWidthMobile={"90%"} height={"100%"} direction={"column"}>
+    <FlexDir width={"60%"} mediaqueryWidthMobile={"90%"} height={"100%"} direction={"column"} margin={"0"}>
         
         <h3>{title}</h3>
         <p>{text}</p>
+       
+        </FlexDir>
+        </FlexDir>
+        <FlexDir width={"100%"} margin={"5px 0 0 0"}>
         <FlexEnd padding={"14px"} variant={"inverted"}>
         <h4 className="type">{type == "RoomSeeker" ? "Room" : "Roommie"}</h4>
             <h4 className="price">{price}€</h4>
@@ -23,8 +27,6 @@ export const MiniPostProfile = ({id, title, text, image, province, price, type, 
             <h4 className="location">📍{" "}{province}</h4>
         </FlexEnd>
         </FlexDir>
-        </FlexDir>
-        
        
         </Link>
        

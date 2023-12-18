@@ -155,13 +155,15 @@ export const Feed = () => {
             <FlexDir>
               {feed != null && (
                 <>
+                <FlexDir margin={"0"} direction={"column"}>
+                  <FlexDir margin={"0"}>
                   <SearchInputCustom
                     onChange={(e) => setSearchInput(e.target.value)}
                   />
                   <SearchButtonCustom onClick={handleSearch}>
                     <span className="material-symbols-outlined">search</span>
                   </SearchButtonCustom>
-
+                  </FlexDir>
                   <select
                     onInput={(e) => {
                       const provinceConst = e.target.value;
@@ -174,6 +176,7 @@ export const Feed = () => {
                       </option>
                     ))}
                   </select>
+                  </FlexDir>
                 </>
               )}
             </FlexDir>

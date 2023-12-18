@@ -97,6 +97,46 @@ ${({ theme }) => theme.mediaquery.tablet} {
 }
 }
 
+${({ theme }) => theme.mediaquery.bigScreen} {
+
+}
+${({ theme }) => theme.mediaquery.desktop} {
+  
+}
+
+${({ theme }) => theme.mediaquery.laptop} {
+ 
+
+  & p{
+font-size: 12px;
+
+}
+
+& .interests{
+  margin: 0 ;
+  padding: 4px 8px;
+  font-size: 12px;
+  font-weight: 500;
+}
+
+& .pWeight{
+    font-weight: 500;
+    font-size: 13px;
+    padding: 4px 8px;
+}
+
+& h1{
+  font-size: 16px;
+  font-weight: 500;
+  border: 3px solid ${({theme}) => theme.palette.button.saved};
+  border-radius: 10px;
+  padding: 2px 8px ;
+  background-color: ${({ theme }) => theme.palette.background.main};
+}
+
+
+}
+
 
 `
 

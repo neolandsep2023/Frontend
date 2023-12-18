@@ -27,6 +27,21 @@ const ButtonStyles = styled.button`
     transform: scale(1.01);
   }
   box-shadow: ${({ theme }) => theme.palette.shadow.main};
+
+  ${({ theme }) => theme.mediaquery.laptop} {
+  
+    font-weight: 500;
+  font-size: 18px;
+  height: 35px;
+
+
+}
+
+
+
+
+
+
 `;
 
 export const ButtonPrimary = ({

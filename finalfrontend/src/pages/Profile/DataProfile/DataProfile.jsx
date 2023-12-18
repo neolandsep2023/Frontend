@@ -103,6 +103,7 @@ export const DataProfile = ({ page }) => {
                         price={room.price}
                         type={room.type}
                       ></MiniPostProfile>
+                      {console.log(typeof(room?.image))}
                     </>
                   ))}
               </MiniPostProfileContainerElement>

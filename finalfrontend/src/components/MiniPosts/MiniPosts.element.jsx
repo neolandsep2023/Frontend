@@ -16,7 +16,7 @@ const MiniPostStyles = styled.div`
   height: 340px;
   margin: ${({ margin, theme }) => (margin ? margin : theme.spacing(1.5))};
   & img {
-    width: 40%;
+    width: 30%;
     aspect-ratio: 1/1;
     object-fit: cover;
     border-radius: 10px;
@@ -24,10 +24,14 @@ const MiniPostStyles = styled.div`
       ${({ theme }) => theme.palette.border.main};
   }
 
-  & p,
+  & p, h2,
   h3,
   h4 {
     margin: 0;
+  }
+
+  & h2{
+    margin: 8px 0 8px 0;
   }
 
   & p {
@@ -41,7 +45,7 @@ const MiniPostStyles = styled.div`
     /* white-space: nowrap; */
     overflow: hidden;
   }
-  & h3 {
+  & h3, h2 {
     height: 30%;
     font-size: 20px;
     align-self: center;
@@ -68,12 +72,21 @@ const MiniPostStyles = styled.div`
 }
 
 
-  ${({ theme }) => theme.mediaquery.laptop} {
-    margin: ${({ margin, theme }) => (margin ? margin : theme.spacing(1))};
+  ${({ theme }) => theme.mediaquery.bigScreen} {
+    & img {
+      width: 15%;
+    }
+    height: 280px;
+   
   }
 
   ${({ theme }) => theme.mediaquery.laptop} {
-    margin: ${({ margin, theme }) => (margin ? margin : theme.spacing(1))};
+
+    & img {
+      width: 20%;
+    }
+   
+    height: 38vh;
   }
 
   ${({ theme }) => theme.mediaquery.tablet} {
@@ -88,7 +101,7 @@ const MiniPostStyles = styled.div`
       max-width: 100%;
       font-size: 13px;
     }
-    & h3 {
+    & h2 {
       height: 30%;
       font-size: 15px;
     }
@@ -99,10 +112,10 @@ const MiniPostStyles = styled.div`
   ${({ theme }) => theme.mediaquery.mobile} {
     margin: ${({ margin, theme }) => (margin ? margin : theme.spacing(1))};
     width: 90vw;
-    height: 60vh;
+    height: 70vh;
 
     & img {
-      width: 70%;
+      width: 60%;
     }
 
     & p {
@@ -111,8 +124,8 @@ const MiniPostStyles = styled.div`
       font-size: 16px;
     }
     & h3 {
-      height: 30%;
-      font-size: 18px;
+      height: 10%;
+      font-size: 15px;
     }
   }
 
@@ -122,7 +135,7 @@ const MiniPostStyles = styled.div`
     height: 80vh;
 
     & img {
-      width: 70%;
+      width: 60%;
     }
 
     & p {
@@ -130,9 +143,15 @@ const MiniPostStyles = styled.div`
       max-width: 100%;
       font-size: 16px;
     }
-    & h3 {
-      height: 30%;
-      font-size: 18px;
+    & h2 {
+      height: 20%;
+      font-size: 20px;
+      text-overflow: ellipsis;
+    display: -webkit-box;
+    -webkit-line-clamp: 1;
+    -webkit-box-orient: vertical;
+    /* white-space: nowrap; */
+    overflow: hidden;
     }
   }
 `;

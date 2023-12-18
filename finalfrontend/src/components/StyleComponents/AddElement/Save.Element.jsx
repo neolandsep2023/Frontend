@@ -15,6 +15,8 @@ justify-content: center;
 top: 10%;
 left: 93%;
 
+
+
 & span{
 font-size: 30px;
 color: ${({theme})=> theme.palette.button.saved};
@@ -22,17 +24,20 @@ color: ${({theme})=> theme.palette.button.saved};
 }
 
 ${({ theme }) => theme.mediaquery.bigScreen} {
-    top: 19%;
+    top: 5%;
 left: 94%;
+
 }
 
 ${({ theme }) => theme.mediaquery.laptop} {
+  top: 7%;
+left: 94%;
 
 }
 
 ${({ theme }) => theme.mediaquery.tablet} {
-    top: 5%;
-left: 93%;
+    top: 1%;
+left: 90%;
 z-index: 50;
 }
 ${({ theme }) => theme.mediaquery.mobile} {

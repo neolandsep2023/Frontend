@@ -27,25 +27,26 @@ useEffect(() => {
         
     <MiniPostStyle>
     <SaveElement onClick={()=> addToSaved(id)} variant={isSaved ? "saved" : "normal"}/>
-        <FlexDir  direction={"column"}>
+        <FlexDir  direction={"column"} width={"100%"}>
         <Link to={path}>
-            <FlexDir  width={"100%"} height={"70%"} mediaqueryHeightMobile={"100%"} mediaqueryDirMobile={"column"}>
+            <FlexDir  width={"100%"} height={"70%"} mediaqueryHeightMobile={"95%"} mediaqueryDirMobile={"column"} margin={"0"}>
         <img src={image} alt="img post" />
-    <FlexDir width={"60%"} mediaqueryWidthMobile={"90%"} height={"100%"} direction={"column"}>
+    <FlexDir width={"65%"} mediaqueryWidthMobile={"90%"} mediaqueryHeightMobile={"40%"} height={"100%"} direction={"column"} mediaqueryWidthTablet={"50%"} >
         
-        <h3>{title}</h3>
+        <h2>{title}</h2>
         <p>{text}</p>
         </FlexDir>
         </FlexDir>
-        
+        <FlexDir width={"100%"} margin={"10px 0 0 0"}>
         <FlexEnd variant={"normal"}>
-            <FlexDir >
+            <FlexDir margin={"0"} >
             <img className="profilePicPost" alt="author profile img" src={author[0]?.image}/>
             <h4 className="author">{author[0]?.name ? author[0]?.name : author[0]?.username}</h4>
             </FlexDir>
             <h4 className="price">{price}€</h4>
             <h4 className="location">📍{" "}{province}</h4>
         </FlexEnd>
+        </FlexDir>
         </Link>
         </FlexDir>
      </MiniPostStyle>

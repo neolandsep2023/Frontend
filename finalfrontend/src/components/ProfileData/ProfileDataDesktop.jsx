@@ -18,19 +18,21 @@ let userAge = (2023 - user.birthYear)
   return (
     <>
     <ProfileDataDesktopElement>
-        <FlexDir direction={"column"} margin={"0"}>
+        <FlexDir direction={"column"} margin={"0"} gap={"4px"}>
     <img alt="user logo" src={user.image} />
         <h1>@{user.username}</h1>
         <FlexDir margin={"0"}>
-        <p className="pWeight">{userAge}y</p> <p className="pWeight">{user.gender}</p>
+        {userAge != NaN ? <p className="pWeight"> {userAge}</p> : null}
+        
+        <p className="pWeight">{user.gender}</p>
         </FlexDir>
         </FlexDir>
         <FlexDir direction={"column"} margin={"0"} >
         
-        <p>{user.description}</p>
+       { user.description ?  <p>{user.description}</p> : null }
         </FlexDir>
 
-        <FlexDir direction={"column"} margin={"0"}>
+        <FlexDir direction={"column"} margin={"0"} gap={"2px"}>
         <FlexDir wrap={"wrap"}>
           {user?.interests?.map((interest) => (
             <h3 className="interests" key={interest}>{interest}</h3>
@@ -38,7 +40,7 @@ let userAge = (2023 - user.birthYear)
         
         </FlexDir>
         
-        <FlexDir margin={"0"}>
+        <FlexDir margin={"0"} >
            <h2> 4.75</h2>
            <h2>
         <Rating value={4.75} readOnly cancel={false} />

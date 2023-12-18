@@ -15,13 +15,13 @@ const MiniPostProfileStyles = styled.div`
   border: ${({ theme }) => theme.spacing(0.3)} solid
     ${({ theme }) => theme.palette.border.main};
   border-radius: ${({ theme }) => theme.spacing(1.5)};
-  padding: ${({ theme }) => theme.spacing(1)};
+ 
 
   margin: ${({ margin, theme }) => (margin ? margin : theme.spacing(1.5))};
 
   
   & img {
-    width: 40%;
+    width: 43%;
     aspect-ratio: 1/1;
     object-fit: cover;
     border-radius: 10px;
@@ -57,7 +57,7 @@ const MiniPostProfileStyles = styled.div`
     align-self: center;
     text-overflow: ellipsis;
     display: -webkit-box;
-    -webkit-line-clamp: 1;
+    -webkit-line-clamp: 2;
     -webkit-box-orient: vertical;
     /* white-space: nowrap; */
     overflow: hidden;
@@ -84,11 +84,14 @@ const MiniPostProfileStyles = styled.div`
 }
 
 
-  ${({ theme }) => theme.mediaquery.laptop} {
+  ${({ theme }) => theme.mediaquery.dektop} {
+  
     margin: ${({ margin, theme }) => (margin ? margin : theme.spacing(1))};
   }
 
   ${({ theme }) => theme.mediaquery.laptop} {
+    height: 75%;
+
     margin: ${({ margin, theme }) => (margin ? margin : theme.spacing(1))};
   }
 

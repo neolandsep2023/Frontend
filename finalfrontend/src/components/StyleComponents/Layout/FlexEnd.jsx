@@ -6,8 +6,8 @@ const FlexEndStyles = styled.div`
 display: flex;
 justify-content: space-between;
 align-items: center;
-width: 100%;
-height: 15%;
+width: 90%;
+height: 30px;
 background-color: ${({ theme, variant }) => 
 variant =="normal" ? theme.palette.background.main :
 variant == "inverted" && theme.palette.form.main
@@ -18,7 +18,7 @@ border-radius: ${({ theme }) => theme.spacing(1)};
   border: ${({ theme }) => theme.spacing(0.1)} solid
     ${({ theme }) => theme.palette.border.main};
 padding: ${({padding}) => padding ? padding : "1rem" };
-
+margin: 0 4px 0 4px;
 & h4 {
   font-size: 15px;
 }
@@ -35,16 +35,38 @@ padding: ${({padding}) => padding ? padding : "1rem" };
     font-size: 16px;
 }
 
+${({ theme }) => theme.mediaquery.laptop} {
+
+  padding: 2px;
+  }
+
+
+${({ theme }) => theme.mediaquery.bigScreen} {
+
+padding: 20px;
+}
+
+
+
 ${({ theme }) => theme.mediaquery.tablet} {
-    
+  padding: 4px;
   height: 20%;
 
   }
 
   ${({ theme }) => theme.mediaquery.mobile} {
-    
+    padding: 8px;
+    margin: 2px 0 4px 0;
     height: 10%;
   
+    }
+
+
+  ${({ theme }) => theme.mediaquery.miniMobile} {
+    /* padding: 8px;
+    margin: 4px 0 4px 0;
+    height: 5%;
+   */
     }
 
 `
