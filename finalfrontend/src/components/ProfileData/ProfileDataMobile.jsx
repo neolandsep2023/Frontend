@@ -1,22 +1,40 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import { ProfileDataMobileElement } from "./ProfileDataMobile.element";
 import { useAuth } from "../../context/authContext";
 import { ButtonPrimary, FlexDir } from "../StyleComponents";
 import { ConnectButtonCustom } from "../StyleComponents/Buttons/ConnectButton";
 import { useNavigate } from "react-router-dom";
+import { getUserById } from "../../services/user.service";
 
 export const ProfileDataMobile = () => {
   const navigate = useNavigate();
   const { user, logout } = useAuth();
+    const [data, setData] = useState(null);
+    const [res, setRes] = useState(null);
+    const [isLoaded, setIsLoaded] = useState(false);
+
+    const fetchData = async () => {
+      setIsLoaded(false);
+      const response = await getUserById(user?._id);
+      setData(response.data)
+      setIsLoaded(true);
+    };
+  
+    useEffect(() => {
+      fetchData();
+    }, []);
+
+
 
   return (
     <>
+    { data && (
       <ProfileDataMobileElement>
-        <img alt="user logo" src={user.image} />
-        <h1>@{user.username}</h1>
-        {user.description && <p>{user.description}</p>}
+        <img alt="user logo" src={data.image} />
+        <h1>@{data.username}</h1>
+        {data.description && <p>{data.description}</p>}
         <FlexDir wrap={"wrap"}>
-          {user.interests.map((interest) => (
+          {data.interests.map((interest) => (
             <h3 className="interests" key={interest}>{interest}</h3>
           ))}
         </FlexDir>
@@ -75,6 +93,8 @@ export const ProfileDataMobile = () => {
           <span className="material-symbols-outlined arrow">chevron_right</span>
         </div>
       </ProfileDataMobileElement>
+    )}
     </>
+  
   );
 };

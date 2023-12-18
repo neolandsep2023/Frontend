@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from "react";
-import { getUserByIdP } from "../../../services/user.service";
+import { addFavPost, getUserById, getUserByIdP } from "../../../services/user.service";
 import { useAuth } from "../../../context/authContext";
 import {
   MiniPostProfile,
@@ -19,6 +19,9 @@ export const DataProfile = ({ page }) => {
   const [res, setRes] = useState(null);
   const [isLoaded, setIsLoaded] = useState(false);
 
+  const [userLikedPosts, setUserLikedPosts] = useState([]); //! useState de los likes
+  const [updatedLikes, setUpdatedLikes] = useState(false);
+
   
 
   const fetchData = async () => {
@@ -26,6 +29,32 @@ export const DataProfile = ({ page }) => {
     setRes(await getUserByIdP(user?._id));
     setIsLoaded(true);
   };
+
+
+
+ //------------------------------------ save post
+
+ const addToSaved = async (id) => {
+  const response = await addFavPost(id); //! TIENE QUE IR EN CONSTANTE POR ASINCRONIA DE REACT, NO EN USE STATE
+  setUpdatedLikes(!updatedLikes);
+};
+
+const getSavedPosts = async () => {
+  const userSavedPosts = await getUserById(user._id); //! TIENE QUE IR EN CONSTANTE POR ASINCRONIA DE REACT, NO EN USE STATE
+  setUserLikedPosts(userSavedPosts?.data?.likedPosts); //! tiene que ser un array - BACK NO POPULADO
+
+};
+
+console.log(userLikedPosts, updatedLikes)
+
+
+useEffect(() => {
+  console.log("entro")
+  getSavedPosts();
+}, [updatedLikes,res]);
+
+
+
 
   useEffect(() => {
     fetchData();
@@ -70,6 +99,9 @@ export const DataProfile = ({ page }) => {
                         province={post.province}
                         price={post.price}
                         type={post.type}
+                        addToSaved={addToSaved}
+                        userLikedPosts={userLikedPosts}
+                        
                       ></MiniPostProfile>
                     </>
                   ))}
@@ -104,6 +136,8 @@ export const DataProfile = ({ page }) => {
                         province={room.province}
                         price={room.price}
                         type={room.type}
+                        addToSaved={addToSaved}
+                        userLikedPosts={userLikedPosts}
                       ></MiniPostProfile>
                       {console.log(typeof(room?.image))}
                     </>
@@ -139,6 +173,8 @@ export const DataProfile = ({ page }) => {
                         province={review.province}
                         price={review.price}
                         type={review.type}
+                        addToSaved={addToSaved}
+                        userLikedPosts={userLikedPosts}
                       ></MiniPostProfile>
                     </>
                   ))}
@@ -173,6 +209,8 @@ export const DataProfile = ({ page }) => {
                         province={bookmark.province}
                         price={bookmark.price}
                         type={bookmark.type}
+                        addToSaved={addToSaved}
+                        userLikedPosts={userLikedPosts}
                       ></MiniPostProfile>
                     </>
                   ))}

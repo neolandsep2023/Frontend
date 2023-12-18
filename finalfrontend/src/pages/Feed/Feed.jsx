@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react";
-import { Loading, MiniPosts } from "../../components";
+import { Loading, MiniPostProfile, MiniPosts } from "../../components";
 import { FeedStyle } from "./Feed.element";
 import {
   getAllPostByType,
@@ -29,6 +29,9 @@ import {
 import { provinceEnum } from "../../utils/provinceEnum";
 
 export const Feed = () => {
+  const isMobile = window.innerWidth < 576 ? true : false;
+
+
   const [res, setRes] = useState(null); //!useState de todas las res
 
   const [feed, setFeed] = useState(null); //!useState del feed
@@ -45,8 +48,11 @@ export const Feed = () => {
   const [province, setProvince] = useState(false); //! useState del input de provincias
   const [resFilterProvince, setResFilterProvince] = useState([]);
 
-  const { ComponentPaginacion, setGaleriaItems, dataPag } = usePaginacion(6);
+  const { ComponentPaginacion, setGaleriaItems, dataPag } = usePaginacion(isMobile ? 1 : 6);
   const { user } = useAuth();
+
+
+
 
   //-------------------------------- set Gallery segun el tipo (feed)
   const setGallery = async () => {
@@ -117,7 +123,7 @@ export const Feed = () => {
     getSavedPosts();
   }, [updatedLikes, feed]);
 
-  let provinceConst;
+ 
 
   return (
     <>
@@ -125,6 +131,7 @@ export const Feed = () => {
         <Loading />
       ) : (
         <>
+   
           <FlexDir direction={"column"}>
             <LabelAndInput
               alignItems={"center"}
@@ -183,8 +190,12 @@ export const Feed = () => {
 
             {dataPag && feed != null && (
               <>
+
+
                 <ComponentPaginacion />
+                {!isMobile ? (
                 <FeedStyle>
+                  
                   {dataPag
                     ? dataPag.map((item) => (
                         <MiniPosts
@@ -210,10 +221,48 @@ export const Feed = () => {
                   <Link to="/createPost">
                     <AddElement />
                   </Link>
+                  
+
+
                 </FeedStyle>
+                ) : (
+                  <>
+                  <FeedStyle>
+                 
+                  {dataPag
+                    ? dataPag.map((item) => (
+                        <MiniPostProfile
+                          key={item?._id}
+                          id={item?._id}
+                          title={item?.title}
+                          text={item?.text}
+                          image={item?.image}
+                          province={item?.province}
+                          price={item?.price}
+                          author={item?.author}
+                          addToSaved={addToSaved}
+                          userLikedPosts={userLikedPosts}
+                          updatedLikes={updatedLikes}
+                        ></MiniPostProfile>
+                      ))
+                    : (res?.response?.status == 404 ||
+                        res?.response?.status == 500 ||
+                        resSearch?.response?.status == 404 ||
+                        resSearch?.response?.status == 500) && (
+                        <h1>Error 404</h1>
+                      )}
+
+
+                  </FeedStyle>
+                   <Link to="/createPost">
+                   <AddElement />
+                 </Link>
+</>
+                )}
               </>
             )}
           </FlexDir>
+      
         </>
       )}
     </>

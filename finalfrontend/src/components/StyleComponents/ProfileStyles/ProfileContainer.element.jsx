@@ -35,7 +35,7 @@ ${({ theme }) => theme.mediaquery.tablet} {
   ${({ theme }) => theme.mediaquery.mobile} {
     width: 98vw;
     margin: 4px;
-    height: 102vh;
+    height: 800px;
 
     & h1{
  font-size: 24px;

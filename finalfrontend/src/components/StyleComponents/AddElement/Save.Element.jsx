@@ -25,13 +25,13 @@ color: ${({theme})=> theme.palette.button.saved};
 
 ${({ theme }) => theme.mediaquery.bigScreen} {
     top: 5%;
-left: 94%;
+left: 90%;
 
 }
 
 ${({ theme }) => theme.mediaquery.laptop} {
   top: 7%;
-left: 94%;
+left: 90%;
 
 }
 
@@ -46,8 +46,8 @@ ${({ theme }) => theme.mediaquery.mobile} {
 height: 50px;
 z-index: 50;
 
-top: 3%;
-left: 85%;
+top: 1%;
+left: 37%;
 & span{
 font-size: 40px;
 
@@ -60,8 +60,8 @@ width: 45px;
 height: 45px;
 z-index: 50;
 
-top: 4%;
-left: 85%;
+top: 1%;
+left: 37%;
 & span{
 font-size: 38px;
 

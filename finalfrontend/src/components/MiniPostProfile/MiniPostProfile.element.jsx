@@ -8,7 +8,7 @@ const MiniPostProfileStyles = styled.div`
   display: flex;
   flex-direction: column;
   justify-content: center;
-
+align-items: center;
 
 
   background-color: ${({ theme }) => theme.palette.background.main};
@@ -65,9 +65,9 @@ const MiniPostProfileStyles = styled.div`
 
   ${({ theme }) => theme.mediaquery.bigScreen} {
     width: 48%;
-    height: 65%;
+    height: 85%;
     & img {
-      width: 25%;
+      width: 35%;
     }
 
     & p {
@@ -90,7 +90,10 @@ const MiniPostProfileStyles = styled.div`
   }
 
   ${({ theme }) => theme.mediaquery.laptop} {
-    height: 75%;
+    height: 85%;
+    & img {
+      width: 35%;
+    }
 
     margin: ${({ margin, theme }) => (margin ? margin : theme.spacing(1))};
   }
