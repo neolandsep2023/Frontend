@@ -1,49 +1,72 @@
-import { useNavigate } from "react-router-dom";
+import { useNavigate, useParams } from "react-router-dom";
 import { useAuth } from "../../context/authContext";
 // import Rating from '@mui/material/Rating';
 import { Rating } from "primereact/rating";
 import { ProfileDataDesktopElement } from "../ProfileData/ProfileDataDesktop.element";
 import { buttonBaseClasses } from "@mui/material";
 import { ButtonPrimary, FlexDir } from "../StyleComponents";
+import { useEffect, useState } from "react";
+import { getUserById } from "../../services/user.service";
 
-export const OtherUserProfileDataDesktop = ({ data }) => {
+export const OtherUserProfileDataDesktop = () => {
   const navigate = useNavigate();
-  const user = data;
+  const { user, logout } = useAuth();
+  const { id } = useParams();
+  const [data, setData] = useState(null);
+  const [res, setRes] = useState(null);
+  const [isLoaded, setIsLoaded] = useState(false);
 
-  let userAge = 2023 - user?.birthYear;
+  const fetchData = async () => {
+    setIsLoaded(false);
+    const response = await getUserById(id);
+    setData(response.data);
+    setIsLoaded(true);
+  };
+
+  useEffect(() => {
+    fetchData();
+  }, []);
+
+  let userAge = data?.birthYear && 2023 - data?.birthYear;
 
   return (
-    <>
-      <ProfileDataDesktopElement>
-        <FlexDir direction={"column"} height={"100%"}>
-          <img alt="user logo" src={user?.image} style={{top: "0"}} />
-          <h1>@{user?.username}</h1>
-          <FlexDir margin={"0"}>
-            <p className="pWeight">{userAge}y</p>{" "}
-            <p className="pWeight">{user?.gender}</p>
+    data && (
+      <>
+        <ProfileDataDesktopElement>
+          <FlexDir direction={"column"} margin={"0"} gap={"4px"}>
+            <img alt="user logo" src={data?.image} />
+            <h1>@{data?.username}</h1>
           </FlexDir>
-        </FlexDir>
-        <FlexDir direction={"column"} margin={"0"}>
-          <p>{user?.description}</p>
-        </FlexDir>
+          <FlexDir direction={"column"} margin={"0"}>
+            <FlexDir margin={"0"}>
+              {data?.birthYear != null && <p className="pWeight"> {userAge}</p>}
 
-        <FlexDir direction={"column"} margin={"0"}>
-          <FlexDir wrap={"wrap"}>
-            {user?.interests.map((interest) => (
-              <h3 className="interests" key={interest}>
-                {interest}
-              </h3>
-            ))}
+              <p className="pWeight">{data?.gender}</p>
+            </FlexDir>
+            {data?.description ? <p>{data?.description}</p> : null}
           </FlexDir>
 
-          <FlexDir>
-            <h2> 4.75</h2>
-            <h2>
-              <Rating value={4.75} readOnly cancel={false} />
-            </h2>
+          <FlexDir direction={"column"} margin={"0"} gap={"2px"}>
+            <FlexDir width={"70%"} wrap={"wrap"}>
+              {data?.interests?.map((interest) => (
+                <h3 className="interests" key={interest}>
+                  {interest}
+                </h3>
+              ))}
+            </FlexDir>
+
+            <FlexDir margin={"0"}>
+              <h2> 4.75</h2>
+              <h2>
+                <Rating value={4.75} readOnly cancel={false} />
+              </h2>
+            </FlexDir>
+            <FlexDir width={"100%"} gap={"0"} margin={"0"}>
+
+            </FlexDir>
           </FlexDir>
-        </FlexDir>
-      </ProfileDataDesktopElement>
-    </>
+        </ProfileDataDesktopElement>
+      </>
+    )
   );
 };

@@ -17,3 +17,11 @@ export const createComment = async (roomId, formData) => {
     .then((res) => res)
     .catch((error) => error);
 };
+
+export const createUserComment = async (userId, formData) => {
+  const APIGeneral = extraConfig();
+
+  return APIGeneral.post(`/comments/createUserReview/${userId}`, formData)
+    .then((res) => res)
+    .catch((error) => error);
+};

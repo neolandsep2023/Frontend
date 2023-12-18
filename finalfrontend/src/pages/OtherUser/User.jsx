@@ -7,8 +7,10 @@ import { useUserVerify } from "../../hooks/useUserVerify";
 import { getUserByIdP } from "../../services/user.service";
 import { OtherUserProfileDataDesktop } from "../../components/OtherUser/OtherUserProfileDataDesktop";
 import { OtherUserProfileDataMobile } from "../../components/OtherUser/OtherUserProfileDataMobile";
-import { UserDataProfile } from "./UserDataProfile";
 import { FlexDir, Pagination, ProfileContainer } from "../../components/StyleComponents";
+import { DataProfile } from "../Profile/DataProfile/DataProfile";
+import { ProfileDataDesktop, ProfileDataMobile } from "../../components";
+import { UserDataProfile } from "./UserDataProfile";
 
 export const User = () => {
   const { theme } = useTheme();
@@ -39,40 +41,25 @@ export const User = () => {
 
   return (
     <>
-      {loading && <p>Loading...</p>}
+    <FlexDir width={"98vw"} height={"86vh"} mediaqueryHeightTablet={"75vh"} mediaqueryDirTablet={"column"} mediaqueryMarginMobile={"0"} mediaqueryWidthMobile={"100vw"} mediaqueryWidthminiMobile={"100vw"} mediaqueryHeightMiniMobile={"750px"} mediaqueryHeightMobile={"950px"}>
+      {/* <UserProfileData/> */}
+      <ProfileContainer  width={"32vw"} height={"83vh"} margin={"10px 0 10px 20px"} heightTablet={"38vh"}>
 
-      {!loading && userData && (
-        <FlexDir
-          width={"98vw"}
-          height={"86vh"}
-          mediaqueryDirTablet={"column"}
-          mediaqueryMarginMobile={"0"}
-          mediaqueryWidthMobile={"100vw"}
-          mediaqueryWidthminiMobile={"100vw"}
-          mediaqueryHeightMobile={"100vh"}
-        >
-          <ProfileContainer
-            width={"32vw"}
-            height={"83vh"}
-            margin={"10px 0 10px 20px"}
-            heightTablet={"38vh"}
-          >
-            {!isMobile && <OtherUserProfileDataDesktop data={userData} />}
-            {isMobile && <OtherUserProfileDataMobile data={userData} />}
-          </ProfileContainer>
 
-          {!isMobile && (
-            <>
-              <FlexDir direction={"column"} width={"66vw"} height={"83vh"}>
-                <NavProfile />
-                <ProfileContainer heightTablet={"58vh"} height={"77vh"}>
-                  <Outlet />
-                </ProfileContainer>
-              </FlexDir>
-            </>
-          )}
+{!isMobile && <OtherUserProfileDataDesktop/>}
+{isMobile && <OtherUserProfileDataMobile/>}
 
-<FlexDir
+      </ProfileContainer>
+
+    
+        
+    { (!isMobile) &&  (
+      <>
+    <FlexDir direction={"column"} width={"66vw"} height={"83vh"} >
+    {/* <NavProfile /> */}
+
+
+    <FlexDir
         
         gap={"0.5vw"}
 
@@ -85,7 +72,17 @@ export const User = () => {
             onClick={() => setPage("posted")}
             variant={page == "posted" ? "clicked" : "normal"}
           >
-            Posted
+            Posts
+          </Pagination>
+          <Pagination
+            width={"9.5vw"}
+            mediaQueryWTablet={"15.75vw"}
+            mediaQueryWMobile={"23vw"}
+            height={""}
+            onClick={() => setPage("rooms")}
+            variant={page == "rooms" ? "clicked" : "normal"}
+          >
+            Rooms
           </Pagination>
 
           <Pagination
@@ -97,17 +94,16 @@ export const User = () => {
           >
             Reviews
           </Pagination>
-   
+
           <Pagination
             width={"9.5vw"}
             mediaQueryWTablet={"15.75vw"}
             mediaQueryWMobile={"23vw"}
-            onClick={() => setPage("bookmarks")}
-            variant={page == "bookmarks" ? "clicked" : "normal"}
+            onClick={() => setPage("createComment")}
+            variant={page == "createComment" ? "clicked" : "normal"}
           >
-            Bookmarks
+            Leave a comment!
           </Pagination>
-  
 
       </FlexDir>
 
@@ -117,9 +113,18 @@ export const User = () => {
 
           <UserDataProfile page={page}/>
         
-        </FlexDir>
-      )}
+    {/* <Outlet /> */}
+    {/* </ProfileContainer> */}
+    </FlexDir>
+    </>
+    )
+        } 
 
+  
+      
+    
+    
+    </FlexDir>
     </>
   );
 };
