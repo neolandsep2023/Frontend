@@ -8,7 +8,6 @@ import { postcodes } from '../../../data/noAbrirElArchivoEsDemasiadoLargo/shortP
 
 
 export const ByIdMap = ({postcode, province, ccaa}) => {
-  console.log(postcode, province, ccaa)
 const [postReady, setPostReady] = useState(false)
 const mapRef = useRef(null);
 const markerRef = useRef(null);
