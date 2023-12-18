@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react";
-import { useParams } from "react-router-dom";
+import { Link, useParams } from "react-router-dom";
 import { getRoomById } from "../../services/room.service";
 import { FlexDir, H3Custom, Small } from "../../components/StyleComponents";
 import { UlCustom } from "../../components/StyleComponents/UL/Ul";
@@ -9,21 +9,39 @@ import { ByIdMap } from "../Pruebas/ByIdMap";
 import { printHomeIcons, printRoomIcons } from "../../utils/enumIcons";
 import { AppCarousel } from "../../components/Carousel/Carousel";
 import { RoomReview } from "../../components/Review/RoomReview";
+import { UpdateButton } from "../../components/StyleComponents/Buttons/Update";
+import { useAuth } from "../../context/authContext";
 export const RoomById = () => {
   //! ---------- Estados ----------
   const [res, setRes] = useState();
+  const [isOwner, setIsOwner] = useState()
 
   //! ---------- Destructuring ----------
   const { id } = useParams();
+  const { user } = useAuth()
   let roomData
 
   const fetchRoom = async () => {
     setRes(await getRoomById(id))
   }
 
+  const isOwnerFunction = () => {
+    if (res?.data?.post?.author[0]?.email == user?.email) {
+      setIsOwner(true)
+    } else {
+      setIsOwner(false)
+    }
+  }
+
   useEffect(() => {
     fetchRoom()
   }, [])
+
+  useEffect(() => {
+    if (res?.status == 200) {
+      isOwnerFunction()
+    }
+  }, [res])
 
   return (
     <>
@@ -43,6 +61,7 @@ export const RoomById = () => {
               <li>🪟 {res?.data?.exterior && "Exterior Room"}</li>
             </UlCustom>
             <ConnectButtonCustom>Connect</ConnectButtonCustom>
+            {isOwner && <Link to={`/updateRoom/${id}`}><UpdateButton page="room"/></Link>}
           </FlexDir>
         </FlexDir>
         <FlexDir direction = "row" width="100vw" margin="2.5rem 0 1rem 0" mediaqueryMarginMobile="0.3rem 0 0 0">

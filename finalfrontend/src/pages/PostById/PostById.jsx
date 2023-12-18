@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react";
-import { useParams } from "react-router-dom";
+import { Link, useParams } from "react-router-dom";
 import { FlexDir, H3Custom, Small } from "../../components/StyleComponents";
 import { ByIdImageCustom } from "../../components/StyleComponents/Images/ImageById";
 import { UlCustom } from "../../components/StyleComponents/UL/Ul";
@@ -72,7 +72,7 @@ export const PostById = () => {
                 <li>⌛ {res?.data?.preferredAge}</li>
               </UlCustom>
               <ConnectButtonCustom>Connect</ConnectButtonCustom>
-              {isOwner && <UpdateButton/>}
+              {isOwner && <Link to={`/updatePost/${id}`}><UpdateButton page="post"/></Link>}
             </FlexDir>
           </FlexDir>
           <FlexDir margin="0" width="100vw">
