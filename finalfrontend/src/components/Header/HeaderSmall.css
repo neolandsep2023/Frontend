@@ -7,12 +7,26 @@
   z-index: 10;
   display: flex;
   justify-content: flex-start;
+  animation: slideInFromLeft .5s ease-in-out;
+
 }
+@keyframes slideInFromLeft {
+    from {
+      transform: translateX(-100%);
+    }
+    to {
+      transform: translateX(0);
+    }
+  }
+
 .botonesHS {
   display: flex;
   flex-direction: column;
-  justify-content: center;
+  justify-content: space-between;
   align-items: center;
+  padding: 10px 0px;
+  height: 100%;
+
 }
 
 .navMobile {
@@ -31,21 +45,25 @@
   height: 15vh;
   display: flex;
   flex-direction: column;
-  justify-content: center;
+  justify-content: space-around;
   align-items: center;
   margin-bottom: 20px;
 }
 .headerSmall img {
   width: 50%;
+  min-width: 200px;
+  max-width: 300px;
+ 
 }
 .smallUno {
   background-color: #2a2b2e;
-
+width: 100%;
   display: flex;
+  
   color: rgb(74, 206, 130);
-  justify-content: center;
+  justify-content: space-around;
   align-items: center;
-  gap: 10vw;
+  gap: 2vw;
   padding: 0 20px;
   min-height: 100px;
   border-bottom: 1px solid rgba(0, 0, 0, 0.267);
@@ -54,10 +72,14 @@
 .hamburguesa {
   background-color: #2a2b2e;
   border: none;
+  height: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
   cursor: pointer;
 }
 .hamburguesa span {
-  font-size: 40px;
+  font-size: 60px;
 }
 
 .figureNav {
@@ -71,6 +93,7 @@
   text-align: left;
   border-bottom: 2px solid black;
   padding: 0px 20px 5px 5px;
+  transition: transform 0.3s ease, color 0.3s ease
 }
 .figureNav span,
 .figureNav a {
@@ -86,6 +109,11 @@
   text-align: center;
   width: 100%;
 }
+.figureNav:hover {
+  background-color: rgb(74, 206, 130);
+  color: rgb(78, 77, 77);
+  transform: translateX(10px)
+}
 .figureNav span {
   font-size: 50px;
   width: 50px;
@@ -94,7 +122,9 @@
 }
 .buttonHeader{
     border-radius: 5px;
+    border: 2px solid rgb(74, 206, 130) ;
     font-weight: 600;
+    min-width: 60px;
     cursor: pointer;
 }
 .buttonHeader:hover{
@@ -107,22 +137,26 @@ body.light .zonaMobile{
  
   }
 body.light .figureNav{
-    background-color: #b1b1b1;
+    background-color: #d1ddd0;
+ 
+  }
+body.light .figureNav:hover{
+    background-color: #99d893;
  
   }
 body.light .figureNav a{
-    background-color: #d1cece;
+    background-color: rgb(181, 214, 195);
     color: black;
  
   }
 body.light .figureNav span{
-    background-color: #d1cece;
+    background-color: rgb(181, 214, 195);
     color: black;
  
   }
  
 body.light .smallUno {
-    background-color: #FFF;
+    background-color: #f0f9f3;
  
   }
 body.light .headerSmall{

@@ -1,12 +1,8 @@
-  import { Link, NavLink, Navigate, useNavigate } from "react-router-dom";
+  import { Link, NavLink, useNavigate } from "react-router-dom";
   import { useThemeApp } from "../../context/themeContext";
-  import { Login } from "../../pages/Login/Login";
-  import { ButtonHeader, ButtonPrimary, FlexDir } from "../StyleComponents";
-  import { HeaderStyle } from "./HeaderStyle";
-  import { NavProfile } from "../NavProfile/NavProfile";
   import { useAuth } from "../../context/authContext";
   import { useEffect } from "react";
-
+import Switch from '@mui/material/Switch';
 import"./Header.css"
 import { HeaderSmall } from './HeaderSmall';
 
@@ -31,21 +27,26 @@ export const Header = () => {
       window.removeEventListener('resize', handleResize);
     };
   }, []);
-
   
   return (<>
   {!isMobile ?<header className='headerDesktop'>
-    <div className="headerImg">
+    <Link to={"/"} className="headerImg">
     <img src="https://res.cloudinary.com/daxddugwt/image/upload/v1702550399/Untitled_Artwork_33_nmkluc.png" alt="Logo de la clínica"/>
-    </div>
+    </Link>
     <div className="navs">
+
     <div className="botonesH">
-        <ButtonHeader onClick={toggleTheme}>
+        <button className="buttonHeader" onClick={toggleTheme}>
           {theme == "dark" ? "☀️" : "🌙"}
-        </ButtonHeader>
-        <ButtonHeader onClick={user == null ? navigateToLogin : logout}>
+        </button>
+        <button className="buttonHeader" onClick={user == null ? navigateToLogin : logout}>
           {user == null ? "LOG IN" : "LOG OUT"}
-        </ButtonHeader>
+        </button>
+        {user != null && (<Link to={"/profile"}>
+         <img style={{ width: 50, borderRadius: "50%" }} src={user.image} alt="User" />
+        </Link>)
+        
+       }
         </div>
         <nav className="navDos">
            

@@ -1,5 +1,5 @@
 import "./Footer.css";
-import { Link, useNavigate } from "react-router-dom";
+import { Link, NavLink, useNavigate } from "react-router-dom";
 
 export const Footer = () => {
   return (
@@ -21,28 +21,26 @@ export const Footer = () => {
           <div className="footer-column ">
             <h2>Quick Links</h2>
             <ul>
-              <li>
-                <Link to="/">Home</Link>
-              </li>
-              <li>
-                <a>Page 1</a>
-              </li>
-              <li>
-                <a>Page 2</a>
-              </li>
-              <li>
-                <a>Page 3</a>
-              </li>
-              <li>
-                <a>Page 4</a>
-              </li>
-              <li></li>
-            </ul>
-          </div>
-          <div className="footer-column ">
-            <h2>FAQs</h2>
-            <ul>
-              <li>FAQs</li>
+            <NavLink to={"/feed"} >
+                Feed
+              </NavLink>
+         
+
+           
+           
+              <NavLink to={"/roomSearch"} >
+                Room Search
+              </NavLink>
+          
+
+        
+              <NavLink to={"/createRoom"} >
+                Create Room
+              </NavLink>
+        
+              <NavLink to={"/createPost"} >
+                Create Post
+              </NavLink>
             </ul>
           </div>
           <div className="footer-column ">

@@ -30,9 +30,9 @@ export const HeaderSmall = () => {
           alt="Logo "
         />
         <div className="botonesHS">
-        <ButtonHeader onClick={toggleTheme}>
+        <button className="buttonHeader" onClick={toggleTheme}>
           {theme == "dark" ? "☀️" : "🌙"}
-        </ButtonHeader>
+        </button>
         <button className="buttonHeader" onClick={user == null ? navigateToLogin : logout}>
           {user == null ? "LOG IN" : "LOG OUT"}
         </button>
@@ -53,7 +53,7 @@ export const HeaderSmall = () => {
             {user != null ? (
               <figure className="figureNav">
                 <span className="material-symbols-outlined">
-                  source_environment
+                  person
                 </span>
                 <NavLink to={"/profile"} onClick={() => setShowMenu(false)}>
                   Profile
@@ -76,7 +76,7 @@ export const HeaderSmall = () => {
             </figure>
 
             <figure className="figureNav">
-              <span className="material-symbols-outlined">diamond</span>
+              <span className="material-symbols-outlined">source_environment</span>
               <NavLink to={"/roomSearch"} onClick={() => setShowMenu(false)}>
                 Room Search
               </NavLink>
@@ -96,7 +96,7 @@ export const HeaderSmall = () => {
             </figure>
 
             <figure className="figureNav">
-              <span className="material-symbols-outlined">person_search</span>
+              <span className="material-symbols-outlined">mail</span>
               <NavLink to={"/messages"} onClick={() => setShowMenu(false)}>
                 Messages
               </NavLink>
