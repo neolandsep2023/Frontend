@@ -1,6 +1,28 @@
-import { useLocation } from "react-router-dom"
+import Swal from "sweetalert2"
 
-export const useIsAuthor = (user, id, navigate) => {
-    const route = useLocation();
-    console.log(route)
+
+//esto creo que no va a servir
+export const useIsAuthor = async (user, id, navigate, route, item) => {
+    if(route.pathname.includes('/updateRoom')) {
+        if (!item.postedBy[0].includes(user._id)) {
+            navigate(`/roomFinds/${id}`)
+            Swal.fire({
+                icon: "error",
+                title: "You are not the owner.",
+                showConfirmButton: false,
+                timer: 3000,
+              });
+    } 
+}
+    else if (route.pathname.includes('/updatePost')) {
+        if (!item.author[0].includes(user._id)) {
+            navigate(`/feed/${id}`)
+            Swal.fire({
+                icon: "error",
+                title: "You are not the owner.",
+                showConfirmButton: false,
+                timer: 3000,
+              });
+    } 
+    }
 }
