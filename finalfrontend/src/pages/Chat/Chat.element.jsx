@@ -3,11 +3,6 @@ import styled from "@emotion/styled"
 
 const ChatElementStyles = styled.div`
 
-#card{
-    background-color: red;
-
-    /* ${(theme)=> theme.palette.form.main} */
-}
 
 
 `

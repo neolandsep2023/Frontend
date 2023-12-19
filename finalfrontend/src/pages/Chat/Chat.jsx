@@ -1,25 +1,13 @@
 import { useEffect, useState } from "react";
-import { getUserChats, newMessageChat } from "../../services/chats.service";
+import { getChatByID, getUserChats, newMessageChat } from "../../services/chats.service";
 import { Loading } from "../../components";
 import { useAuth } from "../../context/authContext";
-import "./Chat.css"
+
 import { useForm } from "react-hook-form";
+import { ChatElement } from "./Chat.element";
+import { ChatColumnElement } from "./ChatColumn.element";
 
 
-import 'mdb-react-ui-kit/dist/css/mdb.min.css';
-import {
-    MDBContainer,
-    MDBRow,
-    MDBCol,
-    MDBCard,
-    MDBCardBody,
-    MDBIcon,
-    MDBBtn,
-    MDBTypography,
-    MDBTextArea,
-    MDBCardHeader,
-  } from "mdb-react-ui-kit";
- 
 
 export const Chat = () => {
 //parte de chats activos
@@ -33,6 +21,7 @@ export const Chat = () => {
   const [ resMessage, setResMessage] = useState({})
   const [ activeChat, setActiveChat ] = useState("")
   const [ sentComment, setSentComment ] = useState(false)
+  const [ textArea, setTextArea] = useState("");
   
   
   const fetchres = async() => {
@@ -52,9 +41,16 @@ export const Chat = () => {
     console.log(customFormData)
 
     const response = await newMessageChat(customFormData)
-    console.log(response)
+
+
+    console.log("HOOLAAAAAAAAAAAAAAAAAAa", response)
     if(response.status == 200){
+        console.log("entroooooo", sentComment)
+        setActiveChat("")
         setSentComment(!sentComment)
+        setTextArea("");
+        setActiveChat(response.data.chat)
+
     }
     
   }
@@ -64,14 +60,6 @@ export const Chat = () => {
   useEffect(() => { 
     fetchres()
   }, [sentComment])
-
-
-  //   const isUser = res?.data?.chats[0]?.comments[0]?.creator == user._id ? true : false
-
-
-//parte de chat abierto
-    //mappeo del chat seleccionado, de sus comentarios.
-        //se re-renderiza cuando mandas un mensaje, es decir, se hace otro fetch
 
 
 const getDateFunction = (date) => {
@@ -92,155 +80,62 @@ const getHourFunction = (date) => {
     return totalTime
   }
 
-  /**
-            <h1>{chat?.userOne._id == user.id ? chat?.userTwo.name : chat?.userOne?.name}</h1> // nati mario
- * 
- */
 
 
   return (
 
-    // <>
-    // {isLoading && <Loading/>}
-    // {!isLoading && (
-    //     res && res?.data?.chats?.map((chat)=> ( )
-    //         <>
-    //         <div key={chat._id} onClick={(e) => {setActiveChat(chat)}}>
-    //         <h1>{chat?.userOne._id == user.id ? chat?.userTwo.username : chat?.userOne?.username}</h1> 
-    //         <p> {chat?.comments[chat.comments.length - 1]?.textComment} </p>
-    //         <p> {getDateFunction(chat.comments[chat.comments.length - 1].createdAt)} </p>   
-    //         <p>{getHourFunction(chat.comments[chat.comments.length - 1].createdAt)}</p>
-    //         </div>
+    <>
 
+    <ChatElement>
 
-    //         </>
+      <ChatColumnElement>
+
+    {isLoading && <Loading/>}
+    {!isLoading && (
+        res && res?.data?.chats?.map((chat)=> ( 
+            <>
             
+            <div key={chat._id} onClick={(e) => {setActiveChat(chat)}}>
+            <h1>{chat?.userOne._id == user.id ? chat?.userTwo.username : chat?.userOne?.username}</h1> 
+            <p> {chat?.comments[chat.comments.length - 1]?.textComment} </p>
+            <p> {getDateFunction(chat.comments[chat.comments.length - 1].createdAt)} </p>   
+            <p>{getHourFunction(chat.comments[chat.comments.length - 1].createdAt)}</p>
+            </div>
+            </>
+         ))
+     )}
     
-    //     ))
-    // )}
-    
-    // {activeChat != "" && ()}
-    //     <>
-    //     <h1>{activeChat.userOne.name}</h1>
-    //     {activeChat.comments.map((comment) => ()}
-    //         <>
-    //         <h4 key={comment._id}>{comment?.creator?.username}</h4>
+    </ChatColumnElement>
 
-    //         <p>{comment?.textComment}</p>
-    //         <p>{getHourFunction(comment.createdAt)}</p>
-    //         </>
-    //     ))}
-    //     </>
-    // )}
+    <ChatColumnElement>
 
 
-    // </>
-   //res?.data?.chats?.map((chat)=> (
-  
+     {activeChat != "" && (
+        <>
+        <h1>{activeChat.userOne.name}</h1>
+        {activeChat.comments.map((comment) => (
+            <>
+            <h4 key={comment._id}>{comment?.creator?.username}</h4>
+{console.log(comment?.creator?.username)}
+            <p>{comment?.textComment}</p>
+            <p>{getHourFunction(comment.createdAt)}</p>
+            </>
+        ))}
 
-    <MDBContainer fluid className="py-5">
-      <MDBRow>
-         <MDBCol md="6" lg="5" xl="4" className="mb-4 mb-md-0">
-          <h5 className="font-weight-bold mb-3 text-center ">
-            Active <span style={{color: 'green'}}> Chats </span>
-          </h5>
-       {!isLoading && res?.data?.chats?.map((chat)=> (
-            
-                      <MDBCard className="mask-custom" background='light' id="card" onClick={(e) => {setActiveChat(chat)}}>
-                        <MDBCardBody>
-                          <MDBTypography listUnStyled className="mb-0">
-                            <li
-                              className="p-2 border-bottom"
-                              style={{
-                                borderBottom: "1px solid rgba(255,255,255,.3) !important",
-                              }}
-                            >
-                            
-                                <div className="d-flex flex-row">
-                                  <img
-                                    src={chat?.userOne._id == user.id ? chat?.userTwo.image : chat?.userOne?.image}
-                                    alt="avatar"
-                                    className="rounded-circle d-flex align-self-center me-3 shadow-1-strong"
-                                    width="60"
-                                    style={{objectFit: "cover", width:"5vw", height:"5vw"}}
-                                  />
-                                  <div className="pt-1">
-                                    <p className="">{chat?.userOne._id == user.id ? chat?.userTwo.username : chat?.userOne?.username}</p>
-                                    <p className="small ">
-                                    {chat?.comments[chat.comments.length - 1]?.textComment}
-                                    </p>
-                                  </div>
-                                </div>
-                                <div className="pt-1">
-                                  <p className="small mb-1 ">{getHourFunction(chat.comments[chat.comments.length - 1].createdAt)}</p>
-                                  {/* <span className="badge bg-danger float-end">1</span> */}
-                                </div>
-                            
-                            </li>
-                          </MDBTypography>
-                        </MDBCardBody>
-                      </MDBCard>
-                     )
-         
-        )}
-                     </MDBCol>
-        
- 
-        <MDBCol md="6" lg="7" xl="8">
-   {!isLoading && 
-   
-   
-        activeChat != "" &&
-            activeChat.comments.map((comment) => ( 
-            <MDBTypography listUnStyled>
-                <li className="d-flex justify-content-between mb-4">
-                  <img
-                    src={comment?.creator?.image}
-                    alt="avatar"
-                    className="rounded-circle d-flex align-self-start me-3 shadow-1-strong"
-                    width="60"
-                  />
-                  <MDBCard className="mask-custom">
-                    <MDBCardHeader
-                      className="d-flex justify-content-between p-3"
-                      style={{ borderBottom: "1px solid rgba(255,255,255,.3)" }}
-                    >
-                      <p className="fw-bold mb-0">{comment?.creator?.username}</p>
-                      <p className=" small mb-0">
-                        <MDBIcon far icon="clock" /> {getHourFunction(comment.createdAt)}
-                      </p>
-                    </MDBCardHeader>
-                    <MDBCardBody>
-                      <p className="mb-0">
-                      {comment?.textComment}
-                      </p>
-                    </MDBCardBody>
-                  </MDBCard>
-                </li>
-    
-    
-              </MDBTypography>))}
-    
-    { activeChat != "" && <MDBTypography listUnStyled>
-    <form onSubmit={handleSubmit(newMessage)}>
-<li className="mb-3">
-    <MDBTextArea type="text" id="textAreaExample" rows={4} name="textComment" {...register("textComment")} />
-  </li>
-  <MDBBtn color="light" size="lg" rounded className="float-end" type="submit">
-    Send
-  </MDBBtn>
+<form onSubmit={handleSubmit(newMessage)}>
+    <textarea  type="text" name="textComment" defaultValue={textArea} id="textArea" {...register("textComment")}   />
+  <button type="submit">
+     Send
+  </button>
   </form>
-</MDBTypography> }
-              
-        
-         
-        </MDBCol>
-      </MDBRow>
-    </MDBContainer>
-  
-// </>
 
+        </>
+    )}
 
+</ChatColumnElement>
+
+</ChatElement>
+     </>
 
   )
 }
