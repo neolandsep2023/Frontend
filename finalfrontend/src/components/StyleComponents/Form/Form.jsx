@@ -46,7 +46,7 @@ const FormStyle = styled.form`
 
   ${({ theme }) => theme.mediaquery.tablet} {
     width: ${({ mediaqueryWidth }) =>
-      mediaqueryWidth ? mediaqueryWidth : "65vw"};
+      mediaqueryWidth ? mediaqueryWidth : "85vw"};
     height: ${({ heightTablet }) =>
       heightTablet ? heightTablet : "fit-content"};
   }

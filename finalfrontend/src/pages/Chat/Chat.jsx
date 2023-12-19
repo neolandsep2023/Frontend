@@ -88,7 +88,7 @@ const getHourFunction = (date) => {
 
     <ChatElement>
 
-      <ChatColumnElement>
+      <ChatColumnElement variant={"multiple"}>
 
     {isLoading && <Loading/>}
     {!isLoading && (
@@ -107,11 +107,12 @@ const getHourFunction = (date) => {
     
     </ChatColumnElement>
 
-    <ChatColumnElement>
+    
 
 
      {activeChat != "" && (
         <>
+        <ChatColumnElement variant={"individual"}>
         <h1>{activeChat.userOne.name}</h1>
         {activeChat.comments.map((comment) => (
             <>
@@ -128,11 +129,11 @@ const getHourFunction = (date) => {
      Send
   </button>
   </form>
-
+  </ChatColumnElement>
         </>
     )}
 
-</ChatColumnElement>
+
 
 </ChatElement>
      </>

@@ -24,6 +24,8 @@ display: flex;
 }
 
 & p{
+  overflow: auto;
+  max-height: 8vw;
 margin: 0;
 
   text-align: justify;

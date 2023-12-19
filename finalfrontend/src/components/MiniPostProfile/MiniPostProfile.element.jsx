@@ -74,6 +74,7 @@ align-items: center;
       max-height: 70%;
       max-width: 100%;
       font-size: 13px;
+      overflow: auto;
     }
     & h3 {
       height: 30%;

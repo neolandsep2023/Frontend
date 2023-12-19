@@ -30,7 +30,8 @@ import { useCanUserPost } from "../../hooks/useCanUserPost";
 //<!--IMP                     Component                            -->
 export const CreateRoom = () => {
 
-  const isMobile = window.innerWidth < 576 ? true : false 
+  const isMobile = window.innerWidth < 1090 ? true : false 
+
   //<!--sec                     Estados                         -->
   const [send, setSend] = useState(null);
   const [res, setRes] = useState({});
@@ -359,7 +360,7 @@ export const CreateRoom = () => {
                 value="false"
                 {...register("petsAllowed", { required: true })}
               />
-              <label htmlFor="NoPetsAllowed">{isMobile ? "No" : "No, pets are not allowed."}</label>
+              <label htmlFor="NoPetsAllowed">{isMobile  ? "No" : "No, pets are not allowed."}</label>
             </RadioInput>
           </LabelAndInput>
 
@@ -384,7 +385,7 @@ export const CreateRoom = () => {
                 value="false"
                 {...register("exterior", { required: true })}
               />
-              <label htmlFor="NoOutside">{isMobile ? "Yes" : "No, it does not have it."}</label>
+              <label htmlFor="NoOutside">{isMobile  ? "Yes" : "No, it does not have it."}</label>
             </RadioInput>
           </LabelAndInput>
 

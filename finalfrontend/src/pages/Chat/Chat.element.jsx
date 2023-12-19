@@ -3,6 +3,13 @@ import styled from "@emotion/styled"
 
 const ChatElementStyles = styled.div`
 
+background-color: blue;
+height: 80vh;
+
+display: flex;
+justify-content: space-around;
+align-items: center;
+flex-direction: row;
 
 
 `

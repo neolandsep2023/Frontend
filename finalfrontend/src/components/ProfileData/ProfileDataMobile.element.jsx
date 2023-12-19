@@ -24,6 +24,8 @@ display: flex;
   }
 
   & p{
+    overflow: auto;
+  max-height: 25vw;
     margin: 0 30px 0 30px;
     text-align: justify;
     background-color: ${({ theme }) => theme.palette.background.main};
