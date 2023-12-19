@@ -42,6 +42,15 @@ export const getPostById = async (postId) => {
     .catch((error) => error);
 };
 
+//! ----------------- GET by ID SIN POPULAR -----------------
+export const getPostByIdUnpopulated = async (postId) => {
+  const APIGeneral = extraConfig();
+
+  return APIGeneral.get(`/posts/getById/${postId}`)
+    .then((res) => res)
+    .catch((error) => error);
+};
+
 //! ------------------ GET ALL ------------------
 export const getAllPosts = async () => {
   const APIGeneral = extraConfig();
