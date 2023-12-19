@@ -8,7 +8,7 @@ import { ProtectedCheckChildren } from "../components/ProtectedRoutes/ProtectedC
 import { Registerpt1 } from "../pages/Register/Registerpt1/Registerpt1";
 import App from "../App";
 
-import { MapCreation, ForgotPassword, ByIdMap, Home, RoomSearch, CreateRoom, Login, VerifyCode,Registerpt2, Profile,EditProfile, AccountSettings, RoomById, Feed, NotFound, DataProfile } from "../pages";
+import { MapCreation, ForgotPassword, ByIdMap, Home, RoomSearch, CreateRoom, Login, VerifyCode,Registerpt2, Profile,EditProfile, AccountSettings, RoomById, Feed, NotFound, DataProfile, Chat } from "../pages";
 import { AppCarousel } from "../components/Carousel/Carousel";
 import { RoomReview } from "../components/Review/RoomReview";
 import { CreatePost } from "../pages/CreatePost/CreatePost";
@@ -118,7 +118,7 @@ export const router = createBrowserRouter ([
                 path: "/messages",
                 element: 
                 (<Protected>
-                  {/* </> */}
+                  <Chat />
                   </Protected>)
               },
               {
@@ -198,6 +198,7 @@ export const router = createBrowserRouter ([
                   <AccountSettings />
                   </Protected>)
               },
+
               {
                 path: "*",
                 element: <NotFound />,
