@@ -1,13 +1,12 @@
 import { useEffect, useState } from "react";
 import { Link, useParams } from "react-router-dom";
-import { FlexDir, H3Custom, Small } from "../../components/StyleComponents";
+import { FlexDir, H3Custom, SaveElement, Small } from "../../components/StyleComponents";
 import { ByIdImageCustom } from "../../components/StyleComponents/Images/ImageById";
 import { UlCustom } from "../../components/StyleComponents/UL/Ul";
 import { ConnectButtonCustom } from "../../components/StyleComponents/Buttons/ConnectButton";
 import { Description } from "../../components/StyleComponents/Text/Small/Description";
 import { ByIdMap } from "../Pruebas/ByIdMap";
 import { printHomeIcons, printIconsUser, printRoomIcons } from "../../utils/enumIcons";
-import { AppCarousel } from "../../components/Carousel/Carousel";
 import { RoomReview } from "../../components/Review/RoomReview";
 import { getPostById } from "../../services/post.service";
 import { RoommateCard } from "../../components/RoomateCard/RoommateCard";
@@ -15,20 +14,31 @@ import { H3PerfectFit } from "../../components/StyleComponents/Text/H3/H3Perfect
 import { NoRoomate } from "../../components/RoomateCard/NoRoomateCard";
 import { useAuth } from "../../context/authContext";
 import { UpdateButton } from "../../components/StyleComponents/Buttons/Update";
+import { addFavPost, getUserById } from "../../services/user.service";
+
 export const PostById = () => {
   //! ---------- Estados ----------
   const [res, setRes] = useState();
   const [isOwner, setIsOwner] = useState()
 
+  const [userLikedPosts, setUserLikedPosts] = useState([]);
+  const [updatedLikes, setUpdatedLikes] = useState(false);
+  const [saved, setSaved] = useState(false)
+
   //! ---------- Destructuring ----------
   const { id } = useParams();
   const { user } = useAuth()
+
   let acc = 0
 
+
+
+  //todo ------------- Get Post --------------
   const fetchPost = async () => {
     setRes(await getPostById(id))
   }
 
+  //todo ------------- Check if OWNER -------------
   const isOwnerFunction = () => {
     if (res?.data?.author[0]?.email == user?.email) {
       setIsOwner(true)
@@ -37,15 +47,34 @@ export const PostById = () => {
     }
   }
 
-  useEffect(() => {
+  //todo ------------- Toggle Saved & Get Saved -----------
+  const addToSaved = async () => {
+    const response = await addFavPost(id); //? TIENE QUE IR EN CONSTANTE POR ASINCRONIA DE REACT, NO EN USE STATE
+    setUpdatedLikes(!updatedLikes);
+  };
+
+  const getSavedPosts = async () => {
+    const userSavedPosts = await getUserById(user._id); //? TIENE QUE IR EN CONSTANTE POR ASINCRONIA DE REACT, NO EN USE STATE
+    setUserLikedPosts(userSavedPosts?.data?.likedPosts); //? tiene que ser un array - BACK NO POPULADO
+  };
+
+  const isSaved = userLikedPosts?.includes(id)
+
+  //todo -------------- UseEffects ---------------
+  useEffect(() => { //? nada más entrar para hacer fetch de la room y pintar todo
     fetchPost()
   }, [])
 
-  useEffect(() => {
+  useEffect(() => { //? al cambiar la res y al montarse para checkear si el user encontrado ya es roomate
     if (res?.status == 200) {
       isOwnerFunction()
     }
   }, [res])
+
+  useEffect(() => {
+    setSaved(userLikedPosts?.includes(id))
+    getSavedPosts()
+}, [updatedLikes, saved])
 
   return (
     <>
@@ -58,8 +87,7 @@ export const PostById = () => {
               <UlCustom direction="row" justifyContent="space-between">
                 <li>{printHomeIcons("Location")}{res?.data?.province}, {res?.data?.room[0]?.publicLocation} - {res?.data?.postcode}</li>
                 <FlexDir>
-                  <li>✅</li>
-                  <li>❤️</li>
+                  <li><SaveElement onClick={()=> addToSaved(id)} variant={isSaved ? "saved" : "normal"}/></li>
                 </FlexDir>
               </UlCustom>
             </FlexDir>

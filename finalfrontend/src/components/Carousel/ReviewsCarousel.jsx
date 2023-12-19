@@ -54,7 +54,7 @@ export const AppCarouselReview = ({comments}) => {
       <Carousel>
         {[...new Array(CARDS)].map((_, i) => (
           <>
-          <Review key={i} src={comments[i].creator?.image} alt={comments[i].creator?.name} name={comments[i].creator?.username} lastname={comments[i].creator?.lastName} textComment={comments[i].textComment} rating={comments[i].rating}/>
+          <Review key={i} src={comments[i]?.creator?.image} alt={comments[i]?.creator?.name} name={comments[i]?.creator?.username} lastname={comments[i]?.creator?.lastName} textComment={comments[i]?.textComment} rating={comments[i]?.rating}/>
           </>
         ))}
       </Carousel>
