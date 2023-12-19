@@ -6,7 +6,7 @@ import { ProfileDataDesktopElement } from "../ProfileData/ProfileDataDesktop.ele
 import { buttonBaseClasses } from "@mui/material";
 import { ButtonPrimary, FlexDir } from "../StyleComponents";
 import { useEffect, useState } from "react";
-import { getUserById } from "../../services/user.service";
+import { getUserByIdP } from "../../services/user.service";
 
 export const OtherUserProfileDataDesktop = () => {
   const navigate = useNavigate();
@@ -15,10 +15,11 @@ export const OtherUserProfileDataDesktop = () => {
   const [data, setData] = useState(null);
   const [res, setRes] = useState(null);
   const [isLoaded, setIsLoaded] = useState(false);
+  const [media, setMedia] = useState(0);
 
   const fetchData = async () => {
     setIsLoaded(false);
-    const response = await getUserById(id);
+    const response = await getUserByIdP(id);
     setData(response.data);
     setIsLoaded(true);
   };
@@ -26,6 +27,33 @@ export const OtherUserProfileDataDesktop = () => {
   useEffect(() => {
     fetchData();
   }, []);
+
+  const sacarMedia = () => {
+    const receivedComments = data?.receivedComments;
+
+    if (!Array.isArray(receivedComments) || receivedComments.length === 0) {
+      return 0;
+    }
+
+    const ratings = receivedComments
+      .filter((comment) => comment?.rating !== undefined)
+      .map((comment) => parseFloat(comment.rating));
+
+    if (ratings.length === 0) {
+      return 0;
+    }
+
+    const totalRating = ratings.reduce((accumulator, rating) => {
+    
+      return accumulator + rating;
+    }, 0);
+
+    const averageRating = totalRating / ratings.length;
+
+    return averageRating;
+  };
+
+  const medias = sacarMedia();
 
   let userAge = data?.birthYear && 2023 - data?.birthYear;
 
@@ -56,14 +84,12 @@ export const OtherUserProfileDataDesktop = () => {
             </FlexDir>
 
             <FlexDir margin={"0"}>
-              <h2> 4.75</h2>
+              <h2> {medias}</h2>
               <h2>
-                <Rating value={4.75} readOnly cancel={false} />
+                <Rating value={medias} readOnly cancel={false} />
               </h2>
             </FlexDir>
-            <FlexDir width={"100%"} gap={"0"} margin={"0"}>
-
-            </FlexDir>
+            <FlexDir width={"100%"} gap={"0"} margin={"0"}></FlexDir>
           </FlexDir>
         </ProfileDataDesktopElement>
       </>

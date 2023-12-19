@@ -8,6 +8,8 @@ import { usePaginacion } from '../../hooks/usePaginacion';
 import { useAuth } from '../../context/authContext';
 import { NothingHere } from '../../components/NothingHere/NothingHere';
 import { UserReview } from '../../components/UserReview/UserReview';
+import"./UserReview.css"
+import { Rating } from "primereact/rating";
 
 export const UserDataProfile = ({ page }) => {
     const isMobile = window.innerWidth < 576 ? true : false;
@@ -42,6 +44,7 @@ export const UserDataProfile = ({ page }) => {
 
   useEffect(() => {
     getSavedPosts();
+ 
   }, [updatedLikes,res]);
   
   
@@ -82,7 +85,7 @@ export const UserDataProfile = ({ page }) => {
               {/* <DataProfileElement> */}
               <MiniPostProfileContainerElement>
                 {dataPag[0] ?
-                  dataPag.map((post) => (
+                  dataPag?.map((post) => (
                     <>
                       <MiniPostProfile
                         key={post._id}
@@ -121,7 +124,7 @@ export const UserDataProfile = ({ page }) => {
               {/* <DataProfileElement> */}
               <MiniPostProfileContainerElement>
                 {dataPag[0] ?
-                  dataPag.map((room) => (
+                  dataPag?.map((room) => (
                     <>
                       <MiniPostProfile
                         key={room._id}
@@ -158,28 +161,28 @@ export const UserDataProfile = ({ page }) => {
               </FlexDir>
               <div className="line"></div>
               {/* <DataProfileElement> */}
-              <MiniPostProfileContainerElement>
+              <div className='cajonComentarios'>
                 {dataPag[0] ?
-                  dataPag.map((review) => (
-                    <>
-                      <MiniPostProfile
-                        key={review._id}
-                        page={"review"}
-                        id={review._id}
-                        title={review.title}
-                        text={review.text}
-                        image={review.image}
-                        province={review.province}
-                        price={review.price}
-                        type={review.type}
-                        addToSaved={addToSaved}
-                        userLikedPosts={userLikedPosts}
-                      ></MiniPostProfile>
-                    </>
+                  dataPag?.map((review) => (
+                    <div key={review._id} className="commentContainer">
+                      <div className='commentHeader'>
+                      <img src={review.creatorImage} className="commentImage" alt="Creator" />
+                    <span className="commentUser">{review.creatorName}</span>
+                    <Rating
+                        
+                          value={review?.rating}
+                          readOnly
+                          cancel={false}
+                        />
+                      </div>
+                      
+                    <p className="commentText">{review.textComment}</p>
+                   
+                  </div>
                   )) :
                   <NothingHere path={"/feed"}/>
                   }
-              </MiniPostProfileContainerElement>
+              </div>
 
               {/* </DataProfileElement> */}
             </ProfileContainer>
