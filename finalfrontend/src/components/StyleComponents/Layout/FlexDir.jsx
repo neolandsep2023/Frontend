@@ -18,6 +18,9 @@ const FlexStyle = styled.div`
   border-radius: ${({borderRadius}) => borderRadius ? borderRadius : "0px"};
   background-color: ${({backgroundColor}) => backgroundColor ? backgroundColor : "transparent"};
   
+  
+
+
   ${({ theme }) => theme.mediaquery.laptop} {
     /* flex-direction: ${({ mediaqueryDir, direction }) =>
       mediaqueryDir ? mediaqueryDir : direction}; */
@@ -51,6 +54,9 @@ const FlexStyle = styled.div`
       mediaqueryHeightMiniMobile ? mediaqueryHeightMiniMobile : height};
     margin: ${({mediaqueryMarginMobile, margin}) => mediaqueryMarginMobile ? mediaqueryMarginMobile : margin}
   }
+
+
+
 `;
 
 export const FlexDir = ({
@@ -76,7 +82,8 @@ export const FlexDir = ({
   border,
   borderRadius,
   backgroundColor,
-  justifyContent
+  justifyContent,
+  onClick
 }) => {
   const { theme } = useTheme();
 
@@ -92,6 +99,7 @@ export const FlexDir = ({
       width={width}
       height={height}
       gap={gap}
+      onClick={onClick}
       margin={margin}
       direction={direction}
       mediaqueryDir={mediaqueryDir}

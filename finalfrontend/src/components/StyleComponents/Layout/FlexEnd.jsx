@@ -6,7 +6,7 @@ const FlexEndStyles = styled.div`
 display: flex;
 justify-content: space-between;
 align-items: center;
-width: 90%;
+width: ${({width}) => width ? width : "90%"};
 height: 30px;
 background-color: ${({ theme, variant }) => 
 variant =="normal" ? theme.palette.background.main :
@@ -71,9 +71,9 @@ ${({ theme }) => theme.mediaquery.tablet} {
 
 `
 
-export const FlexEnd = ({children, padding, variant}) => {
+export const FlexEnd = ({children, padding, variant, width}) => {
   const { theme } = useTheme();
   return (
-    <FlexEndStyles theme={theme} padding={padding} variant={variant}>{children}</FlexEndStyles>
+    <FlexEndStyles theme={theme} padding={padding} variant={variant} width={width}>{children}</FlexEndStyles>
   )
 }

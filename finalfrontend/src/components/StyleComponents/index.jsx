@@ -24,3 +24,4 @@ export * from './Buttons/ButtonHeader'
 export * from './Text/H1/H1Profile'
 export * from "./ProfileStyles/ProfileContainer.element"
 export * from  "./Pagination/MiniPagination.element"
+export * from "./Layout/FlexAround"
