@@ -6,15 +6,18 @@ import "./Header.css";
 import { HeaderSmall } from "./HeaderSmall";
 
 export const Header = () => {
-  const isMobile = window.innerWidth < 776 ? true : false;
+  const [isMobile, setIsMobile] = useState(window.innerWidth < 776);
   const { toggleTheme, theme } = useThemeApp();
   const navigate = useNavigate();
   const { user, logout } = useAuth();
+
   const navigateToLogin = () => {
     navigate("/login");
   };
 
-  const handleResize = () => {};
+  const handleResize = () => {
+    setIsMobile(window.innerWidth < 776);
+  };
 
   useEffect(() => {
     window.addEventListener("resize", handleResize);

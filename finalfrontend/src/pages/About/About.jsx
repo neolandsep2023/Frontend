@@ -7,43 +7,21 @@ export const About = () => {
   return (<>
     <H1Form>About us</H1Form>
     <section className='about'>
-<section>
-  <h2>Our Team</h2>
-  <div className='figureContainer'>
- <figure className='persona'>
-  <img src="https://pic.onlinewebfonts.com/svg/img_181369.png" alt="" />
-  <h3>Abel</h3>
- </figure>
- <figure className='persona'>
-  <img src="https://pic.onlinewebfonts.com/svg/img_181369.png" alt="" />
-  <h3>Lucía</h3>
- </figure>
- <figure className='persona'>
-  <img src="https://pic.onlinewebfonts.com/svg/img_181369.png" alt="" />
-  <h3>Mario</h3>
- </figure>
- <figure className='persona'>
-  <img src="https://pic.onlinewebfonts.com/svg/img_181369.png" alt="" />
-  <h3>Natalia</h3>
- </figure>
 
- 
-  </div>
- 
-</section>
 
       <section className='sectionAbout'>
         <img className='imgAbout' src="https://res.cloudinary.com/djfkchzyq/image/upload/v1702567631/l1bh3epztqs2gackdr4o.png" alt="" />
       <article className='articleAbout'>
         <h2>Our Story</h2>
-        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed ac justo vitae velit blandit pretium. Nullam nec purus vitae libero aliquam volutpat. Proin euismod fermentum enim, vel fermentum sem cursus eu.</p>
+        <p>Our final project is a snapshot of hard work, collaboration, and growth. From wild ideas to late-night debugging, each line of code represents our journey through this coding bootcamp. This showcase is more than a project; it's the story of a team that faced challenges and triumphed together.      
+</p>
         </article>
         </section>
         <section className='sectionAboutL'>
         <img className='imgAbout' src="https://res.cloudinary.com/djfkchzyq/image/upload/v1702569293/kr7w3hsdida5r2uk2t3z.avif" alt="" />
       <article className='articleAbout'>
         <h2>Our Mission</h2>
-        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed ac justo vitae velit blandit pretium. Nullam nec purus vitae libero aliquam volutpat. Proin euismod fermentum enim, vel fermentum sem cursus eu.</p>
+        <p>Our goal is to develop a housing app that simplifies the search for roommates. With this application, individuals can easily find compatible housemates based on shared preferences, lifestyles, and interests. The app aims to streamline the process of finding the perfect living arrangement, fostering connections and creating harmonious living environments</p>
         </article>
         </section>
        

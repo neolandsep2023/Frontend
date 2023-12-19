@@ -1,7 +1,7 @@
 .zonaMobile {
   background-color: rgba(37, 37, 37, 0.582);
   position: absolute;
-  top: 15vh;
+  top: 12vh;
   width: 100%;
   min-height: 160vh;
   z-index: 10;
@@ -24,7 +24,7 @@
   flex-direction: column;
   justify-content: space-between;
   align-items: center;
-  padding: 10px 0px;
+  padding: 15px 0px;
   height: 100%;
 
 }
@@ -42,15 +42,15 @@
 
 .headerSmall {
   background-color: #2a2b2e;
-  height: 15vh;
+  height: 12vh;
   display: flex;
   flex-direction: column;
   justify-content: space-around;
   align-items: center;
-  margin-bottom: 20px;
+ 
 }
 .headerSmall img {
-  width: 50%;
+  width: 30%;
   min-width: 200px;
   max-width: 300px;
  
@@ -79,7 +79,7 @@ width: 100%;
   cursor: pointer;
 }
 .hamburguesa span {
-  font-size: 60px;
+  font-size: 50px;
 }
 
 .figureNav {

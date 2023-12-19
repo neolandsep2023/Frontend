@@ -28,18 +28,18 @@ export const Home = () => {
     <article className='articleSmall'>
       <img src="https://res.cloudinary.com/djfkchzyq/image/upload/v1702551961/qelzk4orupgn409surv5.png" alt="Un mapa con una chincheta"/>
       <div className='parteTexto'>
-        <h3 className='hHome'>Una de las cosas que hace</h3>
-        <p>Explica las cosas que hace la app en esta parte</p>
-        <Link className="link"to={"/"}>No logado lleva a Login</Link>
+        <h3 className='hHome'> Accurate location</h3>
+        <p>Secure your room in the location you need.</p>
+        <Link className="link"to={"/roomsearch"}>Get your room</Link>
       </div>
     
     </article>
     <article className='articleSmall'>
       <img src="https://res.cloudinary.com/djfkchzyq/image/upload/v1702551960/bvy675olyeco90oxqshy.png" alt="Manos en un ordenador"/>
       <div className='parteTexto'>
-        <h3 className='hHome'>Otra de las cosas que hace</h3>
-        <p>Explica las cosas que hace la app en esta parte</p>
-        <Link className="link" to={"/"}>No logado lleva a Login</Link>
+        <h3 className='hHome'>Swift Search.</h3>
+        <p>Find in minutes exactly what you need.</p>
+        <Link className="link" to={"/roomSearch"}>Search</Link>
       </div>
     
     </article>
@@ -50,10 +50,9 @@ export const Home = () => {
       <img src="https://res.cloudinary.com/djfkchzyq/image/upload/v1702552600/pl9dhup17rw7tibsisyw.png" alt="Dos mujeres riéndose"/>
   
       <article className='textoGrande'>
-        <h3 className='hHome'>Una de las cosas grandes</h3>
-       <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. In nam reiciendis, quaerat temporibus 
-        neque quidem! </p>
-        <Link className="link" to={"/"}>No logado lleva a Login</Link>
+        <h3 className='hHome'>New flatmates!</h3>
+       <p>Find someone to join your apartment or search for a flat to join.</p>
+        <Link className="link" to={"/feed"}>Start now</Link>
       </article>
 
     </section>
@@ -61,10 +60,10 @@ export const Home = () => {
       <img src="https://res.cloudinary.com/djfkchzyq/image/upload/v1702557520/qfwylmwwiw6g76ykjmk8.jpg"alt="Grupo de amigos con el móvil"/>
   
       <article className='textoGrandeL'>
-        <h3 className='hHome'>Otra de las cosas grandes</h3>
-       <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. In nam reiciendis, quaerat temporibus 
+        <h3 className='hHome'>Chat and meet</h3>
+       <p>Connect and discover. Join us for vibrant conversations and meaningful connections.
        </p>
-        <Link className="link"to={"/"}>No logado lleva a Login</Link>
+        <Link className="link"to={"/messages"}>Go to chats</Link>
       </article>
 
     </section>
@@ -72,10 +71,9 @@ export const Home = () => {
       <img src="https://res.cloudinary.com/djfkchzyq/image/upload/v1702561445/f8yg29casftvtzs7f6bs.png" alt="Un piso lujoso"/>
   
       <article className='textoGrande'>
-        <h3 className='hHome'>Una de las cosas grandes</h3>
-       <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. In nam reiciendis, quaerat temporibus 
-        neque quidem! </p>
-        <Link className="link" to={"/"}>No logado lleva a Login</Link>
+        <h3 className='hHome'>The room you need.</h3>
+       <p>"Find the room that best suits your needs with our selective search engine. </p>
+       <Link className="link"to={"/roomsearch"}>Get your room</Link>
       </article>
 
     </section>
