@@ -39,7 +39,8 @@ const FormStyle = styled.form`
     display: flex;
     flex-direction: column;
     width: 95vw;
-    height: ${({ height }) => (height ? height : "fit-content")};
+    height: ${({ heightMobile }) =>
+      heightMobile ? heightMobile : "fit-content"};
   }
 
 
