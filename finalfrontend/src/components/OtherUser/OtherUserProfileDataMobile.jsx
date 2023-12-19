@@ -1,101 +1,121 @@
-
-import { FlexDir } from "../StyleComponents";
+import { FlexDir, H1Custom } from "../StyleComponents";
 import { useNavigate, useParams } from "react-router-dom";
 import { ProfileDataMobileElement } from "../ProfileData/ProfileDataMobile.element";
 import { useAuth } from "../../context/authContext";
 import { useEffect, useState } from "react";
 import { getUserById } from "../../services/user.service";
+import { MessagePopup } from "./MessagePopup";
 
 export const OtherUserProfileDataMobile = () => {
   const navigate = useNavigate();
   const { user, logout } = useAuth();
-    const [data, setData] = useState(null);
-    const [res, setRes] = useState(null);
-    const [isLoaded, setIsLoaded] = useState(false);
-    const {id} = useParams();
+  const [data, setData] = useState(null);
+  const [res, setRes] = useState(null);
+  const [isLoaded, setIsLoaded] = useState(false);
+  const [popupActive, setPopupActive] = useState(false)
 
-    const fetchData = async () => {
-      setIsLoaded(false);
-      const response = await getUserById(id);
-      setData(response.data)
-      setIsLoaded(true);
-    };
-  
-    useEffect(() => {
-      fetchData();
-    }, []);
+  const { id } = useParams();
+
+  const fetchData = async () => {
+    setIsLoaded(false);
+    const response = await getUserById(id);
+    setData(response.data);
+    setIsLoaded(true);
+  };
 
 
+  const showPopup = () => {
+    setPopupActive(true)
+  }
+
+  useEffect(() => {
+    fetchData();
+  }, []);
 
   return (
     <>
-    { data && (
-      <ProfileDataMobileElement>
-        <img alt="user logo" src={data.image} />
-        <h1>@{data.username}</h1>
-        {data.description && <p>{data.description}</p>}
-        <FlexDir wrap={"wrap"}>
-          {data.interests.map((interest) => (
-            <h3 className="interests" key={interest}>{interest}</h3>
-          ))}
-        </FlexDir>
+      {data && (
+        <>
+          <div style={{ position: "absolute", top: "170px" }}>
+            <h1>{data.name ? data.name : data.username}</h1>
+          </div>
+          <ProfileDataMobileElement>
+            <FlexDir direction="column" height="100%">
+              <img
+                alt="user logo"
+                style={{ marginTop: 0, paddingTop: 0 }}
+                src={data.image}
+              />
+              <h1>@{data.username}</h1>
+              {data.description && <p>{data.description}</p>}
+              <FlexDir wrap={"wrap"}>
+                {data.interests.map((interest) => (
+                  <h3 className="interests" key={interest}>
+                    {interest}
+                  </h3>
+                ))}
+              </FlexDir>
+            </FlexDir>
+            <div style={{ bottom: 0 }}>
+              <div className="line"></div>
 
-        <div className="line"></div>
+              <div
+                className="links"
+                style={{ height: "calc(100%/2.5)" }}
+                onClick={() => navigate("/profile/mobile/posts")}
+              >
+                <span className="material-symbols-outlined">article</span>{" "}
+                {data.name ? data.name : data.username}'s Posts
+                <span className="material-symbols-outlined arrow">
+                  chevron_right
+                </span>
+              </div>
+              <div className="line"></div>
 
-        <div className="links" onClick={() => navigate("/profile/mobile/posts")}>
-          <span className="material-symbols-outlined">article</span> My Posts
-          <span className="material-symbols-outlined arrow">chevron_right</span>
-        </div>
-        <div className="line"></div>
+              <div
+                className="links"
+                style={{ height: "calc(100%/2.5)" }}
+                onClick={() => navigate("/profile/mobile/rooms")}
+              >
+                <span className="material-symbols-outlined">meeting_room</span>{" "}
+                {data.name ? data.name : data.username}'s Rooms
+                <span className="material-symbols-outlined arrow">
+                  chevron_right
+                </span>
+              </div>
+              <div className="line"></div>
 
-<div className="links" onClick={() => navigate("/profile/mobile/rooms")}>
-  <span className="material-symbols-outlined">meeting_room</span> My Rooms
-  <span className="material-symbols-outlined arrow">chevron_right</span>
-</div>
-        <div className="line"></div>
+              <div
+                className="links"
+                style={{ height: "calc(100%/2.5)" }}
+                onClick={() => navigate("/profile/mobile/reviews")}
+              >
+                <span className="material-symbols-outlined">star</span>{" "}
+                {data.name ? data.name : data.username}'s Reviews
+                <span className="material-symbols-outlined arrow">
+                  chevron_right
+                </span>
+              </div>
 
-        <div className="links" onClick={() => navigate("/profile/mobile/reviews")}>
-          <span className="material-symbols-outlined">star</span> Reviews
-          <span className="material-symbols-outlined arrow">chevron_right</span>
-        </div>
+              <div className="line"></div>
 
-        <div className="line"></div>
+              <div
+                className="links"
+                style={{ height: "calc(100%/2.5)" }}
+                onClick={showPopup}
+              >
+                <span className="material-symbols-outlined">chat</span>{" "}
+                Chat with {data.name ? data.name : data.username}
+                <span className="material-symbols-outlined arrow">
+                  chevron_right
+                </span>
+              </div>
+            </div>
+          </ProfileDataMobileElement>
+        {popupActive && <MessagePopup id={data._id} setPopupActive={setPopupActive} isMobile={true}/>}
 
-        <div className="links" onClick={() => navigate("/profile/mobile/bookmarks")}>
-          <span className="material-symbols-outlined">bookmark</span> Bookmarks
-          <span className="material-symbols-outlined arrow">chevron_right</span>
-        </div>
-
-        <div className="line"></div>
-
-        <div className="links"
-        onClick={() => navigate("/profile/edit")}>
-          <span
-            className="material-symbols-outlined"
-            
-          >
-            edit
-          </span>
-          Edit Profile
-          <span className="material-symbols-outlined arrow">chevron_right</span>
-        </div>
-
-        <div className="line"></div>
-        <div
-          className="links"
-          onClick={() => navigate("/profile/settings")}
-        >
-          <span className="material-symbols-outlined">settings</span> Settings
-          <span className="material-symbols-outlined arrow">chevron_right</span>
-        </div>
-        <div className="line"></div>
-        <div className="links" onClick={logout}>
-          <span className="material-symbols-outlined">move_item</span> Logout
-          <span className="material-symbols-outlined arrow">chevron_right</span>
-        </div>
-      </ProfileDataMobileElement>
-    )}
+        </>
+      )}
     </>
-  
   );
 };
