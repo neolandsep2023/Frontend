@@ -13,10 +13,13 @@ import { UpdateButton } from "../../components/StyleComponents/Buttons/Update";
 import { useAuth } from "../../context/authContext";
 import { UserReview } from '../../components/UserReview/UserReview';
 import { AddReview } from "../../components/StyleComponents/Buttons/AddReview";
+import { MessagePopup } from "../../components/OtherUser/MessagePopup";
 export const RoomById = () => {
   //! ---------- Estados ----------
   const [res, setRes] = useState();
   const [isOwner, setIsOwner] = useState()
+  const [popupActive, setPopupActive] = useState(false)
+
 
   //! ---------- Destructuring ----------
   const { id } = useParams();
@@ -26,6 +29,11 @@ export const RoomById = () => {
   const fetchRoom = async () => {
     setRes(await getRoomById(id))
   }
+
+  const showPopup = () => {
+    setPopupActive(true)
+  }
+ 
 
   const isOwnerFunction = () => {
     if (res?.data?.post?.author[0]?.email == user?.email) {
@@ -67,7 +75,7 @@ export const RoomById = () => {
                 <li>🗺️ {res?.data?.province}, {res?.data?.publicLocation}</li>
                 <li>🪟 {res?.data?.exterior && "Exterior Room"}</li>
               </UlCustom>
-              <ConnectButtonCustom>Connect</ConnectButtonCustom>
+              <ConnectButtonCustom onClick={showPopup}>Connect</ConnectButtonCustom>
               {isOwner && <Link to={`/updateRoom/${id}`}><UpdateButton page="room" /></Link>}
             </FlexDir>
           </FlexDir>
@@ -124,6 +132,8 @@ export const RoomById = () => {
                 { res?.data?.post?.roommates?.includes(user._id) && <AddReview width="5vw" height="5vw"/>}
               </>
               : <UserReview action="roomcomment" />}
+            {popupActive && <MessagePopup id={res.data.postedBy[0]} setPopupActive={setPopupActive} />}
+
           </FlexDir>
         </FlexDir>
       }

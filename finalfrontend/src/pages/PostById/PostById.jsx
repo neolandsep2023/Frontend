@@ -16,11 +16,14 @@ import { useAuth } from "../../context/authContext";
 import { UpdateButton } from "../../components/StyleComponents/Buttons/Update";
 import { addFavPost, getUserById } from "../../services/user.service";
 import { SavePostElement } from "../../components/StyleComponents/AddElement/SavePost.element";
+import { MessagePopup } from "../../components/OtherUser/MessagePopup";
 
 export const PostById = () => {
   //! ---------- Estados ----------
   const [res, setRes] = useState();
   const [isOwner, setIsOwner] = useState()
+  const [popupActive, setPopupActive] = useState(false)
+
 
   const [userLikedPosts, setUserLikedPosts] = useState([]);
   const [updatedLikes, setUpdatedLikes] = useState(false);
@@ -62,6 +65,11 @@ export const PostById = () => {
 
   const isSaved = userLikedPosts?.includes(id)
 
+  const showPopup = () => {
+    setPopupActive(true)
+  }
+ 
+
   //todo -------------- UseEffects ---------------
   useEffect(() => { //? nada más entrar para hacer fetch de la room y pintar todo
     fetchPost()
@@ -101,7 +109,7 @@ export const PostById = () => {
                 <li>🗺️ {res?.data?.province}</li>
                 <li>⌛ {res?.data?.preferredAge}</li>
               </UlCustom>
-              <ConnectButtonCustom>Connect</ConnectButtonCustom>
+              <ConnectButtonCustom onClick={showPopup}>Connect</ConnectButtonCustom>
               {isOwner && <Link to={`/updatePost/${id}`}><UpdateButton page="post" /></Link>}
             </FlexDir>
           </FlexDir>
@@ -152,7 +160,7 @@ export const PostById = () => {
                     {res?.data?.roommates.map((roommate) => (
                       roommate?.interests.slice(0, 3).map((interest) => {
                         return (
-                          <FlexDir padding="2px" margin="0" border="1px solid green" borderRadius="2px">
+                          <FlexDir padding="2px" margin="0" border="1px solid green" borderRadius="2px" key={`FlexDir ${interest}`}>
                             <li key={interest}>{interest}</li>
                           </FlexDir>
                         )
@@ -174,6 +182,7 @@ export const PostById = () => {
           </FlexDir>
           <FlexDir mediaqueryMarginMobile="0" mediaqueryMarginTablet="1rem 0 0 0" margin="5rem 0 0 0">
             <RoomReview roomId={res?.data?._id} />
+            {popupActive && <MessagePopup id={res.data.author[0]} setPopupActive={setPopupActive} />}
           </FlexDir>
         </FlexDir>
       }
