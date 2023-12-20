@@ -6,14 +6,14 @@ import { ProfileDataDesktopElement } from "../ProfileData/ProfileDataDesktop.ele
 import { buttonBaseClasses } from "@mui/material";
 import { ButtonPrimary, FlexDir } from "../StyleComponents";
 import { useEffect, useState } from "react";
-import { getUserByIdP } from "../../services/user.service";
+import { getUserByIdP, getUserByUsernameP } from "../../services/user.service";
 import { sacarMedia } from "../../utils/mediaUtil";
 import { MessagePopup } from "./MessagePopup";
 
 export const OtherUserProfileDataDesktop = () => {
   const navigate = useNavigate();
   const { user, logout } = useAuth();
-  const { id } = useParams();
+  const { username } = useParams();
   const [data, setData] = useState(null);
   const [res, setRes] = useState(null);
   const [isLoaded, setIsLoaded] = useState(false);
@@ -22,7 +22,7 @@ export const OtherUserProfileDataDesktop = () => {
   
   const fetchData = async () => {
     setIsLoaded(false);
-    const response = await getUserByIdP(id);
+    const response = await getUserByUsernameP(username);
     setData(response.data);
     setIsLoaded(true);
   };

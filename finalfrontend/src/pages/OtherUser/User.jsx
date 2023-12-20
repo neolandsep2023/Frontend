@@ -4,7 +4,7 @@ import { useAuth } from "../../context/authContext";
 import { useTheme } from "@emotion/react";
 import { useEffect, useState } from "react";
 import { useUserVerify } from "../../hooks/useUserVerify";
-import { getUserByIdP } from "../../services/user.service";
+import { getUserByIdP, getUserByUsernameP } from "../../services/user.service";
 import { OtherUserProfileDataDesktop } from "../../components/OtherUser/OtherUserProfileDataDesktop";
 import { OtherUserProfileDataMobile } from "../../components/OtherUser/OtherUserProfileDataMobile";
 import { FlexDir, Pagination, ProfileContainer } from "../../components/StyleComponents";
@@ -16,15 +16,15 @@ export const User = () => {
   const { theme } = useTheme();
   const { user, logout } = useAuth();
   const navigate = useNavigate();
-  const {id} = useParams();
-  console.log(id, "fuera de funcion")
+  const {username} = useParams();
+  console.log(username, "fuera de funcion")
   const [page, setPage] = useState("posted");
   const [userData, setUserData] = useState(null);
   const [loading, setLoading] = useState(true);
 
   const dataFetch = async () => {
-      const response = await getUserByIdP(id);
-      console.log(id, "id dentro de dataFetch")
+      const response = await getUserByUsernameP(username);
+      console.log(username, "username dentro de dataFetch")
       console.log(response);
       setUserData(response.data);
       setLoading(false);
@@ -35,9 +35,9 @@ export const User = () => {
   useEffect(() => {
     useUserVerify(user, logout, navigate);
     dataFetch();
-  }, []);
+  }, [username]);
 
-  useEffect(() => {}, [userData]);
+
 
   return (
     <>

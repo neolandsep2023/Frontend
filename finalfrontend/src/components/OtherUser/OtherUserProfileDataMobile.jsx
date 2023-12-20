@@ -3,7 +3,7 @@ import { useNavigate, useParams } from "react-router-dom";
 import { ProfileDataMobileElement } from "../ProfileData/ProfileDataMobile.element";
 import { useAuth } from "../../context/authContext";
 import { useEffect, useState } from "react";
-import { getUserById } from "../../services/user.service";
+import { getUserById, getUserByUsernameP } from "../../services/user.service";
 import { MessagePopup } from "./MessagePopup";
 
 export const OtherUserProfileDataMobile = () => {
@@ -14,11 +14,11 @@ export const OtherUserProfileDataMobile = () => {
   const [isLoaded, setIsLoaded] = useState(false);
   const [popupActive, setPopupActive] = useState(false)
 
-  const { id } = useParams();
+  const { username } = useParams();
 
   const fetchData = async () => {
     setIsLoaded(false);
-    const response = await getUserById(id);
+    const response = await getUserByUsernameP(username);
     setData(response.data);
     setIsLoaded(true);
   };

@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react'
 import { useParams } from 'react-router-dom';
-import { addFavPost, getUserById, getUserByIdP } from '../../services/user.service';
+import { addFavPost, getUserById, getUserByIdP, getUserByUsernameP } from '../../services/user.service';
 import { MiniPostProfile, MiniPostProfileContainerElement } from '../../components';
 import { DataProfileElement } from '../Profile/DataProfile/DataProfile.element';
 import { FlexDir, ProfileContainer } from '../../components/StyleComponents';
@@ -20,11 +20,11 @@ export const UserDataProfile = ({ page }) => {
   const [isLoaded, setIsLoaded] = useState(false);
   const [userLikedPosts, setUserLikedPosts] = useState([]); //! useState de los likes
   const [updatedLikes, setUpdatedLikes] = useState(false);
-    const { id } = useParams();
+    const { username } = useParams();
   
     const fetchData = async () =>{
       setIsLoaded(false)
-      setRes( await getUserByIdP(id))
+      setRes( await getUserByUsernameP(username))
       console.log(res?.data)
       setIsLoaded(true)
     }

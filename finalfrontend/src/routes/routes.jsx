@@ -16,9 +16,9 @@ import { AppCarouselReview } from "../components/Carousel/ReviewsCarousel";
 import { Estrellas } from "../components/Estrellas/Estrellas";
 import { About } from "../pages/About/About";
 import { PostById } from "../pages/PostById/PostById";
-import { User } from "../pages/OtherUser/User";
 import { UpdatePost } from "../pages/Update/UpdatePost";
 import { UpdateRoom } from "../pages/Update/UpdateRoom";
+import { User } from "../pages/OtherUser/User";
 
 
 
@@ -122,7 +122,7 @@ export const router = createBrowserRouter ([
                   </Protected>)
               },
               {
-                path: "/user/:id",
+                path: "/user/:username",
                 element: (
                   <Protected>
                     <User />
@@ -130,7 +130,7 @@ export const router = createBrowserRouter ([
                 ),
                 children: [
                   {
-                    path: "/user/:id/posted",
+                    path: "/user/:username/posted",
                     element: (
                       <Protected>
                         {/* <PostedPage /> */}
@@ -138,7 +138,7 @@ export const router = createBrowserRouter ([
                     ),
                   },
                   {
-                    path: "/user/:id/reviews",
+                    path: "/user/:username/reviews",
                     element: (
                       <Protected>
                         {/* <ReviewPage /> */}

@@ -137,6 +137,14 @@ export const getUserByIdP = async (id) => {
     .catch((error) => error);
 };
 
+//! -------------------> Get User By Id
+export const getUserByUsernameP = async (username) => {
+  const APIGeneral = extraConfig();
+  return APIGeneral.get(`/users/getByUsernameP/${username}`)
+    .then((res) => res)
+    .catch((error) => error);
+};
+
 
 //! -------------------> Get User By Id Populated Likes
 export const getUserByIdPLikes = async (id) => {
