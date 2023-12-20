@@ -130,7 +130,7 @@ console.log(postType)
             {...register("text", {
               required: true,
               minLength: 50,
-              maxLength: 300,
+              maxLength: 600,
             })}
           />
         </LabelAndInput>
