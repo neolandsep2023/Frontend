@@ -19,7 +19,7 @@ const StyledHeader = styled.div`
   min-height: 100px;
   max-height: 140px;
 
-  background-color: #2a2b2e;
+  background-color: ${({ theme }) => theme.palette.background.main};
 }
 
 .navs {

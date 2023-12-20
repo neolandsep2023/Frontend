@@ -43,7 +43,7 @@ const StyledHeaderSmall = styled.div`
 }
 
 .headerSmall {
-  background-color: #2a2b2e;
+    background-color: ${({ theme }) => theme.palette.background.header};
   height: 12vh;
   display: flex;
   flex-direction: column;
@@ -58,7 +58,7 @@ const StyledHeaderSmall = styled.div`
  
 }
 .smallUno {
-  background-color: #2a2b2e;
+    background-color: ${({ theme }) => theme.palette.background.header};
 width: 100%;
   display: flex;
   
@@ -72,7 +72,7 @@ width: 100%;
 }
 
 .hamburguesa {
-  background-color: #2a2b2e;
+    background-color: ${({ theme }) => theme.palette.background.main};
   border: none;
   height: 100%;
   display: flex;
@@ -88,7 +88,7 @@ width: 100%;
   margin: 0;
   width: 100%;
   height: 60px;
-  background-color: rgb(61, 60, 60);
+  background-color: ${({ theme }) => theme.palette.background.light};
   display: flex;
   justify-content: flex-start;
   align-items: center;
@@ -99,7 +99,7 @@ width: 100%;
 }
 .figureNav span,
 .figureNav a {
-  background-color: rgb(78, 77, 77);
+  background-color: ${({ theme }) => theme.palette.background.main};
   color: rgb(74, 206, 130);
   font-weight: bold;
   text-decoration: none;
@@ -135,43 +135,6 @@ width: 100%;
   cursor: pointer;
 }
 
-body.light .zonaMobile{
-    background-color: #ffffff60;
- 
-  }
-body.light .figureNav{
-    background-color: #d1ddd0;
- 
-  }
-body.light .figureNav:hover{
-    background-color: #99d893;
- 
-  }
-body.light .figureNav a{
-    background-color: rgb(181, 214, 195);
-    color: black;
- 
-  }
-body.light .figureNav span{
-    background-color: rgb(181, 214, 195);
-    color: black;
- 
-  }
- 
-body.light .smallUno {
-    background-color: #f0f9f3;
- 
-  }
-body.light .headerSmall{
-  
-    background-color: #f0f9f3;
- 
-  }
-body.light .hamburguesa{
-    
-    background-color: #f0f9f3;
- 
-  }
 
 `;
 

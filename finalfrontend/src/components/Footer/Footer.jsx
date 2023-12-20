@@ -1,9 +1,10 @@
-import "./Footer.css";
 import { Link, NavLink, useNavigate } from "react-router-dom";
+import { FooterElement } from "./Footer.element";
 
 export const Footer = () => {
   return (
     <>
+    <FooterElement>
       <footer className="footer">
         <div className="footer-content">
           <div className="footer-column ">
@@ -57,6 +58,7 @@ export const Footer = () => {
           <p>&copy; 2023 Connect-a-mate. All rights reserved.</p>
         </div>
       </footer>
+      </FooterElement>
     </>
   );
 };

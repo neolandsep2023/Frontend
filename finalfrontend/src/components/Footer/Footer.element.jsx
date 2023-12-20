@@ -1,8 +1,12 @@
+import React from "react";
+import styled from "@emotion/styled";
 
+const StyledFooter = styled.div`
+ 
 
 .footer {
-    background-color: #333;
-    color: #fff;
+    background-color: ${({ theme }) => theme.palette.background.main};
+   
 
 }
 
@@ -20,7 +24,7 @@ text-align: center;
 }
 
 .footer-column h2 {
-    color: rgb(142, 255, 171);
+    color:  ${({ theme }) => theme.palette.enhanced.main};;
 }
 
 
@@ -40,7 +44,7 @@ text-align: center;
 
 
 .footer-bottom {
-    background-color: #222;
+    background-color: ${({ theme }) => theme.palette.enhanced.main};
     padding: 10px 0;
     text-align: center;
 }
@@ -48,20 +52,17 @@ text-align: center;
 
 @media (max-width: 767px) {
     .footer-column {
-        flex: 2;
+        flex: 1;
     
     }
 
 }
 
-body.light .footer{
-    background-color: rgb(235, 241, 238);
-    color: black;
-}
-body.light .footer-column h2 {
-    color: rgb(10, 10, 10);
-}
 
-body.light .footer-bottom {
-    background-color: rgb(195, 241, 218);
-}
+
+
+`;
+
+export const FooterElement = ({ children }) => {
+  return <StyledFooter>{children}</StyledFooter>;
+};
