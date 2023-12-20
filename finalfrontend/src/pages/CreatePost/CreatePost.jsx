@@ -58,6 +58,7 @@ export const CreatePost = () => {
     console.log("inputFile en el componente", inputFile);
     if (inputFile.length != 0) {
       //- !=0 -- hay una imagen en el form
+
       const customFormData = {
         ...formData,
         publicLocation: publicLocation,
@@ -72,6 +73,9 @@ export const CreatePost = () => {
     } else {
       // no hay imagen
       const customFormData = {
+        publicLocation: publicLocation,
+        province: province,
+        postcode: postcode,
         ...formData,
       };
 

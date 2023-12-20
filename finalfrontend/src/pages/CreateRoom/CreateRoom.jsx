@@ -79,6 +79,9 @@ export const CreateRoom = () => {
       // no hay imagen
       const customFormData = {
         ...formData,
+        publicLocation: publicLocation,
+        province: province,
+        postcode: postcode,
       };
 
       setSend(true);
