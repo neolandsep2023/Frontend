@@ -9,7 +9,7 @@ const MAX_VISIBILITY = 3;
 const Review = ({src, alt, name, lastname, textComment, rating}) => (
   <div className='cardReview'>
     <img id="userPhotoReview" src = {src} alt = {alt}/>
-    <h4>{name}{lastname}</h4>
+    <h4>{name} {lastname}</h4>
     <Rating className="rating" value={rating} readOnly cancel={false} />
     <p >"{textComment}"</p>
     <img className="quotationMarkImage firstQuotation" src="https://cdn-icons-png.flaticon.com/512/1633/1633659.png" alt="quotation mark" />
@@ -54,7 +54,7 @@ export const AppCarouselReview = ({comments}) => {
       <Carousel>
         {[...new Array(CARDS)].map((_, i) => (
           <>
-          <Review key={i} src={comments[i]?.creator?.image} alt={comments[i]?.creator?.name} name={comments[i]?.creator?.username} lastname={comments[i]?.creator?.lastName} textComment={comments[i]?.textComment} rating={comments[i]?.rating}/>
+          <Review key={i} src={comments[i]?.creator?.image} alt={comments[i]?.creator?.name} name={comments[i]?.creator?.name} lastname={comments[i]?.creator?.lastName} textComment={comments[i]?.textComment} rating={comments[i]?.rating}/>
           </>
         ))}
       </Carousel>

@@ -193,7 +193,7 @@ export const UserDataProfile = ({ page }) => {
         case "createComment":
           return (
             <ProfileContainer heightTablet={"58vh"} height={"77vh"} key={page}>
-            <UserReview/>
+            <UserReview action="usercomment"/>
 
             {/* </DataProfileElement> */}
           </ProfileContainer>

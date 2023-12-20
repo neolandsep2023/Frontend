@@ -75,7 +75,7 @@ export const PostById = () => {
   useEffect(() => {
     setSaved(userLikedPosts?.includes(id))
     getSavedPosts()
-}, [updatedLikes, saved])
+  }, [updatedLikes, saved])
 
   return (
     <>
@@ -84,11 +84,11 @@ export const PostById = () => {
           <h1 style={{ fontSize: "4vw" }}>{res?.data?.title}</h1>
           <FlexDir direction="row" gap="2rem" mediaqueryDirMobile="column">
             <FlexDir width="60vw" direction="column">
-              <ByIdImageCustom src={res?.data?.image}/>
+              <ByIdImageCustom src={res?.data?.image} />
               <UlCustom direction="row" justifyContent="space-between" width="60vw">
                 <li>{printHomeIcons("Location")}{res?.data?.province}, {res?.data?.room[0]?.publicLocation} - {res?.data?.postcode}</li>
                 <FlexDir>
-                  <li><SavePostElement onClick={()=> addToSaved(id)} variant={isSaved ? "saved" : "normal"}/></li>
+                  <li><SavePostElement onClick={() => addToSaved(id)} variant={isSaved ? "saved" : "normal"} /></li>
                 </FlexDir>
               </UlCustom>
             </FlexDir>
@@ -101,7 +101,7 @@ export const PostById = () => {
                 <li>⌛ {res?.data?.preferredAge}</li>
               </UlCustom>
               <ConnectButtonCustom>Connect</ConnectButtonCustom>
-              {isOwner && <Link to={`/updatePost/${id}`}><UpdateButton page="post"/></Link>}
+              {isOwner && <Link to={`/updatePost/${id}`}><UpdateButton page="post" /></Link>}
             </FlexDir>
           </FlexDir>
           <FlexDir margin="0" width="100vw">
@@ -109,27 +109,27 @@ export const PostById = () => {
           </FlexDir>
           <FlexDir width="100vw" margin="3vw 0 0 0">
             <UlCustom width="100%" direction="row" gap="2rem" padding="0 1rem">
-                <li>{printRoomIcons("Private Room")}Private Room</li>
-                {res?.data?.room[0]?.commoditiesRoom?.includes("Double Bed") ? <li>{printRoomIcons("Double Bed")}Double Bed</li> : <li>{printRoomIcons("Single Bed")}Single Bed</li>}
-                {res?.data?.room[0]?.exterior ? <li>{printRoomIcons("Natural Light")}Exterior</li> : <li>{printRoomIcons("Interior")}Interior</li>}
-                <li>{printRoomIcons("Surface")}{res?.data?.room[0]?.surface}m²</li>
-                {res?.data?.room[0]?.commoditiesRoom?.includes("Private Bathroom") ? <li>{printRoomIcons("Private Bathroom")}Private Room</li> : <li>{printRoomIcons("Private Bathroom")}Shared Bathroom</li>}
+              <li>{printRoomIcons("Private Room")}Private Room</li>
+              {res?.data?.room[0]?.commoditiesRoom?.includes("Double Bed") ? <li>{printRoomIcons("Double Bed")}Double Bed</li> : <li>{printRoomIcons("Single Bed")}Single Bed</li>}
+              {res?.data?.room[0]?.exterior ? <li>{printRoomIcons("Natural Light")}Exterior</li> : <li>{printRoomIcons("Interior")}Interior</li>}
+              <li>{printRoomIcons("Surface")}{res?.data?.room[0]?.surface}m²</li>
+              {res?.data?.room[0]?.commoditiesRoom?.includes("Private Bathroom") ? <li>{printRoomIcons("Private Bathroom")}Private Room</li> : <li>{printRoomIcons("Private Bathroom")}Shared Bathroom</li>}
             </UlCustom>
           </FlexDir>
           <FlexDir direction="column" width="100vw" margin="7vw 0" mediaqueryMarginMobile="4vw 0" mediaqueryMarginTablet="6vw 0">
             <H3Custom margin="0 0 1vw 0">The roomates</H3Custom>
-            {(res?.data?.roommates?.length > 0 && isOwner) && 
-              <div style={{display: "flex", flexDirection: "row"}}>
-                <NoRoomate width="5vw" height="5vw" id={res?.data?._id}/>
+            {(res?.data?.roommates?.length > 0 && isOwner) &&
+              <div style={{ display: "flex", flexDirection: "row" }}>
+                <NoRoomate width="5vw" height="5vw" id={res?.data?._id} />
               </div>}
             {res?.data?.roommates?.length > 0 ? res?.data?.roommates?.map((roommate) => {
               acc++
               return (
-                <RoommateCard key={roommate._id} roommate={roommate} index={acc - 1}/>
+                <RoommateCard key={roommate._id} roommate={roommate} index={acc - 1} />
               )
-            }) : isOwner && <NoRoomate id={res?.data?._id}/>}
+            }) : isOwner && <NoRoomate id={res?.data?._id} />}
           </FlexDir>
-          <hr style={{border: "none", borderTop:"3px dashed #72cc8999", width:"100vw", margin:"0"}}/>
+          <hr style={{ border: "none", borderTop: "3px dashed #72cc8999", width: "100vw", margin: "0" }} />
           <FlexDir direction="column">
             <H3Custom margin="3vw 0 1vw 0">The perfect fit</H3Custom>
             <FlexDir direction="row" height="20vw">
@@ -142,19 +142,20 @@ export const PostById = () => {
                 </UlCustom>
               </FlexDir>
               <FlexDir width="15vw" >
-                <img style={{width: "20vw", objectFit: "cover"}} src={res?.data?.preferredGender == "male" ? "https://www.flaticon.com/free-icon/boy_1999625" : "https://cdn-icons-png.flaticon.com/128/6997/6997662.png"} alt="preferred gender image" />
+                <img style={{ width: "20vw", objectFit: "cover" }} src={res?.data?.preferredGender == "male" ? "https://www.flaticon.com/free-icon/boy_1999625" : "https://cdn-icons-png.flaticon.com/128/6997/6997662.png"} alt="preferred gender image" />
               </FlexDir>
               <FlexDir width="35vw" direction="column" mediaqueryMarginMobile="0 1rem 0 0" height="100%">
                 <H3PerfectFit>Aligned interests:</H3PerfectFit>
                 <FlexDir height="75%">
                   <UlCustom height="75%" direction="row" wrap="wrap" fontSize="1.5vw" gap="0.5vw">
                     {res?.data?.roommates.map((roommate) => (
-                      roommate?.interests.slice(0,3).map((interest) => {
+                      roommate?.interests.slice(0, 3).map((interest) => {
                         return (
                           <FlexDir padding="2px" margin="0" border="1px solid green" borderRadius="2px">
                             <li key={interest}>{interest}</li>
                           </FlexDir>
-                      )})
+                        )
+                      })
                     ))}
                   </UlCustom>
                 </FlexDir>
@@ -165,7 +166,7 @@ export const PostById = () => {
               <Description>{res?.data?.text}</Description>
             </FlexDir>
           </FlexDir>
-          <hr style={{border: "none", borderTop:"3px dashed #72cc8999", width:"100vw", margin:"3vh 0"}}/>
+          <hr style={{ border: "none", borderTop: "3px dashed #72cc8999", width: "100vw", margin: "3vh 0" }} />
           <FlexDir direction="column" margin="7vh">
             <H3Custom margin="0 0 -1rem 0">Location</H3Custom>
             {res?.data?.room[0]?.publicLocation && <ByIdMap postcode={res?.data?.postcode} province={res?.data?.province} ccaa={res?.data?.room[0]?.publicLocation} />}

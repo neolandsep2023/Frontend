@@ -14,7 +14,7 @@ import {
 import Swal from "sweetalert2";
 import { useForm } from "react-hook-form";
 
-export const UserReview = () => {
+export const UserReview = ({action}) => {
   const { register, handleSubmit } = useForm();
   const [page, setPage] = useState("");
   const [res, setRes] = useState(false);
@@ -29,7 +29,11 @@ export const UserReview = () => {
       rating: valueStar,
     };
     console.log("Custom Form Data:", customFormData);
-    const res = await createUserComment(id, customFormData);
+    if (action == "usercomment") {
+      setRes(await createUserComment(id, customFormData));
+    } else if (action = "roomcomment") {
+      setRes(await createComment(id, customFormData));
+    }
     setSend(true);
 
     res?.response?.status == 404 || res?.response?.status == 500
