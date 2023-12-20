@@ -1,31 +1,20 @@
-import { Rating } from "primereact/rating";
 import { useEffect, useState } from "react";
-import {
-  createComment,
-  createUserComment,
-} from "../../services/comment.service";
-import { useNavigate, useParams } from "react-router-dom";
-import {
-  ButtonPrimary,
-  FlexDir,
-  Form,
-  LabelAndInput,
-} from "../StyleComponents";
+import { Rating } from "primereact/rating";
+import { useNavigate } from "react-router-dom";
 import Swal from "sweetalert2";
+import { createUserComment } from "../../services/comment.service";
+import { MessagePopupScreen } from "../../components/StyleComponents/MessagePopup/MessagePopupScreen";
 import { useForm } from "react-hook-form";
-
-export const UserReview = ({action, userData}) => {
-  const { register, handleSubmit } = useForm();
-  const [page, setPage] = useState("");
-  const [res, setRes] = useState(false);
-  const [send, setSend] = useState(false);
-  const [valueStar, setValueStar] = useState(0);
-  // const { id } = useParams();
-  const navigate = useNavigate();
-
-const id = userData?._id
+import { ButtonPrimary, FlexDir, LabelAndInput } from "../../components/StyleComponents";
 
 
+export const LeaveReview = ({id, setPopupActive, isMobile}) => {
+    const { register, handleSubmit } = useForm();
+    const navigate = useNavigate();
+
+    const [res, setRes] = useState(false);
+    const [send, setSend] = useState(false);
+    const [valueStar, setValueStar] = useState(0);
 
   const formSubmit = async (formData) => {
     const customFormData = {
@@ -33,11 +22,7 @@ const id = userData?._id
       rating: valueStar,
     };
     console.log("Custom Form Data:", customFormData);
-    if (action == "usercomment") {
       setRes(await createUserComment(id, customFormData));
-    } else if (action == "roomcomment") {
-      setRes(await createComment(id, customFormData));
-    }
     setSend(true);
 
     res?.response?.status == 404 || res?.response?.status == 500
@@ -59,28 +44,20 @@ const id = userData?._id
         setSend(false),
         window.location.reload()
         ); 
-  };
+  }
 
   useEffect(() => {
     
   }, [send]);
- console.log(valueStar)
+
   return (
-    <FlexDir
-      direction="column"
-      width="100%"
-      height="100%"
-      justifyContent="center"
-    >
-      <Form onSubmit={handleSubmit(formSubmit)} width="90%" height="100%">
-        <FlexDir
-          direction="column"
-          width="100%"
-          justifyContent="center"
-          height="100%"
-        >
-          <LabelAndInput>
-            <Rating className="starsss" value={valueStar} onChange={(e) => setValueStar(parseInt(e.target.value))} cancel={false} />
+    <>
+        <MessagePopupScreen isMobile={isMobile}>
+      <div >
+        <h1 style={{justifyContent: 'center', display: 'flex', alignItems: 'center', fontSize: '22px'}}>Send a message</h1>
+
+        <form onSubmit={handleSubmit(formSubmit)}>
+            <Rating className="starsss" value={valueStar} onChange={(e) => setValueStar(parseInt(e.target.value))} cancel={false}/>
 
             <input
               type="text"
@@ -93,12 +70,20 @@ const id = userData?._id
                 maxLength: 300,
               })}
             />
-          </LabelAndInput>
+
           <ButtonPrimary variant="normal" type="submit" disabled={send}>
             {send ? "Loading..." : "Send comment"}
           </ButtonPrimary>
-        </FlexDir>
-      </Form>
-    </FlexDir>
-  );
-};
+        </form>
+        <ButtonPrimary
+          variant="delete"
+          width="30%"
+          onClick={() => setPopupActive(false)}
+        >
+          CANCEL
+        </ButtonPrimary>
+      </div>
+    </MessagePopupScreen>
+    </>
+  )
+}

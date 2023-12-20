@@ -5,6 +5,9 @@ import { useAuth } from "../../context/authContext";
 import { useEffect, useState } from "react";
 import { getUserById, getUserByUsernameP } from "../../services/user.service";
 import { MessagePopup } from "./MessagePopup";
+import { ReactSVG } from "react-svg";
+import chatIcon from "../../assets/svg/chatIcon.svg";
+import { LeaveReview } from "../../pages/OtherUser/LeaveReview";
 
 export const OtherUserProfileDataMobile = () => {
   const navigate = useNavigate();
@@ -12,7 +15,7 @@ export const OtherUserProfileDataMobile = () => {
   const [data, setData] = useState(null);
   const [res, setRes] = useState(null);
   const [isLoaded, setIsLoaded] = useState(false);
-  const [popupActive, setPopupActive] = useState(false)
+  const [popupActive, setPopupActive] = useState(false);
 
   const { username } = useParams();
 
@@ -23,10 +26,9 @@ export const OtherUserProfileDataMobile = () => {
     setIsLoaded(true);
   };
 
-
   const showPopup = () => {
-    setPopupActive(true)
-  }
+    setPopupActive(true);
+  };
 
   useEffect(() => {
     fetchData();
@@ -105,17 +107,22 @@ export const OtherUserProfileDataMobile = () => {
                 style={{ height: "calc(100%/2.5)" }}
                 onClick={showPopup}
               >
-                <span className="material-symbols-outlined">chat</span>{" "}
-                Chat with {data.name ? data.name : data.username}
+                <span className="material-symbols-outlined">chat</span> Chat
+                with {data.name ? data.name : data.username}
                 <span className="material-symbols-outlined arrow">
                   chevron_right
                 </span>
               </div>
             </div>
-            
           </ProfileDataMobileElement>
-        {popupActive && <MessagePopup id={data._id} setPopupActive={setPopupActive} isMobile={true}/>}
-
+          <ReactSVG onClick={showPopup} src={chatIcon} id="svg" />
+          {popupActive && (
+            <LeaveReview
+              id={data._id}
+              setPopupActive={setPopupActive}
+              isMobile={true}
+            />
+          )}
         </>
       )}
     </>
