@@ -120,7 +120,7 @@ export const RoomById = () => {
               ? 
               <>
                 <RoomReview roomId={res?.data?._id}/>
-                {  <AddReview width="5vw" height="5vw"/>}
+                { res?.data?.post?.roommates?.includes(user._id) && <AddReview width="5vw" height="5vw"/>}
               </>
               : <UserReview action="roomcomment" />}
           </FlexDir>

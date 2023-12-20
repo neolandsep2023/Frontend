@@ -11,7 +11,7 @@ const NoRoomateStyles = styled.div`
   }
 `
 
-export const NoRoomate = ({ id, width, height }) => {
+export const NoRoomate = ({ id, width, height, resCheck, setResCheck }) => {
   const [pressed, setPressed] = useState(false);
 
   const handleClick = async () => {
@@ -29,7 +29,7 @@ export const NoRoomate = ({ id, width, height }) => {
           <h4>Update Roommates</h4>
         </div>
       </> 
-      : <FindUsers postId={id}/>}
+      : <FindUsers postId={id} resCheck={resCheck} setResCheck={setResCheck}/>}
     </FlexDir>
   </NoRoomateStyles>
   )

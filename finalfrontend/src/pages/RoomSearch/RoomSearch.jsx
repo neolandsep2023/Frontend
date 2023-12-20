@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react'
+import React, { useEffect, useRef, useState } from 'react'
 import { SearchInputCustom, FlexDir, SearchImgCustom, SearchButtonCustom, H1Custom, H3Custom, MiniCards } from '../../components/StyleComponents/index'
 import { useThemeApp } from '../../context/themeContext'
 import { getAllRooms, getRoomByLocation, getRoomByPostCode, getRoomByProvince } from '../../services/room.service';
@@ -22,6 +22,7 @@ export const RoomSearch = () => {
   const themeObject = useTheme()
 
   const isTablet = window.innerWidth < 892 ? true : false
+  const titleRef = useRef()
 
   const handleSearch = async () => {
     setSubmit(true)
@@ -39,6 +40,8 @@ export const RoomSearch = () => {
       setRes(await getAllRooms())
     } //? ----------------------------------------------------------------
     setSend(false)
+    
+    titleRef.current.scrollIntoView({ behavior: "smooth" })
   }
 
   useEffect(() => {
@@ -76,10 +79,11 @@ export const RoomSearch = () => {
           </FlexDir>
         </FlexDir>
         {submit == true && <FlexDir direction="column" width="100%" margin="0">
-          <h2>Top Rooms in your Area</h2>
+          <h2 ref={titleRef}>Top Rooms in your Area</h2>
           <FlexDir wrap="wrap" gap="2rem" width="100%" margin="0">
             {console.log(res)}
-            {res && res?.data?.map((room) => (
+            {res && res?.data?.toReversed().map((room) => { 
+              return (
               <Link to={`/roomFinds/${room._id}`}>
                 <MiniCards>
                   <img src={room.image[0]} alt={room.title} />
@@ -91,7 +95,7 @@ export const RoomSearch = () => {
                   </ul>
                 </MiniCards>
               </Link>
-            ))}
+            )})}
           </FlexDir>
         </FlexDir>}
       </FlexDir>

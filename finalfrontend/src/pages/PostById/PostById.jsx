@@ -25,6 +25,7 @@ export const PostById = () => {
   const [userLikedPosts, setUserLikedPosts] = useState([]);
   const [updatedLikes, setUpdatedLikes] = useState(false);
   const [saved, setSaved] = useState(false)
+  const [resCheck, setResCheck] = useState()
 
   //! ---------- Destructuring ----------
   const { id } = useParams();
@@ -64,7 +65,7 @@ export const PostById = () => {
   //todo -------------- UseEffects ---------------
   useEffect(() => { //? nada más entrar para hacer fetch de la room y pintar todo
     fetchPost()
-  }, [])
+  }, [resCheck])
 
   useEffect(() => { //? al cambiar la res y al montarse para checkear si el user encontrado ya es roomate
     if (res?.status == 200) {
@@ -120,7 +121,7 @@ export const PostById = () => {
             <H3Custom margin="0 0 1vw 0">The roomates</H3Custom>
             {(res?.data?.roommates?.length > 0 && isOwner) &&
               <div style={{ display: "flex", flexDirection: "row" }}>
-                <NoRoomate width="5vw" height="5vw" id={res?.data?._id} />
+                <NoRoomate width="5vw" height="5vw" id={res?.data?._id} resCheck={resCheck} setResCheck={setResCheck}/>
               </div>}
             {res?.data?.roommates?.length > 0 ? res?.data?.roommates?.map((roommate) => {
               acc++

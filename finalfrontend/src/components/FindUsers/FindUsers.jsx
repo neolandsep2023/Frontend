@@ -4,11 +4,10 @@ import "./FindUsers.css"
 import { Link } from "react-router-dom"
 import { getPostByIdUnpopulated, toggleRoommate } from "../../services/post.service"
 
-export const FindUsers = ({postId}) => {
+export const FindUsers = ({ postId, resCheck, setResCheck }) => {
   const [findNameValue, setFindNameValue] = useState()
   const [res, setRes] = useState()
   const [resToggle, setResToggle] = useState();
-  const [resCheck, setResCheck] = useState()
 
   const handleSubmit = async (e) => {
     let resUserByName = await getUserByName(findNameValue)

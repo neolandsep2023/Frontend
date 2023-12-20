@@ -7,6 +7,7 @@ import { Navigate, useNavigate } from "react-router-dom";
 
 //<!--IMP                     Components                            -->
 import {
+  ButtonPrimary,
   FlexDir,
   Form,
   LabelAndInput,
@@ -464,9 +465,9 @@ export const CreatePost = () => {
  ></div>
 
           <UploadFile />
-          <button type="submit" disabled={send}>
+          <ButtonPrimary type="submit" disabled={send}>
             {send ? "Loading..." : "Upload Room"}
-          </button>
+          </ButtonPrimary>
         </FlexDir>
       </Form>
     </FlexDir>
