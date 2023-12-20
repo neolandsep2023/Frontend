@@ -8,6 +8,7 @@ import { ButtonPrimary, FlexDir } from "../StyleComponents";
 import { useEffect, useState } from "react";
 import { getUserByIdP } from "../../services/user.service";
 import { sacarMedia } from "../../utils/mediaUtil";
+import { MessagePopup } from "./MessagePopup";
 
 export const OtherUserProfileDataDesktop = () => {
   const navigate = useNavigate();
@@ -17,13 +18,21 @@ export const OtherUserProfileDataDesktop = () => {
   const [res, setRes] = useState(null);
   const [isLoaded, setIsLoaded] = useState(false);
   const [media, setMedia] = useState(0);
-
+  const [popupActive, setPopupActive] = useState(false)
+  
   const fetchData = async () => {
     setIsLoaded(false);
     const response = await getUserByIdP(id);
     setData(response.data);
     setIsLoaded(true);
   };
+
+
+
+  const showPopup = () => {
+    setPopupActive(true)
+  }
+ 
 
   useEffect(() => {
     fetchData();
@@ -69,7 +78,13 @@ export const OtherUserProfileDataDesktop = () => {
             </FlexDir>
             <FlexDir width={"100%"} gap={"0"} margin={"0"}></FlexDir>
           </FlexDir>
+           <FlexDir width={"100%"} gap={"0"} margin={"0"}>
+       <ButtonPrimary variant={"normal"} width={"50%"} onClick={showPopup}>Send message</ButtonPrimary>
+           </FlexDir>
+
         </ProfileDataDesktopElement>
+        {popupActive && <MessagePopup id={data._id} setPopupActive={setPopupActive} />}
+
       </>
     )
   );
