@@ -36,7 +36,7 @@ export const OtherUserProfileDataDesktop = () => {
 
   useEffect(() => {
     fetchData();
-  }, []);
+  }, [username]);
 
 
 

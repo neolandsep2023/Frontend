@@ -30,7 +30,7 @@ export const OtherUserProfileDataMobile = () => {
 
   useEffect(() => {
     fetchData();
-  }, []);
+  }, [username]);
 
   return (
     <>
@@ -111,6 +111,7 @@ export const OtherUserProfileDataMobile = () => {
                 </span>
               </div>
             </div>
+            
           </ProfileDataMobileElement>
         {popupActive && <MessagePopup id={data._id} setPopupActive={setPopupActive} isMobile={true}/>}
 

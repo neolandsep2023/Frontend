@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react'
-import { useParams } from 'react-router-dom';
+import { useNavigate, useParams } from 'react-router-dom';
 import { addFavPost, getUserById, getUserByIdP, getUserByUsernameP } from '../../services/user.service';
 import { MiniPostProfile, MiniPostProfileContainerElement } from '../../components';
 import { DataProfileElement } from '../Profile/DataProfile/DataProfile.element';
@@ -9,6 +9,7 @@ import { useAuth } from '../../context/authContext';
 import { NothingHere } from '../../components/NothingHere/NothingHere';
 import { UserReview } from '../../components/UserReview/UserReview';
 import { Rating } from "primereact/rating";
+import { ProfileIcon } from './ProfileIcon';
 
 export const UserDataProfile = ({ page, userData }) => {
     const isMobile = window.innerWidth < 576 ? true : false;
@@ -20,6 +21,7 @@ export const UserDataProfile = ({ page, userData }) => {
   const [userLikedPosts, setUserLikedPosts] = useState([]); //! useState de los likes
   const [updatedLikes, setUpdatedLikes] = useState(false);
     const { username } = useParams();
+  const navigate = useNavigate();
   
     const fetchData = async () =>{
       setIsLoaded(false)
@@ -50,7 +52,7 @@ export const UserDataProfile = ({ page, userData }) => {
   useEffect(() => {
     fetchData()
     
-  }, [])
+  }, [username])
 
 
   useEffect(() => {
@@ -169,13 +171,8 @@ export const UserDataProfile = ({ page, userData }) => {
                     <FlexEnd
                       variant="inverted"
                       height={"70px"}
-                      onClick={() => navigate(`/user/${review.creatorName}`)}
                     >
-                      <img
-                        src={review.creatorImage}
-                        className="commentImage"
-                        alt="Creator"
-                      />
+                      <ProfileIcon data={{username: review.creatorName, image: review.creatorImage}}/>
                       <h2 className="commentUser">{review.creatorName}</h2>
 
                       <Rating

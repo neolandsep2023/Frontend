@@ -23,7 +23,7 @@ export const UserReview = ({action, userData}) => {
   // const { id } = useParams();
   const navigate = useNavigate();
 
-const id = userData._id
+const id = userData?._id
 
 
 
