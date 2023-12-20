@@ -28,7 +28,7 @@ import { useUserVerify } from "../../hooks/useUserVerify";
 import { useCanUserPost } from "../../hooks/useCanUserPost";
 
 //<!--IMP                     Component                            -->
-export const CreateRoom = () => {
+export const CreateRoomLink = () => {
 
   const isMobile = window.innerWidth < 1090 ? true : false 
 
@@ -39,7 +39,7 @@ export const CreateRoom = () => {
   const { register, handleSubmit } = useForm();
   const navigate = useNavigate();
   const { logout, user } = useAuth();
-const { postId } = useParams()
+  const { postId } = useParams()
 
 
   //estos estados son para que se rendericen condicionalmente elementos
@@ -68,6 +68,7 @@ const { postId } = useParams()
           province: province,
           postcode: postcode,
           image: inputFile,
+          post: postId
         };
         setSend(true);
         setRes(await createRoom(customFormData));
@@ -85,6 +86,7 @@ const { postId } = useParams()
         publicLocation: publicLocation,
         province: province,
         postcode: postcode,
+        post: postId
       };
 
       setSend(true);

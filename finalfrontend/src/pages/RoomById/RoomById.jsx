@@ -41,6 +41,7 @@ export const RoomById = () => {
     } else {
       setIsOwner(false)
     }
+    console.log("holaaa aaaaa aa",res?.data?.post)
   }
 
   useEffect(() => {
@@ -60,6 +61,7 @@ export const RoomById = () => {
           <h1 style={{ fontSize: "4vw" }}>{res?.data?.title}</h1>
           <FlexDir direction="row" gap="2rem" mediaqueryDirMobile="column">
             <FlexDir width="60vw">
+              {console.log(res?.data)}
               <AppCarousel src={res?.data?.image} alt={res?.data?.title} />
             </FlexDir>
             <FlexDir 

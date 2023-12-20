@@ -18,13 +18,15 @@ import { addFavPost, getUserById } from "../../services/user.service";
 import { SavePostElement } from "../../components/StyleComponents/AddElement/SavePost.element";
 import { MessagePopup } from "../../components/OtherUser/MessagePopup";
 import { LinkRoomButton } from "../../components/StyleComponents/Buttons/LinkRoom";
+import { PopUpLink } from "../../components/PopUp/PopUpLink";
+
 
 export const PostById = () => {
   //! ---------- Estados ----------
   const [res, setRes] = useState();
   const [isOwner, setIsOwner] = useState()
   const [popupActive, setPopupActive] = useState(false)
-
+  const [popupLinkActive, setPopupLinkActive] = useState(false)
 
   const [userLikedPosts, setUserLikedPosts] = useState([]);
   const [updatedLikes, setUpdatedLikes] = useState(false);
@@ -69,6 +71,11 @@ export const PostById = () => {
   const showPopup = () => {
     setPopupActive(true)
   }
+
+  const showPopupLink = () => {
+    console.log("holaa estoy aqui")
+    setPopupLinkActive(true)
+  }
  
 
   //todo -------------- UseEffects ---------------
@@ -96,6 +103,7 @@ export const PostById = () => {
             <FlexDir width="60vw" direction="column">
               <ByIdImageCustom src={res?.data?.image} />
               <UlCustom direction="row" justifyContent="space-between" width="60vw">
+                {console.log(res?.data)}
                 <li>{printHomeIcons("Location")}{res?.data?.province}, {res?.data?.room[0]?.publicLocation} - {res?.data?.postcode}</li>
                 <FlexDir>
                   <li><SavePostElement onClick={() => addToSaved(id)} variant={isSaved ? "saved" : "normal"} /></li>
@@ -112,7 +120,7 @@ export const PostById = () => {
               </UlCustom>
               <ConnectButtonCustom onClick={showPopup}>Connect</ConnectButtonCustom>
               {isOwner && <Link to={`/updatePost/${id}`}><UpdateButton page="post" /></Link>}
-              {isOwner && <Link to={`/createRoom/${id}`}><LinkRoomButton page="post" /></Link>}
+              {isOwner && <LinkRoomButton setPopupLinkActive={setPopupLinkActive}/>}
             </FlexDir>
           </FlexDir>
           <FlexDir margin="0" width="100vw">
@@ -180,11 +188,12 @@ export const PostById = () => {
           <hr style={{ border: "none", borderTop: "3px dashed #72cc8999", width: "100vw", margin: "3vh 0" }} />
           <FlexDir direction="column" margin="7vh">
             <H3Custom margin="0 0 -1rem 0">Location</H3Custom>
-            {res?.data?.room[0]?.publicLocation && <ByIdMap postcode={res?.data?.postcode} province={res?.data?.province} ccaa={res?.data?.room[0]?.publicLocation} />}
+            {/* {res?.data?.room[0]?.publicLocation && <ByIdMap postcode={res?.data?.postcode} province={res?.data?.province} ccaa={res?.data?.room[0]?.publicLocation} />} */}
           </FlexDir>
           <FlexDir mediaqueryMarginMobile="0" mediaqueryMarginTablet="1rem 0 0 0" margin="5rem 0 0 0">
             <RoomReview roomId={res?.data?._id} />
             {popupActive && <MessagePopup id={res.data.author[0]} setPopupActive={setPopupActive} />}
+            {popupLinkActive && <PopUpLink id={id} setPopupActive={setPopupLinkActive} />}
           </FlexDir>
         </FlexDir>
       }

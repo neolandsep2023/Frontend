@@ -143,3 +143,13 @@ export const toggleRoommate = async (id, formData) => {
     .then((res) => res)
     .catch((error) => error);
 };
+
+//! ---------------- TOGGLE ROOM ----------------
+export const toggleRoom = async (id, formData) => {
+  console.log(formData)
+  const APIGeneral = extraConfig();
+
+  return APIGeneral.patch(`/posts/toggleRoom/${id}/${formData}`)
+    .then((res) => res)
+    .catch((error) => error);
+};

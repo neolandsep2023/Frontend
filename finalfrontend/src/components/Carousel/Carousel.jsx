@@ -42,12 +42,13 @@ const Carousel = ({children}) => {
 };
 
 export const AppCarousel = ({src, alt}) => {
-  CARDS = src.length
+  console.log(src)
+  CARDS = src?.length
   return (
   <div id="carouselPage">
     <div className='app'>
       <Carousel>
-        {[...new Array(CARDS)].map((_, i) => (
+        {CARDS > 0 && [...new Array(CARDS)].map((_, i) => (
           <Image key = {i} src = {src[i]} alt = {alt}/>
         ))}
       </Carousel>

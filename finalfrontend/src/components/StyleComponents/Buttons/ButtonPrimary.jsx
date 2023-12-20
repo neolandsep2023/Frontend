@@ -20,7 +20,7 @@ const ButtonStyles = styled.button`
   font-size: 22px;
   text-align: center;
   margin: ${({ margin, theme }) => (margin ? margin : theme.spacing(1))};
-  height: 38px;
+  height: ${({height}) => height ? height : "38px"};
   width: ${({ width }) => width};
   &:hover {
     cursor: pointer;
@@ -50,6 +50,7 @@ export const ButtonPrimary = ({
   variant,
   onClick,
   margin,
+  height,
 }) => {
   const theme = useTheme();
   return (
