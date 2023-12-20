@@ -34,6 +34,62 @@ variant == "multiple" ? "33vw" : variant == "individual" && "63vw"};
   margin: 4px;
 }
 
+& span{
+  font-size: 26px;
+  margin: 0 4px;
+}
+
+
+${({ theme }) => theme.mediaquery.tablet} {
+  width: 98%;
+  & img {
+  width: 10vw;
+  height: 10vw;
+
+}
+}
+
+
+
+
+${({ theme }) => theme.mediaquery.mobile} {
+  width: 98%;
+  & img {
+  width: 10vw;
+  height: 10vw;
+
+}
+
+& h1 {
+   font-size: 22px;
+   font-weight: 500;
+}
+
+  
+  }
+
+  ${({ theme }) => theme.mediaquery.miniMobile} {
+    width: 98%;
+    & h1 {
+   font-size: 22px;
+   font-weight: 500;
+}
+
+
+    & img {
+  width: 10vw;
+  height: 10vw;
+
+}
+
+
+  }
+
+
+
+
+
+
 `
 
 

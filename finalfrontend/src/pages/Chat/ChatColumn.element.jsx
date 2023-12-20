@@ -19,10 +19,26 @@ justify-content: start;
 align-items: ${({align}) => align ? align : "center"};
 flex-direction: column;
 gap: 8px;
-margin: 8px;
+margin: 4px; 
+
 height: 100%;
 
 width: 95%;
+
+
+${({ theme }) => theme.mediaquery.mobile} {
+  gap: 4px;
+margin: 4px; 
+padding: 0;
+  }
+
+  ${({ theme }) => theme.mediaquery.miniMobile} {
+    margin: 4px;
+    padding: 0;
+  }
+
+
+
 
 
 

@@ -1,4 +1,4 @@
-import './Registerpt2.css'
+
 import { useForm } from "react-hook-form";
 import { useAuth } from "../../../context/authContext";
 import { useEffect, useState } from "react";

@@ -18,16 +18,56 @@ gap: 8px;
     width: 90%;
   }
 
-
+& h2{
+  font-size: 30px;
+  margin: 16px 0 0 0;
+}
 
 & .textArea{
-  width: 50vw;
+  width: 40vw;
 font-size: 16px;
   overflow-y: scroll;
   border-radius: 10px;
   border: ${({ theme }) => theme.spacing(0.3)} solid
     ${({ theme }) => theme.palette.border.main};
 }
+
+
+${({ theme }) => theme.mediaquery.mobile} {
+  height: 87vh;
+  margin: 4px 0 ;
+  padding: ${({ theme }) => ( theme.spacing(0.5))};
+  & .textArea{
+  width: 60vw;
+
+}
+
+
+& h2{
+  font-size: 24px;
+  margin: 12px 0 0 0;
+}
+
+  }
+
+  ${({ theme }) => theme.mediaquery.miniMobile} {
+
+    height: 87vh;
+    margin: 8px 0 ;
+
+
+    & .textArea{
+  width: 60vw;
+
+}
+
+& h2{
+  font-size: 24px;
+  margin: 12px 0 0 0;
+}
+
+  }
+
 
 
 

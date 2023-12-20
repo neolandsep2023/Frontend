@@ -25,8 +25,9 @@ export const MiniPostProfile = ({id, title, text, image, province, price, type, 
       <FlexDir direction={"column"} padding={"12px"}>
        
           
-        <img src={image} alt="img post" />
-
+        { page != "room" && <img src={image} alt="img post" />}
+        {/* { page === "room" && <img src={image[0]} alt="img post" />} */}
+    
         
         <h3>{title}</h3>
         <p>{text}</p>

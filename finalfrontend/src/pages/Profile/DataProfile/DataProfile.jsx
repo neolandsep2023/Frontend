@@ -89,6 +89,7 @@ useEffect(() => {
                 {dataPag[0] ?
                   dataPag.map((post) => (
                     <>
+                     {console.log(dataPag, page)}
                       <MiniPostProfile
                         key={post._id}
                         page={"post"}
@@ -136,7 +137,7 @@ useEffect(() => {
                         id={room._id}
                         title={room.title}
                         text={room.description}
-                        image={room?.image[0]}
+                        image={room?.image}
                         province={room.province}
                         price={room.price}
                         type={room.type}
@@ -169,7 +170,9 @@ useEffect(() => {
               <div className='cajonComentarios'>
                 {dataPag[0] ?
                   dataPag?.map((review) => (
+                    
                     <div key={review._id} className="commentContainer">
+                       {console.log(dataPag, page)}
                       <div className='commentHeader'>
                       <img src={review.creatorImage} className="commentImage" alt="Creator" />
                     <span className="commentUser">{review.creatorName}</span>
@@ -209,6 +212,7 @@ useEffect(() => {
                 {dataPag ?
                   dataPag?.map((bookmark) => (
                     <>
+                     {console.log(dataPag, page)}
                       <MiniPostProfile
                         key={bookmark._id}
                         page={"bookmark"}
