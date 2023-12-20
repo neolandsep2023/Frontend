@@ -71,7 +71,7 @@ export const DataProfile = ({ page }) => {
       : page === "rooms"
       ? setGaleriaItems(res?.data?.myRooms)
       : page === "reviews"
-      ? setGaleriaItems(res?.data?.receivedComments)
+      ? setGaleriaItems(res?.data?.receivedComments?.filter(comment => comment.type === "public"))
       : page === "bookmarks" && setGaleriaItems(res?.data?.savedPosts);
 
     // }
