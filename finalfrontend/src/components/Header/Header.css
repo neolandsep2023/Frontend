@@ -10,9 +10,10 @@
   display: flex;
   justify-content: space-between;
   width: 100%;
-  height: 10vh;
+  height: 17vh;
   /* margin-bottom: 20px; */
   min-height: 100px;
+  max-height: 140px;
 
   background-color: #2a2b2e;
 }
@@ -47,8 +48,13 @@
   display: flex;
   gap: 10px;
   justify-content: flex-end;
+  align-items: center;
   margin-right: 3vw;
-  padding-top: 20px;
+  padding-top: 10px;
+}
+.botonesH img{
+ height: 50px;
+ width: 50px;
 }
 .navDos {
   display: flex;

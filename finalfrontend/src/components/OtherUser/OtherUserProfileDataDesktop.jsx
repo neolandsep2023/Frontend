@@ -7,6 +7,7 @@ import { buttonBaseClasses } from "@mui/material";
 import { ButtonPrimary, FlexDir } from "../StyleComponents";
 import { useEffect, useState } from "react";
 import { getUserByIdP } from "../../services/user.service";
+import { sacarMedia } from "../../utils/mediaUtil";
 
 export const OtherUserProfileDataDesktop = () => {
   const navigate = useNavigate();
@@ -28,32 +29,9 @@ export const OtherUserProfileDataDesktop = () => {
     fetchData();
   }, []);
 
-  const sacarMedia = () => {
-    const receivedComments = data?.receivedComments;
 
-    if (!Array.isArray(receivedComments) || receivedComments.length === 0) {
-      return 0;
-    }
 
-    const ratings = receivedComments
-      .filter((comment) => comment?.rating !== undefined)
-      .map((comment) => parseFloat(comment.rating));
-
-    if (ratings.length === 0) {
-      return 0;
-    }
-
-    const totalRating = ratings.reduce((accumulator, rating) => {
-    
-      return accumulator + rating;
-    }, 0);
-
-    const averageRating = totalRating / ratings.length;
-
-    return averageRating;
-  };
-
-  const medias = sacarMedia();
+  const medias = sacarMedia(data);
 
   let userAge = data?.birthYear && 2023 - data?.birthYear;
 

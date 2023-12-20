@@ -16,6 +16,7 @@ import { useForm } from "react-hook-form";
 
 export const UserReview = () => {
   const { register, handleSubmit } = useForm();
+  const [page, setPage] = useState("");
   const [res, setRes] = useState(false);
   const [send, setSend] = useState(false);
   const [valueStar, setValueStar] = useState(0);
@@ -48,12 +49,13 @@ export const UserReview = () => {
           timerProgressBar: true,
         }),
         setSend(false),
-        navigate(`/user/${id}`)); // Set send to false after handling the success
+        window.location.reload()
+        ); 
   };
 
   useEffect(() => {
-   
-  }, [send, res]);
+    
+  }, [send]);
  console.log(valueStar)
   return (
     <FlexDir
@@ -70,7 +72,7 @@ export const UserReview = () => {
           height="100%"
         >
           <LabelAndInput>
-            <Rating value={valueStar} onChange={(e) => setValueStar(parseInt(e.target.value))} cancel={false} />
+            <Rating className="starsss" value={valueStar} onChange={(e) => setValueStar(parseInt(e.target.value))} cancel={false} />
 
             <input
               type="text"

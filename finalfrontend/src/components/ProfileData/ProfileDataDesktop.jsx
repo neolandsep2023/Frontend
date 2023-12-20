@@ -5,7 +5,8 @@ import { ProfileDataDesktopElement } from "./ProfileDataDesktop.element"
 // import Rating from '@mui/material/Rating';
 import { Rating } from "primereact/rating";
 import { useEffect, useState } from "react";
-import { getUserById } from "../../services/user.service";
+import { getUserByIdP } from "../../services/user.service";
+import { sacarMedia } from "../../utils/mediaUtil";
 
 
 
@@ -21,15 +22,18 @@ export const ProfileDataDesktop = () => {
 
     const fetchData = async () => {
       setIsLoaded(false);
-      const response = await getUserById(user?._id);
+      const response = await getUserByIdP(user?._id);
       setData(response.data)
       setIsLoaded(true);
     };
   
     useEffect(() => {
       fetchData();
+      console.log(data)
     }, []);
 
+    const medias = sacarMedia(data)
+console.log(data)
 
 let userAge = data?.birthYear && (2023 - data?.birthYear)
 
@@ -61,9 +65,9 @@ let userAge = data?.birthYear && (2023 - data?.birthYear)
         </FlexDir>
         
         <FlexDir margin={"0"} >
-           <h2> 4.75</h2>
+           <h2> {medias}</h2>
            <h2>
-        <Rating value={4.75} readOnly cancel={false} />
+        <Rating value={medias} readOnly cancel={false} />
         </h2>
 
 

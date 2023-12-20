@@ -61,13 +61,13 @@ export const UserDataProfile = ({ page }) => {
         : page == "rooms"
         ? setGaleriaItems(res?.data?.myRooms)
         : page == "reviews"
-        ? setGaleriaItems(res?.data?.receivedComments)
+        ? setGaleriaItems(res?.data?.receivedComments?.filter(comment => comment.type === "public"))
         : page == "createComment"
     
     }
   }, [res, page]);
 
-
+ 
 
 
 
@@ -132,7 +132,7 @@ export const UserDataProfile = ({ page }) => {
                         id={room._id}
                         title={room.title}
                         text={room.text}
-                        image={typeof(room?.image) == 'string' ? room?.image : room?.image[0] }
+                        // image={typeof(room?.image) == 'string' ? room?.image : room?.image[0] }
                         province={room.province}
                         price={room.price}
                         type={room.type}
@@ -169,7 +169,7 @@ export const UserDataProfile = ({ page }) => {
                       <img src={review.creatorImage} className="commentImage" alt="Creator" />
                     <span className="commentUser">{review.creatorName}</span>
                     <Rating
-                        
+                        className="starss" 
                           value={review?.rating}
                           readOnly
                           cancel={false}
