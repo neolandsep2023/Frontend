@@ -17,6 +17,7 @@ import { UpdateButton } from "../../components/StyleComponents/Buttons/Update";
 import { addFavPost, getUserById } from "../../services/user.service";
 import { SavePostElement } from "../../components/StyleComponents/AddElement/SavePost.element";
 import { MessagePopup } from "../../components/OtherUser/MessagePopup";
+import { LinkRoomButton } from "../../components/StyleComponents/Buttons/LinkRoom";
 
 export const PostById = () => {
   //! ---------- Estados ----------
@@ -111,6 +112,7 @@ export const PostById = () => {
               </UlCustom>
               <ConnectButtonCustom onClick={showPopup}>Connect</ConnectButtonCustom>
               {isOwner && <Link to={`/updatePost/${id}`}><UpdateButton page="post" /></Link>}
+              {isOwner && <Link to={`/createRoom/${id}`}><LinkRoomButton page="post" /></Link>}
             </FlexDir>
           </FlexDir>
           <FlexDir margin="0" width="100vw">

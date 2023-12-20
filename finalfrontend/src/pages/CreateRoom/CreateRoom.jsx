@@ -3,7 +3,7 @@ import L from "leaflet";
 import { useForm } from "react-hook-form";
 import { useEffect, useRef, useState } from "react";
 import "leaflet/dist/leaflet.css";
-import { Navigate, useNavigate } from "react-router-dom";
+import { Navigate, useNavigate, useParams } from "react-router-dom";
 
 //<!--IMP                     Components                            -->
 import {
@@ -39,6 +39,8 @@ export const CreateRoom = () => {
   const { register, handleSubmit } = useForm();
   const navigate = useNavigate();
   const { logout, user } = useAuth();
+const { postId } = useParams()
+
 
   //estos estados son para que se rendericen condicionalmente elementos
   const [roomType, setRoomType] = useState("Apartment");
@@ -60,21 +62,36 @@ export const CreateRoom = () => {
     console.log("formData en el componente", formData);
     console.log("inputFile en el componente", inputFile);
     if (inputFile.length != 0) {
-      let customFormData = {
-        ...formData,
-        publicLocation: publicLocation,
-        province: province,
-        postcode: postcode,
-        image: inputFile,
-      };
+      if (postId) {
+        let customFormData = {
+          ...formData,
+          publicLocation: publicLocation,
+          province: province,
+          postcode: postcode,
+          image: inputFile,
+          post: postId
+        };
+        setSend(true);
+        setRes(await createRoom(customFormData));
+        setSend(false);
+      } else {
+        let customFormData = {
+          ...formData,
+          publicLocation: publicLocation,
+          province: province,
+          postcode: postcode,
+          image: inputFile,
+        };
+        setSend(true);
+        setRes(await createRoom(customFormData));
+        setSend(false);
+      }
+
       for (let i = 0; i < inputFile.length; i++) {
         // customFormData = {...customFormData, ['image'] : inputFile[i]} esto esta delibreadamente comentado!!
       }
 
       console.log("custom form data con imagen", customFormData);
-      setSend(true);
-      setRes(await createRoom(customFormData));
-      setSend(false);
     } else {
       // no hay imagen
       const customFormData = {

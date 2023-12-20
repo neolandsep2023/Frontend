@@ -94,6 +94,13 @@ export const router = createBrowserRouter ([
                 </Protected>),
               },
               {
+                path: "/createRoom/:id",
+                element: 
+                (<Protected>
+                  <CreateRoom />
+                </Protected>),
+              },
+              {
                 path: "/updateRoom/:id",
                 element: 
                 (<Protected>
