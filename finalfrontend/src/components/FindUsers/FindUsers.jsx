@@ -1,7 +1,7 @@
 import { useEffect, useState } from "react"
 import { getUserByName } from "../../services/user.service"
+import { NothingHere } from "../NothingHere/NothingHere"
 import "./FindUsers.css"
-import { Link } from "react-router-dom"
 import { getPostByIdUnpopulated, toggleRoommate } from "../../services/post.service"
 
 export const FindUsers = ({ postId, resCheck, setResCheck }) => {
@@ -33,8 +33,8 @@ export const FindUsers = ({ postId, resCheck, setResCheck }) => {
         <input  id = "userFinderInput" placeholder = "enter a user's name" type="text" onChange={(e) => {setFindNameValue(e.target.value)}}/>
         <button type="submit" id = "findUsersButton" onClick={(e) => handleSubmit(e)}>🔎</button>
       </div>
-      <div id="padreSection">
-        {res && res?.data?.map((user) => {
+      {res?.data?.length > 0 ? <div id="padreSection">
+        {res?.data?.map((user) => {
           return (
             <div className="findUserMapResult" key = {user._id} >
               <section className="findUserMapSection">
@@ -49,6 +49,7 @@ export const FindUsers = ({ postId, resCheck, setResCheck }) => {
           )
         })}
       </div>
+      : res && <NothingHere page="post"/>}
     </div>
   )
 }

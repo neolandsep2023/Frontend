@@ -75,8 +75,9 @@ export const RoomById = () => {
             direction="row" 
             width="100vw" 
             margin="2.5rem 0 1rem 0" 
-            mediaqueryMarginMobile="0.3rem 0 0 0">
-            <FlexDir direction="column" width="50%" height="50vh">
+            mediaqueryMarginMobile="0.3rem 0 0 0"
+            minHeight="20vh">
+            <FlexDir direction="column" width="50%" minHeight="30vh" height="fit-content">
               <H3Custom textAlign="center">House Commodities</H3Custom>
               <UlCustom 
                 width="100%" 
@@ -89,7 +90,7 @@ export const RoomById = () => {
                 ))}
               </UlCustom>
             </FlexDir>
-            <FlexDir direction="column" width="50%" height="50vh">
+            <FlexDir direction="column" width="50%" height="50vh" minHeight="30vh">
               <H3Custom textAlign="center">Room Commodities</H3Custom>
               <UlCustom 
                 width="100%" 

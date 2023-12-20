@@ -10,6 +10,7 @@ const UlStyles = styled.ul`
   padding: ${({ padding }) => padding ? padding : "0"};
   width: ${({ width }) => width ? width : "100%"};
   height: ${({ height }) => height ? height : "100%"};
+  min-height: ${({ minHeight }) => minHeight ? minHeight : "100%"};
   margin: ${({ margin }) => margin ? margin : "0px"};
   li{
     list-style: none;
@@ -53,8 +54,8 @@ const UlStyles = styled.ul`
   }
 `
 
-export const UlCustom = ({ children, direction, width, justifyContent, alignItems, height, mediaqueryDirMobile, padding, gap, margin, fontSize, fontSizeTablet, fontSizeMobile, wrap, liHeight, liWidth }) => {
+export const UlCustom = ({ children, direction, width, justifyContent, alignItems, height, mediaqueryDirMobile, padding, gap, margin, fontSize, fontSizeTablet, fontSizeMobile, wrap, liHeight, liWidth, minHeight }) => {
   return (
-    <UlStyles liWidth={liWidth} liHeight={liHeight} wrap={wrap} fontSizeMobile={fontSizeMobile} fontSizeTablet={fontSizeTablet} fontSize={fontSize} margin={margin} gap={gap} padding={padding} mediaqueryDirMobile={mediaqueryDirMobile} height={height} alignItems={alignItems} justifyContent={justifyContent} width={width} direction={direction}>{children}</UlStyles>
+    <UlStyles minHeight={minHeight} liWidth={liWidth} liHeight={liHeight} wrap={wrap} fontSizeMobile={fontSizeMobile} fontSizeTablet={fontSizeTablet} fontSize={fontSize} margin={margin} gap={gap} padding={padding} mediaqueryDirMobile={mediaqueryDirMobile} height={height} alignItems={alignItems} justifyContent={justifyContent} width={width} direction={direction}>{children}</UlStyles>
   )
 }

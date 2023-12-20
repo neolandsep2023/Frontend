@@ -466,7 +466,7 @@ export const CreatePost = () => {
 
           <UploadFile />
           <ButtonPrimary type="submit" disabled={send}>
-            {send ? "Loading..." : "Upload Room"}
+            {send ? "Loading..." : "Upload Post"}
           </ButtonPrimary>
         </FlexDir>
       </Form>

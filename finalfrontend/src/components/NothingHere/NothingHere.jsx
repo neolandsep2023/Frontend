@@ -3,7 +3,7 @@ import { NothingHereElement } from "./NothingHere.element"
 import { ButtonPrimary } from "../StyleComponents"
 
 
-export const NothingHere = ({path}) => {
+export const NothingHere = ({path, page}) => {
 
 const navigate = useNavigate()
 
@@ -13,7 +13,7 @@ const navigate = useNavigate()
     <NothingHereElement>
         
         <h1>Nothing here yet</h1>
-        <ButtonPrimary onClick={() => navigate(`${path}`)}>Create it!</ButtonPrimary >
+        {page != "post" && <ButtonPrimary onClick={() => navigate(`${path}`)}>Create it!</ButtonPrimary >}
         
         </NothingHereElement>
         </>
