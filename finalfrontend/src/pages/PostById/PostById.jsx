@@ -15,6 +15,7 @@ import { NoRoomate } from "../../components/RoomateCard/NoRoomateCard";
 import { useAuth } from "../../context/authContext";
 import { UpdateButton } from "../../components/StyleComponents/Buttons/Update";
 import { addFavPost, getUserById } from "../../services/user.service";
+import { SavePostElement } from "../../components/StyleComponents/AddElement/SavePost.element";
 
 export const PostById = () => {
   //! ---------- Estados ----------
@@ -55,7 +56,7 @@ export const PostById = () => {
 
   const getSavedPosts = async () => {
     const userSavedPosts = await getUserById(user._id); //? TIENE QUE IR EN CONSTANTE POR ASINCRONIA DE REACT, NO EN USE STATE
-    setUserLikedPosts(userSavedPosts?.data?.likedPosts); //? tiene que ser un array - BACK NO POPULADO
+    setUserLikedPosts(userSavedPosts?.data?.savedPosts); //? tiene que ser un array - BACK NO POPULADO
   };
 
   const isSaved = userLikedPosts?.includes(id)
@@ -84,10 +85,10 @@ export const PostById = () => {
           <FlexDir direction="row" gap="2rem" mediaqueryDirMobile="column">
             <FlexDir width="60vw" direction="column">
               <ByIdImageCustom src={res?.data?.image}/>
-              <UlCustom direction="row" justifyContent="space-between">
+              <UlCustom direction="row" justifyContent="space-between" width="60vw">
                 <li>{printHomeIcons("Location")}{res?.data?.province}, {res?.data?.room[0]?.publicLocation} - {res?.data?.postcode}</li>
                 <FlexDir>
-                  <li><SaveElement onClick={()=> addToSaved(id)} variant={isSaved ? "saved" : "normal"}/></li>
+                  <li><SavePostElement onClick={()=> addToSaved(id)} variant={isSaved ? "saved" : "normal"}/></li>
                 </FlexDir>
               </UlCustom>
             </FlexDir>

@@ -91,7 +91,7 @@ export const Feed = () => {
 
   const getSavedPosts = async () => {
     const userSavedPosts = await getUserById(user._id); //! TIENE QUE IR EN CONSTANTE POR ASINCRONIA DE REACT, NO EN USE STATE
-    setUserLikedPosts(userSavedPosts?.data?.likedPosts); //! tiene que ser un array - BACK NO POPULADO
+    setUserLikedPosts(userSavedPosts?.data?.savedPosts); //! tiene que ser un array - BACK NO POPULADO
   };
 
   //! useEffects
