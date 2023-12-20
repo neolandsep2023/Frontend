@@ -1,4 +1,8 @@
-.figureNav span {
+import React from "react";
+import styled from "@emotion/styled";
+
+const StyledHeader = styled.div`
+ .figureNav span {
   color: rgb(74, 206, 130);
   font-weight: 700;
 }
@@ -122,3 +126,10 @@
 body.light .headerDesktop {
 background-color: #f0f9f3;
 }
+
+
+`;
+
+export const HeaderElement = ({ children }) => {
+  return <StyledHeader>{children}</StyledHeader>;
+};

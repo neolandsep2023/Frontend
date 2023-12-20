@@ -1,10 +1,11 @@
 import React from 'react'
-import"./About.css"
 import { H1Form } from '../../components/StyleComponents'
 import { BotonArriba } from '../../components/BotonArriba/BotonArriba'
+import { AboutElement } from './About.element'
 
 export const About = () => {
   return (<>
+  <AboutElement>
     <H1Form>About us</H1Form>
     <section className='about'>
 
@@ -32,7 +33,7 @@ export const About = () => {
         </article>
         <BotonArriba/>
     </section>
-   
+    </AboutElement>
     </>
   )
 }

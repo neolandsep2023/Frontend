@@ -1,10 +1,9 @@
 import React, { useState } from "react";
-import "./HeaderSmall.css";
 import { NavLink, useNavigate } from "react-router-dom";
 import { ButtonHeader } from "../StyleComponents";
 import { useThemeApp } from "../../context/themeContext";
 import { useAuth } from "../../context/authContext";
-
+import { HeaderSmallElement } from "./HeaderSmall.element";
 
 export const HeaderSmall = () => {
   const [showMenu, setShowMenu] = useState(false);
@@ -19,24 +18,27 @@ export const HeaderSmall = () => {
   };
 
   return (
+    <HeaderSmallElement>
     <header className="headerSmall">
       <div className="smallUno">
         <button className="hamburguesa" onClick={handleMenu}>
           <span className="material-symbols-outlined">menu</span>
         </button>
 
-        <img
+        <img className="logoS"
           src="https://res.cloudinary.com/daxddugwt/image/upload/v1702550399/Untitled_Artwork_33_nmkluc.png"
           alt="Logo "
         />
         <div className="botonesHS">
-        <button className="buttonHeader" onClick={toggleTheme}>
-          {theme == "dark" ? "☀️" : "🌙"}
-        </button>
-        <button className="buttonHeader" onClick={user == null ? navigateToLogin : logout}>
-          {user == null ? "LOG IN" : "LOG OUT"}
-        </button>
-        </div>
+  <img  className="imgDark" onClick={toggleTheme}   src="https://res.cloudinary.com/djfkchzyq/image/upload/v1703067364/xgavzjkhbovd4tm1oryx.png">
+  
+  </img>
+  {user == null && (
+    <button className="buttonHeader" onClick={navigateToLogin}>
+      LOG IN
+    </button>
+  )}
+</div>
 
         
       </div>
@@ -105,5 +107,6 @@ export const HeaderSmall = () => {
         </div>
       )}
     </header>
+    </HeaderSmallElement>
   );
 };

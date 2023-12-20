@@ -2,8 +2,8 @@ import React, { useEffect, useState } from "react";
 import { Link, NavLink, useNavigate } from "react-router-dom";
 import { useThemeApp } from "../../context/themeContext";
 import { useAuth } from "../../context/authContext";
-import "./Header.css";
 import { HeaderSmall } from "./HeaderSmall";
+import { HeaderElement } from "./Header.element";
 
 export const Header = () => {
   const [isMobile, setIsMobile] = useState(window.innerWidth < 776);
@@ -30,6 +30,7 @@ export const Header = () => {
   return (
     <>
       {!isMobile ? (
+        <HeaderElement>
         <header className="headerDesktop">
           <Link to={"/"} className="headerImg">
             <img
@@ -39,16 +40,9 @@ export const Header = () => {
           </Link>
           <div className="navs">
             <div className="botonesH">
-              <button className="buttonHeader" onClick={toggleTheme}>
-                {theme == "dark" ? "☀️" : "🌙"}
-              </button>
-              <button
-                className="buttonHeader"
-                onClick={user == null ? navigateToLogin : logout}
-              >
-                {user == null ? "LOG IN" : "LOG OUT"}
-              </button>
-              {user != null && (
+            <img   style={{ width: 50, borderRadius: "50%" }}className="buttonHeader" onClick={toggleTheme}   src="https://res.cloudinary.com/djfkchzyq/image/upload/v1703067364/xgavzjkhbovd4tm1oryx.png"></img>
+             
+              {user != null ? (
                 <Link to={"/profile"}>
                   <img
                     style={{ width: 50, borderRadius: "50%" }}
@@ -56,7 +50,12 @@ export const Header = () => {
                     alt="User"
                   />
                 </Link>
-              )}
+              ): <button
+              className="buttonHeader"
+              onClick={ navigateToLogin}
+            >
+              { "LOG IN"}
+            </button>}
             </div>
             <nav className="navDos">
               <ul className="mainNav">
@@ -69,6 +68,7 @@ export const Header = () => {
             </nav>
           </div>
         </header>
+        </HeaderElement>
       ) : (
         <HeaderSmall />
       )}

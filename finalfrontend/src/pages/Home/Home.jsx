@@ -1,16 +1,19 @@
 import { useEffect, useState } from 'react';
 import { ButtonPrimary, FlexDir, Form, MiniCards } from '../../components/StyleComponents'
 <Link to="/register"></Link>
-import './Home.css'
+
 import { Link } from 'react-router-dom';
 import { BotonArriba } from '../../components/BotonArriba/BotonArriba';
-
+import styled from "@emotion/styled"
+import { HomeElement } from './Home.element';
 export const Home = () => {
  
 
 
-  return (
 
+
+  return (
+<HomeElement>
 <div className='home'>
   <section className='imagenPrincipal'>
   <article className='registrate'>
@@ -79,5 +82,6 @@ export const Home = () => {
     </section>
    <BotonArriba/>
 </div>
+</HomeElement>
   )
 }

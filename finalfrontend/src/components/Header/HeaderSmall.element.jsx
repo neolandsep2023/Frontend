@@ -1,4 +1,8 @@
-.zonaMobile {
+import React from "react";
+import styled from "@emotion/styled";
+
+const StyledHeaderSmall = styled.div`
+  .zonaMobile {
   background-color: rgba(37, 37, 37, 0.582);
   position: absolute;
   top: 12vh;
@@ -19,13 +23,11 @@
     }
   }
 
-.botonesHS {
-  display: flex;
-  flex-direction: column;
-  justify-content: space-between;
-  align-items: center;
-  padding: 15px 0px;
-  height: 100%;
+.imgDark {
+
+  border-radius: 50%;
+  width: 50px;
+  height: 50px;
 
 }
 
@@ -49,7 +51,7 @@
   align-items: center;
  
 }
-.headerSmall img {
+.logoS {
   width: 30%;
   min-width: 200px;
   max-width: 300px;
@@ -127,9 +129,10 @@ width: 100%;
     min-width: 60px;
     cursor: pointer;
 }
-.buttonHeader:hover{
+.imgDark:hover{
   color: white;
   background-color: rgb(74, 206, 130);
+  cursor: pointer;
 }
 
 body.light .zonaMobile{
@@ -169,3 +172,9 @@ body.light .hamburguesa{
     background-color: #f0f9f3;
  
   }
+
+`;
+
+export const HeaderSmallElement = ({ children }) => {
+  return <StyledHeaderSmall>{children}</StyledHeaderSmall>;
+};
