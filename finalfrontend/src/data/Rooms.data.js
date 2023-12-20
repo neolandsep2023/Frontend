@@ -25,8 +25,6 @@ export const roomData = {
     "Shower",
     "Bathtub",
     "Kitchen",
-    "Refrigerator",
-    "Oven Stove",
     "Microwave",
     "Heating",
     "Air Conditioning",
