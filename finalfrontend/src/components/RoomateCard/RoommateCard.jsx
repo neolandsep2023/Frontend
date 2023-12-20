@@ -3,6 +3,8 @@ import { printIconsUser } from "../../utils/enumIcons"
 import { FlexDir, H3Custom } from "../StyleComponents"
 import { UlCustom } from "../StyleComponents/UL/Ul"
 import { RoommateCardStyle } from "./RoommateCard.element"
+import { Link } from "react-router-dom"
+import { ProfileIcon } from "../../pages/OtherUser/ProfileIcon"
 
 
 export const RoommateCard = ({ roommate, index }) => {
@@ -11,7 +13,7 @@ export const RoommateCard = ({ roommate, index }) => {
     <RoommateCardStyle fontSizeP="1.5vw" fontSizePTablet="1.8vw" fontSizePMobile="2vw">
       <FlexDir direction="row" mediaqueryMarginMobile="-2vw 0 0 0" gap="0.5rem" margin="2vw">
         {index%2 == 0 && <FlexDir mediaqueryMarginMobile="0">
-          <img className="userimagepost" src={roommate?.image} alt="user image"/>
+        <ProfileIcon className="userimagepost" data={roommate}/>
         </FlexDir>}
         <FlexDir direction="column" mediaqueryMarginMobile="0.6rem 0">
           <FlexDir mediaqueryMarginMobile="0px" margin="0px 32px" width="60vw" padding="0 10px" justifyContent={index%2 == 0 ? "start" : "end"}>
@@ -37,7 +39,9 @@ export const RoommateCard = ({ roommate, index }) => {
           </FlexDir>
         </FlexDir>
         {index%2 !== 0 && <FlexDir mediaqueryMarginMobile="0">
-          <img className="userimagepost" src={roommate?.image} alt="user image"/>
+          <ProfileIcon className="userimagepost" data={roommate}/>
+
+
         </FlexDir>}
       </FlexDir>
     </RoommateCardStyle>
