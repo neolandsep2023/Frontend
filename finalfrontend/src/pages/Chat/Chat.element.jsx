@@ -25,7 +25,8 @@ gap: 8px;
 
 & .textArea{
   width: 40vw;
-font-size: 16px;
+  height: 40px;
+font-size: 18px;
   overflow-y: scroll;
   border-radius: 10px;
   border: ${({ theme }) => theme.spacing(0.3)} solid

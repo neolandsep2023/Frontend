@@ -21,6 +21,7 @@ import { ChatDetailElement } from "./ChatDetail.element";
 import { MessageChatElement } from "./MessageChat.element";
 import { FindUsers } from "../../components/FindUsers/FindUsers";
 import { getUserByName } from "../../services/user.service";
+import { scrollToBottom, scrollToBottomAnimated } from "../../utils/scrollReact";
 
 export const Chat = () => {
   //parte de chats activos
@@ -37,6 +38,7 @@ export const Chat = () => {
   const [activeChat, setActiveChat] = useState("");
   const [sentComment, setSentComment] = useState(false);
   const [textArea, setTextArea] = useState("");
+  const [inputValue, setInputValue] =useState("")
 
   const fetchres = async () => {
     const response = await getUserChats();
@@ -62,15 +64,22 @@ export const Chat = () => {
       setActiveChat("");
       setSentComment(!sentComment);
       setTextArea("");
+      setInputValue("")
       setActiveChat(response.data.chat);
     }
   };
 
-  console.log(res?.data?.chats);
+  // console.log(res?.data?.chats);
 
   useEffect(() => {
     fetchres();
   }, [sentComment]);
+
+
+  useEffect(() => {
+    activeChat !=  "" && scrollToBottom("scroll")
+  }, [activeChat]);
+
 
   useEffect(() => {
     const handleResize = () => {
@@ -93,7 +102,7 @@ export const Chat = () => {
 
   const actualDate = new Date();
 
-  console.log(getDateFunction(actualDate));
+ 
 
   const getHourFunction = (date) => {
     const newDate = new Date(date);
@@ -116,7 +125,7 @@ export const Chat = () => {
                   res &&
                   res?.data?.chats?.map((chat) => (
                     <>
-                      {console.log(chat)}
+                      {/* {console.log(chat)} */}
                       <div className="line"></div>
 
                       <ChatDetailElement
@@ -205,7 +214,7 @@ export const Chat = () => {
                     </h1>
                   </FlexDir>
                   <div className="line"></div>
-                  <ChatColumnElement display={"flex"}>
+                  <ChatColumnElement display={"flex"} id="scroll">
                     {activeChat.comments.map((comment) => (
                       <>
                         <MessageChatElement
@@ -215,9 +224,6 @@ export const Chat = () => {
                               : "otherUser"
                           }
                         >
-                          {console.log(comment?.creator?._id, user._id)}
-                          {/* <h4 key={comment._id}>{comment?.creator?.username}</h4> */}
-
                           <p>{comment?.textComment}</p>
                           {getDateFunction(actualDate) ==
                           getDateFunction(comment.createdAt) ? (
@@ -236,13 +242,12 @@ export const Chat = () => {
                       onSubmit={handleSubmit(newMessage)}
                     >
                       <FlexDir width={"100%"}>
-                        {console.log(textArea)}
-                        <textarea
+                        <input
+                        onInput={(e)=> {setInputValue(e.target.value); console.log(inputValue)  }}
                           className="textArea"
                           type="text"
                           name="textComment"
-                          placeholder={textArea}
-                          defaultValue={textArea}
+                          value={inputValue}
                           id="textArea"
                           {...register("textComment")}
                         />
@@ -250,6 +255,7 @@ export const Chat = () => {
                           variant="normal"
                           type="submit"
                           width={"150px"}
+                          
                         >
                           Send
                         </ButtonPrimary>
@@ -274,7 +280,6 @@ export const Chat = () => {
                       res &&
                       res?.data?.chats?.map((chat) => (
                         <>
-                          {console.log(chat)}
                           <div className="line"></div>
 
                           <ChatDetailElement
@@ -368,7 +373,7 @@ export const Chat = () => {
                         <h1>{activeChat.userOne.name}</h1>
                       </FlexDir>
                       <div className="line"></div>
-                      <ChatColumnElement display={"flex"}>
+                      <ChatColumnElement display={"flex"} id="scroll">
                         {activeChat.comments.map((comment) => (
                           <>
                             <MessageChatElement
@@ -399,20 +404,20 @@ export const Chat = () => {
                           onSubmit={handleSubmit(newMessage)}
                         >
                           <FlexDir width={"100%"}>
-                            {console.log(textArea)}
-                            <textarea
-                              className="textArea"
-                              type="text"
-                              name="textComment"
-                              placeholder={textArea}
-                              defaultValue={textArea}
-                              id="textArea"
-                              {...register("textComment")}
-                            />
+                          <input
+                        onInput={(e)=> {setInputValue(e.target.value); console.log(inputValue)  }}
+                          className="textArea"
+                          type="text"
+                          name="textComment"
+                          value={inputValue}
+                          id="textArea"
+                          {...register("textComment")}
+                        />
                             <ButtonPrimary
                               variant="normal"
                               type="submit"
                               width={"70px"}
+                              // onClick={reload()}
                             >
                               Send
                             </ButtonPrimary>

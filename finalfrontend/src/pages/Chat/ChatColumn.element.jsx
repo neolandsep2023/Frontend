@@ -46,9 +46,9 @@ padding: 0;
 
 
 
-export const ChatColumnElement = ({children, display}) => {
+export const ChatColumnElement = ({children, display, id}) => {
     const { theme } = useTheme()
   return (
-    <ChatColumnStyles theme={theme} display={display}>{children}</ChatColumnStyles>
+    <ChatColumnStyles theme={theme} display={display} id={id}>{children}</ChatColumnStyles>
   )
 }
