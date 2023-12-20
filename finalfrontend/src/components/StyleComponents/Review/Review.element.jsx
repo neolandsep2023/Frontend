@@ -1,85 +1,65 @@
+import styled from "@emotion/styled"
 
-import { useTheme } from "@emotion/react";
-import styled from "@emotion/styled";
-import React from "react";
+const ReviewElementStyle = styled.div`
 
-const MiniPostProfileStyles = styled.div`
-  text-align: justify;
+text-align: justify;
   display: flex;
   flex-direction: column;
-  justify-content: center;
+  justify-content: flex-start;
 align-items: center;
+padding: 20px 0 0 0;
 
-
-  background-color: ${({ theme }) => theme.palette.background.main};
+    background-color: ${({ theme }) => theme.palette.background.main};
   border: ${({ theme }) => theme.spacing(0.3)} solid
     ${({ theme }) => theme.palette.border.main};
   border-radius: ${({ theme }) => theme.spacing(1.5)};
  
 
-  margin: ${({ margin, theme }) => (margin ? margin : theme.spacing(1.5))};
 
-  
-  & img {
-    width: 43%;
+& img{
+    width: 60px;
     aspect-ratio: 1/1;
+    border-radius: 50%;
     object-fit: cover;
-    border-radius: 10px;
-    border: ${({ theme }) => theme.spacing(0.5)} solid
-      ${({ theme }) => theme.palette.border.main};
-  }
-
-& .type{
-  color: ${({ theme }) => theme.palette.button.mediumGreen}
 }
 
-
-  & p,
+& p, h2,
   h3,
   h4 {
     margin: 0;
   }
 
+
+  h2{
+    font-weight: 600;
+    font-size: 22px;
+  }
+
   & p {
-    max-height: 70%;
-    max-width: 100%;
-    font-size: 16px;
-    text-overflow: ellipsis;
+        padding: 20px 0 0 0;
+      max-height: 60%;
+      max-width: 90%;
+      font-size: 20px;
+      overflow: auto;
+      font-weight: 300;
+      text-overflow: ellipsis;
     display: -webkit-box;
     -webkit-line-clamp: 3;
     -webkit-box-orient: vertical;
     /* white-space: nowrap; */
-    overflow: scroll;
-  }
-  & h3 {
-    height: 30%;
-    font-size: 20px;
-    align-self: center;
-    text-overflow: ellipsis;
-    display: -webkit-box;
-    -webkit-line-clamp: 2;
-    -webkit-box-orient: vertical;
-    /* white-space: nowrap; */
-    overflow: hidden;
-  }
+    overflow: auto;
+    }
+
+
+
 
   ${({ theme }) => theme.mediaquery.bigScreen} {
     width: 48%;
-    height: 85%;
-    & img {
+    height: 65%;
+    /* & img {
       width: 35%;
-    }
+    } */
 
-    & p {
-      max-height: 70%;
-      max-width: 100%;
-      font-size: 13px;
-      overflow: auto;
-    }
-    & h3 {
-      height: 30%;
-      font-size: 15px;
-    }
 
     margin: ${({ margin, theme }) => (margin ? margin : theme.spacing(1))};
 }
@@ -91,9 +71,9 @@ align-items: center;
   }
 
   ${({ theme }) => theme.mediaquery.laptop} {
-    height: 85%;
+    height: 65%;
     & img {
-      width: 35%;
+        width: 60px;
     }
 
     margin: ${({ margin, theme }) => (margin ? margin : theme.spacing(1))};
@@ -101,9 +81,9 @@ align-items: center;
 
   ${({ theme }) => theme.mediaquery.tablet} {
     width: 48%;
-    min-height: 85%;
+    min-height: 65%;
     & img {
-      width: 30%;
+        width: 60px;
     }
 
     & p {
@@ -117,6 +97,10 @@ align-items: center;
       -webkit-line-clamp: 1;
     }
 
+    & .starss{
+    color: rgb(233, 233, 48);
+  
+  }
   
 
     margin: ${({ margin, theme }) => (margin ? margin : theme.spacing(1))};
@@ -128,7 +112,7 @@ align-items: center;
     height: 60vh;
 
     & img {
-      width: 70%;
+        width: 60px;
     }
 
     & p {
@@ -149,7 +133,7 @@ align-items: center;
     height: 80vh;
 
     & img {
-      width: 70%;
+        width: 60px;
     }
 
     & p {
@@ -162,17 +146,24 @@ align-items: center;
       font-size: 18px;
       -webkit-line-clamp: 1;
     }
+
   }
-`;
 
 
 
-
-export const MiniPostProfileElement = ({children}) => {
-    const { theme } = useTheme();
+ 
 
 
+  
+
+
+`
+    
+
+
+
+export const ReviewElement = ({children}) => {
   return (
-    <MiniPostProfileStyles theme={theme}>{children}</MiniPostProfileStyles>
+    <ReviewElementStyle>{children}</ReviewElementStyle>
   )
 }

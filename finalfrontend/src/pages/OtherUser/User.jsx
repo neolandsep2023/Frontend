@@ -17,20 +17,21 @@ export const User = () => {
   const { user, logout } = useAuth();
   const navigate = useNavigate();
   const {username} = useParams();
-  console.log(username, "fuera de funcion")
+ 
   const [page, setPage] = useState("posted");
   const [userData, setUserData] = useState(null);
   const [loading, setLoading] = useState(true);
 
   const dataFetch = async () => {
       const response = await getUserByUsernameP(username);
-      console.log(username, "username dentro de dataFetch")
       console.log(response);
       setUserData(response.data);
       setLoading(false);
   };
 
   const isMobile = window.innerWidth < 576 ? true : false;
+
+
 
   useEffect(() => {
     useUserVerify(user, logout, navigate);
@@ -107,14 +108,9 @@ export const User = () => {
 
       </FlexDir>
 
-
-
-      {/* <ProfileContainer heightTablet={"58vh"} height={"77vh"}> */}
-
-          <UserDataProfile page={page}/>
+          <UserDataProfile userData={userData} page={page}/>
         
-    {/* <Outlet /> */}
-    {/* </ProfileContainer> */}
+
     </FlexDir>
     </>
     )

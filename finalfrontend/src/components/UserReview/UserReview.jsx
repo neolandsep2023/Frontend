@@ -14,14 +14,18 @@ import {
 import Swal from "sweetalert2";
 import { useForm } from "react-hook-form";
 
-export const UserReview = ({action}) => {
+export const UserReview = ({action, userData}) => {
   const { register, handleSubmit } = useForm();
   const [page, setPage] = useState("");
   const [res, setRes] = useState(false);
   const [send, setSend] = useState(false);
   const [valueStar, setValueStar] = useState(0);
-  const { id } = useParams();
+  // const { id } = useParams();
   const navigate = useNavigate();
+
+const id = userData._id
+
+
 
   const formSubmit = async (formData) => {
     const customFormData = {

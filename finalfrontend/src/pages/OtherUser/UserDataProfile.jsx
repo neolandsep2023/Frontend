@@ -3,7 +3,7 @@ import { useParams } from 'react-router-dom';
 import { addFavPost, getUserById, getUserByIdP, getUserByUsernameP } from '../../services/user.service';
 import { MiniPostProfile, MiniPostProfileContainerElement } from '../../components';
 import { DataProfileElement } from '../Profile/DataProfile/DataProfile.element';
-import { FlexDir, ProfileContainer } from '../../components/StyleComponents';
+import { FlexDir, FlexEnd, ProfileContainer, ReviewElement } from '../../components/StyleComponents';
 import { usePaginacion } from '../../hooks/usePaginacion';
 import { useAuth } from '../../context/authContext';
 import { NothingHere } from '../../components/NothingHere/NothingHere';
@@ -11,7 +11,7 @@ import { UserReview } from '../../components/UserReview/UserReview';
 import"./UserReview.css"
 import { Rating } from "primereact/rating";
 
-export const UserDataProfile = ({ page }) => {
+export const UserDataProfile = ({ page, userData }) => {
     const isMobile = window.innerWidth < 576 ? true : false;
   const { MiniPaginacion, setGaleriaItems, dataPag } = usePaginacion( isMobile ? 1 : 2);
   const { user } = useAuth();
@@ -161,28 +161,38 @@ export const UserDataProfile = ({ page }) => {
               </FlexDir>
               <div className="line"></div>
               {/* <DataProfileElement> */}
-              <div className='cajonComentarios'>
+              <MiniPostProfileContainerElement>
                 {dataPag[0] ?
                   dataPag?.map((review) => (
-                    <div key={review._id} className="commentContainer">
-                      <div className='commentHeader'>
-                      <img src={review.creatorImage} className="commentImage" alt="Creator" />
-                    <span className="commentUser">{review.creatorName}</span>
-                    <Rating
-                        className="starss" 
-                          value={review?.rating}
-                          readOnly
-                          cancel={false}
-                        />
-                      </div>
-                      
-                    <p className="commentText">{review.textComment}</p>
-                   
-                  </div>
+                    <ReviewElement key={review._id}>
+                    {console.log(review)}
+
+                    <FlexEnd
+                      variant="inverted"
+                      height={"70px"}
+                      onClick={() => navigate(`/user/${review.creatorName}`)}
+                    >
+                      <img
+                        src={review.creatorImage}
+                        className="commentImage"
+                        alt="Creator"
+                      />
+                      <h2 className="commentUser">{review.creatorName}</h2>
+
+                      <Rating
+                        className="starss"
+                        value={review?.rating}
+                        readOnly
+                        cancel={false}
+                      />
+                    </FlexEnd>
+
+                    <p>{review.textComment}</p>
+                  </ReviewElement>
                   )) :
                   <NothingHere path={"/feed"}/>
                   }
-              </div>
+             </MiniPostProfileContainerElement>
 
               {/* </DataProfileElement> */}
             </ProfileContainer>
@@ -193,7 +203,7 @@ export const UserDataProfile = ({ page }) => {
         case "createComment":
           return (
             <ProfileContainer heightTablet={"58vh"} height={"77vh"} key={page}>
-            <UserReview action="usercomment"/>
+            <UserReview  userData={userData} action="usercomment"/>
 
             {/* </DataProfileElement> */}
           </ProfileContainer>

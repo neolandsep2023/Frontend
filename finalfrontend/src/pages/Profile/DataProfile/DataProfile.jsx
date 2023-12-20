@@ -1,5 +1,9 @@
 import React, { useEffect, useState } from "react";
-import { addFavPost, getUserById, getUserByIdP } from "../../../services/user.service";
+import {
+  addFavPost,
+  getUserById,
+  getUserByIdP,
+} from "../../../services/user.service";
 import { useAuth } from "../../../context/authContext";
 import {
   MiniPostProfile,
@@ -7,15 +11,23 @@ import {
   MiniPosts,
 } from "../../../components";
 import { DataProfileElement } from "./DataProfile.element";
-import { FlexDir, ProfileContainer } from "../../../components/StyleComponents";
+import {
+  FlexDir,
+  FlexEnd,
+  ProfileContainer,
+  ReviewElement,
+} from "../../../components/StyleComponents";
 import { usePaginacion } from "../../../hooks/usePaginacion";
 import { NothingHere } from "../../../components/NothingHere/NothingHere";
 import { Rating } from "primereact/rating";
+import { Link, useNavigate } from "react-router-dom";
 
 export const DataProfile = ({ page }) => {
-    const isMobile = window.innerWidth < 576 ? true : false;
-
-  const { MiniPaginacion, setGaleriaItems, dataPag } = usePaginacion( isMobile ? 1 : 2);
+  const isMobile = window.innerWidth < 576 ? true : false;
+  const navigate = useNavigate();
+  const { MiniPaginacion, setGaleriaItems, dataPag } = usePaginacion(
+    isMobile ? 1 : 2
+  );
   const { user } = useAuth();
   const [data, setData] = useState(null);
   const [res, setRes] = useState(null);
@@ -24,37 +36,29 @@ export const DataProfile = ({ page }) => {
   const [userLikedPosts, setUserLikedPosts] = useState([]); //! useState de los likes
   const [updatedLikes, setUpdatedLikes] = useState(false);
 
-  
-
   const fetchData = async () => {
     setIsLoaded(false);
     setRes(await getUserByIdP(user?._id));
     setIsLoaded(true);
   };
 
+  //------------------------------------ save post
 
+  const addToSaved = async (id) => {
+    const response = await addFavPost(id); //! TIENE QUE IR EN CONSTANTE POR ASINCRONIA DE REACT, NO EN USE STATE
+    setUpdatedLikes(!updatedLikes);
+  };
 
- //------------------------------------ save post
+  const getSavedPosts = async () => {
+    const userSavedPosts = await getUserById(user._id); //! TIENE QUE IR EN CONSTANTE POR ASINCRONIA DE REACT, NO EN USE STATE
+    setUserLikedPosts(userSavedPosts?.data?.savedPosts); //! tiene que ser un array - BACK NO POPULADO
+  };
 
- const addToSaved = async (id) => {
-  const response = await addFavPost(id); //! TIENE QUE IR EN CONSTANTE POR ASINCRONIA DE REACT, NO EN USE STATE
-  setUpdatedLikes(!updatedLikes);
-};
+  console.log(userLikedPosts);
 
-const getSavedPosts = async () => {
-  const userSavedPosts = await getUserById(user._id); //! TIENE QUE IR EN CONSTANTE POR ASINCRONIA DE REACT, NO EN USE STATE
-  setUserLikedPosts(userSavedPosts?.data?.savedPosts); //! tiene que ser un array - BACK NO POPULADO
-  
-
-};
-
-console.log(userLikedPosts)
-
-useEffect(() => {
-  getSavedPosts();
-}, [updatedLikes,res]);
-
-
+  useEffect(() => {
+    getSavedPosts();
+  }, [updatedLikes, res]);
 
   useEffect(() => {
     fetchData();
@@ -62,14 +66,14 @@ useEffect(() => {
 
   useEffect(() => {
     // if (res?.status == 200) {
-      page === "posted"
-        ? setGaleriaItems(res?.data?.myPosts)
-        : page === "rooms"
-        ? setGaleriaItems(res?.data?.myRooms)
-        : page === "reviews"
-        ? setGaleriaItems(res?.data?.receivedComments)
-        : page === "bookmarks" && setGaleriaItems(res?.data?.savedPosts);
-    
+    page === "posted"
+      ? setGaleriaItems(res?.data?.myPosts)
+      : page === "rooms"
+      ? setGaleriaItems(res?.data?.myRooms)
+      : page === "reviews"
+      ? setGaleriaItems(res?.data?.receivedComments)
+      : page === "bookmarks" && setGaleriaItems(res?.data?.savedPosts);
+
     // }
   }, [res, page, dataPag]);
 
@@ -86,10 +90,10 @@ useEffect(() => {
               <div className="line"></div>
               {/* <DataProfileElement> */}
               <MiniPostProfileContainerElement>
-                {dataPag[0] ?
+                {dataPag[0] ? (
                   dataPag.map((post) => (
                     <>
-                     {console.log(dataPag, page)}
+                      {console.log(dataPag, page)}
                       <MiniPostProfile
                         key={post._id}
                         page={"post"}
@@ -102,12 +106,12 @@ useEffect(() => {
                         type={post.type}
                         addToSaved={addToSaved}
                         userLikedPosts={userLikedPosts}
-                        
                       ></MiniPostProfile>
                     </>
-                  )) :
-                  <NothingHere path={"/createPost"}/>
-                  }
+                  ))
+                ) : (
+                  <NothingHere path={"/createPost"} />
+                )}
               </MiniPostProfileContainerElement>
 
               {/* </DataProfileElement> */}
@@ -126,30 +130,30 @@ useEffect(() => {
               <div className="line"></div>
               {/* <DataProfileElement> */}
               <MiniPostProfileContainerElement>
-                {page == "rooms" && dataPag[0] ?
+                {page == "rooms" && dataPag[0] ? (
                   dataPag.map((room) => (
                     <>
-                    {console.log(dataPag, page)}
-                    { room && 
-                      <MiniPostProfile
-                        key={room._id}
-                        page={"room"}
-                        id={room._id}
-                        title={room.title}
-                        text={room.description}
-                        image={room?.image}
-                        province={room.province}
-                        price={room.price}
-                        type={room.type}
-                        addToSaved={addToSaved}
-                        userLikedPosts={userLikedPosts}
-                      ></MiniPostProfile>
-                      
-                    }
+                      {console.log(dataPag, page)}
+                      {room && (
+                        <MiniPostProfile
+                          key={room._id}
+                          page={"room"}
+                          id={room._id}
+                          title={room.title}
+                          text={room.description}
+                          image={room?.image}
+                          province={room.province}
+                          price={room.price}
+                          type={room.type}
+                          addToSaved={addToSaved}
+                          userLikedPosts={userLikedPosts}
+                        ></MiniPostProfile>
+                      )}
                     </>
-                  )) :
-                  <NothingHere path={"/createRoom"}/>
-                  }
+                  ))
+                ) : (
+                  <NothingHere path={"/createRoom"} />
+                )}
               </MiniPostProfileContainerElement>
 
               {/* </DataProfileElement> */}
@@ -167,30 +171,39 @@ useEffect(() => {
               </FlexDir>
               <div className="line"></div>
               {/* <DataProfileElement> */}
-              <div className='cajonComentarios'>
-                {dataPag[0] ?
+              <MiniPostProfileContainerElement>
+                {dataPag[0] ? (
                   dataPag?.map((review) => (
-                    
-                    <div key={review._id} className="commentContainer">
-                       {console.log(dataPag, page)}
-                      <div className='commentHeader'>
-                      <img src={review.creatorImage} className="commentImage" alt="Creator" />
-                    <span className="commentUser">{review.creatorName}</span>
-                    <Rating
-                        className="starss" 
+                    <ReviewElement key={review._id}>
+                      {console.log(review)}
+
+                      <FlexEnd
+                        variant="inverted"
+                        height={"70px"}
+                        onClick={() => navigate(`/user/${review.creatorName}`)}
+                      >
+                        <img
+                          src={review.creatorImage}
+                          className="commentImage"
+                          alt="Creator"
+                        />
+                        <h2 className="commentUser">{review.creatorName}</h2>
+
+                        <Rating
+                          className="starss"
                           value={review?.rating}
                           readOnly
                           cancel={false}
                         />
-                      </div>
-                      
-                    <p className="commentText">{review.textComment}</p>
-                   
-                  </div>
-                  )) :
-                  <NothingHere path={"/feed"}/>
-                  }
-              </div>
+                      </FlexEnd>
+
+                      <p>{review.textComment}</p>
+                    </ReviewElement>
+                  ))
+                ) : (
+                  <NothingHere path={"/feed"} />
+                )}
+              </MiniPostProfileContainerElement>
 
               {/* </DataProfileElement> */}
             </ProfileContainer>
@@ -198,7 +211,6 @@ useEffect(() => {
         );
 
       case "bookmarks":
-       
         return (
           <>
             <ProfileContainer heightTablet={"58vh"} height={"77vh"} key={page}>
@@ -209,10 +221,10 @@ useEffect(() => {
               <div className="line"></div>
               {/* <DataProfileElement> */}
               <MiniPostProfileContainerElement>
-                {dataPag ?
+                {dataPag ? (
                   dataPag?.map((bookmark) => (
                     <>
-                     {console.log(dataPag, page)}
+                      {console.log(dataPag, page)}
                       <MiniPostProfile
                         key={bookmark._id}
                         page={"bookmark"}
@@ -227,11 +239,10 @@ useEffect(() => {
                         userLikedPosts={userLikedPosts}
                       ></MiniPostProfile>
                     </>
-                  )) : 
-                  <NothingHere path={"/feed"}/>
-                  }
-
-                  
+                  ))
+                ) : (
+                  <NothingHere path={"/feed"} />
+                )}
               </MiniPostProfileContainerElement>
 
               {/* </DataProfileElement> */}

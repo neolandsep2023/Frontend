@@ -7,7 +7,7 @@ display: flex;
 justify-content: space-between;
 align-items: center;
 width: ${({width}) => width ? width : "90%"};
-height: 30px;
+height: ${({height}) => height ? height : "30px"};
 background-color: ${({ theme, variant }) => 
 variant =="normal" ? theme.palette.background.main :
 variant == "inverted" && theme.palette.form.main
@@ -71,9 +71,9 @@ ${({ theme }) => theme.mediaquery.tablet} {
 
 `
 
-export const FlexEnd = ({children, padding, variant, width}) => {
+export const FlexEnd = ({children, padding, variant, width, height, onClick}) => {
   const { theme } = useTheme();
   return (
-    <FlexEndStyles theme={theme} padding={padding} variant={variant} width={width}>{children}</FlexEndStyles>
+    <FlexEndStyles theme={theme} height={height} onClick={onClick} adding={padding} variant={variant} width={width}>{children}</FlexEndStyles>
   )
 }
