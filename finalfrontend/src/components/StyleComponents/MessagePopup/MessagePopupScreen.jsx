@@ -15,7 +15,7 @@ const MessagePopupStyles = styled.div`
   ); /* Adjust the alpha value for transparency */
   z-index: 999;
 
-  div {
+  #uniqueDiv {
     width: ${({ isMobile }) => (isMobile ? "95vw" : "70%")};
     display: flex;
     flex-direction: column;

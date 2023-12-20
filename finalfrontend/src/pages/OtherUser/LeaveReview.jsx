@@ -53,11 +53,11 @@ export const LeaveReview = ({id, setPopupActive, isMobile}) => {
   return (
     <>
         <MessagePopupScreen isMobile={isMobile}>
-      <div >
-        <h1 style={{justifyContent: 'center', display: 'flex', alignItems: 'center', fontSize: '22px'}}>Send a message</h1>
+      <div id="uniqueDiv">
+        <h1 style={{justifyContent: 'center', display: 'flex', alignItems: 'center', fontSize: '22px'}}>Rate the user!</h1>
 
         <form onSubmit={handleSubmit(formSubmit)}>
-            <Rating className="starsss" value={valueStar} onChange={(e) => setValueStar(parseInt(e.target.value))} cancel={false}/>
+            <Rating className="starsss" value={valueStar} onChange={(e) => setValueStar(parseInt(e.target.value))} cancel={false} style={{margin: '1rem 0'}}/>
 
             <input
               type="text"
