@@ -99,7 +99,7 @@ const HomeStyled= styled.div`
     top: -9%;
     left: -5%;
     width: 40vw;
-    background-color: rgb(32, 33, 36);
+    background-color: ${({ theme }) => theme.palette.header.main};
     height: 90%;
     padding: 0 10px;
     border-radius: 5px;
@@ -126,7 +126,7 @@ const HomeStyled= styled.div`
     left: 5%;
     width: 40vw;
     height: 90%;
-    background-color: rgb(32, 33, 36);
+    background-color: ${({ theme }) => theme.palette.header.main};
     border-radius: 5px;
   }
 

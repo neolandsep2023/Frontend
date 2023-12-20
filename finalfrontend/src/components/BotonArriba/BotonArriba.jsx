@@ -34,7 +34,7 @@ const StyledUp=styled.button`
   return (<>
    {showBackToTop && (
         <StyledUp className="back-to-top" onClick={scrollToTop}>
-         <span class="material-symbols-outlined">
+         <span className="material-symbols-outlined">
 arrow_upward
 </span>
         </StyledUp>
