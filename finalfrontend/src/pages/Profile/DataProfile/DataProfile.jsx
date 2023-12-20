@@ -164,7 +164,7 @@ export const DataProfile = ({ page }) => {
       case "reviews":
         return (
           <>
-            <ProfileContainer heightTablet={"58vh"} height={"77vh"} key={page}>
+             <ProfileContainer heightTablet={"58vh"} height={"77vh"} key={page} review={true}>
               <FlexDir>
                 <h1>Reviews of your profile</h1>
                 <MiniPaginacion />
@@ -174,7 +174,7 @@ export const DataProfile = ({ page }) => {
               <MiniPostProfileContainerElement>
                 {dataPag[0] ? (
                   dataPag?.map((review) => (
-                    <ReviewElement key={review._id}>
+                    <ReviewElement key={review._id} padding="2rem 0 1rem 0" margin="3rem 0 1rem 0">
                       {console.log(review)}
 
                       <FlexEnd
