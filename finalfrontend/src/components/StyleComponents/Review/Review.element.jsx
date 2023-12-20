@@ -129,8 +129,9 @@ padding: 20px 0 0 0;
 
   ${({ theme }) => theme.mediaquery.miniMobile} {
     margin: ${({ margin, theme }) => (margin ? margin : theme.spacing(1))};
+    padding: ${({ padding }) => (padding && padding)};
     width: 90vw;
-    height: 80vh;
+    height: fit-content;
 
     & img {
         width: 60px;
@@ -162,8 +163,8 @@ padding: 20px 0 0 0;
 
 
 
-export const ReviewElement = ({children}) => {
+export const ReviewElement = ({padding, margin, children}) => {
   return (
-    <ReviewElementStyle>{children}</ReviewElementStyle>
+    <ReviewElementStyle padding={padding} margin={margin}>{children}</ReviewElementStyle>
   )
 }

@@ -155,24 +155,24 @@ export const UserDataProfile = ({ page, userData }) => {
       case "reviews":
         return (
           <>
-            <ProfileContainer heightTablet={"58vh"} height={"77vh"} key={page}>
+            <ProfileContainer heightTablet={"58vh"} height={"77vh"} key={page} review={true}>
               <FlexDir>
                 <h1>Reviews of  {res?.data?.name ? res?.data?.name : res?.data?.username}'s profile</h1>
                 <MiniPaginacion />
               </FlexDir>
               <div className="line"></div>
               {/* <DataProfileElement> */}
-              <MiniPostProfileContainerElement>
+              <MiniPostProfileContainerElement >
                 {dataPag[0] ?
                   dataPag?.map((review) => (
-                    <ReviewElement key={review._id}>
+                    <ReviewElement key={review._id} padding="2rem 0 1rem 0" margin="3rem 0 1rem 0">
                     {console.log(review)}
 
                     <FlexEnd
                       variant="inverted"
                       height={"70px"}
                     >
-                      <ProfileIcon data={{username: review.creatorName, image: review.creatorImage}}/>
+                      <ProfileIcon className="review" data={{username: review.creatorName, image: review.creatorImage}}/>
                       <h2 className="commentUser">{review.creatorName}</h2>
 
                       <Rating
@@ -211,3 +211,7 @@ export const UserDataProfile = ({ page, userData }) => {
 
   return dataPag && renderSection();
 };
+
+
+//167 <ProfileContainer heightTablet={"58vh"} height={"77vh"} key={page} review={true}>
+//177 <ReviewElement key={review._id} padding="2rem 0 1rem 0" margin="3rem 0 1rem 0">

@@ -17,7 +17,7 @@ const FlexStyle = styled.div`
   border: ${({border}) => (border ? border : "none")};
   border-radius: ${({borderRadius}) => borderRadius ? borderRadius : "0px"};
   background-color: ${({backgroundColor}) => backgroundColor ? backgroundColor : "transparent"};
-  
+
   
 
 

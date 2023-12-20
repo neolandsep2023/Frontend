@@ -36,8 +36,9 @@ export const OtherUserProfileDataMobile = () => {
     <>
       {data && (
         <>
-          <div style={{ position: "absolute", top: "170px" }}>
-            <h1>{data.name ? data.name : data.username}</h1>
+          <div style={{ position: "absolute", top: "110px" }}>
+            <h1>{data.name ? data.name : data.username}'s</h1>
+            <h1>profile</h1>
           </div>
           <ProfileDataMobileElement>
             <FlexDir direction="column" height="100%">

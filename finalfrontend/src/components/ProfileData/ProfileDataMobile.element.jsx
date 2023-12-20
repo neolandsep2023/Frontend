@@ -80,7 +80,7 @@ display: flex;
 
   ${({ theme }) => theme.mediaquery.miniMobile} {
 
-    gap: 4px;
+    /* gap: 4px; esto lo he quitado, parece que normaliza el spacing en el perfil*/
     & h1{
     font-size: 20px;
   }

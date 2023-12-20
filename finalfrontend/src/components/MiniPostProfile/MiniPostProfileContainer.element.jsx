@@ -17,8 +17,8 @@ ${({ theme }) => theme.mediaquery.mobile} {
 
   
   ${({ theme }) => theme.mediaquery.miniMobile} {
-
-    height: 88%;
+    align-items: ${({align}) => (align && align)};
+    height: ${({height}) => height ? height : '88%' };
   }
 
 
@@ -32,8 +32,8 @@ ${({ theme }) => theme.mediaquery.mobile} {
 
 
 
-export const MiniPostProfileContainerElement = ({children}) => {
+export const MiniPostProfileContainerElement = ({height, align, children}) => {
   return (
-    <ContainerStyles>{children}</ContainerStyles>
+    <ContainerStyles align={align} height={height}>{children}</ContainerStyles>
   )
 }

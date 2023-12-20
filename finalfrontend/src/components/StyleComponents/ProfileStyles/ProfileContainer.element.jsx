@@ -14,7 +14,7 @@ width: ${({width}) => width ? width : "66vw" };
 border: 1px solid
     ${({ theme }) => theme.palette.border.main};
 border-radius: 5px;
-background-color: ${({theme}) => theme.palette.form.main};
+background-color: ${({theme}) => theme.palette.form.main} ;
 
 & h1{
   margin: 0
@@ -37,15 +37,20 @@ ${({ theme }) => theme.mediaquery.tablet} {
     margin: 4px;
     height: 930px;
 
+
     & h1{
  font-size: 24px;
 }
 
   }
   ${({ theme }) => theme.mediaquery.miniMobile} {
+    padding: ${({review}) => (review == true && "2rem 0")};
+    margin: ${({review}) => (review == true? '2rem 0 ': '4px')};
+    min-height: ${({review}) => (review == true && '300px')};
+    height: ${({review}) => (review == true ? "fit-content" : '720px')};
+    justify-content: ${({review}) => (review == true && "flex-start")};
     width: 98vw;
-    margin: 4px;
-    height: 720px;
+
     & h1{
  font-size: 22px;
 }
@@ -57,11 +62,11 @@ ${({ theme }) => theme.mediaquery.tablet} {
 
 
 
-export const ProfileContainer = ({children, height, width, margin, heightTablet, justi}) => {
+export const ProfileContainer = ({children, height, width, margin, heightTablet, justi, review}) => {
 
 const { theme } = useTheme()
 
   return (
-    <ProfileContainerStyled theme={theme} height={height} width={width} margin={margin} justi={justi} heightTablet={heightTablet}>{children}</ProfileContainerStyled>
+    <ProfileContainerStyled review={review} theme={theme} height={height} width={width} margin={margin} justi={justi} heightTablet={heightTablet}>{children}</ProfileContainerStyled>
   )
 }
