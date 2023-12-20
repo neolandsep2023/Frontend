@@ -51,7 +51,7 @@ export const Chat = () => {
     let customFormData = {
       textComment: formData.textComment,
       otherUser:
-        activeChat?.userOne._id == user.id
+        activeChat?.userOne._id == user._id
           ? activeChat?.userTwo._id
           : activeChat?.userOne?._id,
     };
