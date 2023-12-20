@@ -50,6 +50,19 @@ const SelectAndOptionsStyle = styled.div`
     transform: translateY(-50%);
     pointer-events: none;
   }
+  ${({ theme }) => theme.mediaquery.mobile} {
+    width: 90%;
+
+  }
+
+  ${({ theme }) => theme.mediaquery.miniMobile} {
+    width: 90%;
+  }
+
+
+
+
+
 `;
 
 export const SelectAndOptions = ({ children }) => {

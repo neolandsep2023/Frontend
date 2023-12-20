@@ -43,35 +43,35 @@ export const DataProfile = ({ page }) => {
 
 const getSavedPosts = async () => {
   const userSavedPosts = await getUserById(user._id); //! TIENE QUE IR EN CONSTANTE POR ASINCRONIA DE REACT, NO EN USE STATE
-  setUserLikedPosts(userSavedPosts?.data?.likedPosts); //! tiene que ser un array - BACK NO POPULADO
+  setUserLikedPosts(userSavedPosts?.data?.savedPosts); //! tiene que ser un array - BACK NO POPULADO
+  
 
 };
 
-
+console.log(userLikedPosts)
 
 useEffect(() => {
   getSavedPosts();
 }, [updatedLikes,res]);
 
 
-console.log(dataPag[0] ? true : false)
 
   useEffect(() => {
     fetchData();
   }, []);
 
   useEffect(() => {
-    if (res?.status == 200) {
-      page == "posted"
+    // if (res?.status == 200) {
+      page === "posted"
         ? setGaleriaItems(res?.data?.myPosts)
-        : page == "rooms"
+        : page === "rooms"
         ? setGaleriaItems(res?.data?.myRooms)
-        : page == "reviews"
+        : page === "reviews"
         ? setGaleriaItems(res?.data?.receivedComments)
-        : page == "bookmarks" && setGaleriaItems(res?.data?.likedPosts);
+        : page === "bookmarks" && setGaleriaItems(res?.data?.savedPosts);
     
-    }
-  }, [res, page]);
+    // }
+  }, [res, page, dataPag]);
 
   const renderSection = () => {
     switch (page) {
@@ -125,23 +125,26 @@ console.log(dataPag[0] ? true : false)
               <div className="line"></div>
               {/* <DataProfileElement> */}
               <MiniPostProfileContainerElement>
-                {dataPag[0] ?
+                {page == "rooms" && dataPag[0] ?
                   dataPag.map((room) => (
                     <>
+                    {console.log(dataPag, page)}
+                    { room && 
                       <MiniPostProfile
                         key={room._id}
                         page={"room"}
                         id={room._id}
                         title={room.title}
-                        text={room.text}
-                        image={typeof(room?.image) == 'string' ? room?.image : room?.image[0] }
+                        text={room.description}
+                        image={room?.image[0]}
                         province={room.province}
                         price={room.price}
                         type={room.type}
                         addToSaved={addToSaved}
                         userLikedPosts={userLikedPosts}
                       ></MiniPostProfile>
-                      {console.log(typeof(room?.image))}
+                      
+                    }
                     </>
                   )) :
                   <NothingHere path={"/createRoom"}/>
@@ -192,6 +195,7 @@ console.log(dataPag[0] ? true : false)
         );
 
       case "bookmarks":
+       
         return (
           <>
             <ProfileContainer heightTablet={"58vh"} height={"77vh"} key={page}>
@@ -202,8 +206,8 @@ console.log(dataPag[0] ? true : false)
               <div className="line"></div>
               {/* <DataProfileElement> */}
               <MiniPostProfileContainerElement>
-                {dataPag[0] ?
-                  dataPag.map((bookmark) => (
+                {dataPag ?
+                  dataPag?.map((bookmark) => (
                     <>
                       <MiniPostProfile
                         key={bookmark._id}

@@ -22,6 +22,24 @@ gap: ${({ gap }) => (gap ? gap : null)};
 
 }
 
+${({ theme }) => theme.mediaquery.tablet} {
+
+
+  }
+
+  ${({ theme }) => theme.mediaquery.mobile} {
+    width: 90%;
+
+  }
+
+  ${({ theme }) => theme.mediaquery.miniMobile} {
+    width: 90%;
+  }
+
+
+
+
+
 `
 
 export const LabelAndInput = ({children, alignItems, parentWidth, inputHeight, gap, margin}) => {

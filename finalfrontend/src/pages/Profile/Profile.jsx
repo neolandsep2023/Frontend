@@ -113,12 +113,11 @@ export const Profile = () => {
 
 
 
-      {/* <ProfileContainer heightTablet={"58vh"} height={"77vh"}> */}
+
 
           <DataProfile page={page}/>
         
-    {/* <Outlet /> */}
-    {/* </ProfileContainer> */}
+ 
     </FlexDir>
     </>
     )
