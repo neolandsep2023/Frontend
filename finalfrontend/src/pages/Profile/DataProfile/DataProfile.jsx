@@ -10,6 +10,7 @@ import { DataProfileElement } from "./DataProfile.element";
 import { FlexDir, ProfileContainer } from "../../../components/StyleComponents";
 import { usePaginacion } from "../../../hooks/usePaginacion";
 import { NothingHere } from "../../../components/NothingHere/NothingHere";
+import { Rating } from "primereact/rating";
 
 export const DataProfile = ({ page }) => {
     const isMobile = window.innerWidth < 576 ? true : false;
@@ -162,28 +163,28 @@ console.log(dataPag[0] ? true : false)
               </FlexDir>
               <div className="line"></div>
               {/* <DataProfileElement> */}
-              <MiniPostProfileContainerElement>
+              <div className='cajonComentarios'>
                 {dataPag[0] ?
-                  dataPag.map((review) => (
-                    <>
-                      <MiniPostProfile
-                        key={review._id}
-                        page={"review"}
-                        id={review._id}
-                        title={review.title}
-                        text={review.text}
-                        image={review.image}
-                        province={review.province}
-                        price={review.price}
-                        type={review.type}
-                        addToSaved={addToSaved}
-                        userLikedPosts={userLikedPosts}
-                      ></MiniPostProfile>
-                    </>
+                  dataPag?.map((review) => (
+                    <div key={review._id} className="commentContainer">
+                      <div className='commentHeader'>
+                      <img src={review.creatorImage} className="commentImage" alt="Creator" />
+                    <span className="commentUser">{review.creatorName}</span>
+                    <Rating
+                        className="starss" 
+                          value={review?.rating}
+                          readOnly
+                          cancel={false}
+                        />
+                      </div>
+                      
+                    <p className="commentText">{review.textComment}</p>
+                   
+                  </div>
                   )) :
                   <NothingHere path={"/feed"}/>
                   }
-              </MiniPostProfileContainerElement>
+              </div>
 
               {/* </DataProfileElement> */}
             </ProfileContainer>
