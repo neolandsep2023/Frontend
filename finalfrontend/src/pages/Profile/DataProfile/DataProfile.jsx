@@ -75,7 +75,7 @@ export const DataProfile = ({ page }) => {
       : page === "bookmarks" && setGaleriaItems(res?.data?.savedPosts);
 
     // }
-  }, [res, page, dataPag]);
+  }, [res, page]);
 
   const renderSection = () => {
     switch (page) {
