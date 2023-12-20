@@ -1,8 +1,9 @@
 import { useEffect, useState } from "react"
 import { getUserByName } from "../../services/user.service"
 import { NothingHere } from "../NothingHere/NothingHere"
-import "./FindUsers.css"
+// import "./FindUsers.css"
 import { getPostByIdUnpopulated, toggleRoommate } from "../../services/post.service"
+import { FindUserStyle } from "./FindUsers.element"
 
 export const FindUsers = ({ postId, resCheck, setResCheck }) => {
   const [findNameValue, setFindNameValue] = useState()
@@ -28,7 +29,8 @@ export const FindUsers = ({ postId, resCheck, setResCheck }) => {
   }, [res, resToggle])
 
   return (
-    <div id="userFinderPage">
+    // <div id="userFinderPage">
+    <FindUserStyle>
       <div id = "userFinderContainer">
         <input  id = "userFinderInput" placeholder = "enter a user's name" type="text" onChange={(e) => {setFindNameValue(e.target.value)}}/>
         <button type="submit" id = "findUsersButton" onClick={(e) => handleSubmit(e)}>🔎</button>
@@ -50,6 +52,7 @@ export const FindUsers = ({ postId, resCheck, setResCheck }) => {
         })}
       </div>
       : res && <NothingHere page="post"/>}
-    </div>
+    </FindUserStyle>
+    // </div>
   )
 }

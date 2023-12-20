@@ -1,15 +1,15 @@
 import {TiChevronLeftOutline, TiChevronRightOutline} from 'https://cdn.skypack.dev/react-icons/ti';
 
 import React, { useEffect, useState } from "react";
-import "./Carousel.css"
+import { CarouselStyles, ImageCarouselStyles } from './Carousel.element';
 
 let CARDS
 const MAX_VISIBILITY = 2;
 
 const Image = ({src, alt}) => (
-  <div className='card'>
+  <ImageCarouselStyles>
     <img src = {src} alt = {alt}/>
-  </div>
+  </ImageCarouselStyles>
 );
 
 const Carousel = ({children}) => {
@@ -21,7 +21,7 @@ const Carousel = ({children}) => {
   }, [])
   
   return (
-    <div className='carousel'>
+    <CarouselStyles>
       {active > 0 && <button className='nav left' onClick={() => setActive(i => i - 1)}><TiChevronLeftOutline/></button>}
       {React.Children.map(children, (child, i) => (
         <div key = {i} id='card-container' style={{
@@ -37,7 +37,7 @@ const Carousel = ({children}) => {
         </div>
       ))}
       {active < count - 1 && <button className='nav right' onClick={() => setActive(i => i + 1)}><TiChevronRightOutline/></button>}
-    </div>
+    </CarouselStyles>
   );
 };
 

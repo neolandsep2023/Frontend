@@ -1,20 +1,23 @@
 import {TiChevronLeftOutline, TiChevronRightOutline} from 'https://cdn.skypack.dev/react-icons/ti';
 import { Rating } from 'primereact/rating';
 import React, { useEffect, useState } from "react";
-import "./ReviewsCarousel.css"
+// import "./ReviewsCarousel.css"
+import { ReviewCarouselStyles, ReviewStyles } from './ReviewCarousel.element';
 
 let CARDS
 const MAX_VISIBILITY = 3;
 
 const Review = ({src, alt, name, lastname, textComment, rating}) => (
-  <div className='cardReview'>
+  // <div className='cardReview'>
+  <ReviewStyles>
     <img id="userPhotoReview" src = {src} alt = {alt}/>
     <h4>{name} {lastname}</h4>
     <Rating className="rating" value={rating} readOnly cancel={false} />
     <p >"{textComment}"</p>
     <img className="quotationMarkImage firstQuotation" src="https://cdn-icons-png.flaticon.com/512/1633/1633659.png" alt="quotation mark" />
     <img className="quotationMarkImage secondQuotation" src="https://cdn-icons-png.flaticon.com/512/1633/1633659.png" alt="qutation mark" />
-  </div>
+  </ReviewStyles>
+  // </div>
 );
 
 const Carousel = ({children}) => {
@@ -26,7 +29,8 @@ const Carousel = ({children}) => {
   }, [])
   
   return (
-    <div className='carouselReview'>
+    // <div className='carouselReview'>
+    <ReviewCarouselStyles>
       {active > 0 && <button className='navReview leftreview' onClick={() => setActive(i => i - 1)}><TiChevronLeftOutline/></button>}
       {React.Children.map(children, (child, i) => (
         <div key = {i} id='card-containerReview' style={{
@@ -42,7 +46,8 @@ const Carousel = ({children}) => {
         </div>
       ))}
       {active < count - 1 && <button className='navReview rightreview' onClick={() => setActive(i => i + 1)}><TiChevronRightOutline/></button>}
-    </div>
+    </ReviewCarouselStyles>
+    // </div>
   );
 };
 

@@ -4,7 +4,7 @@ export const CarouselStyles = styled.div`
   position: relative;
   width: 50vw;
   height: 35vw;
-  perspective: 150px;
+  perspective: 500px;
   transform-style: preserve-3d;
   @media screen and (max-width: 576px){
     width: 65vw;
@@ -18,7 +18,7 @@ export const CarouselStyles = styled.div`
     rotateY(calc(var(--offset) * 50deg)) 
     scaleY(calc(1 + var(--abs-offset) * -0.4))
     translateZ(calc(var(--abs-offset) * -30rem))
-    translateX(calc(var(--direction) * -5rem));
+    translateX(calc(var(--direction) * -1rem));
     filter: blur(calc(var(--abs-offset) * 1rem));
     transition: all 0.3s ease-out;
   }
