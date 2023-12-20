@@ -1,9 +1,17 @@
 import React, { useEffect, useState } from 'react'
 import { ButtonPrimary } from '../StyleComponents';
-
+import styled from '@emotion/styled';
 export const BotonArriba = () => {
     const [showBackToTop, setShowBackToTop] = useState(false);
-
+const StyledUp=styled.button`
+  border-radius: 10px;
+  display: flex;
+  cursor: pointer;
+  padding: 10px;
+  & span{
+    font-size: 30px;
+  }
+`
     const handleScroll = () => {
       if (window.scrollY > 20) {
         setShowBackToTop(true);
@@ -25,9 +33,11 @@ export const BotonArriba = () => {
     }, []);
   return (<>
    {showBackToTop && (
-        <ButtonPrimary className="back-to-top" onClick={scrollToTop}>
-          Back to Top
-        </ButtonPrimary>
+        <StyledUp className="back-to-top" onClick={scrollToTop}>
+         <span class="material-symbols-outlined">
+arrow_upward
+</span>
+        </StyledUp>
       )}</>
    
   )

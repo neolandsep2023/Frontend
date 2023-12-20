@@ -3,7 +3,7 @@ import styled from "@emotion/styled";
 
 const StyledHeaderSmall = styled.div`
   .zonaMobile {
-  background-color: rgba(37, 37, 37, 0.582);
+  background-color: rgba(109, 108, 108, 0.582);
   position: absolute;
   top: 12vh;
   width: 100%;
@@ -28,6 +28,9 @@ const StyledHeaderSmall = styled.div`
   border-radius: 50%;
   width: 50px;
   height: 50px;
+  background-color: rgb(74, 206, 130);
+  cursor: pointer;
+  
 
 }
 
@@ -43,7 +46,7 @@ const StyledHeaderSmall = styled.div`
 }
 
 .headerSmall {
-    background-color: ${({ theme }) => theme.palette.background.header};
+    background-color: ${({ theme }) => theme.palette.header.main};
   height: 12vh;
   display: flex;
   flex-direction: column;
@@ -58,7 +61,7 @@ const StyledHeaderSmall = styled.div`
  
 }
 .smallUno {
-    background-color: ${({ theme }) => theme.palette.background.header};
+    background-color: ${({ theme }) => theme.palette.header.main};
 width: 100%;
   display: flex;
   
@@ -70,10 +73,15 @@ width: 100%;
   min-height: 100px;
   border-bottom: 1px solid rgba(0, 0, 0, 0.267);
 }
+.botonesHS{
+  display: flex;
+
+}
 
 .hamburguesa {
-    background-color: ${({ theme }) => theme.palette.background.main};
+    background-color: ${({ theme }) => theme.palette.header.main};
   border: none;
+  color: rgb(74, 206, 130);
   height: 100%;
   display: flex;
   justify-content: center;
@@ -128,11 +136,6 @@ width: 100%;
     font-weight: 600;
     min-width: 60px;
     cursor: pointer;
-}
-.imgDark:hover{
-  color: white;
-  background-color: rgb(74, 206, 130);
-  cursor: pointer;
 }
 
 

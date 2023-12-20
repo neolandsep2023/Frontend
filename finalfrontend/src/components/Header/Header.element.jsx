@@ -19,7 +19,7 @@ const StyledHeader = styled.div`
   min-height: 100px;
   max-height: 140px;
 
-  background-color: ${({ theme }) => theme.palette.background.main};
+  background-color: ${({ theme }) => theme.palette.header.main};
 }
 
 .navs {
@@ -59,6 +59,13 @@ const StyledHeader = styled.div`
 .botonesH img{
  height: 50px;
  width: 50px;
+ background-color:rgb(74, 206, 130);
+ object-position: cover;
+ padding: 2px;
+}
+.botonesH img:hover{
+    background-color: ${({ theme }) => theme.palette.background.header};
+ cursor: pointer;
 }
 .navDos {
   display: flex;

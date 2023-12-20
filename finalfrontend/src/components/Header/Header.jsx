@@ -4,6 +4,7 @@ import { useThemeApp } from "../../context/themeContext";
 import { useAuth } from "../../context/authContext";
 import { HeaderSmall } from "./HeaderSmall";
 import { HeaderElement } from "./Header.element";
+import { ButtonPrimary } from "../StyleComponents";
 
 export const Header = () => {
   const [isMobile, setIsMobile] = useState(window.innerWidth < 776);
@@ -43,6 +44,7 @@ export const Header = () => {
             <img   style={{ width: 50, borderRadius: "50%" }}className="buttonHeader" onClick={toggleTheme}   src="https://res.cloudinary.com/djfkchzyq/image/upload/v1703067364/xgavzjkhbovd4tm1oryx.png"></img>
              
               {user != null ? (
+                <>
                 <Link to={"/profile"}>
                   <img
                     style={{ width: 50, borderRadius: "50%" }}
@@ -50,12 +52,22 @@ export const Header = () => {
                     alt="User"
                   />
                 </Link>
-              ): <button
+                <Link to={"/"}>
+                  <img
+                  onClick={logout}
+                    style={{ width: "50px", borderRadius: "50%" }}
+                    src={"https://res.cloudinary.com/djfkchzyq/image/upload/v1703085474/gofafal1tqzr9rcwzk96.png"}
+                    alt="User"
+                  />
+                </Link>
+
+                </>
+              ): <ButtonPrimary
               className="buttonHeader"
               onClick={ navigateToLogin}
             >
               { "LOG IN"}
-            </button>}
+            </ButtonPrimary>}
             </div>
             <nav className="navDos">
               <ul className="mainNav">
