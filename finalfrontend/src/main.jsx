@@ -1,7 +1,5 @@
 import React from 'react'
 import ReactDOM from 'react-dom/client'
-import App from './App.jsx'
-import './index.css'
 import { AuthContextProvider } from './context/authContext.jsx'
 import { ThemeContextProvider } from './context/themeContext.jsx'
 import { GoogleOAuthProvider } from '@react-oauth/google'

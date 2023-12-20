@@ -8,7 +8,6 @@ import { usePaginacion } from '../../hooks/usePaginacion';
 import { useAuth } from '../../context/authContext';
 import { NothingHere } from '../../components/NothingHere/NothingHere';
 import { UserReview } from '../../components/UserReview/UserReview';
-import"./UserReview.css"
 import { Rating } from "primereact/rating";
 
 export const UserDataProfile = ({ page, userData }) => {
@@ -203,8 +202,7 @@ export const UserDataProfile = ({ page, userData }) => {
         case "createComment":
           return (
             <ProfileContainer heightTablet={"58vh"} height={"77vh"} key={page}>
-            <UserReview  userData={userData} action="usercomment"/>
-
+         { userData &&   <UserReview  userData={userData} action="usercomment"/>}
             {/* </DataProfileElement> */}
           </ProfileContainer>
           );

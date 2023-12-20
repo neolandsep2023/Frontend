@@ -19,6 +19,7 @@ import { PostById } from "../pages/PostById/PostById";
 import { UpdatePost } from "../pages/Update/UpdatePost";
 import { UpdateRoom } from "../pages/Update/UpdateRoom";
 import { User } from "../pages/OtherUser/User";
+import { UserDataProfile } from "../pages/OtherUser/UserDataProfile";
 
 
 
@@ -135,24 +136,45 @@ export const router = createBrowserRouter ([
                     <User />
                   </Protected>
                 ),
-                children: [
-                  {
-                    path: "/user/:username/posted",
-                    element: (
-                      <Protected>
-                        {/* <PostedPage /> */}
-                      </Protected>
-                    ),
-                  },
-                  {
-                    path: "/user/:username/reviews",
-                    element: (
-                      <Protected>
-                        {/* <ReviewPage /> */}
-                      </Protected>
-                    ),
-                  },
-                ],
+                // children: [
+                //   {
+                //     path: "/user/:username/posted",
+                //     element: (
+                //       <Protected>
+                //         {/* <PostedPage /> */}
+                //       </Protected>
+                //     ),
+                //   },
+                //   {
+                //     path: "/user/:username/reviews",
+                //     element: (
+                //       <Protected>
+                //         {/* <ReviewPage /> */}
+                //       </Protected>
+                //     ),
+                //   },
+                // ],
+              },
+              {
+                path: "/user/:username/posts",
+                element: 
+                (<Protected>
+                <UserDataProfile page={"posted"}/>
+                </Protected>),
+              },
+              {
+                path: "/user/:username/rooms",
+                element: 
+                (<Protected>
+                <UserDataProfile page={"rooms"}/>
+                </Protected>),
+              },
+              {
+                path: "/user/:username/reviews",
+                element: 
+                (<Protected>
+                <UserDataProfile page={"reviews"}/>
+                </Protected>),
               },
         
               {

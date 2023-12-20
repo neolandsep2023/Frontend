@@ -62,7 +62,7 @@ export const OtherUserProfileDataMobile = () => {
               <div
                 className="links"
                 style={{ height: "calc(100%/2.5)" }}
-                onClick={() => navigate("/profile/mobile/posts")}
+                onClick={() => navigate(`/user/${data.username}/posts`)}
               >
                 <span className="material-symbols-outlined">article</span>{" "}
                 {data.name ? data.name : data.username}'s Posts
@@ -75,7 +75,7 @@ export const OtherUserProfileDataMobile = () => {
               <div
                 className="links"
                 style={{ height: "calc(100%/2.5)" }}
-                onClick={() => navigate("/profile/mobile/rooms")}
+                onClick={() => navigate(`/user/${data.username}/rooms`)}
               >
                 <span className="material-symbols-outlined">meeting_room</span>{" "}
                 {data.name ? data.name : data.username}'s Rooms
@@ -88,7 +88,7 @@ export const OtherUserProfileDataMobile = () => {
               <div
                 className="links"
                 style={{ height: "calc(100%/2.5)" }}
-                onClick={() => navigate("/profile/mobile/reviews")}
+                onClick={() => navigate(`/user/${data.username}/reviews`)}
               >
                 <span className="material-symbols-outlined">star</span>{" "}
                 {data.name ? data.name : data.username}'s Reviews

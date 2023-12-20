@@ -88,7 +88,7 @@ padding: 20px 0 0 0;
 
     & p {
       max-height: 70%;
-      max-width: 100%;
+      max-width: 80%;
       font-size: 13px;
     }
     & h3 {
@@ -117,7 +117,7 @@ padding: 20px 0 0 0;
 
     & p {
       max-height: 70%;
-      max-width: 100%;
+      max-width: 80%;
       font-size: 16px;
     }
     & h3 {
@@ -138,7 +138,7 @@ padding: 20px 0 0 0;
 
     & p {
       max-height: 70%;
-      max-width: 100%;
+      max-width: 80%;
       font-size: 16px;
     }
     & h3 {
