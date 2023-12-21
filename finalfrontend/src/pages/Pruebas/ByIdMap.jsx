@@ -5,6 +5,8 @@ import './pruebas.css'
 import { postcodes } from '../../../data/noAbrirElArchivoEsDemasiadoLargo/shortPostcodes';
 
 export const ByIdMap = ({ postcode, province, ccaa }) => {
+console.log(province, ccaa, postcode)
+
   const mapRef = useRef(null);
   const markerRef = useRef(null);
 

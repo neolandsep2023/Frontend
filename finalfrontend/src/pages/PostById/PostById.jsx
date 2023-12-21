@@ -47,10 +47,12 @@ export const PostById = () => {
   //todo ------------- Get Post --------------
   const fetchPost = async () => {
     const data = await getPostById(id)
+    console.log(data)
     setRes(data)
     setPublicLocation(data.data.publicLocation)
     setProvince(data.data.province)
     setPostcode(data.data.postcode)
+    // console.log(postcode)
 
   }
 
@@ -198,7 +200,7 @@ export const PostById = () => {
           <hr style={{ border: "none", borderTop: "3px dashed #72cc8999", width: "100vw", margin: "3vh 0" }} />
           <FlexDir direction="column" margin="7vh">
             <H3Custom margin="0 0 -1rem 0">Location</H3Custom>
-            {postcode != "" && <ByIdMap type="repeat" postcode={parseInt(postcode)} province={province} ccaa={publicLocation} />}
+            {postcode != "" && <ByIdMap type="repeat" postcode={postcode} province={province} ccaa={publicLocation} />}
           </FlexDir>
           <FlexDir mediaqueryMarginMobile="0" mediaqueryMarginTablet="1rem 0 0 0" margin="5rem 0 0 0">
             <RoomReview roomId={res?.data?._id} />
