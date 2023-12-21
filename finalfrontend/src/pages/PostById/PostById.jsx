@@ -19,6 +19,7 @@ import { SavePostElement } from "../../components/StyleComponents/AddElement/Sav
 import { MessagePopup } from "../../components/OtherUser/MessagePopup";
 import { LinkRoomButton } from "../../components/StyleComponents/Buttons/LinkRoom";
 import { PopUpLink } from "../../components/PopUp/PopUpLink";
+import { WarningElement } from "../../components/StyleComponents/Warning/Warning.element";
 
 
 export const PostById = () => {
@@ -113,7 +114,9 @@ export const PostById = () => {
     <>
       {res &&
         <FlexDir minHeight="100vh" direction="column" margin="0">
-          <h1 style={{ fontSize: "4vw" }}>{res?.data?.title}</h1>
+          <H3Custom fontSize="45px">{res?.data?.title}</H3Custom>
+          {(res?.data?.roommates?.length == 0 || res?.data?.room?.length == 0) && 
+          <WarningElement>{`Please complete post. ${(res?.data?.room?.length == 0 && res?.data?.roommates?.length == 0) ? "Room and roommates" : res?.data?.roommates?.length == 0 ? "Roommates" : res?.data?.room?.length == 0 && "Room" } field is missing`} </WarningElement>}
           <FlexDir direction="row" gap="2rem" mediaqueryDirMobile="column">
             <FlexDir width="60vw" direction="column">
               <ByIdImageCustom src={res?.data?.image} />
@@ -135,6 +138,8 @@ export const PostById = () => {
               </UlCustom>
               {!isOwner && <ConnectButtonCustom onClick={showPopup}>Connect</ConnectButtonCustom>}
               {isOwner && <Link to={`/updatePost/${id}`}><UpdateButton page="post" /></Link>}
+              {res?.data?.room?.length == 0 && 
+          <WarningElement>Link a room</WarningElement>}
               {isOwner && res?.data?.type == "RoommateSeeker" && <LinkRoomButton setPopupLinkActive={setPopupLinkActive}/>}
             </FlexDir>
           </FlexDir>
@@ -156,6 +161,8 @@ export const PostById = () => {
 {res?.data?.type == "RoommateSeeker" && (
           <FlexDir direction="column" width="100vw" margin="7vw 0" mediaqueryMarginMobile="4vw 0" mediaqueryMarginTablet="6vw 0">
             <H3Custom margin="0 0 1vw 0">The roomates</H3Custom>
+            {res?.data?.roommates?.length == 0 && 
+          <WarningElement>Please add a roommate</WarningElement>}
             {(res?.data?.roommates?.length > 0 && isOwner) &&
               <div style={{ display: "flex", flexDirection: "row" }}>
                 <NoRoomate width="5vw" height="5vw" id={res?.data?._id} resCheck={resCheck} setResCheck={setResCheck}/>

@@ -75,7 +75,7 @@ export const ProfileDataMobile = () => {
           >
             edit
           </span>
-          Edit Profile
+          Edit 
           <span className="material-symbols-outlined arrow">chevron_right</span>
         </div>
 
