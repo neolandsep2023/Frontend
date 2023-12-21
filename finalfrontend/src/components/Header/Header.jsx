@@ -41,13 +41,15 @@ export const Header = () => {
           </Link>
           <div className="navs">
             <div className="botonesH">
-            <img   style={{ width: 50, borderRadius: "50%" }}className="buttonHeader" onClick={toggleTheme}   src="https://res.cloudinary.com/djfkchzyq/image/upload/v1703067364/xgavzjkhbovd4tm1oryx.png"></img>
+              <Link>
+              <img  onClick={toggleTheme}   src="https://res.cloudinary.com/djfkchzyq/image/upload/v1703067364/xgavzjkhbovd4tm1oryx.png"></img>
+</Link>
              
               {user != null ? (
                 <>
                 <Link to={"/profile"}>
                   <img
-                    style={{ width: 50, borderRadius: "50%" }}
+                  
                     src={user.image}
                     alt="User"
                   />
@@ -55,7 +57,7 @@ export const Header = () => {
                 <Link to={"/"}>
                   <img
                   onClick={logout}
-                    style={{ width: "50px", borderRadius: "50%" }}
+               
                     src={"https://res.cloudinary.com/djfkchzyq/image/upload/v1703085474/gofafal1tqzr9rcwzk96.png"}
                     alt="User"
                   />

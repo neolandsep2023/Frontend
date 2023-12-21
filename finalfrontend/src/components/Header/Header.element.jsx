@@ -51,6 +51,7 @@ const StyledHeader = styled.div`
 .botonesH {
   display: flex;
   gap: 10px;
+
   justify-content: flex-end;
   align-items: center;
   margin-right: 3vw;
@@ -60,8 +61,10 @@ const StyledHeader = styled.div`
  height: 50px;
  width: 50px;
  background-color:rgb(74, 206, 130);
- object-position: cover;
+ object-fit: cover;
  padding: 2px;
+
+ border-radius:50%;
 }
 .botonesH img:hover{
     background-color: ${({ theme }) => theme.palette.background.header};
