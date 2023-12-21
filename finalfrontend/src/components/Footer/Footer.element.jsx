@@ -3,9 +3,11 @@ import styled from "@emotion/styled";
 
 const StyledFooter = styled.div`
  
-
+& li{
+    color: white;
+}
 .footer {
-    background-color: ${({ theme }) => theme.palette.background.main};
+    background-color: black;
    
 
 }
@@ -24,7 +26,7 @@ text-align: center;
 }
 
 .footer-column h2 {
-    color:  ${({ theme }) => theme.palette.enhanced.main};;
+    color:  ${({ theme }) => theme.palette.button.light};;
 }
 
 
@@ -44,7 +46,8 @@ text-align: center;
 
 
 .footer-bottom {
-    background-color: ${({ theme }) => theme.palette.enhanced.main};
+    background-color: ${({ theme }) => theme.palette.button.light};
+    color: black;
     padding: 10px 0;
     text-align: center;
 }

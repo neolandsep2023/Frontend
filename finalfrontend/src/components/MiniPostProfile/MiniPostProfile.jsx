@@ -1,5 +1,5 @@
 import { Link } from "react-router-dom"
-import { FlexDir, FlexEnd, SaveElement } from "../StyleComponents"
+import { FlexDir, FlexEnd, SaveElement, SavedElement } from "../StyleComponents"
 import { MiniPostProfileElement } from "./MiniPostProfile.element"
 import { useEffect, useState } from "react"
 
@@ -19,11 +19,10 @@ export const MiniPostProfile = ({id, title, text, image, province, price, type, 
     <>
     <MiniPostProfileElement>
  
-    { isMobile && <SaveElement onClick={()=> addToSaved(id)} variant={isSaved ? "saved" : "normal"}/>}
+ 
     <Link to={path}>
-    { !isMobile && <SaveElement onClick={()=> addToSaved(id)} variant={isSaved ? "saved" : "normal"}/>}
-      <FlexDir direction={"column"} padding={"12px"}>
-       
+      <FlexDir direction={"column"} padding={"12px"} gap={"10px"}>
+      <SavedElement onClick={()=> addToSaved(id)} variant={isSaved ? "saved" : "normal"}/>
           
         { page != "room" && <img src={image} alt="img post" />}
         {/* { page === "room" && <img src={image[0]} alt="img post" />} */}

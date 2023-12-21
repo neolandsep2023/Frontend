@@ -1,6 +1,6 @@
 import { Link } from "react-router-dom"
 import { MiniPostStyle } from "./MiniPosts.element"
-import { AddElement, FlexDir, FlexEnd, SaveElement } from "../StyleComponents"
+import { AddElement, FlexDir, FlexEnd, SaveElement, SavedElement } from "../StyleComponents"
 import { useEffect, useState } from "react"
 
 
@@ -27,8 +27,9 @@ useEffect(() => {
     
         
     <MiniPostStyle>
-    <SaveElement onClick={()=> addToSaved(id)} variant={isSaved ? "saved" : "normal"}/>
-        <FlexDir  direction={"column"} width={"100%"}>
+
+        <FlexDir  direction={"column"} width={"100%"} gap={"0"}>
+            <SavedElement onClick={()=> addToSaved(id)} variant={isSaved ? "saved" : "normal"}/>
         <Link to={path}>
             <FlexDir  width={"100%"} height={"70%"} mediaqueryHeightMobile={"95%"} mediaqueryDirMobile={"column"} margin={"0"}>
         <img src={image} alt="img post" />

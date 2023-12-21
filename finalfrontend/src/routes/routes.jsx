@@ -136,24 +136,6 @@ export const router = createBrowserRouter ([
                     <User />
                   </Protected>
                 ),
-                // children: [
-                //   {
-                //     path: "/user/:username/posted",
-                //     element: (
-                //       <Protected>
-                //         {/* <PostedPage /> */}
-                //       </Protected>
-                //     ),
-                //   },
-                //   {
-                //     path: "/user/:username/reviews",
-                //     element: (
-                //       <Protected>
-                //         {/* <ReviewPage /> */}
-                //       </Protected>
-                //     ),
-                //   },
-                // ],
               },
               {
                 path: "/user/:username/posts",

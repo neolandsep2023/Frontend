@@ -27,6 +27,7 @@ const {login} = useAuth();
         gender,
       
       };
+      console.log(customUser)
 
       const userToJSONString = JSON.stringify(customUser)
       login(userToJSONString);

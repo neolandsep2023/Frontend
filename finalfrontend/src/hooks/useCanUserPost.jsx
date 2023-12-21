@@ -1,27 +1,27 @@
 import Swal from "sweetalert2";
 
-export const useCanUserPost = (user, navigate) => {
-    console.log(user)
+export const useCanUserPost = (data, navigate) => {
+    console.log(data)
   if (
-    user.description == "" || user.description == null ||
-    user.name == "" || user.name == null ||
-    user.lastName == "" || user.lastName == null ||
-    user.birthYear == "" || user.birthYear == null ||
-    user?.interests?.length == 0 || user.interests == null
+    data.description == "" || data.description == null ||
+    data.name == "" || data.name == null ||
+    data.lastName == "" || data.lastName == null ||
+    data.birthYear == "" || data.birthYear == null ||
+    data?.interests?.length == 0 || data.interests == null
   ) {
     console.log("hola")
     const modifyThis = [];
     const requiredData = ["description", "name", "lastName", "birthYear", "interests"]
 
-    console.log(Object.keys(user))
-    for (let i = 0; i < Object.keys(user).length; i++) {
-        if (Object.values(user)[i].length === 0 ) {
+    console.log(Object.keys(data))
+    for (let i = 0; i < Object.keys(data).length; i++) {
+        if (Object.values(data)[i].length === 0 ) {
           console.log("length 0")
-            modifyThis.push(Object.keys(user)[i])
+            modifyThis.push(Object.keys(data)[i])
         }
     }
           for (let i = 0; i < requiredData.length; i++) {
-            user[requiredData[i]] ? console.log("hola") : modifyThis.push(requiredData[i])
+            data[requiredData[i]] ? console.log("hola") : modifyThis.push(requiredData[i])
             
           }
     let joint = modifyThis.join(", ")

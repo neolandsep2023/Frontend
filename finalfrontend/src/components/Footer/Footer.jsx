@@ -23,24 +23,24 @@ export const Footer = () => {
             <h2>Quick Links</h2>
             <ul>
             <NavLink to={"/feed"} >
-                Feed
+            <li> Feed</li>
               </NavLink>
          
 
            
            
               <NavLink to={"/roomSearch"} >
-                Room Search
+               <li> Room Search</li>
               </NavLink>
           
 
         
               <NavLink to={"/createRoom"} >
-                Create Room
+               <li>Create Room</li> 
               </NavLink>
         
               <NavLink to={"/createPost"} >
-                Create Post
+                <li>Create Post</li> 
               </NavLink>
             </ul>
           </div>

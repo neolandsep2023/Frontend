@@ -348,7 +348,7 @@ export const CreatePost = () => {
 
           <LabelAndInput alignItems={"center"}>
           <label htmlFor="preferredGender">
-          { postType == 'RoommateSeeker' ? 'What gender are you looking for in your roommate?' : 'What gender do you identify as?'}
+          What gender are you looking for in your roommate?
             
           </label>
           <RadioInput minW="calc(100% / 2.2)">
@@ -376,13 +376,13 @@ export const CreatePost = () => {
               value="irrelevant"
               {...register("preferredGender", { required: true })}
             />
-            <label htmlFor="irrelevant">{postType == 'RoommateSeeker' ? 'Irrelevant' : 'None of those'}</label>
+            <label htmlFor="irrelevant">Irrelevant</label>
           </RadioInput>
         </LabelAndInput>
 
         <SelectAndOptions>
             <label htmlFor="publicLocation">
-              Community where the property is located.
+            { postType == 'RoommateSeeker' ?  "Community where the property is located." : "Community you are interested in."}
             </label>
             <select
               name="publicLocation"
@@ -412,7 +412,7 @@ export const CreatePost = () => {
 
           <SelectAndOptions>
             <label htmlFor="province">
-              Province where the property is located.
+            { postType == 'RoommateSeeker' ? "Province where the property is located." : "Province you are interested in."}
             </label>
             <select
               name="province"
@@ -439,7 +439,7 @@ export const CreatePost = () => {
 <>
 <SelectAndOptions>
   <label htmlFor="postcode">
-    Postcode the property belongs to.
+  { postType == 'RoommateSeeker' ? "Postcode the property belongs to." : "Postcode where you would like to live."}
   </label>
   <select
     name="postcode"

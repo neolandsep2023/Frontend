@@ -72,10 +72,11 @@ let userAge = data?.birthYear && (2023 - data?.birthYear)
 
 
         </FlexDir >
-<FlexDir width={"100%"} gap={"0"} margin={"0"}>
+
+        </FlexDir>
+        <FlexDir width={"100%"} gap={"0"} margin={"0"}>
         <ButtonPrimary variant={"normal"} width={"50%"} onClick={() => navigate("/profile/edit")}>Edit Profile</ButtonPrimary>
         <ButtonPrimary variant={"inverted"} width={"50%"} onClick={() => navigate("/profile/settings")}>Settings </ButtonPrimary>
-        </FlexDir>
         </FlexDir>
     </ProfileDataDesktopElement>
 

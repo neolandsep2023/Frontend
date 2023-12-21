@@ -65,12 +65,13 @@ align-items: center;
 
   ${({ theme }) => theme.mediaquery.bigScreen} {
     width: 48%;
-    height: 85%;
+    height: 100%;
     & img {
       width: 35%;
     }
 
     & p {
+      -webkit-line-clamp: 2;
       max-height: 70%;
       max-width: 100%;
       font-size: 13px;
@@ -91,7 +92,7 @@ align-items: center;
   }
 
   ${({ theme }) => theme.mediaquery.laptop} {
-    height: 85%;
+    height: 90%;
     & img {
       width: 35%;
     }
@@ -101,7 +102,7 @@ align-items: center;
 
   ${({ theme }) => theme.mediaquery.tablet} {
     width: 48%;
-    min-height: 85%;
+    min-height: 95%;
     & img {
       width: 30%;
     }
@@ -132,7 +133,8 @@ align-items: center;
     }
 
     & p {
-      max-height: 70%;
+      -webkit-line-clamp: 5;
+      height: 80%;
       max-width: 100%;
       font-size: 16px;
     }
@@ -153,7 +155,8 @@ align-items: center;
     }
 
     & p {
-      max-height: 70%;
+      -webkit-line-clamp: 5;
+      height: 80%;
       max-width: 100%;
       font-size: 16px;
     }

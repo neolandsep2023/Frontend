@@ -3,7 +3,7 @@ import styled from "@emotion/styled"
 
 
 const ProfileContainerStyled = styled.div`
-
+gap:8px;
 display: flex;
 align-items: ${({justi}) => justi ? justi : "center"};
 justify-content: center; ;
@@ -33,9 +33,13 @@ ${({ theme }) => theme.mediaquery.tablet} {
   }
 
   ${({ theme }) => theme.mediaquery.mobile} {
+    padding: ${({review}) => (review == true && "2rem 0")};
+    margin: ${({review}) => (review == true? '2rem 0 ': '14px 4px')};
+    min-height: ${({review}) => (review == true && '300px')};
+    height: ${({review}) => (review == true ? "fit-content" : "fit-content" )};
+    justify-content: ${({review}) => (review == true && "flex-start")};
     width: 98vw;
-    margin: 4px;
-    height: 930px;
+
 
 
     & h1{
@@ -45,9 +49,9 @@ ${({ theme }) => theme.mediaquery.tablet} {
   }
   ${({ theme }) => theme.mediaquery.miniMobile} {
     padding: ${({review}) => (review == true && "2rem 0")};
-    margin: ${({review}) => (review == true? '2rem 0 ': '4px')};
+    margin: ${({review}) => (review == true? '2rem 0 ': '14px 4px')};
     min-height: ${({review}) => (review == true && '300px')};
-    height: ${({review}) => (review == true ? "fit-content" : '720px')};
+    height: ${({review}) => (review == true ? "fit-content" : "fit-content" )};
     justify-content: ${({review}) => (review == true && "flex-start")};
     width: 98vw;
 

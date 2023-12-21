@@ -37,7 +37,7 @@ if (res?.status == 200){
     isVerified: res.data.updatedUser.isVerified,
     gender: res.data.updatedUser.gender,
     interests: res.data.updatedUser.interests,
-    role: res.data.updatedUser.interests,
+    role: res.data.updatedUser.role,
     image: res.data.updatedUser.image,
     description: res.data.updatedUser.description,
     name: res.data.updatedUser.name,

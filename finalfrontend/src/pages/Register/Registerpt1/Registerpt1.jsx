@@ -123,10 +123,9 @@ export const Registerpt1 = () => {
     }
   }, [googleUser]);
 
-
+  console.log("entro aqui", res);
 
   useEffect(() => {
-    console.log("entro aqui", res);
     useErrorRegister(res, setRegisterOk, setRegisterGoogleOK, setRes);
     //si es un 200 llama a la funcion puente
     if (res?.status == 200) bridgeData("ALLUSER");

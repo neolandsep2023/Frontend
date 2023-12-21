@@ -52,7 +52,7 @@ export const Chat = () => {
     let customFormData = {
       textComment: formData.textComment,
       otherUser:
-        activeChat?.userOne._id == user._id
+        activeChat?.userOne?._id == user._id
           ? activeChat?.userTwo._id
           : activeChat?.userOne?._id,
     };
@@ -135,10 +135,11 @@ export const Chat = () => {
                           setActiveChat(chat);
                         }}
                       >
+                     
                         <img
                           alt="chat user logo"
                           src={
-                            chat?.userOne._id == user?._id
+                            chat?.userOne?._id == user?._id
                               ? chat?.userTwo?.image
                               : chat?.userOne?.image
                           }

@@ -1,6 +1,9 @@
 import styled from "@emotion/styled"
 
 const HomeStyled= styled.div`
+
+margin: 8px 0 0 0;
+
   .hHome {
     color: rgb(111, 194, 131);
   }

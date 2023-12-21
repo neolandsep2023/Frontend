@@ -56,6 +56,8 @@ export const PostById = () => {
 
   }
 
+
+
   //todo ------------- Check if OWNER -------------
   const isOwnerFunction = () => {
     if (res?.data?.author[0]?.email == user?.email) {
@@ -126,18 +128,19 @@ export const PostById = () => {
               <UlCustom mediaqueryDirMobile="row">
                 <li><span>{res?.data?.price}€/month</span></li>
                 <li>🏠{res?.data?.postcode}</li>
-                <li>{printRoomIcons("Surface")}{res?.data?.room[0]?.surface}m²</li>
+               {res?.data?.type == "Room" && <li>{printRoomIcons("Surface")}{res?.data?.room[0]?.surface}m²</li>}
                 <li>🗺️ {res?.data?.province}</li>
                 <li>⌛ {res?.data?.preferredAge}</li>
               </UlCustom>
-              <ConnectButtonCustom onClick={showPopup}>Connect</ConnectButtonCustom>
+              {!isOwner && <ConnectButtonCustom onClick={showPopup}>Connect</ConnectButtonCustom>}
               {isOwner && <Link to={`/updatePost/${id}`}><UpdateButton page="post" /></Link>}
-              {isOwner && <LinkRoomButton setPopupLinkActive={setPopupLinkActive}/>}
+              {isOwner && res?.data?.type == "Room" && <LinkRoomButton setPopupLinkActive={setPopupLinkActive}/>}
             </FlexDir>
           </FlexDir>
           <FlexDir margin="0" width="100vw">
             <Description>{res?.data?.text}</Description>
           </FlexDir>
+          {res?.data?.type == "Room" && (
           <FlexDir width="100vw" margin="3vw 0 0 0">
             <UlCustom width="100%" direction="row" gap="2rem" padding="0 1rem">
               <li>{printRoomIcons("Private Room")}Private Room</li>
@@ -147,6 +150,9 @@ export const PostById = () => {
               {res?.data?.room[0]?.commoditiesRoom?.includes("Private Bathroom") ? <li>{printRoomIcons("Private Bathroom")}Private Room</li> : <li>{printRoomIcons("Private Bathroom")}Shared Bathroom</li>}
             </UlCustom>
           </FlexDir>
+          )}
+
+{res?.data?.type == "Room" && (
           <FlexDir direction="column" width="100vw" margin="7vw 0" mediaqueryMarginMobile="4vw 0" mediaqueryMarginTablet="6vw 0">
             <H3Custom margin="0 0 1vw 0">The roomates</H3Custom>
             {(res?.data?.roommates?.length > 0 && isOwner) &&
@@ -160,26 +166,30 @@ export const PostById = () => {
               )
             }) : isOwner && <NoRoomate id={res?.data?._id} />}
           </FlexDir>
+)}
+
+
           <hr style={{ border: "none", borderTop: "3px dashed #72cc8999", width: "100vw", margin: "0" }} />
           <FlexDir direction="column">
             <H3Custom margin="3vw 0 1vw 0">The perfect fit</H3Custom>
             <FlexDir direction="row" height="20vw">
               <FlexDir width="35vw" direction="column" height="100%">
-                <H3PerfectFit>Who we are looking for:</H3PerfectFit>
+                <H3PerfectFit>{res?.data?.type == "Room" ? "Who we would love to find" : "What I would love to find:"}</H3PerfectFit>
                 <UlCustom height="75%" direction="column" fontSize="1.5vw" gap="1vw">
-                  <li>{printIconsUser("Check")}{res?.data?.preferredAge}</li>
-                  <li>{printIconsUser("Check")}{res?.data?.preferredGender}</li>
-                  <li>{printIconsUser("Check")}{res?.data?.room?.petsAllowed ? "Pets" : "No pets"}</li>
+                  <li>{printIconsUser("Check")}{`${res?.data?.preferredAge} age gap` }</li>
+                  <li>{printIconsUser("Check")}{res?.data?.preferredGender == "irrelevant" ? "Irrelevant gender" : res?.data?.preferredGender }</li>
+                  {res?.data?.type == "Room" && <li>{printIconsUser("Check")}{res?.data?.room?.petsAllowed ? "Pets" : "No pets"}</li>}
                 </UlCustom>
               </FlexDir>
               <FlexDir width="15vw" >
                 <img style={{ width: "20vw", objectFit: "cover" }} src={res?.data?.preferredGender == "male" ? "https://www.flaticon.com/free-icon/boy_1999625" : "https://cdn-icons-png.flaticon.com/128/6997/6997662.png"} alt="preferred gender image" />
               </FlexDir>
               <FlexDir width="35vw" direction="column" mediaqueryMarginMobile="0 1rem 0 0" height="100%">
-                <H3PerfectFit>Aligned interests:</H3PerfectFit>
+                <H3PerfectFit> {res?.data?.type == "Room" ? "Aligned interests:" : "My interests:"}</H3PerfectFit>
                 <FlexDir height="75%">
                   <UlCustom height="75%" direction="row" wrap="wrap" fontSize="1.5vw" gap="0.5vw">
-                    {res?.data?.roommates.map((roommate) => (
+                  {res?.data?.type == "Room" ? 
+                    res?.data?.roommates.map((roommate) => (
                       roommate?.interests.slice(0, 3).map((interest) => {
                         return (
                           <FlexDir padding="2px" margin="0" border="1px solid green" borderRadius="2px" key={`FlexDir ${interest}`}>
@@ -187,26 +197,41 @@ export const PostById = () => {
                           </FlexDir>
                         )
                       })
-                    ))}
+                    ))   : 
+                    res?.data?.author[0]?.interests.slice(0, 3).map((interest) => {
+                        return (
+                          <FlexDir padding="2px" margin="0" border="1px solid green" borderRadius="2px" key={`FlexDir ${interest}`}>
+                            <li key={interest}>{interest}</li>
+                          </FlexDir>
+                        )
+                      })
+                    }
                   </UlCustom>
                 </FlexDir>
               </FlexDir>
             </FlexDir>
+
+
+            {res?.data?.type == "Room" && (
             <FlexDir width="90vw" height="15vw" direction="column" gap="0">
               <H3PerfectFit>Description:</H3PerfectFit>
               <Description>{res?.data?.text}</Description>
-            </FlexDir>
+            </FlexDir>)}
           </FlexDir>
           <hr style={{ border: "none", borderTop: "3px dashed #72cc8999", width: "100vw", margin: "3vh 0" }} />
           <FlexDir direction="column" margin="7vh">
-            <H3Custom margin="0 0 -1rem 0">Location</H3Custom>
+            <H3Custom margin="0 0 -1rem 0">{res?.data?.type == "Room" ? "Location" : "Location I'm searching for"}</H3Custom>
             {postcode != "" && <ByIdMap type="repeat" postcode={postcode} province={province} ccaa={publicLocation} />}
           </FlexDir>
+          {res?.data?.type == "Room" && (
           <FlexDir mediaqueryMarginMobile="0" mediaqueryMarginTablet="1rem 0 0 0" margin="5rem 0 0 0">
             <RoomReview roomId={res?.data?._id} />
             {popupActive && <MessagePopup id={res.data.author[0]} setPopupActive={setPopupActive} />}
             {popupLinkActive && <PopUpLink id={id} setPopupActive={setPopupLinkActive} />}
-          </FlexDir>
+          </FlexDir>)}
+
+
+
         </FlexDir>
       }
     </>
