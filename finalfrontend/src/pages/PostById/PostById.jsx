@@ -27,6 +27,9 @@ export const PostById = () => {
   const [isOwner, setIsOwner] = useState()
   const [popupActive, setPopupActive] = useState(false)
   const [popupLinkActive, setPopupLinkActive] = useState(false)
+ const [province, setProvince] = useState("")
+ const [postcode, setPostcode] = useState("")
+ const [publicLocation, setPublicLocation] = useState("")
 
   const [userLikedPosts, setUserLikedPosts] = useState([]);
   const [updatedLikes, setUpdatedLikes] = useState(false);
@@ -43,7 +46,12 @@ export const PostById = () => {
 
   //todo ------------- Get Post --------------
   const fetchPost = async () => {
-    setRes(await getPostById(id))
+    const data = await getPostById(id)
+    setRes(data)
+    setPublicLocation(data.data.publicLocation)
+    setProvince(data.data.province)
+    setPostcode(data.data.postcode)
+
   }
 
   //todo ------------- Check if OWNER -------------
@@ -94,6 +102,8 @@ export const PostById = () => {
     getSavedPosts()
   }, [updatedLikes, saved])
 
+  
+
   return (
     <>
       {res &&
@@ -104,7 +114,7 @@ export const PostById = () => {
               <ByIdImageCustom src={res?.data?.image} />
               <UlCustom direction="row" justifyContent="space-between" width="60vw">
                 {console.log(res?.data)}
-                <li>{printHomeIcons("Location")}{res?.data?.province}, {res?.data?.room[0]?.publicLocation} - {res?.data?.postcode}</li>
+                <li>{printHomeIcons("Location")}{res?.data?.province}, {res?.data?.publicLocation} - {res?.data?.postcode}</li>
                 <FlexDir>
                   <li><SavePostElement onClick={() => addToSaved(id)} variant={isSaved ? "saved" : "normal"} /></li>
                 </FlexDir>
@@ -188,7 +198,7 @@ export const PostById = () => {
           <hr style={{ border: "none", borderTop: "3px dashed #72cc8999", width: "100vw", margin: "3vh 0" }} />
           <FlexDir direction="column" margin="7vh">
             <H3Custom margin="0 0 -1rem 0">Location</H3Custom>
-            {/* {res?.data?.room[0]?.publicLocation && <ByIdMap postcode={res?.data?.postcode} province={res?.data?.province} ccaa={res?.data?.room[0]?.publicLocation} />} */}
+            {postcode != "" && <ByIdMap type="repeat" postcode={parseInt(postcode)} province={province} ccaa={publicLocation} />}
           </FlexDir>
           <FlexDir mediaqueryMarginMobile="0" mediaqueryMarginTablet="1rem 0 0 0" margin="5rem 0 0 0">
             <RoomReview roomId={res?.data?._id} />
