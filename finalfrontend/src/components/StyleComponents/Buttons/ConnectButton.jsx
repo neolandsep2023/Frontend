@@ -10,7 +10,7 @@ const ConnectButtonStyles = styled.button`
   background-color:  ${({theme}) => theme.palette.button.mediumGreen};
   color: white;
   font-weight: 650;
-  font-size: 1.9vw;
+  font-size: "20px";
   letter-spacing: 1.1px;
 
   ${({ theme }) => theme.mediaquery.mobile} {

@@ -6,21 +6,21 @@ const H3Styles = styled.h3`
   text-align: ${({textAlign}) => textAlign ? textAlign : "center"};
   width: 100%;
   padding: ${({padding}) => padding ? padding : "0"};
-  font-size: ${({fontSize}) => fontSize ? fontSize : "2.5vw"};
+  font-size: ${({fontSize}) => fontSize ? fontSize : "24px"};
 
   ${({ theme }) => theme.mediaquery.tablet} {
     text-align: center;
-    font-size: 2.4vw;
+    font-size: 24px;
   }
 
   ${({ theme }) => theme.mediaquery.mobile} {
     text-align: center;
-    font-size: 2.5vw;
+    font-size: 24px;
   }
 
   ${({ theme }) => theme.mediaquery.miniMobile} {
     text-align: center;
-    font-size: 2.5vw;
+    font-size: 24px;
   }
 `
 

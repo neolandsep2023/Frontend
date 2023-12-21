@@ -12,9 +12,11 @@ const UlStyles = styled.ul`
   height: ${({ height }) => height ? height : "100%"};
   min-height: ${({ minHeight }) => minHeight ? minHeight : "100%"};
   margin: ${({ margin }) => margin ? margin : "0px"};
+ 
+
   li{
     list-style: none;
-    font-size: ${({ fontSize }) => fontSize ? fontSize : "2vw"};
+    font-size: ${({ fontSize }) => fontSize ? fontSize : "1rem"};
     display: flex;
     justify-content: center;
     align-items: center;
@@ -23,33 +25,34 @@ const UlStyles = styled.ul`
     width: ${({ liWidth }) => liWidth ? liWidth : "auto"}
   }
   span{
-    font-size: ${({ fontSize }) => fontSize ? fontSize : "2.5vw"};
+    font-size: ${({ fontSize }) => fontSize ? fontSize : "2rem"};
     font-weight: 500;
   }
 
   ${({ theme }) => theme.mediaquery.desktop} {
     li{
-      font-size: ${({ fontSizeTablet }) => fontSizeTablet ? fontSizeTablet : "1.5vw"};
+      font-size: ${({ fontSizeTablet }) => fontSizeTablet ? fontSizeTablet : "1rem"};
     }
   }
 
   ${({ theme }) => theme.mediaquery.tablet} {
     li{
-      font-size: ${({ fontSizeTablet }) => fontSizeTablet ? fontSizeTablet : "1.5vw"};
+      font-size: ${({ fontSizeTablet }) => fontSizeTablet ? fontSizeTablet : "1rem"};
     }
   }
 
   ${({ theme }) => theme.mediaquery.mobile} {
     flex-direction: ${({ mediaqueryDirMobile }) => mediaqueryDirMobile && mediaqueryDirMobile};
     li{
-      font-size: ${({ fontSizeMobile }) => fontSizeMobile ? fontSizeMobile : "1.5vw"};
+      font-size: ${({ fontSizeMobile }) => fontSizeMobile ? fontSizeMobile : "1rem"};
     }
   }
 
   ${({ theme }) => theme.mediaquery.miniMobile} {
     flex-direction: ${({ mediaqueryDirMobile }) => mediaqueryDirMobile && mediaqueryDirMobile};
     li{
-      font-size: ${({ fontSizeMobile }) => fontSizeMobile ? fontSizeMobile : "1.5vw"};
+      font-size: ${({ fontSizeMobile }) => fontSizeMobile ? fontSizeMobile : "1rem"};
+    
     }
   }
 `

@@ -77,7 +77,7 @@ export const printHomeIcons = (commodity) => {
       break;
   }
 
-  return <img src={src} alt={commodity} style={{width: "3vw", margin: "0 1vw 0 0", padding: "0.25vw", backgroundColor: theme == "dark" ? "white" : "transparent", borderRadius: "5px" }}/>;
+  return <img src={src} alt={commodity} style={{width: "30px", margin: "0 1vw 0 0", padding: "0.25vw", backgroundColor: theme == "dark" ? "white" : "transparent", borderRadius: "5px" }}/>;
   }
 
 
@@ -144,7 +144,7 @@ export const printRoomIcons = (commodity) => {
       break;
   }
 
-  return <img src={src} alt={commodity} style={{width: "3vw", margin: "0 1vw 0 0", padding: "0.25vw", backgroundColor: theme == "dark" ? "white" : "transparent", borderRadius: "5px" }}/>;
+  return <img src={src} alt={commodity} style={{width: "30px", margin: "0 1vw 0 0", padding: "0.25vw", backgroundColor: theme == "dark" ? "white" : "transparent", borderRadius: "5px" }}/>;
 }
 
 const commoditiesRoomIcon = [

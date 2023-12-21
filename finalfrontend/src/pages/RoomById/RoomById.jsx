@@ -57,20 +57,28 @@ export const RoomById = () => {
   return (
     <>
       {res &&
-        <FlexDir minHeight="100vh" direction="column" margin="0">
+        <FlexDir gap="50px" minHeight="100vh" direction="column" margin="0" >
           <h1 style={{ fontSize: "4vw" }}>{res?.data?.title}</h1>
-          <FlexDir direction="row" gap="2rem" mediaqueryDirMobile="column">
+          <FlexDir  direction="row" gap="2rem" mediaqueryDirMobile="column" minHeigh="55vh">
             <FlexDir width="60vw">
               {console.log(res?.data)}
               <AppCarousel src={res?.data?.image} alt={res?.data?.title} />
             </FlexDir>
             <FlexDir 
               direction="column" 
-              height="100%" 
+              height="90%" 
               width="25vw" 
-              mediaqueryWidthMobile="100vw" 
+            
+       justifyContent="center"
+       alignItems="center"
+       textAlign="center"
+      
+              mediaqueryWidthMobile="70vw" 
               mediaqueryMarginMobile="-1rem 0 0 0">
-              <UlCustom mediaqueryDirMobile="row">
+              <UlCustom mediaqueryDirMobile="column"   width="100%" 
+                height="90%" 
+                justifyContent="flex-start" 
+                alignItems="start" >
                 <li><span>{res?.data?.post?.price}€/month</span></li>
                 <li>🏠{res?.data?.type}</li>
                 <li>{printRoomIcons("Surface")}{res?.data?.room?.surface}m²</li>
@@ -82,43 +90,47 @@ export const RoomById = () => {
             </FlexDir>
           </FlexDir>
           <FlexDir 
+          gap="10vw"
+          
             direction="row" 
-            width="100vw" 
-            margin="2.5rem 0 1rem 0" 
+            justifyContent="center"
+            alignItems="center"
+            width="80vw" 
+            margin="0.5rem 0 1rem 0" 
             mediaqueryMarginMobile="0.3rem 0 0 0"
-            minHeight="20vh">
-            <FlexDir direction="column" width="50%" minHeight="30vh" height="fit-content">
+            minHeight="50vh">
+            <FlexDir direction="column" width="50%" height="50vh" >
               <H3Custom textAlign="center">House Commodities</H3Custom>
               <UlCustom 
                 width="100%" 
                 height="90%" 
                 justifyContent="flex-start" 
                 alignItems="start" 
-                padding="0 0 0 30%">
+                >
                 {res?.data?.commoditiesHome?.map((commodity) => (
                   <li key={commodity}>{printHomeIcons(commodity)}{commodity}</li>
                 ))}
               </UlCustom>
             </FlexDir>
-            <FlexDir direction="column" width="50%" height="50vh" minHeight="30vh">
+            <FlexDir direction="column" width="50%" height="50vh" >
               <H3Custom textAlign="center">Room Commodities</H3Custom>
               <UlCustom 
                 width="100%" 
                 height="90%" 
                 justifyContent="flex-start" 
                 alignItems="start" 
-                padding="0 0 0 30%">
+              >
                 {res?.data?.commoditiesRoom?.map((commodity) => (
                   <li key={commodity}>{printRoomIcons(commodity)}{commodity}</li>
                 ))}
               </UlCustom>
             </FlexDir>
           </FlexDir>
-          <FlexDir direction="column" margin="5rem 0 0 0" width="100vw">
-            <H3Custom padding="0 0 0 5vw">Description</H3Custom>
+          <FlexDir direction="column" margin="2rem 0 0 0" width="100vw">
+            <H3Custom padding="0 0 0 0">Description</H3Custom>
             <Description>{res?.data?.description}</Description>
           </FlexDir>
-          <FlexDir direction="column" margin="7vh">
+          <FlexDir direction="column" margin="3vh">
             <H3Custom padding="0 0 0 5vw" margin="0 0 -2.5rem 0">Location</H3Custom>
             {res && <ByIdMap postcode={res?.data?.postcode} province={res?.data?.province} ccaa={res?.data?.publicLocation} />}
           </FlexDir>
