@@ -21,7 +21,7 @@ export const RoomSearch = () => {
   const { theme } = useThemeApp()
   const themeObject = useTheme()
 
-  const isTablet = window.innerWidth < 892 ? true : false
+  const isTablet = window.innerWidth < 1050 ? true : false
   const titleRef = useRef()
 
   const handleSearch = async () => {

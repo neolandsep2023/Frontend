@@ -30,39 +30,41 @@ const UlStyles = styled.ul`
     font-weight: 500;
   }
 
-  ${({ theme }) => theme.mediaquery.desktop} {
+  ${({ theme }) => theme.mediaquery.desktop} {    
     li{
-      font-size: ${({ fontSizeTablet }) => fontSizeTablet ? fontSizeTablet : "2rem"};
+      font-size: ${({ fontSizeTablet }) => fontSizeTablet ? fontSizeTablet : "1.5rem"};
       text-align: left;
     }
   }
 
-  ${({ theme }) => theme.mediaquery.tablet} {
+  ${({ theme }) => theme.mediaquery.tablet} {    
     li{
-      font-size: ${({ fontSizeTablet }) => fontSizeTablet ? fontSizeTablet : "1.3rem"};
+      font-size: ${({ fontSizeTablet }) => fontSizeTablet ? fontSizeTablet : "1rem"};
       text-align: left;
     }
   }
 
   ${({ theme }) => theme.mediaquery.mobile} {
     flex-direction: ${({ mediaqueryDirMobile }) => mediaqueryDirMobile && mediaqueryDirMobile};
+    align-items: ${({ alginItemsMobile }) => alginItemsMobile && alginItemsMobile};
     li{
-      font-size: ${({ fontSizeMobile }) => fontSizeMobile ? fontSizeMobile : "1rem"};
+      font-size: ${({ fontSizeMobile }) => fontSizeMobile ? fontSizeMobile : "0.8rem"};
     }
   }
 
   ${({ theme }) => theme.mediaquery.miniMobile} {
     flex-direction: ${({ mediaqueryDirMobile }) => mediaqueryDirMobile && mediaqueryDirMobile};
+    align-items: ${({ alginItemsMobile }) => alginItemsMobile && alginItemsMobile};
     li{
-      font-size: ${({ fontSizeMobile }) => fontSizeMobile ? fontSizeMobile : "1rem"};
+      font-size: ${({ fontSizeMobile }) => fontSizeMobile ? fontSizeMobile : "0.8rem"};
       text-align: left;
     
     }
   }
 `
 
-export const UlCustom = ({ children, direction, width, justifyContent, alignItems, height, mediaqueryDirMobile, padding, gap, margin, fontSize, fontSizeTablet, fontSizeMobile, wrap, liHeight, liWidth, minHeight }) => {
+export const UlCustom = ({ children, direction, width, justifyContent, alignItems, height, mediaqueryDirMobile, padding, gap, margin, fontSize, fontSizeTablet, fontSizeMobile, wrap, liHeight, liWidth, minHeight, justifyContentMobile, alginItemsMobile }) => {
   return (
-    <UlStyles minHeight={minHeight} liWidth={liWidth} liHeight={liHeight} wrap={wrap} fontSizeMobile={fontSizeMobile} fontSizeTablet={fontSizeTablet} fontSize={fontSize} margin={margin} gap={gap} padding={padding} mediaqueryDirMobile={mediaqueryDirMobile} height={height} alignItems={alignItems} justifyContent={justifyContent} width={width} direction={direction}>{children}</UlStyles>
+    <UlStyles alginItemsMobile={alginItemsMobile} justifyContentMobile={justifyContentMobile} minHeight={minHeight} liWidth={liWidth} liHeight={liHeight} wrap={wrap} fontSizeMobile={fontSizeMobile} fontSizeTablet={fontSizeTablet} fontSize={fontSize} margin={margin} gap={gap} padding={padding} mediaqueryDirMobile={mediaqueryDirMobile} height={height} alignItems={alignItems} justifyContent={justifyContent} width={width} direction={direction}>{children}</UlStyles>
   )
 }

@@ -3,16 +3,30 @@ import styled from "@emotion/styled";
 
 const DescriptionStyles = styled.small`
 font-size: 20px;
-width: 70%;
+width: 80%;
 text-align: left;
-/* background-color: ${({theme}) => theme.palette.button.mediumGreenOpaco}; */
 border-radius: 5px;
 padding: 10px;
+  
+  ${({ theme }) => theme.mediaquery.tablet} {
+    font-size: ${({fontSizeTablet}) => fontSizeTablet ? fontSizeTablet : "2vw"};
+    text-align: justify;
+  }
+
+  ${({ theme }) => theme.mediaquery.mobile} {
+    font-size: ${({fontSizeMobile}) => fontSizeMobile ? fontSizeMobile : "2.7vw"};
+    text-align: justify;
+  }
+
+  ${({ theme }) => theme.mediaquery.miniMobile} {
+    font-size: ${({fontSizeMobile}) => fontSizeMobile ? fontSizeMobile : "2.7vw"};
+    text-align: justify;
+  }
 `
 
-export const Description = ({children}) => {
+export const Description = ({children, fontSizeMobile, fontSizeTablet}) => {
   const {theme} = useTheme()
   return (
-    <DescriptionStyles>{children}</DescriptionStyles>
+    <DescriptionStyles fontSizeMobile={fontSizeMobile} fontSizeTablet={fontSizeTablet} >{children}</DescriptionStyles>
   )
 }

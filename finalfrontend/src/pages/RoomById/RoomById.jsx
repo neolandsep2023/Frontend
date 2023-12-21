@@ -1,7 +1,7 @@
 import { useEffect, useState } from "react";
 import { Link, useNavigate, useParams } from "react-router-dom";
 import { getRoomById } from "../../services/room.service";
-import { FlexDir, H3Custom, Small } from "../../components/StyleComponents";
+import { FlexDir, H1Custom, H3Custom, Small } from "../../components/StyleComponents";
 import { UlCustom } from "../../components/StyleComponents/UL/Ul";
 import { ConnectButtonCustom } from "../../components/StyleComponents/Buttons/ConnectButton";
 import { Description } from "../../components/StyleComponents/Text/Small/Description";
@@ -27,6 +27,7 @@ export const RoomById = () => {
   const { id } = useParams();
   const { user } = useAuth()
   let roomData
+  let isMobile = window.innerWidth < 575
 
   const fetchRoom = async () => {
     setRes(await getRoomById(id))
@@ -60,7 +61,7 @@ export const RoomById = () => {
     <>
       {res &&
         <FlexDir gap="20px" minHeight="100vh" direction="column" margin="0" >
-          <H3Custom fontSize="35px">{res?.data?.title}</H3Custom>
+          <H3Custom fontSize="3.8vw" textAlign="center" padding="0" fontSizeMobile="4.5vw" fontSizeTablet="4.5vw">{res?.data?.title}</H3Custom>
           {!res?.data?.post && isOwner && <WarningElement onClick={()=> navigate("/createPost")}>
             Create a <span>post</span> for this room so others can see it on the Feed
             </WarningElement>}
@@ -73,23 +74,31 @@ export const RoomById = () => {
               direction="column" 
               height="90%" 
               width="25vw" 
-            
-       justifyContent="center"
-       alignItems="center"
-       textAlign="center"
-      
+              justifyContent="center"
+              alignItems="center"
+              textAlign="center"
               mediaqueryWidthMobile="70vw" 
               mediaqueryMarginMobile="-1rem 0 0 0">
-             <UlCustom mediaqueryDirMobile="column"   width="100%" 
+             <UlCustom mediaqueryDirMobile="column" width="100%" 
                 height="90%" 
-                justifyContent="flex-start" 
-                alignItems="start" >
-                 
+                justifyContent="flex-start"
+                alginItemsMobile="center" 
+                alignItems="start"
+                >
                 {res?.data?.post && <li><span>{res?.data?.post?.price}€/month</span></li>}
-                <li>🏠{res?.data?.type}</li>
-                <li>{printRoomIcons("Surface")}{res?.data?.surface}m²</li>
-                <li>🗺️ {res?.data?.province}, {res?.data?.publicLocation}</li>
-                <li>🪟 {res?.data?.exterior && "Exterior Room"}</li>
+                {!isMobile &&
+                <> 
+                  <li>{printRoomIcons("Private Room")}{res?.data?.type}</li>
+                  <li>{printRoomIcons("Surface")}{res?.data?.surface}m²</li>
+                  <li>{printHomeIcons("Location")}{res?.data?.province}, {res?.data?.publicLocation}</li>
+                  <li>🪟 {res?.data?.exterior && "Exterior Room"}</li>
+                </>}
+                {isMobile &&
+                <UlCustom mediaqueryDirMobile="row" justifyContent="flex-start" alginItemsMobile="center"> 
+                  <li>{printRoomIcons("Private Room")}{res?.data?.type}</li>
+                  <li>{printRoomIcons("Surface")}{res?.data?.surface}m²</li>
+                  <li>{printHomeIcons("Location")}{res?.data?.province}</li>
+                </UlCustom>}
                 {isOwner && !res?.data?.post && (
                   <WarningElement onClick={()=> navigate("/createPost")}>Post this room</WarningElement>
                   )}
@@ -109,7 +118,7 @@ export const RoomById = () => {
             mediaqueryMarginMobile="0.3rem 0 0 0"
             >
             <FlexDir direction="column" height="100%" width="50%" justifyContent="flex-start" gap="20px" >
-              <H3Custom textAlign="center">House Commodities</H3Custom>
+              <H3Custom padding="0" textAlign="center">House Commodities</H3Custom>
               <UlCustom 
                 width="100%" 
                 height="90%" 
@@ -122,7 +131,7 @@ export const RoomById = () => {
               </UlCustom>
             </FlexDir>
             <FlexDir  justifyContent="flex-start"direction="column" width="50%"  height="100%"   gap="20px" >
-              <H3Custom textAlign="center">Room Commodities</H3Custom>
+              <H3Custom padding="0" textAlign="center">Room Commodities</H3Custom>
               <UlCustom 
                 width="100%" 
                 height="90%" 
@@ -136,7 +145,7 @@ export const RoomById = () => {
             </FlexDir>
           </FlexDir>
           <FlexDir direction="column" margin="2rem 0 0 0" width="100vw">
-            <H3Custom padding="0 0 0 0">Description</H3Custom>
+            <H3Custom padding="0 0 0 5vw">Description</H3Custom>
             <Description>{res?.data?.description}</Description>
           </FlexDir>
           <FlexDir direction="column" margin="3vh">

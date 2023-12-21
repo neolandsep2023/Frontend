@@ -7,7 +7,7 @@ const H1Styles = styled.h1`
   width: 100%;
   font-size: 4em;
   line-height: 1;
-  color: ${({ theme }) => theme.palette.text}
+  color: ${({ theme }) => theme.palette.text};
 
   ${({ theme }) => theme.mediaquery.tablet} {
     text-align: center;
