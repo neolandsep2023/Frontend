@@ -17,6 +17,7 @@ import { MessagePopup } from "../../components/OtherUser/MessagePopup";
 import { WarningElement } from "../../components/StyleComponents/Warning/Warning.element";
 export const RoomById = () => {
   //! ---------- Estados ----------
+  const navigate = useNavigate()
   const [res, setRes] = useState();
   const [isOwner, setIsOwner] = useState()
   const [popupActive, setPopupActive] = useState(false)
@@ -37,7 +38,7 @@ export const RoomById = () => {
  
 
   const isOwnerFunction = () => {
-    if (res?.data?.post?.author[0]?.email == user?.email) {
+    if (res?.data?.postedBy[0]?.email  == user?.email) {
       setIsOwner(true)
     } else {
       setIsOwner(false)
@@ -60,7 +61,7 @@ export const RoomById = () => {
       {res &&
         <FlexDir gap="20px" minHeight="100vh" direction="column" margin="0" >
           <H3Custom fontSize="35px">{res?.data?.title}</H3Custom>
-          {!res?.data?.post && <WarningElement>
+          {!res?.data?.post && isOwner && <WarningElement onClick={()=> navigate("/createPost")}>
             Create a <span>post</span> for this room so others can see it on the Feed
             </WarningElement>}
           <FlexDir  direction="row" gap="2rem" mediaqueryDirMobile="column" minHeigh="55vh">
@@ -83,18 +84,19 @@ export const RoomById = () => {
                 height="90%" 
                 justifyContent="flex-start" 
                 alignItems="start" >
-                  {console.log(res?.data?.post)}
-                  {!res?.data?.post && (
-                  <ConnectButtonCustom onClick={()=> navigate("/createPost")}>Post this room</ConnectButtonCustom>
-                  )}
+                 
                 {res?.data?.post && <li><span>{res?.data?.post?.price}€/month</span></li>}
                 <li>🏠{res?.data?.type}</li>
                 <li>{printRoomIcons("Surface")}{res?.data?.surface}m²</li>
                 <li>🗺️ {res?.data?.province}, {res?.data?.publicLocation}</li>
                 <li>🪟 {res?.data?.exterior && "Exterior Room"}</li>
+                {!res?.data?.post && (
+                  <WarningElement onClick={()=> navigate("/createPost")}>Post this room</WarningElement>
+                  )}
+                   {isOwner && <Link to={`/updateRoom/${id}`}><UpdateButton page="room" /></Link>}
               </UlCustom>
-              <ConnectButtonCustom onClick={showPopup}>Connect</ConnectButtonCustom>
-              {isOwner && <Link to={`/updateRoom/${id}`}><UpdateButton page="room" /></Link>}
+              {!isOwner && <ConnectButtonCustom onClick={showPopup}>Connect</ConnectButtonCustom>}
+             
             </FlexDir>
           </FlexDir>
           <FlexDir 
@@ -141,7 +143,8 @@ export const RoomById = () => {
             <H3Custom padding="0 0 0 5vw" margin="0 0 -2.5rem 0">Location</H3Custom>
             {res && <ByIdMap postcode={res?.data?.postcode} province={res?.data?.province} ccaa={res?.data?.publicLocation} />}
           </FlexDir>
-          <FlexDir 
+          <FlexDir
+          width="75%"
             mediaqueryMarginMobile="0 0 5vw 0" 
             mediaqueryMarginTablet="1rem 0 5vw 0" 
             margin="5vw 0"
@@ -152,7 +155,7 @@ export const RoomById = () => {
                 <RoomReview roomId={res?.data?._id}/>
                 { res?.data?.post?.roommates?.includes(user._id) && <AddReview width="5vw" height="5vw"/>}
               </>
-              : <UserReview action="roomcomment" />}
+              : !isOwner && <UserReview action="roomcomment" />}
             {popupActive && <MessagePopup id={res.data.postedBy[0]} setPopupActive={setPopupActive} />}
 
           </FlexDir>

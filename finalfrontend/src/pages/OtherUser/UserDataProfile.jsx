@@ -20,6 +20,9 @@ export const UserDataProfile = ({ page, userData }) => {
   const [isLoaded, setIsLoaded] = useState(false);
   const [userLikedPosts, setUserLikedPosts] = useState([]); //! useState de los likes
   const [updatedLikes, setUpdatedLikes] = useState(false);
+  const [isOwner, setIsOwner] = useState()
+
+
     const { username } = useParams();
   const navigate = useNavigate();
   
@@ -29,7 +32,16 @@ export const UserDataProfile = ({ page, userData }) => {
       console.log(res?.data)
       setIsLoaded(true)
     }
+  
+    const isOwnerFunction = () => {
 
+      if (res?.data?.username == username) {
+
+        setIsOwner(true)
+      } else {
+        setIsOwner(false)
+      }
+    }
 
 
  const addToSaved = async (id) => {
@@ -53,6 +65,12 @@ export const UserDataProfile = ({ page, userData }) => {
     fetchData()
     
   }, [username])
+
+  useEffect(() => { //? al cambiar la res y al montarse para checkear si el user encontrado ya es roomate
+    if (res?.status == 200) {
+      isOwnerFunction()
+    }
+  }, [res])
 
 
   useEffect(() => {
@@ -132,7 +150,7 @@ export const UserDataProfile = ({ page, userData }) => {
                         page={"room"}
                         id={room._id}
                         title={room.title}
-                        text={room.text}
+                        text={room.description}
                         // image={typeof(room?.image) == 'string' ? room?.image : room?.image[0] }
                         province={room.province}
                         price={room.price}
@@ -198,11 +216,16 @@ export const UserDataProfile = ({ page, userData }) => {
 
         case "createComment":
           return (
+            <>
+            
             <ProfileContainer heightTablet={"58vh"} height={"77vh"} key={page}>
-         { userData &&   <UserReview  userData={userData} action="usercomment"/>}
+         { userData && !isOwner &&   <UserReview  userData={userData} action="usercomment"/>}
             {/* </DataProfileElement> */}
           </ProfileContainer>
+        
+        </>
           );
+          
   
       default:
         return <h1>default</h1>;

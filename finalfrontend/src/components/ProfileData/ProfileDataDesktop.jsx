@@ -1,4 +1,4 @@
-import { useNavigate } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import { useAuth } from "../../context/authContext";
 import { ButtonPrimary, FlexDir } from "../StyleComponents"
 import { ProfileDataDesktopElement } from "./ProfileDataDesktop.element"
@@ -44,7 +44,7 @@ let userAge = data?.birthYear && (2023 - data?.birthYear)
     <ProfileDataDesktopElement>
         <FlexDir direction={"column"} margin={"0"} gap={"4px"}>
     <img alt="user logo" src={data?.image} />
-        <h1>@{data?.username}</h1>
+        <Link to={`/user/${data?.username}`}><h1>@{data?.username}</h1></Link>
       
         </FlexDir>
         <FlexDir direction={"column"} margin={"0"} >

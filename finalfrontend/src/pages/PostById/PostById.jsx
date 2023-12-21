@@ -128,7 +128,7 @@ export const PostById = () => {
             <FlexDir direction="column" height="100%" width="25vw" mediaqueryWidthMobile="100vw" mediaqueryMarginMobile="-2rem 0 0 0">
               <UlCustom mediaqueryDirMobile="row">
                 <li><span>{res?.data?.price}€/month</span></li>
-                <li>🏠{res?.data?.postcode}</li>
+                <li>📍{res?.data?.postcode}</li>
                {res?.data?.type == "RoommateSeeker" && <li>{printRoomIcons("Surface")}{res?.data?.room[0]?.surface}m²</li>}
                 <li>🗺️ {res?.data?.province}</li>
                 <li>⌛ {res?.data?.preferredAge}</li>

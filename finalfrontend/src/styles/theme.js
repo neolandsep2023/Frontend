@@ -37,6 +37,7 @@ const PALETTE_COLOR_LIGHT = {
   ultraDarkGreen: "#2a2f2b",
   cardBackground: "#ddffe6",
   shadow: "rgba(50, 50, 93, 0.25) 0px 2px 5px -1px, rgba(0, 0, 0, 0.3) 0px 1px 3px -1px",
+  warning: "#db8686"
 };
 
 const PALETTE_COLOR_DARK = {
@@ -61,6 +62,7 @@ const PALETTE_COLOR_DARK = {
   ultraDarkGreen: "#2a2f2b",
   cardBackground: "#ddffe6",
   shadow: "2px 2px 4px rgba(0,0,0,0.4)",
+  warning: "#731414",
 };
 
 export const themeLight = {
@@ -69,6 +71,7 @@ export const themeLight = {
       light: PALETTE_COLOR_LIGHT.ultraLightGreen,
       main: PALETTE_COLOR_LIGHT.background,
       dark: PALETTE_COLOR_LIGHT.ultraDarkGreen,
+      warning: PALETTE_COLOR_LIGHT.warning,
     },
     header: {
       main: PALETTE_COLOR_LIGHT.header,
@@ -140,6 +143,7 @@ export const themeDark = {
       light: PALETTE_COLOR_DARK.ultraDarkGreen,
       main: PALETTE_COLOR_DARK.background,
       dark: PALETTE_COLOR_DARK.ultraLightGreen,
+      warning: PALETTE_COLOR_DARK.warning,
     },
     header: {
       main: PALETTE_COLOR_DARK.header,
@@ -166,7 +170,7 @@ export const themeDark = {
       main: PALETTE_COLOR_DARK.mediumGreen,
       light: PALETTE_COLOR_DARK.lightGreen,
       dark: PALETTE_COLOR_DARK.darkGreen,
-      mediumGreen: PALETTE_COLOR_DARK.mediumGreen,
+      mediumGreen: PALETTE_COLOR_DARK.darkishGreen,
       mediumGreenOpaco: PALETTE_COLOR_DARK.mediumGreenOpaco,
       saved: PALETTE_COLOR_DARK.lightGreen,
     },

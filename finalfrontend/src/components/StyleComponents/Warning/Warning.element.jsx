@@ -1,3 +1,4 @@
+import { useTheme } from "@emotion/react"
 import styled from "@emotion/styled"
 
 
@@ -6,11 +7,17 @@ gap: 8px;
 display: flex;
 align-items: center;
 justify-content: center;
-width: 70%;
+width: "fit-content";
 border: 2px solid red;
 border-radius: 10px;
-padding: 4px;
+padding: 8px 20px;
 font-size: 20px;
+background-color: ${({theme})=> theme.palette.background.warning};
+cursor: pointer;
+
+ :hover{
+    transform: scale(1.05)
+}
 
 & .material-symbols-outlined{
 color: red;
@@ -29,9 +36,10 @@ color: red;
 
 `
 
-export const WarningElement = ({children}) => {
+export const WarningElement = ({children, onClick}) => {
+    const {theme} = useTheme()
   return (
-    <WarningElementStyled>
+    <WarningElementStyled onClick={onClick} theme={theme}>
         <span className="material-symbols-outlined">
 fmd_bad
 </span>

@@ -18,7 +18,11 @@ justify-content: end;
 & span{
 font-size: 30px;
 color: ${({theme})=> theme.palette.button.saved};
+:hover{
+    transform: scale(1.1);
+    cursor: pointer;
 
+}
 }
 
 ${({ theme }) => theme.mediaquery.bigScreen} {
@@ -50,11 +54,7 @@ font-size: 38px;
 
 }
 
- :hover{
-    transform: scale(1.1);
-    cursor: pointer;
 
-}
 
 & .material-symbols-outlined {
 

@@ -31,7 +31,7 @@ export const ProfileDataMobile = () => {
     { data && (
       <ProfileDataMobileElement>
         <img alt="user logo" src={data.image} />
-        <h1>@{data.username}</h1>
+        <Link to={`/user/${data?.username}`}><h1>@{data?.username}</h1></Link>
         {data.description && <p>{data.description}</p>}
         <FlexDir wrap={"wrap"}>
           {data.interests.map((interest) => (

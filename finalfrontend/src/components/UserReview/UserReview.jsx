@@ -72,7 +72,7 @@ const id = userData?._id
       height="100%"
       justifyContent="center"
     >
-      <Form onSubmit={handleSubmit(formSubmit)} width="90%" height="100%">
+      <Form onSubmit={handleSubmit(formSubmit)} width="100%" height="100%">
         <FlexDir
           direction="column"
           width="100%"
