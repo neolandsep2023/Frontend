@@ -29,7 +29,7 @@ export const MessagePopup = ({ id, setPopupActive, isMobile }) => {
 
   return (
     <MessagePopupScreen isMobile={isMobile}>
-      <div >
+      <div id="uniqueDiv">
         <h1 style={{justifyContent: 'center', display: 'flex', alignItems: 'center', fontSize: '22px'}}>Send a message</h1>
 
         <form onSubmit={handleSubmit(submitComment)}>
