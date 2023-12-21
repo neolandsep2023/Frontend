@@ -78,6 +78,16 @@ const MiniCardsStyle = styled.div`
         font-size: 2.5vw;
       }
   };
+
+  ${({theme}) => theme.mediaquery.miniMobile}{
+      width: 80vw;
+      & h4 {
+        font-size: 3.4vw
+      }
+      & li {
+        font-size: 2.5vw;
+      }
+  };
 `
 
 
