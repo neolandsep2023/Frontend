@@ -3,8 +3,8 @@ import { FlexDir } from "../Layout/FlexDir";
 
 const UpdateButtonStyles = styled.div`
   img{
-    height: ${({height}) => height ? height : "2vw"};
-    width: ${({width}) => width ? width : "2vw"};
+    /* height: ${({height}) => height ? height : "2vw"}; */
+    width: ${({width}) => width ? width : "25px"};
   }
 `
 

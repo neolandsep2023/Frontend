@@ -3,7 +3,7 @@ import styled from "@emotion/styled";
 
 const H3Styles = styled.h3`
   margin: ${({margin}) => margin ? margin : "0"};
-  text-align: ${({textAlign}) => textAlign ? textAlign : "left"};
+  text-align: ${({textAlign}) => textAlign ? textAlign : "center"};
   width: 75%;
   padding: ${({padding}) => padding ? padding : "0"};
   font-size: ${({fontSize}) => fontSize ? fontSize : "1.5em"};

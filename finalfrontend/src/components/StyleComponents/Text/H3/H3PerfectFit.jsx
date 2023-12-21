@@ -7,14 +7,14 @@ const H3Styles = styled.h3`
   width: 100%;
   height: 25%;
   padding: 5px 7px;
-  font-size: 1.5vw;
+  font-size: 28px;
 
   ${({ theme }) => theme.mediaquery.tablet} {
-    font-size: 1.8vw;
+    font-size: 24px;
   }
 
   ${({ theme }) => theme.mediaquery.mobile} {
-    font-size: 2.5vw;
+    font-size: 20px;
   }
 `
 
