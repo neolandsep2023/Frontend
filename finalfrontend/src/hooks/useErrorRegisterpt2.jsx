@@ -2,8 +2,8 @@ import Swal from "sweetalert2/dist/sweetalert2.all.js";
 
 
 
-export const useErrorRegisterpt2 = (res, setRes, setOkRegister) => {
-
+export const useErrorRegisterpt2 = (res, setRes, setOkRegister, login, user) => {
+console.log(res)
 let acc
 if(res?.data){
     acc = 0
@@ -29,6 +29,24 @@ if(acc == 0){
 //! ----- dentro--- el 200
 
 if (res?.status == 200){
+  
+  let user1 = {
+    _id: res.data.updatedUser._id,
+    email: res.data.updatedUser.email,
+    birthYear: res.data.updatedUser.birthYear,
+    isVerified: res.data.updatedUser.isVerified,
+    gender: res.data.updatedUser.gender,
+    interests: res.data.updatedUser.interests,
+    role: res.data.updatedUser.interests,
+    image: res.data.updatedUser.image,
+    description: res.data.updatedUser.description,
+    name: res.data.updatedUser.name,
+    lastName: res.data.updatedUser.lastName,
+    token: user.token
+  }
+
+  const userToJSONString = JSON.stringify(user1)
+  login(userToJSONString)
     setRes(()=>({}))
     setOkRegister(() => true) 
     return Swal.fire({

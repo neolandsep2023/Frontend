@@ -8,6 +8,7 @@ import { Anchor, ButtonPrimary, CheckboxInput, FlexDir, Form, H1Form, H3Custom, 
 import { Link, Navigate } from "react-router-dom";
 
 
+
 export const Registerpt2 = () => {
 
 
@@ -16,7 +17,7 @@ export const Registerpt2 = () => {
   const [okRegister, setOkRegister]= useState(false)
 
 
-  const { setUser, user, logout } = useAuth();
+  const { setUser, user, logout, login } = useAuth();
   const { handleSubmit, register } = useForm();
 
 
@@ -32,7 +33,7 @@ export const Registerpt2 = () => {
 
   useEffect(() => {
     console.log(res)
-    useErrorRegisterpt2(res, setRes, setOkRegister);
+    useErrorRegisterpt2(res, setRes, setOkRegister, login, user);
   }, [res]);
 
   if(okRegister){
