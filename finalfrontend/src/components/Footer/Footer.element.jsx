@@ -58,6 +58,9 @@ text-align: center;
         flex: 1;
     
     }
+    .footer-content{
+        flex-direction: column;
+    }
 
 }
 

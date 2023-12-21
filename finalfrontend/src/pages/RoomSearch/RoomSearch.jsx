@@ -54,7 +54,7 @@ export const RoomSearch = () => {
         <FlexDir direction="row" gap="5vw" height="100%" width="100%" padding="3rem" mediaqueryDirTablet="column" mediaqueryDirMobile="column">
           <FlexDir direction="column" width="45vw" mediaqueryWidthTablet="90vw" mediaqueryWidthMobile="90vw" wrap="wrap">
             <H1Custom>Perfect <span style={{ color: theme == "dark" ? "#72cc89" : "#396644" }}>rooms</span> await you</H1Custom>
-            <H3Custom>Discover Your Ideal Living Space with HousePal's varied offers</H3Custom>
+            <H3Custom>Discover Your Ideal Living Space with <wbr/> Connect-a-mate varied offers</H3Custom>
             <FlexDir width="100%" direction="row">
               <SearchInputCustom onChange={(e) => setValueInput(e.target.value)} />
               <SearchButtonCustom onClick={handleSearch}>🔎</SearchButtonCustom>

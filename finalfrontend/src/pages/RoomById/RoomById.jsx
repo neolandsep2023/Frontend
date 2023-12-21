@@ -60,7 +60,7 @@ export const RoomById = () => {
     <>
       {res &&
         <FlexDir gap="20px" minHeight="100vh" direction="column" margin="0" >
-          <H3Custom fontSize="35px">{res?.data?.title}</H3Custom>
+          <H3Custom margin="20px 0 0 0"fontSize="35px">{res?.data?.title}</H3Custom>
           {!res?.data?.post && isOwner && <WarningElement onClick={()=> navigate("/createPost")}>
             Create a <span>post</span> for this room so others can see it on the Feed
             </WarningElement>}

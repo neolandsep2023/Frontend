@@ -6,8 +6,12 @@ const SearchInputStyles = styled.input`
   border-radius: ${({ theme }) => theme.spacing(1)};
   border: 2px solid ${({theme}) => theme.palette.button.mediumGreen};
   background-color: ${({theme}) => theme.palette.form.main};
+  color:${({theme}) => theme.palette.textColor.main}; ;
   height: 45px;
   min-width: 38vw;
+  font-weight: 500;
+  font-size: 20px;
+  text-align: center;
   font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
   /* -webkit-box-shadow: 2px 10px 25px -7px ${({theme}) => theme.palette.shadow.main};
   -moz-box-shadow: 2px 10px 25px -7px ${({theme}) => theme.palette.shadow.main};

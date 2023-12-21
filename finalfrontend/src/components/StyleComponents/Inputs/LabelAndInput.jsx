@@ -13,7 +13,8 @@ gap: ${({ gap }) => (gap ? gap : null)};
 & input{
   width: 100%;
   height: ${({inputHeight}) => inputHeight ? inputHeight: 'auto'};
-  flex-wrap: wrap
+  flex-wrap: wrap;
+  font-size: 16px;
 }
 
 & textarea{
@@ -95,6 +96,11 @@ ${({ theme }) => theme.mediaquery.tablet} {
   }
   & .inputContainer .inputLabel--checkbox input:disabled ~ .div:after {
     border-color: #7b7b7b;
+  }
+  & .starsss div{
+  
+   width: 20px;
+   height: 40px;
   }
 
 

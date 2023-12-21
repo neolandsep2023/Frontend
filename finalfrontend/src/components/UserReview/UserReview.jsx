@@ -68,18 +68,22 @@ const id = userData?._id
   return (
     <FlexDir
       direction="column"
+  
+      
       width="100%"
       height="100%"
       justifyContent="center"
     >
       <Form onSubmit={handleSubmit(formSubmit)} width="100%" height="100%">
         <FlexDir
+           
+            alignItems="center"
           direction="column"
           width="100%"
           justifyContent="center"
           height="100%"
         >
-          <LabelAndInput>
+          <LabelAndInput alignItems="center" gap="20px">
             <Rating className="starsss" value={valueStar} onChange={(e) => setValueStar(parseInt(e.target.value))} cancel={false} />
 
             <input
