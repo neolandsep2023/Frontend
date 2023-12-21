@@ -115,7 +115,7 @@ export const PostById = () => {
       {res &&
         <FlexDir minHeight="100vh" direction="column" margin="0">
           <H3Custom fontSize="45px">{res?.data?.title}</H3Custom>
-          {(res?.data?.roommates?.length == 0 || res?.data?.room?.length == 0) && 
+          {isOwner && (res?.data?.roommates?.length == 0 || res?.data?.room?.length == 0) && 
           <WarningElement>{`Please complete post. ${(res?.data?.room?.length == 0 && res?.data?.roommates?.length == 0) ? "Room and roommates" : res?.data?.roommates?.length == 0 ? "Roommates" : res?.data?.room?.length == 0 && "Room" } field is missing`} </WarningElement>}
           <FlexDir direction="row" gap="2rem" mediaqueryDirMobile="column">
             <FlexDir width="60vw" direction="column">
@@ -138,7 +138,7 @@ export const PostById = () => {
               </UlCustom>
               {!isOwner && <ConnectButtonCustom onClick={showPopup}>Connect</ConnectButtonCustom>}
               {isOwner && <Link to={`/updatePost/${id}`}><UpdateButton page="post" /></Link>}
-              {res?.data?.room?.length == 0 && 
+              {isOwner && res?.data?.room?.length == 0 && 
           <WarningElement>Link a room</WarningElement>}
               {isOwner && res?.data?.type == "RoommateSeeker" && <LinkRoomButton setPopupLinkActive={setPopupLinkActive}/>}
             </FlexDir>
@@ -161,7 +161,7 @@ export const PostById = () => {
 {res?.data?.type == "RoommateSeeker" && (
           <FlexDir direction="column" width="100vw" margin="7vw 0" mediaqueryMarginMobile="4vw 0" mediaqueryMarginTablet="6vw 0">
             <H3Custom margin="0 0 1vw 0">The roomates</H3Custom>
-            {res?.data?.roommates?.length == 0 && 
+            {isOwner && res?.data?.roommates?.length == 0 && 
           <WarningElement>Please add a roommate</WarningElement>}
             {(res?.data?.roommates?.length > 0 && isOwner) &&
               <div style={{ display: "flex", flexDirection: "row" }}>

@@ -90,7 +90,7 @@ export const RoomById = () => {
                 <li>{printRoomIcons("Surface")}{res?.data?.surface}m²</li>
                 <li>🗺️ {res?.data?.province}, {res?.data?.publicLocation}</li>
                 <li>🪟 {res?.data?.exterior && "Exterior Room"}</li>
-                {!res?.data?.post && (
+                {isOwner && !res?.data?.post && (
                   <WarningElement onClick={()=> navigate("/createPost")}>Post this room</WarningElement>
                   )}
                    {isOwner && <Link to={`/updateRoom/${id}`}><UpdateButton page="room" /></Link>}
