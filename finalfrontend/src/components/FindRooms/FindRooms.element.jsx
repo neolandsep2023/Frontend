@@ -1,11 +1,12 @@
 import styled from "@emotion/styled";
 
-export const FindRoomsStyle = styled.div`
+const FindRoomsStyle = styled.div`
   display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  width: 90vw;
+  width: 100%;
+  height: 100%;
   border: 4px solid #72cc89;
   border-radius: 10px;
   #userFinderContainer{
@@ -14,15 +15,15 @@ export const FindRoomsStyle = styled.div`
     justify-content: center;
     align-items: center;
     gap: 2rem;
-    height: 7vw;
+    height: 15%;
     width: 100%;
     background-color: #72cc89;;
   }
   #userFinderInput{
-  border-radius: 20px;
-  border: 1px solid black;
-  height: 50%;
-  width: 80%;
+    border-radius: 20px;
+    border: 1px solid black;
+    height: 50%;
+    width: 80%;
   }
   #findUsersButton{
     height: 35px;
@@ -35,10 +36,12 @@ export const FindRoomsStyle = styled.div`
     width: 100%;
     display: flex;
     flex-direction: column;
+    height: 85%;
+    overflow-y: scroll;
   }
 
   .findUserMapResult:first-child{
-    border-top: 1px solid grey;    
+    border-top: 1px solid grey;
   }
 
   .findUserMapResult{
@@ -80,3 +83,7 @@ export const FindRoomsStyle = styled.div`
     font-size: 1.3vw;
   }
 `
+
+export const FindRoomElement = ({children}) => {
+  return <FindRoomsStyle>{children}</FindRoomsStyle>
+}

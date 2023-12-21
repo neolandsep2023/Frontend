@@ -15,7 +15,7 @@ const PopUpLinkStyles = styled.div`
   ); /* Adjust the alpha value for transparency */
   z-index: 999;
   
-  div {
+  #topDiv {
     width: ${({ isMobile }) => (isMobile ? "95vw" : "80%")};
     display: flex;
     flex-direction: column;
@@ -27,18 +27,24 @@ const PopUpLinkStyles = styled.div`
     left: 50%;
     transform: translate(-50%, -50%);
     /* Additional styling for the content inside the overlay */
-    padding: 20px;
+    /* padding: 20px; */
     background-color: white;
     border-radius: 5px;
     box-shadow: 0 0 10px rgba(0, 0, 0, 0.3);
     border-radius: 10px;
 
-    div{
-      width: 80%;
+    #secondTopDiv{
+      width: 100%;
+      height: 100%;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
       h1 {
         color: ${({ theme }) => theme == 'light' ? theme.palette.textColor.main : 'black'};
         margin: 5px 0 20px 0;
       }
+
     }
 
 

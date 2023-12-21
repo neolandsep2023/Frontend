@@ -53,11 +53,8 @@ export const PostById = () => {
     setPublicLocation(data.data.publicLocation)
     setProvince(data.data.province)
     setPostcode(data.data.postcode)
-    // console.log(postcode)
 
   }
-
-
 
   //todo ------------- Check if OWNER -------------
   const isOwnerFunction = () => {
@@ -115,13 +112,12 @@ export const PostById = () => {
       {res &&
         <FlexDir minHeight="100vh" direction="column" margin="0">
           <H3Custom fontSize="45px">{res?.data?.title}</H3Custom>
-          {isOwner && (res?.data?.roommates?.length == 0 || res?.data?.room?.length == 0) && 
+          {isOwner && (res?.data?.roommates?.length == 0 || res?.data?.room?.length == 0) && (res?.data?.type == "RoommateSeeker") &&
           <WarningElement>{`Please complete post. ${(res?.data?.room?.length == 0 && res?.data?.roommates?.length == 0) ? "Room and roommates" : res?.data?.roommates?.length == 0 ? "Roommates" : res?.data?.room?.length == 0 && "Room" } field is missing`} </WarningElement>}
           <FlexDir direction="row" gap="2rem" mediaqueryDirMobile="column">
             <FlexDir width="60vw" direction="column">
               <ByIdImageCustom src={res?.data?.image} />
               <UlCustom direction="row" justifyContent="space-between" width="60vw">
-                {console.log(res?.data)}
                 <li>{printHomeIcons("Location")}{res?.data?.province}, {res?.data?.publicLocation} - {res?.data?.postcode}</li>
                 <FlexDir>
                   <li><SavePostElement onClick={() => addToSaved(id)} variant={isSaved ? "saved" : "normal"} /></li>
@@ -138,7 +134,7 @@ export const PostById = () => {
               </UlCustom>
               {!isOwner && <ConnectButtonCustom onClick={showPopup}>Connect</ConnectButtonCustom>}
               {isOwner && <Link to={`/updatePost/${id}`}><UpdateButton page="post" /></Link>}
-              {isOwner && res?.data?.room?.length == 0 && 
+              {isOwner && res?.data?.room?.length == 0 && (res?.data?.type == "RoommateSeeker") &&
           <WarningElement>Link a room</WarningElement>}
               {isOwner && res?.data?.type == "RoommateSeeker" && <LinkRoomButton setPopupLinkActive={setPopupLinkActive}/>}
             </FlexDir>
@@ -236,10 +232,9 @@ export const PostById = () => {
           <FlexDir mediaqueryMarginMobile="0" mediaqueryMarginTablet="1rem 0 0 0" margin="5rem 0 0 0">
             <RoomReview roomId={res?.data?._id} />
             
-            {popupLinkActive && <PopUpLink id={id} setPopupActive={setPopupLinkActive} />}
           </FlexDir>}
 
-
+          {popupLinkActive && <PopUpLink id={id} setPopupLinkActive={setPopupLinkActive} resCheck={resCheck} setResCheck={setResCheck}/>}
           {popupActive && <MessagePopup id={res.data.author[0]._id} setPopupActive={setPopupActive} />}
         </FlexDir>
         

@@ -20,6 +20,7 @@ import { UpdatePost } from "../pages/Update/UpdatePost";
 import { UpdateRoom } from "../pages/Update/UpdateRoom";
 import { User } from "../pages/OtherUser/User";
 import { UserDataProfile } from "../pages/OtherUser/UserDataProfile";
+import { PopUpLink } from "../components/PopUp/PopUpLink";
 
 
 
@@ -220,7 +221,7 @@ export const router = createBrowserRouter ([
           element: <ByIdMap/>},
           {
             path: "/pruebas/styledcomponents",
-            element: <Estrellas/>
+            element: <PopUpLink/>
           }
         ],
     },

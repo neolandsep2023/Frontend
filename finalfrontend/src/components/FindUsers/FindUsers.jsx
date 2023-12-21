@@ -10,6 +10,8 @@ export const FindUsers = ({ postId, resCheck, setResCheck }) => {
   const [res, setRes] = useState()
   const [resToggle, setResToggle] = useState();
 
+  let isRoommate
+
   const handleSubmit = async (e) => {
     let resUserByName = await getUserByName(findNameValue)
     setRes(resUserByName)
@@ -37,15 +39,15 @@ export const FindUsers = ({ postId, resCheck, setResCheck }) => {
       </div>
       {res?.data?.length > 0 ? <div id="padreSection">
         {res?.data?.map((user) => {
+          isRoommate = resCheck?.data?.roommates?.includes(user._id)
           return (
-            <div className="findUserMapResult" key = {user._id} >
-              <section className="findUserMapSection">
+            <div className="findUserMapResult" key = {user._id} style={{ backgroundColor: isRoommate ? "#D4F7D7" : "transparent"}}>
+              <section className="findUserMapSection" >
                 <img src={user.image} alt={user.name} className="userFinderImage"/>
                 <h2 className="userFinderName">{user.name}</h2>
               </section>
               <section>
-                {console.log(resCheck?.data?.roommates)}
-                <button className="addRoommateButton" onClick={() => addRoommate(user._id)}>{resCheck?.data?.roommates?.includes(user._id) ? "Unadd" : "Add"}</button>
+                <button className="addRoommateButton" onClick={() => addRoommate(user._id)}>{isRoommate ? "Unadd" : "Add"}</button>
               </section>
             </div>
           )
