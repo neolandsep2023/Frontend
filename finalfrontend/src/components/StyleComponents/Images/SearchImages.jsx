@@ -13,13 +13,19 @@ const SearchImageStyle = styled.img`
   }
 
   ${({ theme }) => theme.mediaquery.mobile} {
-    width: 13vw
+    width: 13vw;
+    aspect-ratio: ${({aspectRatioMobile}) => aspectRatioMobile && aspectRatioMobile};
+  }
+
+  ${({ theme }) => theme.mediaquery.miniMobile} {
+    width: 13vw;
+    aspect-ratio: ${({aspectRatioMobile}) => aspectRatioMobile && aspectRatioMobile};
   }
 `
 
-export const SearchImgCustom = ({ src, marginTop }) => {
+export const SearchImgCustom = ({ src, marginTop, aspectRatioMobile, marginTopMobile }) => {
   const { theme } = useTheme()
   return (
-    <SearchImageStyle theme={theme} marginTop = {marginTop} src={src}/>
+    <SearchImageStyle aspectRatioMobile={aspectRatioMobile} theme={theme} marginTop = {marginTop} src={src}/>
   )
 }

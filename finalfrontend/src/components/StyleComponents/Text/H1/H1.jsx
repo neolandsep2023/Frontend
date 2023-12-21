@@ -18,6 +18,11 @@ const H1Styles = styled.h1`
     text-align: center;
     font-size: 9vw;
   }
+
+  ${({ theme }) => theme.mediaquery.miniMobile} {
+    text-align: center;
+    font-size: 9vw;
+  }
 `
 
 export const H1Custom = ({children}) => {

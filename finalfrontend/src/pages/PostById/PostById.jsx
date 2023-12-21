@@ -43,6 +43,8 @@ export const PostById = () => {
 
   let acc = 0
 
+  let isMobile = window.innerWidth < 575
+
 
 
   //todo ------------- Get Post --------------
@@ -126,11 +128,11 @@ export const PostById = () => {
             </FlexDir>
             <FlexDir direction="column" height="100%" width="25vw" mediaqueryWidthMobile="100vw" mediaqueryMarginMobile="-2rem 0 0 0">
               <UlCustom mediaqueryDirMobile="row">
-                <li><span>{res?.data?.price}€/month</span></li>
-                <li>📍{res?.data?.postcode}</li>
+                <li><span style={{fontSize: "3vw"}}>{res?.data?.price}€/month</span></li>
+                {!isMobile && <li>{printHomeIcons("Location")}{res?.data?.postcode}</li>}
                {res?.data?.type == "RoommateSeeker" && <li>{printRoomIcons("Surface")}{res?.data?.room[0]?.surface}m²</li>}
                 <li>🗺️ {res?.data?.province}</li>
-                <li>⌛ {res?.data?.preferredAge}</li>
+                <li>⌛ {res?.data?.room[0]?.available ? "Available Now" : "Not available yet"}</li>
               </UlCustom>
               {!isOwner && <ConnectButtonCustom onClick={showPopup}>Connect</ConnectButtonCustom>}
               {isOwner && <Link to={`/updatePost/${id}`}><UpdateButton page="post" /></Link>}
