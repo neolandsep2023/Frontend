@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react";
-import { Link, useParams } from "react-router-dom";
+import { Link, useNavigate, useParams } from "react-router-dom";
 import { getRoomById } from "../../services/room.service";
 import { FlexDir, H3Custom, Small } from "../../components/StyleComponents";
 import { UlCustom } from "../../components/StyleComponents/UL/Ul";
@@ -14,6 +14,7 @@ import { useAuth } from "../../context/authContext";
 import { UserReview } from '../../components/UserReview/UserReview';
 import { AddReview } from "../../components/StyleComponents/Buttons/AddReview";
 import { MessagePopup } from "../../components/OtherUser/MessagePopup";
+import { WarningElement } from "../../components/StyleComponents/Warning/Warning.element";
 export const RoomById = () => {
   //! ---------- Estados ----------
   const [res, setRes] = useState();
@@ -57,8 +58,11 @@ export const RoomById = () => {
   return (
     <>
       {res &&
-        <FlexDir gap="30px" minHeight="100vh" direction="column" margin="0" padding="20px 0 0 0">
+        <FlexDir gap="20px" minHeight="100vh" direction="column" margin="0" >
           <H3Custom fontSize="35px">{res?.data?.title}</H3Custom>
+          {!res?.data?.post && <WarningElement>
+            Create a <span>post</span> for this room so others can see it on the Feed
+            </WarningElement>}
           <FlexDir  direction="row" gap="2rem" mediaqueryDirMobile="column" minHeigh="55vh">
             <FlexDir width="60vw">
               {console.log(res?.data)}
@@ -75,13 +79,17 @@ export const RoomById = () => {
       
               mediaqueryWidthMobile="70vw" 
               mediaqueryMarginMobile="-1rem 0 0 0">
-              <UlCustom mediaqueryDirMobile="column"   width="100%" 
+             <UlCustom mediaqueryDirMobile="column"   width="100%" 
                 height="90%" 
                 justifyContent="flex-start" 
                 alignItems="start" >
-                <li><span>{res?.data?.post?.price}€/month</span></li>
+                  {console.log(res?.data?.post)}
+                  {!res?.data?.post && (
+                  <ConnectButtonCustom onClick={()=> navigate("/createPost")}>Post this room</ConnectButtonCustom>
+                  )}
+                {res?.data?.post && <li><span>{res?.data?.post?.price}€/month</span></li>}
                 <li>🏠{res?.data?.type}</li>
-                <li>{printRoomIcons("Surface")}{res?.data?.room?.surface}m²</li>
+                <li>{printRoomIcons("Surface")}{res?.data?.surface}m²</li>
                 <li>🗺️ {res?.data?.province}, {res?.data?.publicLocation}</li>
                 <li>🪟 {res?.data?.exterior && "Exterior Room"}</li>
               </UlCustom>

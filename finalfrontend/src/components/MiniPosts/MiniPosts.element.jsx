@@ -39,26 +39,38 @@ const MiniPostStyles = styled.div`
     max-width: 100%;
     font-size: 16px;
     text-overflow: ellipsis;
+    white-space: wrap;
+  overflow: hidden;
     display: -webkit-box;
     -webkit-line-clamp: 3;
     -webkit-box-orient: vertical;
-    /* white-space: nowrap; */
-    overflow: hidden;
+
+    overflow-y: hidden;
+    overflow-x: hidden ;
+    -webkit-hyphens: auto;
+-moz-hyphens: auto;
+-ms-hyphens: auto;
+hyphens: auto;
+    overflow-wrap: break-word;
+    word-wrap: break-word;
   }
   & h3, h2 {
     height: 30%;
     font-size: 20px;
     align-self: center;
+    
   }
 
   ${({ theme }) => theme.mediaquery.bigScreen} {
-    width: 47vw;
-    height: 35vh;
+    max-width: 47vw;
+    height: 40vh;
+    max-height: 40vh;
     & img {
-      width: 25%;
+      width: 15%;
     }
 
     & p {
+    
       max-height: 70%;
       max-width: 100%;
       font-size: 13px;
@@ -72,13 +84,6 @@ const MiniPostStyles = styled.div`
 }
 
 
-  ${({ theme }) => theme.mediaquery.bigScreen} {
-    & img {
-      width: 15%;
-    }
-    height: 280px;
-   
-  }
 
   ${({ theme }) => theme.mediaquery.laptop} {
 
