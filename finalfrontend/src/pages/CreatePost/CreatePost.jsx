@@ -316,6 +316,7 @@ export const CreatePost = () => {
                   type="number"
                   id="depositPrice"
                   name="depositPrice"
+                  defaultValue={0}
                   {...register("depositPrice", { required: true })}
                 />
               </LabelAndInput>
