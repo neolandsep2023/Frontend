@@ -25,3 +25,11 @@ export const createUserComment = async (userId, formData) => {
     .then((res) => res)
     .catch((error) => error);
 };
+
+export const deleteComment = async (commentId) => {
+  const APIGeneral = extraConfig();
+
+  return APIGeneral.post(`/comments/delete/${commentId}`)
+    .then((res) => res)
+    .catch((error) => error);
+};
