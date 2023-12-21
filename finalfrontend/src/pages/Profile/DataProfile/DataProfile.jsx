@@ -21,6 +21,7 @@ import { usePaginacion } from "../../../hooks/usePaginacion";
 import { NothingHere } from "../../../components/NothingHere/NothingHere";
 import { Rating } from "primereact/rating";
 import { Link, useNavigate } from "react-router-dom";
+import { DeleteButtonComponent } from "../../../components/DeleteButton/DeleteButtonComponent";
 
 export const DataProfile = ({ page }) => {
   const isMobile = window.innerWidth < 576 ? true : false;
@@ -106,7 +107,7 @@ export const DataProfile = ({ page }) => {
                         type={post.type}
                         addToSaved={addToSaved}
                         userLikedPosts={userLikedPosts}
-                      ></MiniPostProfile>
+                      >{post.author == user._id  && <DeleteButtonComponent type="post" id={post._id}/>}</MiniPostProfile>
                     </>
                   ))
                 ) : (
@@ -147,7 +148,8 @@ export const DataProfile = ({ page }) => {
                           type={room.type}
                           addToSaved={addToSaved}
                           userLikedPosts={userLikedPosts}
-                        ></MiniPostProfile>
+                        > {//el componente de DeleteButtonComponent entra como child a minipost profile
+                          room.postedBy == user._id  && <DeleteButtonComponent type="room" id={room._id}/>} </MiniPostProfile>
                       )}
                     </>
                   ))
@@ -237,7 +239,7 @@ export const DataProfile = ({ page }) => {
                         type={bookmark.type}
                         addToSaved={addToSaved}
                         userLikedPosts={userLikedPosts}
-                      ></MiniPostProfile>
+                      > </MiniPostProfile>
                     </>
                   ))
                 ) : (

@@ -2,13 +2,14 @@ import { Link } from "react-router-dom"
 import { FlexDir, FlexEnd, SaveElement, SavedElement } from "../StyleComponents"
 import { MiniPostProfileElement } from "./MiniPostProfile.element"
 import { useEffect, useState } from "react"
+import { DeleteButtonComponent } from "../DeleteButton/DeleteButtonComponent"
+import { useAuth } from "../../context/authContext"
+import { useScrollTrigger } from "@mui/material"
 
-export const MiniPostProfile = ({id, title, text, image, province, price, type, page, addToSaved, userLikedPosts}) => {
+export const MiniPostProfile = ({id, title, text, image, province, price, type, page, addToSaved, userLikedPosts, children}) => {
   const isMobile = window.innerWidth < 576 ? true : false 
-
+  const { user } = useAuth();
   const path = page == "post" || page == "bookmark" ? `/feed/${id}` : page == "room" && `/roomFinds/${id}`
-
-
 
   const isSaved = userLikedPosts?.includes(id)
   
@@ -43,10 +44,11 @@ export const MiniPostProfile = ({id, title, text, image, province, price, type, 
      
        
        
-       
         </FlexDir>
 
         </Link>
+        {children}
+
     </MiniPostProfileElement>
     </>
   )
