@@ -5,7 +5,7 @@ const FlexStyle = styled.div`
   display: flex;
   flex-direction: ${({ direction }) => direction};
   justify-content: ${({justifyContent}) => (justifyContent ? justifyContent : "center")};;
-  align-items: center;
+  align-items:  ${({alignItems}) => (alignItems ? alignItems: "center")};
   text-align: justify;
   flex-wrap: ${({ wrap }) => (wrap ? wrap : "no-wrap")};
   gap: ${({ gap, theme }) => (gap ? gap : theme.spacing(1.5))};
@@ -83,7 +83,8 @@ export const FlexDir = ({
   borderRadius,
   backgroundColor,
   justifyContent,
-  onClick
+  onClick,
+  alignItems
 }) => {
   const { theme } = useTheme();
 
@@ -113,6 +114,7 @@ export const FlexDir = ({
       borderRadius={borderRadius}
       backgroundColor={backgroundColor}
       justifyContent={justifyContent}
+      alignItems={alignItems}
     >
       {children}
     </FlexStyle>

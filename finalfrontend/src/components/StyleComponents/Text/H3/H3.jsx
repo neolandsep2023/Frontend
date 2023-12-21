@@ -6,11 +6,11 @@ const H3Styles = styled.h3`
   text-align: ${({textAlign}) => textAlign ? textAlign : "center"};
   width: 100%;
   padding: ${({padding}) => padding ? padding : "0"};
-  font-size: ${({fontSize}) => fontSize ? fontSize : "24px"};
+  font-size: ${({fontSize}) => fontSize ? fontSize : "30px"};
 
   ${({ theme }) => theme.mediaquery.tablet} {
     text-align: center;
-    font-size: 24px;
+    font-size: 25px;
   }
 
   ${({ theme }) => theme.mediaquery.mobile} {

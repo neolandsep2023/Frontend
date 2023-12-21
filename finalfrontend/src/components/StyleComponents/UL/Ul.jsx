@@ -19,6 +19,7 @@ const UlStyles = styled.ul`
     font-size: ${({ fontSize }) => fontSize ? fontSize : "1rem"};
     display: flex;
     justify-content: center;
+    text-align: left;
     align-items: center;
     text-transform: capitalize;
     height: ${({ liHeight }) => liHeight ? liHeight : "auto"};
@@ -31,13 +32,15 @@ const UlStyles = styled.ul`
 
   ${({ theme }) => theme.mediaquery.desktop} {
     li{
-      font-size: ${({ fontSizeTablet }) => fontSizeTablet ? fontSizeTablet : "1rem"};
+      font-size: ${({ fontSizeTablet }) => fontSizeTablet ? fontSizeTablet : "2rem"};
+      text-align: left;
     }
   }
 
   ${({ theme }) => theme.mediaquery.tablet} {
     li{
-      font-size: ${({ fontSizeTablet }) => fontSizeTablet ? fontSizeTablet : "1rem"};
+      font-size: ${({ fontSizeTablet }) => fontSizeTablet ? fontSizeTablet : "1.3rem"};
+      text-align: left;
     }
   }
 
@@ -52,6 +55,7 @@ const UlStyles = styled.ul`
     flex-direction: ${({ mediaqueryDirMobile }) => mediaqueryDirMobile && mediaqueryDirMobile};
     li{
       font-size: ${({ fontSizeMobile }) => fontSizeMobile ? fontSizeMobile : "1rem"};
+      text-align: left;
     
     }
   }

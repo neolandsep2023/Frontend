@@ -41,9 +41,9 @@ export const Header = () => {
           </Link>
           <div className="navs">
             <div className="botonesH">
-              <Link>
+              <a>
               <img  onClick={toggleTheme}   src="https://res.cloudinary.com/djfkchzyq/image/upload/v1703067364/xgavzjkhbovd4tm1oryx.png"></img>
-</Link>
+</a>
              
               {user != null ? (
                 <>

@@ -57,8 +57,8 @@ export const RoomById = () => {
   return (
     <>
       {res &&
-        <FlexDir gap="50px" minHeight="100vh" direction="column" margin="0" >
-          <h1 style={{ fontSize: "4vw" }}>{res?.data?.title}</h1>
+        <FlexDir gap="30px" minHeight="100vh" direction="column" margin="0" padding="20px 0 0 0">
+          <H3Custom fontSize="35px">{res?.data?.title}</H3Custom>
           <FlexDir  direction="row" gap="2rem" mediaqueryDirMobile="column" minHeigh="55vh">
             <FlexDir width="60vw">
               {console.log(res?.data)}
@@ -91,15 +91,14 @@ export const RoomById = () => {
           </FlexDir>
           <FlexDir 
           gap="10vw"
-          
+         
             direction="row" 
-            justifyContent="center"
-            alignItems="center"
             width="80vw" 
+            alignItems="flex-start"
             margin="0.5rem 0 1rem 0" 
             mediaqueryMarginMobile="0.3rem 0 0 0"
-            minHeight="50vh">
-            <FlexDir direction="column" width="50%" height="50vh" >
+            >
+            <FlexDir direction="column" height="100%" width="50%" justifyContent="flex-start" gap="20px" >
               <H3Custom textAlign="center">House Commodities</H3Custom>
               <UlCustom 
                 width="100%" 
@@ -112,7 +111,7 @@ export const RoomById = () => {
                 ))}
               </UlCustom>
             </FlexDir>
-            <FlexDir direction="column" width="50%" height="50vh" >
+            <FlexDir  justifyContent="flex-start"direction="column" width="50%"  height="100%"   gap="20px" >
               <H3Custom textAlign="center">Room Commodities</H3Custom>
               <UlCustom 
                 width="100%" 
