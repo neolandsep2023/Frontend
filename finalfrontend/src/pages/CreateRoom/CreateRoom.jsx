@@ -208,9 +208,11 @@ const { postId } = useParams()
             <label htmlFor="title">Room title</label>
             <input
               id="title"
+              minLength={10}
+              maxLength={100}
               name="title"
               placeholder="Spacious flat in Chamartin"
-              {...register("title", { required: true, maxLength: 50 })}
+              {...register("title", { required: true, maxLength: 100 })}
             />
           </LabelAndInput>
 
@@ -219,12 +221,14 @@ const { postId } = useParams()
             <textarea
               id="description"
               name="description"
+              minLength={50}
+              maxLength={1000}
               style={{ width: "100%" }}
               placeholder="Lovely flat in the middle of Chamartin, near the train station, and with a shopping mall 200m away. The flat has full commodities and fees ar..."
               {...register("description", {
                 required: true,
                 minLength: 50,
-                maxLength: 300,
+                maxLength: 1000,
               })}
             />
           </LabelAndInput>

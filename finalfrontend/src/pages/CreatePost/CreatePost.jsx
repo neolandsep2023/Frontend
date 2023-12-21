@@ -200,7 +200,11 @@ export const CreatePost = () => {
               id="title"
               name="title"
               placeholder="Looking for..."
-              {...register("title", { required: true })}
+              {...register("title", {
+                required: true,
+                minLength: 10,
+                maxLength: 55,
+              })}
             />
           </LabelAndInput>
 
@@ -267,7 +271,7 @@ export const CreatePost = () => {
                 </label>
                 <textarea
                   minLength={100}
-                  maxLength={600}
+                  maxLength={1000}
                   id="text"
                   name="text"
                   style={{ width: "100%" }}
@@ -275,7 +279,7 @@ export const CreatePost = () => {
                   {...register("text", {
                     required: true,
                     minLength: 50,
-                    maxLength: 600,
+                    maxLength: 1000,
                   })}
                 />
               </LabelAndInput>
