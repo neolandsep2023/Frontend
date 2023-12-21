@@ -217,12 +217,12 @@ export const UserDataProfile = ({ page, userData }) => {
         case "createComment":
           return (
             <>
-            
+            {
             <ProfileContainer heightTablet={"58vh"} height={"77vh"} key={page}>
-         { userData && !isOwner &&   <UserReview  userData={userData} action="usercomment"/>}
+         { userData &&   <UserReview  userData={userData} action="usercomment"/>}
             {/* </DataProfileElement> */}
           </ProfileContainer>
-        
+        }
         </>
           );
           
