@@ -81,6 +81,7 @@ export const PostById = () => {
   const isSaved = userLikedPosts?.includes(id)
 
   const showPopup = () => {
+    console.log(res.data.author[0]._id)
     setPopupActive(true)
   }
 
@@ -226,13 +227,14 @@ export const PostById = () => {
           {res?.data?.type == "Room" && (
           <FlexDir mediaqueryMarginMobile="0" mediaqueryMarginTablet="1rem 0 0 0" margin="5rem 0 0 0">
             <RoomReview roomId={res?.data?._id} />
-            {popupActive && <MessagePopup id={res.data.author[0]} setPopupActive={setPopupActive} />}
+            
             {popupLinkActive && <PopUpLink id={id} setPopupActive={setPopupLinkActive} />}
           </FlexDir>)}
 
 
-
+          {popupActive && <MessagePopup id={res.data.author[0]._id} setPopupActive={setPopupActive} />}
         </FlexDir>
+        
       }
     </>
   )
