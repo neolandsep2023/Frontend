@@ -94,7 +94,7 @@ export const RoomById = () => {
                   <li>🪟 {res?.data?.exterior && "Exterior Room"}</li>
                 </>}
                 {isMobile &&
-                <UlCustom mediaqueryDirMobile="row" justifyContent="flex-start" alginItemsMobile="center"> 
+                <UlCustom mediaqueryDirMobile="row" justifyContent="flex-start" justifyContentMobile="center" alginItemsMobile="center"> 
                   <li>{printRoomIcons("Private Room")}{res?.data?.type}</li>
                   <li>{printRoomIcons("Surface")}{res?.data?.surface}m²</li>
                   <li>{printHomeIcons("Location")}{res?.data?.province}</li>

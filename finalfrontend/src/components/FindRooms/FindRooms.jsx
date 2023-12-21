@@ -13,8 +13,6 @@ export const FindRooms = ({ postId, resCheck, setResCheck, setPopupLinkActive })
 
   let isRoom
 
-  console.log(resCheck?.data)
-
   const handleSubmit = async (e) => {
     let resUserByName = await getRoomByName(findNameValue)
     setRes(resUserByName)

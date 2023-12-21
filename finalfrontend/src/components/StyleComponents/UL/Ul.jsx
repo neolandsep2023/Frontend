@@ -47,6 +47,7 @@ const UlStyles = styled.ul`
   ${({ theme }) => theme.mediaquery.mobile} {
     flex-direction: ${({ mediaqueryDirMobile }) => mediaqueryDirMobile && mediaqueryDirMobile};
     align-items: ${({ alginItemsMobile }) => alginItemsMobile && alginItemsMobile};
+    justify-content: ${({ justifyContentMobile }) => justifyContentMobile && justifyContentMobile};
     li{
       font-size: ${({ fontSizeMobile }) => fontSizeMobile ? fontSizeMobile : "0.8rem"};
     }
@@ -55,6 +56,7 @@ const UlStyles = styled.ul`
   ${({ theme }) => theme.mediaquery.miniMobile} {
     flex-direction: ${({ mediaqueryDirMobile }) => mediaqueryDirMobile && mediaqueryDirMobile};
     align-items: ${({ alginItemsMobile }) => alginItemsMobile && alginItemsMobile};
+    justify-content: ${({ justifyContentMobile }) => justifyContentMobile && justifyContentMobile};
     li{
       font-size: ${({ fontSizeMobile }) => fontSizeMobile ? fontSizeMobile : "0.8rem"};
       text-align: left;

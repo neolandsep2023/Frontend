@@ -49,6 +49,7 @@ export const PostById = () => {
   const { user } = useAuth();
 
   let acc = 0;
+  let isMobile = window.innerWidth < 575
 
   //todo ------------- Get Post --------------
   const fetchPost = async () => {
@@ -124,7 +125,6 @@ export const PostById = () => {
                 justifyContent="space-between"
                 width="60vw"
               >
-                {console.log(res?.data)}
                 <li>
                   {printHomeIcons("Location")}
                   {res?.data?.province}, {res?.data?.publicLocation} -{" "}
@@ -202,10 +202,10 @@ export const PostById = () => {
                 ) : (
                   <li>{printRoomIcons("Interior")}Interior</li>
                 )}
-                <li>
+                {isMobile && <li>
                   {printRoomIcons("Surface")}
                   {res?.data?.room[0]?.surface}m²
-                </li>
+                </li>}
                 {res?.data?.room[0]?.commoditiesRoom?.includes(
                   "Private Bathroom"
                 ) ? (
@@ -407,13 +407,12 @@ export const PostById = () => {
                 margin="5rem 0 0 0"
               >
                 <RoomReview roomId={res?.data?._id} />
-
-                {popupLinkActive && (
-                  <PopUpLink id={id} setPopupActive={setPopupLinkActive} />
-                )}
               </FlexDir>
             )}
 
+          {popupLinkActive && (
+            <PopUpLink id={id} setPopupLinkActive={setPopupLinkActive} resCheck={resCheck} setResCheck={setResCheck}/>
+          )}
           {popupActive && (
             <MessagePopup
               id={res.data.author[0]._id}
