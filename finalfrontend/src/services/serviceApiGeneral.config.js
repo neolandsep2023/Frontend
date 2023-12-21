@@ -3,7 +3,7 @@ import { updateToken } from "../utils/updateToken"
 
 export const extraConfig = () => {
 return (axios.create({
-  baseURL: "https://backend-weld-pi.vercel.app/api/v1",
+  baseURL: "http://localhost:8081/api/v1",
   headers: {
       Accept: "application/json",
       "Content-Type":"application/json",
