@@ -72,7 +72,11 @@ export const DataProfile = ({ page }) => {
       : page === "rooms"
       ? setGaleriaItems(res?.data?.myRooms)
       : page === "reviews"
-      ? setGaleriaItems(res?.data?.receivedComments?.filter(comment => comment.type === "public"))
+      ? setGaleriaItems(
+          res?.data?.receivedComments?.filter(
+            (comment) => comment.type === "public"
+          )
+        )
       : page === "bookmarks" && setGaleriaItems(res?.data?.savedPosts);
 
     // }
@@ -94,7 +98,7 @@ export const DataProfile = ({ page }) => {
                 {dataPag[0] ? (
                   dataPag.map((post) => (
                     <>
-                      {console.log(dataPag, page)}
+                    
                       <MiniPostProfile
                         key={post._id}
                         page={"post"}
@@ -107,7 +111,11 @@ export const DataProfile = ({ page }) => {
                         type={post.type}
                         addToSaved={addToSaved}
                         userLikedPosts={userLikedPosts}
-                      >{post.author == user._id  && <DeleteButtonComponent type="post" id={post._id}/>}</MiniPostProfile>
+                      >
+                        {post.author == user._id && (
+                          <DeleteButtonComponent type="post" id={post._id} />
+                        )}
+                      </MiniPostProfile>
                     </>
                   ))
                 ) : (
@@ -134,7 +142,7 @@ export const DataProfile = ({ page }) => {
                 {page == "rooms" && dataPag[0] ? (
                   dataPag.map((room) => (
                     <>
-                      {console.log(dataPag, page)}
+          
                       {room && (
                         <MiniPostProfile
                           key={room._id}
@@ -148,8 +156,18 @@ export const DataProfile = ({ page }) => {
                           type={room.type}
                           addToSaved={addToSaved}
                           userLikedPosts={userLikedPosts}
-                        > {//el componente de DeleteButtonComponent entra como child a minipost profile
-                          room.postedBy == user._id  && <DeleteButtonComponent type="room" id={room._id}/>} </MiniPostProfile>
+                        >
+                          {" "}
+                          {
+                            //el componente de DeleteButtonComponent entra como child a minipost profile
+                            room.postedBy == user._id && (
+                              <DeleteButtonComponent
+                                type="room"
+                                id={room._id}
+                              />
+                            )
+                          }{" "}
+                        </MiniPostProfile>
                       )}
                     </>
                   ))
@@ -166,7 +184,12 @@ export const DataProfile = ({ page }) => {
       case "reviews":
         return (
           <>
-             <ProfileContainer heightTablet={"58vh"} height={"77vh"} key={page} review={true}>
+            <ProfileContainer
+              heightTablet={"58vh"}
+              height={"77vh"}
+              key={page}
+              review={true}
+            >
               <FlexDir>
                 <h1>Reviews of your profile</h1>
                 <MiniPaginacion />
@@ -176,7 +199,11 @@ export const DataProfile = ({ page }) => {
               <MiniPostProfileContainerElement>
                 {dataPag[0] ? (
                   dataPag?.map((review) => (
-                    <ReviewElement key={review._id} padding="2rem 0 1rem 0" margin="3rem 0 1rem 0">
+                    <ReviewElement
+                      key={review._id}
+                      padding="2rem 0 1rem 0"
+                      margin="3rem 0 1rem 0"
+                    >
                       {console.log(review)}
 
                       <FlexEnd
@@ -226,7 +253,7 @@ export const DataProfile = ({ page }) => {
                 {dataPag ? (
                   dataPag?.map((bookmark) => (
                     <>
-                      {console.log(dataPag, page)}
+                    
                       <MiniPostProfile
                         key={bookmark._id}
                         page={"bookmark"}
@@ -239,7 +266,9 @@ export const DataProfile = ({ page }) => {
                         type={bookmark.type}
                         addToSaved={addToSaved}
                         userLikedPosts={userLikedPosts}
-                      > </MiniPostProfile>
+                      >
+                        {" "}
+                      </MiniPostProfile>
                     </>
                   ))
                 ) : (

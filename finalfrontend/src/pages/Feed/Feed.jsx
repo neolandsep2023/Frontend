@@ -69,7 +69,7 @@ export const Feed = () => {
     setIsLoading(true);
     setSendSearch(true);
     setResSearch(await search(searchInput));
-    console.log(resSearch);
+    // console.log(resSearch);
     setIsLoading(false);
   };
 
@@ -98,7 +98,6 @@ export const Feed = () => {
 
   useEffect(() => {
     if (sendSearch == true && resSearch?.status == 200) {
-      console.log(feed, resSearch?.data);
 
       feed == "RoomSeeker"
         ? setGaleriaItems(resSearch?.data?.resArrayRoommSeeker) //aqui se setea la respuesta del search segun estes en room o roommate

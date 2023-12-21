@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react";
-import { Link, useParams } from "react-router-dom";
+import { Link, useNavigate, useParams } from "react-router-dom";
 import {
   FlexDir,
   H3Custom,
@@ -28,9 +28,12 @@ import { SavePostElement } from "../../components/StyleComponents/AddElement/Sav
 import { MessagePopup } from "../../components/OtherUser/MessagePopup";
 import { LinkRoomButton } from "../../components/StyleComponents/Buttons/LinkRoom";
 import { PopUpLink } from "../../components/PopUp/PopUpLink";
+import { WarningElement } from "../../components/StyleComponents/Warning/Warning.element";
+import { SuccessElement } from "../../components/StyleComponents/Warning/Success.element";
 
 export const PostById = () => {
   //! ---------- Estados ----------
+  const navigate = useNavigate();
   const [res, setRes] = useState();
   const [isOwner, setIsOwner] = useState();
   const [popupActive, setPopupActive] = useState(false);
@@ -49,7 +52,7 @@ export const PostById = () => {
   const { user } = useAuth();
 
   let acc = 0;
-  let isMobile = window.innerWidth < 575
+  let isMobile = window.innerWidth < 575;
 
   //todo ------------- Get Post --------------
   const fetchPost = async () => {
@@ -85,7 +88,6 @@ export const PostById = () => {
   const isSaved = userLikedPosts?.includes(id);
 
   const showPopup = () => {
-    console.log(res.data.author[0]._id);
     setPopupActive(true);
   };
 
@@ -115,9 +117,38 @@ export const PostById = () => {
   return (
     <>
       {res && (
-        <FlexDir minHeight="100vh" direction="column" margin="0" >
-          <h1  style={{maxHeight:"30vh", fontSize: "35px", textAlign:"center", width:"80vw" }}>{res?.data?.title}</h1>
-          <FlexDir width="80vw"  direction="row" gap="2rem" mediaqueryDirMobile="column">
+        <FlexDir minHeight="100vh" direction="column" margin="0">
+          <H3Custom
+            fontSize="3.8vw"
+            textAlign="center"
+            padding="0"
+            fontSizeMobile="4.5vw"
+            fontSizeTablet="4.5vw"
+          >
+            {res?.data?.title}
+          </H3Custom>
+          {(res?.data?.roommates?.length == 0 ||
+            res?.data?.room?.length == 0) &&
+            isOwner &&
+            (res?.data?.roommates?.length == 0 ||
+              res?.data?.room?.length == 0) && (
+              <WarningElement>
+                {`Please complete post. ${
+                  res?.data?.room?.length == 0 &&
+                  res?.data?.roommates?.length == 0
+                    ? "Room and roommates"
+                    : res?.data?.roommates?.length == 0
+                    ? "Roommates"
+                    : res?.data?.room?.length == 0 && "Room"
+                } field is missing below`}{" "}
+              </WarningElement>
+            )}
+          <FlexDir
+            width="80vw"
+            direction="row"
+            gap="2rem"
+            mediaqueryDirMobile="column"
+          >
             <FlexDir width="60vw" direction="column">
               <ByIdImageCustom src={res?.data?.image} />
               <UlCustom
@@ -175,9 +206,27 @@ export const PostById = () => {
                   <UpdateButton page="post" />
                 </Link>
               )}
-              {isOwner && res?.data?.type == "RoommateSeeker" && (
-                <LinkRoomButton setPopupLinkActive={setPopupLinkActive} />
-              )}
+              {console.log(res)}
+              {isOwner &&
+                res?.data?.type == "RoommateSeeker" &&
+                res?.data?.room?.length == 0 && (
+                  <WarningElement>Link a room</WarningElement>
+                )}
+              {res?.data?.type == "RoommateSeeker" &&
+                res?.data?.room?.length != 0 && (
+                  <SuccessElement
+                    onClick={() =>
+                      navigate(`/roomFinds/${res?.data?.room[0]?._id}`)
+                    }
+                  >
+                    Check Room
+                  </SuccessElement>
+                )}
+              {isOwner &&
+                res?.data?.type == "RoommateSeeker" &&
+                res?.data?.room?.length == 0 && (
+                  <LinkRoomButton setPopupLinkActive={setPopupLinkActive} />
+                )}
             </FlexDir>
           </FlexDir>
           <FlexDir margin="0" width="100vw">
@@ -202,10 +251,12 @@ export const PostById = () => {
                 ) : (
                   <li>{printRoomIcons("Interior")}Interior</li>
                 )}
-                {isMobile && <li>
-                  {printRoomIcons("Surface")}
-                  {res?.data?.room[0]?.surface}m²
-                </li>}
+                {isMobile && (
+                  <li>
+                    {printRoomIcons("Surface")}
+                    {res?.data?.room[0]?.surface}m²
+                  </li>
+                )}
                 {res?.data?.room[0]?.commoditiesRoom?.includes(
                   "Private Bathroom"
                 ) ? (
@@ -220,12 +271,14 @@ export const PostById = () => {
           {res?.data?.type == "RoommateSeeker" && (
             <FlexDir
               direction="column"
-              width="100vw"
               margin="7vw 0"
               mediaqueryMarginMobile="4vw 0"
               mediaqueryMarginTablet="6vw 0"
             >
-              <H3Custom margin="0 0 1vw 0">The roomates</H3Custom>
+              <H3PerfectFit>The roomates</H3PerfectFit>
+              {isOwner && res?.data?.roommates?.length == 0 && (
+                <WarningElement>Please add a roommate</WarningElement>
+              )}
               {res?.data?.roommates?.length > 0 && isOwner && (
                 <div style={{ display: "flex", flexDirection: "row" }}>
                   <NoRoomate
@@ -260,8 +313,14 @@ export const PostById = () => {
               margin: "0",
             }}
           />
-          <FlexDir justifyContent="center" alignItems="center" textAlign="center"   mediaqueryWidthMobile="80vw" direction="column" >
-            <H3Custom margin="3vw 0 1vw 0">The perfect fit</H3Custom>
+          <FlexDir
+            justifyContent="center"
+            alignItems="center"
+            textAlign="center"
+            mediaqueryWidthMobile="80vw"
+            direction="column"
+          >
+            <H3PerfectFit>The perfect fit</H3PerfectFit>
             <FlexDir direction="row">
               <FlexDir
                 justifyContent="flex-start"
@@ -276,11 +335,10 @@ export const PostById = () => {
                     : "What I would love to find:"}
                 </H3PerfectFit>
                 <UlCustom
-            justifyContent="flex-start"
-            alignItems="flex-start"
+                  justifyContent="flex-start"
+                  alignItems="flex-start"
                   height="75%"
                   direction="column"
-                 
                   gap="1vw"
                 >
                   <li>
@@ -320,13 +378,13 @@ export const PostById = () => {
                 mediaqueryMarginMobile="0 1rem 0 0"
                 height="100%"
               >
-                <H3PerfectFit >
+                <H3PerfectFit>
                   {" "}
                   {res?.data?.type == "RoommateSeeker"
                     ? "Aligned interests:"
                     : "My interests:"}
                 </H3PerfectFit>
-                <FlexDir height="75%"  width="100%">
+                <FlexDir height="75%" width="100%">
                   <UlCustom
                     direction="row"
                     wrap="wrap"
@@ -369,12 +427,12 @@ export const PostById = () => {
               </FlexDir>
             </FlexDir>
 
-            {res?.data?.type == "RoommateSeeker" && (
+            {/* {res?.data?.type == "RoommateSeeker" && (
               <FlexDir width="90vw" height="15vw" direction="column" gap="0">
                 <H3PerfectFit>Description:</H3PerfectFit>
                 <Description>{res?.data?.text}</Description>
               </FlexDir>
-            )}
+            )} */}
           </FlexDir>
           <hr
             style={{
@@ -385,11 +443,11 @@ export const PostById = () => {
             }}
           />
           <FlexDir direction="column" margin="7vh">
-            <H3Custom margin="0 0 -1rem 0">
+            <H3PerfectFit>
               {res?.data?.type == "Room"
                 ? "Location"
                 : "Location I'm searching for"}
-            </H3Custom>
+            </H3PerfectFit>
             {postcode != "" && (
               <ByIdMap
                 type="repeat"
@@ -411,7 +469,12 @@ export const PostById = () => {
             )}
 
           {popupLinkActive && (
-            <PopUpLink id={id} setPopupLinkActive={setPopupLinkActive} resCheck={resCheck} setResCheck={setResCheck}/>
+            <PopUpLink
+              id={id}
+              setPopupLinkActive={setPopupLinkActive}
+              resCheck={resCheck}
+              setResCheck={setResCheck}
+            />
           )}
           {popupActive && (
             <MessagePopup

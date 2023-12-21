@@ -52,8 +52,6 @@ export const CreatePost = () => {
   //<!--sec                     Funciones pagina                         -->
   const formSubmit = async (formData) => {
     const inputFile = document.getElementById("file-upload").files;
-    console.log("formData en el componente", formData);
-    console.log("inputFile en el componente", inputFile);
     if (inputFile.length != 0) {
       //- !=0 -- hay una imagen en el form
 
@@ -86,10 +84,10 @@ export const CreatePost = () => {
   //<!--sec                     UseEffect(gestion errores)                         -->
 
   useEffect(() => {
-    console.log(postType);
-    console.log(publicLocation);
-    console.log(postcode);
-    console.log(province);
+    // console.log(postType);
+    // console.log(publicLocation);
+    // console.log(postcode);
+    // console.log(province);
   }, [postType, postcode, province, publicLocation]);
 
   useEffect(() => {

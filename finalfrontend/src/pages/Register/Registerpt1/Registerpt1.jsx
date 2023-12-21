@@ -30,7 +30,7 @@ export const Registerpt1 = () => {
   const [res, setRes] = useState({});
   const [send, setSend] = useState(false);
   const [okRegister, setRegisterOk] = useState(false);
-  const [okRegisterGoogle, setRegisterGoogleOK] = useState(false)
+  const [okRegisterGoogle, setRegisterGoogleOK] = useState(false);
   const [googleUser, setGoogleUser] = useState([]);
   // const [googleProfile, setGoogleProfile] = useState ([])
   const [resGoogle, setResGoogle] = useState({});
@@ -46,7 +46,7 @@ export const Registerpt1 = () => {
       //- !=0 -- hay una imagen en el form
       const customFormData = {
         ...formData,
-        name: "", 
+        name: "",
         lastName: "",
         description: "",
         birthYear: 2000,
@@ -60,7 +60,7 @@ export const Registerpt1 = () => {
       // no hay imagen
       const customFormData = {
         ...formData,
-        name: "", 
+        name: "",
         lastName: "",
         description: "",
         birthYear: 2000,
@@ -72,33 +72,30 @@ export const Registerpt1 = () => {
     }
   };
 
-
   const handleGoogleLogin = useGoogleLogin({
     onSuccess: (codeResponse) => setGoogleUser(codeResponse),
     onError: (error) => console.log("Login Failed:", error),
   });
 
   const formGoogle = async () => {
+    console.log(resGoogle);
+    const customFormData = {
+      isVerified: resGoogle.data.verified_email,
+      email: resGoogle.data.email,
+      name: resGoogle?.data?.given_name,
+      lastName: resGoogle?.data?.family_name
+        ? resGoogle?.data?.family_name
+        : null,
+      image: resGoogle.data.picture,
+      username: resGoogle.data.email.split("@")[0],
+      password: `${resGoogle.data.email}1A`,
+    };
+    //he tenido que meterle
 
-      console.log(resGoogle);
-      const customFormData = {
-        isVerified: resGoogle.data.verified_email,
-        email: resGoogle.data.email,
-        name: resGoogle?.data?.given_name,
-        lastName: resGoogle?.data?.family_name
-          ? resGoogle?.data?.family_name
-          : null,
-        image: resGoogle.data.picture,
-        username: resGoogle.data.email.split("@")[0],
-        password: `${resGoogle.data.email}1A`,
-      }
-      //he tenido que meterle
-
-      setSend(true);
-      setRes(await registerUserWithGoogle(customFormData));
-      console.log(res);
-      setSend(false);
-    
+    setSend(true);
+    setRes(await registerUserWithGoogle(customFormData));
+    console.log(res);
+    setSend(false);
   };
 
   const handleGoogleRegister = async () => {
@@ -110,7 +107,6 @@ export const Registerpt1 = () => {
     setSend(false);
   };
 
-
   useEffect(() => {
     resGoogle?.status == 200 && formGoogle();
   }, [resGoogle]);
@@ -118,12 +114,11 @@ export const Registerpt1 = () => {
   useEffect(() => {
     //  console.log('hola use effect', googleUser)
     if (googleUser.length != 0) {
-      console.log(googleUser, "ENTROOOOOOOOOO");
+      // console.log(googleUser, "ENTROOOOOOOOOO");
       handleGoogleRegister();
     }
   }, [googleUser]);
 
-  console.log("entro aqui", res);
 
   useEffect(() => {
     useErrorRegister(res, setRegisterOk, setRegisterGoogleOK, setRes);
@@ -131,26 +126,21 @@ export const Registerpt1 = () => {
     if (res?.status == 200) bridgeData("ALLUSER");
   }, [res]);
 
-
-
   useEffect(() => {
     setIsDeletedUser(() => false);
   }, []);
 
   if (okRegisterGoogle) {
     if (!localStorage.getItem("user")) {
-      console.log(allUser)
+      console.log(allUser);
       useAutoLogin(allUser);
-     } else {
-       return <Navigate to="/register/complete" />;
-   }
-    } else if (okRegister) {
+    } else {
+      return <Navigate to="/register/complete" />;
+    }
+  } else if (okRegister) {
     //si todo esta ok navega a la pagina del codigo
     return <Navigate to="/verifyCode" />;
   }
-
-
-
 
   return (
     <>
@@ -169,7 +159,6 @@ export const Registerpt1 = () => {
               Sign in with Google 🚀{" "}
             </button>
             <LabelAndInput>
-    
               Username
               <input
                 type="text"

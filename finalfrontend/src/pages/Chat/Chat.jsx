@@ -21,7 +21,11 @@ import { ChatDetailElement } from "./ChatDetail.element";
 import { MessageChatElement } from "./MessageChat.element";
 import { FindUsers } from "../../components/FindUsers/FindUsers";
 import { getUserByName } from "../../services/user.service";
-import { scrollToBottom, scrollToBottomAnimated } from "../../utils/scrollReact";
+import {
+  scrollToBottom,
+  scrollToBottomAnimated,
+} from "../../utils/scrollReact";
+import { Link, useNavigate } from "react-router-dom";
 
 export const Chat = () => {
   //parte de chats activos
@@ -29,7 +33,7 @@ export const Chat = () => {
   //cuando se manda un mensaje tambien hay que re-renderizar esta parte (refetch)
   //
   const [isMobile, setIsMobile] = useState(window.innerWidth < 776);
-
+  const navigate = useNavigate();
   const { register, handleSubmit } = useForm();
   const { user } = useAuth();
   const [isLoading, setIsLoading] = useState(true);
@@ -38,7 +42,7 @@ export const Chat = () => {
   const [activeChat, setActiveChat] = useState("");
   const [sentComment, setSentComment] = useState(false);
   const [textArea, setTextArea] = useState("");
-  const [inputValue, setInputValue] =useState("")
+  const [inputValue, setInputValue] = useState("");
 
   const fetchres = async () => {
     const response = await getUserChats();
@@ -48,7 +52,6 @@ export const Chat = () => {
   };
 
   const newMessage = async (formData) => {
-    console.log(formData);
     let customFormData = {
       textComment: formData.textComment,
       otherUser:
@@ -56,7 +59,6 @@ export const Chat = () => {
           ? activeChat?.userTwo._id
           : activeChat?.userOne?._id,
     };
-    console.log(customFormData);
 
     const response = await newMessageChat(customFormData);
     if (response.status == 200) {
@@ -64,22 +66,18 @@ export const Chat = () => {
       setActiveChat("");
       setSentComment(!sentComment);
       setTextArea("");
-      setInputValue("")
+      setInputValue("");
       setActiveChat(response.data.chat);
     }
   };
-
-  // console.log(res?.data?.chats);
 
   useEffect(() => {
     fetchres();
   }, [sentComment]);
 
-
   useEffect(() => {
-    activeChat !=  "" && scrollToBottom("scroll")
+    activeChat != "" && scrollToBottom("scroll");
   }, [activeChat]);
-
 
   useEffect(() => {
     const handleResize = () => {
@@ -101,8 +99,6 @@ export const Chat = () => {
   };
 
   const actualDate = new Date();
-
- 
 
   const getHourFunction = (date) => {
     const newDate = new Date(date);
@@ -135,7 +131,6 @@ export const Chat = () => {
                           setActiveChat(chat);
                         }}
                       >
-                     
                         <img
                           alt="chat user logo"
                           src={
@@ -194,26 +189,44 @@ export const Chat = () => {
             <ChatContainerElement variant={"individual"}>
               {activeChat != "" && (
                 <>
+                  {/* <Link to={activeChat?.userOne._id == user._id
+                          ? `user/${activeChat?.userTwo?.username}` :`user/${activeChat?.userOne?.username}` }> */}
                   <FlexDir
                     justifyContent={"flex-start"}
                     width={"90%"}
                     margin={"12px 0 0 0"}
+                    onClick={() =>
+                      navigate(
+                        activeChat?.userOne._id == user._id
+                          ? `/user/${activeChat?.userTwo?.username}`
+                          : `/user/${activeChat?.userOne?.username}`
+                      )
+                    }
                   >
                     <img
                       alt="user logo "
                       src={
                         activeChat?.userOne._id == user._id
-                          ? (activeChat?.userTwo.image ? activeChat?.userTwo?.image : activeChat?.userTwo.image)
-                          : (activeChat?.userOne.image ? activeChat?.userOne?.image : activeChat?.userOne.image)
+                          ? activeChat?.userTwo.image
+                            ? activeChat?.userTwo?.image
+                            : activeChat?.userTwo.image
+                          : activeChat?.userOne.image
+                          ? activeChat?.userOne?.image
+                          : activeChat?.userOne.image
                       }
                     />
 
                     <h1>
                       {activeChat?.userOne._id == user._id
-                        ? (activeChat?.userTwo.name ? activeChat?.userTwo?.name : activeChat?.userTwo.username)
-                        : (activeChat?.userOne.name ? activeChat?.userOne?.name : activeChat?.userOne.username)}
+                        ? activeChat?.userTwo.name
+                          ? activeChat?.userTwo?.name
+                          : activeChat?.userTwo.username
+                        : activeChat?.userOne.name
+                        ? activeChat?.userOne?.name
+                        : activeChat?.userOne.username}
                     </h1>
                   </FlexDir>
+                  {/* </Link> */}
                   <div className="line"></div>
                   <ChatColumnElement display={"flex"} id="scroll">
                     {activeChat.comments.map((comment) => (
@@ -244,7 +257,9 @@ export const Chat = () => {
                     >
                       <FlexDir width={"100%"}>
                         <input
-                        onInput={(e)=> {setInputValue(e.target.value); console.log(inputValue)  }}
+                          onInput={(e) => {
+                            setInputValue(e.target.value);
+                          }}
                           className="textArea"
                           type="text"
                           name="textComment"
@@ -256,7 +271,6 @@ export const Chat = () => {
                           variant="normal"
                           type="submit"
                           width={"150px"}
-                          
                         >
                           Send
                         </ButtonPrimary>
@@ -384,9 +398,6 @@ export const Chat = () => {
                                   : "otherUser"
                               }
                             >
-                              {console.log(comment?.creator?._id, user._id)}
-                              {/* <h4 key={comment._id}>{comment?.creator?.username}</h4> */}
-
                               <p>{comment?.textComment}</p>
                               {getDateFunction(actualDate) ==
                               getDateFunction(comment.createdAt) ? (
@@ -405,15 +416,18 @@ export const Chat = () => {
                           onSubmit={handleSubmit(newMessage)}
                         >
                           <FlexDir width={"100%"}>
-                          <input
-                        onInput={(e)=> {setInputValue(e.target.value); console.log(inputValue)  }}
-                          className="textArea"
-                          type="text"
-                          name="textComment"
-                          value={inputValue}
-                          id="textArea"
-                          {...register("textComment")}
-                        />
+                            <input
+                              onInput={(e) => {
+                                setInputValue(e.target.value);
+                                console.log(inputValue);
+                              }}
+                              className="textArea"
+                              type="text"
+                              name="textComment"
+                              value={inputValue}
+                              id="textArea"
+                              {...register("textComment")}
+                            />
                             <ButtonPrimary
                               variant="normal"
                               type="submit"

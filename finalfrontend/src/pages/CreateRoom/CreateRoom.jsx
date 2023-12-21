@@ -59,8 +59,8 @@ const { postId } = useParams()
   //<!--sec                     Funciones pagina                         -->
   const formSubmit = async (formData) => {
     const inputFile = document.getElementById("file-upload").files;
-    console.log("formData en el componente", formData);
-    console.log("inputFile en el componente", inputFile);
+    // console.log("formData en el componente", formData);
+    // console.log("inputFile en el componente", inputFile);
     if (inputFile.length != 0) {
         let customFormData = {
           ...formData,
@@ -96,10 +96,10 @@ const { postId } = useParams()
   //<!--sec                     UseEffect(gestion errores)                         -->
 
   useEffect(() => {
-    console.log(roomType);
-    console.log(publicLocation);
-    console.log(postcode);
-    console.log(province);
+    // console.log(roomType);
+    // console.log(publicLocation);
+    // console.log(postcode);
+    // console.log(province);
   }, [roomType, postcode, province, publicLocation]);
 
   useEffect(() => {

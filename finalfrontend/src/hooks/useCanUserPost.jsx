@@ -9,14 +9,12 @@ export const useCanUserPost = (data, navigate) => {
     data.birthYear == "" || data.birthYear == null ||
     data?.interests?.length == 0 || data.interests == null
   ) {
-    console.log("hola")
     const modifyThis = [];
     const requiredData = ["description", "name", "lastName", "birthYear", "interests"]
 
     console.log(Object.keys(data))
     for (let i = 0; i < Object.keys(data).length; i++) {
         if (Object.values(data)[i].length === 0 ) {
-          console.log("length 0")
             modifyThis.push(Object.keys(data)[i])
         }
     }

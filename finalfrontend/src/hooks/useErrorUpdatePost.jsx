@@ -4,7 +4,6 @@ export const useErrorUpdatePost = (res, setRes, navigate) => {
   console.log(res);
   if (res?.status == 200) {
     let id = (res?.data?.postByIdUpdated?._id)
-    console.log(id, "id en error")
   navigate(`/feed/${id}`)
     Swal.fire({
       icon: "success",

@@ -14,7 +14,6 @@ res?.data?.googleSignUp && setRegisterGoogleOK(() => true)
 
 setRegisterOk(() => true) 
 
-console.log(res?.data?.googleSignUp)
 
 
     Swal.fire({

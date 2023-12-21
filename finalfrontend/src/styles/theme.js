@@ -18,7 +18,7 @@ export const ZINDEX = {
 const PALETTE_COLOR_LIGHT = {
   background: "#ffffff",
   header: "#f9f9f9",
-  header1: '#f0f9f3',
+  header1: "#f0f9f3",
   enhanced: "#72cc89", //? puesto por mario
   form: "#f5f5f5",
   lighterForm: "#d3d7db",
@@ -36,14 +36,16 @@ const PALETTE_COLOR_LIGHT = {
   darkGreen: "#396644",
   ultraDarkGreen: "#2a2f2b",
   cardBackground: "#ddffe6",
-  shadow: "rgba(50, 50, 93, 0.25) 0px 2px 5px -1px, rgba(0, 0, 0, 0.3) 0px 1px 3px -1px",
-  warning: "rgba(236, 28, 0, 0.38)"
+  shadow:
+    "rgba(50, 50, 93, 0.25) 0px 2px 5px -1px, rgba(0, 0, 0, 0.3) 0px 1px 3px -1px",
+  warning: "rgba(236, 28, 0, 0.38)",
+  success: "#e3fae7",
 };
 
 const PALETTE_COLOR_DARK = {
   background: "#202124",
   header: "#2a2b2e",
-  header1: '#16281b',
+  header1: "#16281b",
   enhanced: "#396644", //? puesto por mario
   form: "#35363a",
   lighterForm: "#62676c",
@@ -63,6 +65,7 @@ const PALETTE_COLOR_DARK = {
   cardBackground: "#ddffe6",
   shadow: "2px 2px 4px rgba(0,0,0,0.4)",
   warning: "#731414",
+  success: "#396644",
 };
 
 export const themeLight = {
@@ -72,10 +75,11 @@ export const themeLight = {
       main: PALETTE_COLOR_LIGHT.background,
       dark: PALETTE_COLOR_LIGHT.ultraDarkGreen,
       warning: PALETTE_COLOR_LIGHT.warning,
+      success: PALETTE_COLOR_LIGHT.success,
     },
     header: {
       main: PALETTE_COLOR_LIGHT.header,
-      try:  PALETTE_COLOR_LIGHT.header1,
+      try: PALETTE_COLOR_LIGHT.header1,
     },
     enhanced: {
       main: PALETTE_COLOR_LIGHT.enhanced,
@@ -108,15 +112,14 @@ export const themeLight = {
       main: PALETTE_COLOR_LIGHT.shadow,
     },
     cardBackground: {
-      main: PALETTE_COLOR_LIGHT.cardBackground
+      main: PALETTE_COLOR_LIGHT.cardBackground,
     },
     anchor: {
       main: PALETTE_COLOR_LIGHT.darkishGreen,
     },
     shadow: {
       main: PALETTE_COLOR_LIGHT.shadow,
-    }
-
+    },
   },
   mediaquery: {
     miniMobile: `@media (max-width: ${BREAKPOINTS.extraSmall}px)`,
@@ -124,7 +127,7 @@ export const themeLight = {
     tablet: `@media (min-width: ${BREAKPOINTS.mobile}px) and (max-width: ${BREAKPOINTS.laptop}px)`,
     laptop: `@media (min-width: ${BREAKPOINTS.laptop}px) and (max-width: ${BREAKPOINTS.desktop}px)`,
     desktop: `@media (min-width: ${BREAKPOINTS.desktop}px) and (max-width: ${BREAKPOINTS.bigScreen}px) `,
-    bigScreen: `@media (max-width: ${BREAKPOINTS.bigScreen}px) `
+    bigScreen: `@media (max-width: ${BREAKPOINTS.bigScreen}px) `,
   },
   typography: {
     fonts: {
@@ -144,11 +147,11 @@ export const themeDark = {
       main: PALETTE_COLOR_DARK.background,
       dark: PALETTE_COLOR_DARK.ultraLightGreen,
       warning: PALETTE_COLOR_DARK.warning,
+      success: PALETTE_COLOR_DARK.success,
     },
     header: {
       main: PALETTE_COLOR_DARK.header,
-      try:  PALETTE_COLOR_DARK.header,
-
+      try: PALETTE_COLOR_DARK.header,
     },
     enhanced: {
       main: PALETTE_COLOR_DARK.enhanced,
@@ -181,14 +184,14 @@ export const themeDark = {
       main: PALETTE_COLOR_DARK.shadow,
     },
     cardBackground: {
-      main: PALETTE_COLOR_DARK.cardBackground
+      main: PALETTE_COLOR_DARK.cardBackground,
     },
     anchor: {
       main: PALETTE_COLOR_DARK.mediumGreen,
     },
     shadow: {
       main: PALETTE_COLOR_DARK.shadow,
-    }
+    },
   },
   mediaquery: {
     miniMobile: `@media (max-width: ${BREAKPOINTS.extraSmall}px)`,
@@ -196,7 +199,7 @@ export const themeDark = {
     tablet: `@media (min-width: ${BREAKPOINTS.mobile}px) and (max-width: ${BREAKPOINTS.laptop}px)`,
     laptop: `@media (min-width: ${BREAKPOINTS.laptop}px) and (max-width: ${BREAKPOINTS.desktop}px)`,
     desktop: `@media (min-width: ${BREAKPOINTS.desktop}px) and (max-width: ${BREAKPOINTS.bigScreen}px) `,
-    bigScreen: `@media (max-width: ${BREAKPOINTS.bigScreen}px) `
+    bigScreen: `@media (max-width: ${BREAKPOINTS.bigScreen}px) `,
   },
   typography: {
     fonts: {

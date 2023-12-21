@@ -9,7 +9,15 @@ import {
   resendConfirmationCode,
   verifyConfirmationCode,
 } from "../../services/user.service";
-import { Anchor, ButtonPrimary, FlexDir, Form, H1Form, LabelAndInput, Small } from "../../components/StyleComponents";
+import {
+  Anchor,
+  ButtonPrimary,
+  FlexDir,
+  Form,
+  H1Form,
+  LabelAndInput,
+  Small,
+} from "../../components/StyleComponents";
 
 export const VerifyCode = () => {
   const navigate = useNavigate();
@@ -26,7 +34,6 @@ export const VerifyCode = () => {
     const userLocal = localStorage.getItem("user");
 
     if (userLocal == null) {
-      console.log(allUser);
       const custFormData = {
         confirmationCode: parseInt(formData.confirmationCode),
 
@@ -101,37 +108,39 @@ export const VerifyCode = () => {
   return (
     <>
       <FlexDir direction={"column"} margin={"50px 0 8px 0"}>
+        <Form
+          width={"40vw"}
+          height={"50vh"}
+          onSubmit={handleSubmit(formSubmit)}
+        >
+          <FlexDir direction={"column"} gap={"20px"}>
+            <H1Form margin={"8px 0 0 0"}>Verify your account</H1Form>
 
-        <Form width={"40vw"}  height={"50vh"} onSubmit={handleSubmit(formSubmit)}>
-          <FlexDir direction={"column"} gap={"20px"} >
-          <H1Form margin={"8px 0 0 0"}>Verify your account</H1Form>
-
-      
             <LabelAndInput>
               Confirmation Code
-            <input
-              type="text"
-              id="name"
-              name="name"
-              autoComplete="false"
-              {...register("confirmationCode", { required: false })}
-            />
+              <input
+                type="text"
+                id="name"
+                name="name"
+                autoComplete="false"
+                {...register("confirmationCode", { required: false })}
+              />
             </LabelAndInput>
 
-            
-              <ButtonPrimary  width={"70%"} variant={send ? "loading" : "normal"} type="submit">Verify Code</ButtonPrimary>
+            <ButtonPrimary
+              width={"70%"}
+              variant={send ? "loading" : "normal"}
+              type="submit"
+            >
+              Verify Code
+            </ButtonPrimary>
 
-              <Anchor onClick={() => handleReSend()}>
-                Resend Code
-              </Anchor>
-        
+            <Anchor onClick={() => handleReSend()}>Resend Code</Anchor>
 
-            
-              <Small>
-                If the code is not correct, your user will be deleted from the
-                database and you will need to register again.{" "}
-              </Small>
-            
+            <Small>
+              If the code is not correct, your user will be deleted from the
+              database and you will need to register again.{" "}
+            </Small>
           </FlexDir>
         </Form>
       </FlexDir>

@@ -5,6 +5,7 @@ import { deleteRoom } from "../../services/room.service";
 import { deleteComment } from "../../services/comment.service";
 import  Swal  from "sweetalert2/dist/sweetalert2.all";
 import { useNavigate } from "react-router-dom";
+import { ButtonPrimary } from "../StyleComponents";
 //type es el tipo de elemento que vamos a borrar, para que entre al switch y haga lo adecuado.
 //falta hacer la gestion de errores!!
 //el id es el id del elemento que va a borrar!!
@@ -56,5 +57,5 @@ export const DeleteButtonComponent = ({ type, id }) => {
     });
   };
 
-  return <button style={{width: '100px', height: '50px'}} onClick={deleteAction}>DeleteButton</button>;
+  return <ButtonPrimary width={"150px"} variant="delete" onClick={deleteAction}>Delete</ButtonPrimary>;
 };

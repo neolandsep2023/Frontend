@@ -13,8 +13,9 @@ import {
 } from "../StyleComponents";
 import Swal from "sweetalert2";
 import { useForm } from "react-hook-form";
+import { H3PerfectFit } from "../StyleComponents/Text/H3/H3PerfectFit";
 
-export const UserReview = ({action, userData}) => {
+export const UserReview = ({ action, userData }) => {
   const { register, handleSubmit } = useForm();
   const [page, setPage] = useState("");
   const [res, setRes] = useState(false);
@@ -23,9 +24,7 @@ export const UserReview = ({action, userData}) => {
   // const { id } = useParams();
   const navigate = useNavigate();
 
-const id = userData?._id
-
-
+  const id = userData?._id;
 
   const formSubmit = async (formData) => {
     const customFormData = {
@@ -57,34 +56,33 @@ const id = userData?._id
           timerProgressBar: true,
         }),
         setSend(false),
-        window.location.reload()
-        ); 
+        window.location.reload());
   };
 
-  useEffect(() => {
-    
-  }, [send]);
- console.log(valueStar)
+  useEffect(() => {}, [send]);
   return (
     <FlexDir
       direction="column"
-  
-      
       width="100%"
       height="100%"
       justifyContent="center"
     >
       <Form onSubmit={handleSubmit(formSubmit)} width="100%" height="100%">
+        <H3PerfectFit>Add a Review</H3PerfectFit>
         <FlexDir
-           
-            alignItems="center"
+          alignItems="center"
           direction="column"
           width="100%"
           justifyContent="center"
           height="100%"
         >
           <LabelAndInput alignItems="center" gap="20px">
-            <Rating className="starsss" value={valueStar} onChange={(e) => setValueStar(parseInt(e.target.value))} cancel={false} />
+            <Rating
+              className="starsss"
+              value={valueStar}
+              onChange={(e) => setValueStar(parseInt(e.target.value))}
+              cancel={false}
+            />
 
             <input
               type="text"

@@ -51,8 +51,8 @@ export const UpdateRoom = () => {
 
   const formSubmit = async (formData) => {
     const inputFile = document.getElementById("file-upload").files;
-    console.log("formData en el componente", formData);
-    console.log("inputFile en el componente", inputFile);
+    // console.log("formData en el componente", formData);
+    // console.log("inputFile en el componente", inputFile);
     if (inputFile.length != 0) {
       let customFormData = {
         ...formData,

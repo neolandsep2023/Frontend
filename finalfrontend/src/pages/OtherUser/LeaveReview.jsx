@@ -21,7 +21,6 @@ export const LeaveReview = ({id, setPopupActive, isMobile}) => {
       ...formData,
       rating: valueStar,
     };
-    console.log("Custom Form Data:", customFormData);
       setRes(await createUserComment(id, customFormData));
     setSend(true);
 

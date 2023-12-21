@@ -29,7 +29,6 @@ export const ProfileDataDesktop = () => {
   
     useEffect(() => {
       fetchData();
-      console.log(data)
     }, []);
 
     const medias = sacarMedia(data)
