@@ -168,8 +168,7 @@ export const RoomById = () => {
                   Connect
                 </ConnectButtonCustom>
               )}
-              {console.log(res?.data?.post)}
-              {res?.data?.post?.length !== 0 && (
+              {res?.data?.post?._id && (
                 <SuccessElement
                   onClick={() => navigate(`/feed/${res?.data?.post?._id}`)}
                 >
