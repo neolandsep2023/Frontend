@@ -117,7 +117,8 @@ export const PostById = () => {
   return (
     <>
       {res && (
-        <FlexDir minHeight="100vh" direction="column" margin="0">
+        <FlexDir>
+        <FlexDir minHeight="100vh" direction="column" margin="0" maxWidth="70vw">
           <H3Custom
             fontSize="3.8vw"
             textAlign="center"
@@ -149,12 +150,12 @@ export const PostById = () => {
             gap="2rem"
             mediaqueryDirMobile="column"
           >
-            <FlexDir width="60vw" direction="column">
+            <FlexDir width="50vw" direction="column" justifyContent="flex-start" alignItems="flex-end">
               <ByIdImageCustom src={res?.data?.image} />
               <UlCustom
                 direction="row"
-                justifyContent="space-between"
-                width="60vw"
+                justifyContent="flex-end"
+                width="50vw"
               >
                 <li>
                   {printHomeIcons("Location")}
@@ -229,12 +230,16 @@ export const PostById = () => {
                 )}
             </FlexDir>
           </FlexDir>
-          <FlexDir margin="0" width="100vw">
+          <FlexDir margin="0" width="80vw">
             <Description>{res?.data?.text}</Description>
           </FlexDir>
           {res?.data?.type == "RoommateSeeker" && (
             <FlexDir width="100vw" margin="3vw 0 0 0">
               <UlCustom
+              wrap="wrap"
+              // mediaqueryDirMobile="column"
+              alignItems="center"
+              // justifyContent="center"
                 width="100%"
                 direction="row"
                 gap="2rem"
@@ -271,6 +276,7 @@ export const PostById = () => {
           {res?.data?.type == "RoommateSeeker" && (
             <FlexDir
               direction="column"
+              width="80vw"
               margin="7vw 0"
               mediaqueryMarginMobile="4vw 0"
               mediaqueryMarginTablet="6vw 0"
@@ -482,6 +488,7 @@ export const PostById = () => {
               setPopupActive={setPopupActive}
             />
           )}
+        </FlexDir>
         </FlexDir>
       )}
     </>

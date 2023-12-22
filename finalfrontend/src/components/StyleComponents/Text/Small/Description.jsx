@@ -9,17 +9,17 @@ border-radius: 5px;
 padding: 10px;
   
   ${({ theme }) => theme.mediaquery.tablet} {
-    font-size: ${({fontSizeTablet}) => fontSizeTablet ? fontSizeTablet : "2vw"};
+    font-size: ${({fontSizeTablet}) => fontSizeTablet ? fontSizeTablet : "20px"};
     text-align: justify;
   }
 
   ${({ theme }) => theme.mediaquery.mobile} {
-    font-size: ${({fontSizeMobile}) => fontSizeMobile ? fontSizeMobile : "2.7vw"};
+    font-size: ${({fontSizeMobile}) => fontSizeMobile ? fontSizeMobile : "16px"};
     text-align: justify;
   }
 
   ${({ theme }) => theme.mediaquery.miniMobile} {
-    font-size: ${({fontSizeMobile}) => fontSizeMobile ? fontSizeMobile : "2.7vw"};
+    font-size: ${({fontSizeMobile}) => fontSizeMobile ? fontSizeMobile : "16px"};
     text-align: justify;
   }
 `

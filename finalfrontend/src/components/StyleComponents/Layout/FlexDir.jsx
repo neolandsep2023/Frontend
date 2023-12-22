@@ -14,6 +14,7 @@ const FlexStyle = styled.div`
   height: ${({ height }) => (height ? height : "auto")};
   width: ${({ width }) => (width ? width : "auto")};
   min-height: ${({ minHeight }) => (minHeight ? minHeight : "auto")};
+  max-width: ${({ maxWidth }) => (maxWidth ? maxWidth : "none")};
   border: ${({border}) => (border ? border : "none")};
   border-radius: ${({borderRadius}) => borderRadius ? borderRadius : "0px"};
   background-color: ${({backgroundColor}) => backgroundColor ? backgroundColor : "transparent"};
@@ -84,13 +85,15 @@ export const FlexDir = ({
   backgroundColor,
   justifyContent,
   onClick,
-  alignItems
+  alignItems,
+  maxWidth
 }) => {
   const { theme } = useTheme();
 
   return (
     <FlexStyle
       minHeight={minHeight}
+      maxWidth={maxWidth}
       wrap={wrap}
       theme={theme}
       mediaqueryWidthTablet={mediaqueryWidthTablet}

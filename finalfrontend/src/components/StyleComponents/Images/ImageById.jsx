@@ -2,7 +2,7 @@ import { useTheme } from "@emotion/react";
 import styled from "@emotion/styled";
 
 const ByIdImageStyle = styled.img`
-  width: 100%;
+  width: 80%;
   aspect-ratio: 1.5/1;
   border-radius: 7px;
   object-fit: cover;
@@ -13,7 +13,7 @@ const ByIdImageStyle = styled.img`
   }
 
   ${({ theme }) => theme.mediaquery.mobile} {
-    width: 70vw
+    width: 100%
   }
 `
 
