@@ -6,7 +6,7 @@ export const useErrorFindRoom = (res, setFindOk, setRes) => {
   //! ------------------ 200 : todo ok
   if (res?.status == 200) {
     setFindOk(() => true);
-    Swal.fire({
+   return Swal.fire({
       icon: "success",
       title: 'Successful Fetching',
       showConfirmButton: false,
@@ -16,24 +16,26 @@ export const useErrorFindRoom = (res, setFindOk, setRes) => {
   }
 
   if (res?.response?.data?.includes("we couldn't find any rooms")) {
-    Swal.fire({
+    setRes({});
+    return Swal.fire({
       icon: "error",
       title: "Not Found",
       text: "No matching rooms",
       showConfirmButton: false,
       timer: 3000,
     });
-    setRes({});
+    
   }
 
   if (res?.response?.status == 500) {
-    Swal.fire({
+    setRes({});
+   return Swal.fire({
       icon: "error",
       title: "Interval server error",
       text: "There was an error in our interval server. Please try again",
       showConfirmButton: false,
       timer: 3000,
     });
-    setRes({});
+ 
   }
 }

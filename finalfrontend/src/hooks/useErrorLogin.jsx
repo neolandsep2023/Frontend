@@ -23,7 +23,7 @@ export const useErrorLogin = (res, setRes, login, setSuccessfulLogin) => {
         login(userString);
         setSuccessfulLogin(() => true);
     
-        Swal.fire({
+        return Swal.fire({
           icon: "success",
           title: "Welcome back.",
           text: "Succesfully logged in.",
@@ -35,7 +35,7 @@ export const useErrorLogin = (res, setRes, login, setSuccessfulLogin) => {
     
       if (res?.response?.data?.includes("User not found")) {
         setRes(() => ({}));
-        Swal.fire({
+       return Swal.fire({
           icon: "error",
           title: "Sorry!",
           text: "This user is not registered! Try making an account, it's super easy!",
@@ -46,23 +46,25 @@ export const useErrorLogin = (res, setRes, login, setSuccessfulLogin) => {
     
     
       if (res?.response?.data?.includes("Password is incorrect")) {
-        Swal.fire({
+        setRes(() => ({}));
+        return  Swal.fire({
           icon: "error",
           title: "Wrong password",
           showConfirmButton: false,
           timer: 1500,
         });
-        setRes(() => ({}));
+       
       }
     
       if (res?.response?.status == 500) {
-        Swal.fire({
+        setRes(() => ({}));
+      return  Swal.fire({
           icon: "error",
           title: "Interval Server Error",
           text: "There has been an error in our internal servers. Please try again.",
           showConfirmButton: false,
           timer: 1500,
         });
-        setRes(() => ({}));
+
       }
 }

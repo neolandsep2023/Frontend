@@ -26,7 +26,7 @@ export const useVerifyCodeError = (
     }
     setOkCheck(() => true);
     setRes(() => ({}));
-    Swal.fire({
+    return Swal.fire({
       icon: "success",
       title: "Correct code! ✅",
       showConfirmButton: false,
@@ -38,7 +38,7 @@ export const useVerifyCodeError = (
   if (res?.data?.check == false && res?.data?.doesUserExist.includes('User deleted for security')) {
     setRes(() => ({}));
     setOkDeleteUser(() => true)
-    Swal.fire({
+    return Swal.fire({
       icon: "error",
       title: "Code incorrect.",
       text: "Your user was deleted as a security measure. Please register again.",
@@ -50,7 +50,7 @@ export const useVerifyCodeError = (
 
   if (res?.data?.check == false && res?.data?.doesUserExist.includes('Error in updating validation')) {
     setRes(() => ({}));
-    Swal.fire({
+    return Swal.fire({
       icon: "error",
       title: "Interval server error ❎.",
       text: "Please login again.",
@@ -73,14 +73,15 @@ export const useVerifyCodeError = (
 
     // ---------------------> 500
     if (res?.response?.status == 500) {
-      Swal.fire({
+      setRes(() => ({}));
+      return Swal.fire({
         icon: "error",
         title: "Oops...",
         text: "Internal Server Error ❎!",
         showConfirmButton: false,
         timer: 1500,
       });
-      setRes(() => ({}));
+
     }
 };
 

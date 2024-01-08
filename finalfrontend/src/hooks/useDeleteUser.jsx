@@ -19,21 +19,22 @@ export const useDeleteUser = (setUser, setIsDeletedUser) => {
             switch (res.status) {
           
               case 200:
-                Swal.fire({
+                setUser(() => null);
+                setIsDeletedUser(() => true);
+                localStorage.removeItem("user");
+               return Swal.fire({
                   icon: "success",
                   title: "This user has been deleted",
                   showConfirmButton: false,
                   timer: 3000,
                 });
       
-                setUser(() => null);
-                setIsDeletedUser(() => true);
-                localStorage.removeItem("user");
+                
       
                 break;
       
               default:
-                Swal.fire({
+               return Swal.fire({
                   icon: "error",
                   title: "There was an error deleting your user",
                   text: "Please, try again",

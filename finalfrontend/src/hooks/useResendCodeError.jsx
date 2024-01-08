@@ -13,7 +13,7 @@ export const useResendCodeError = (
   /// 200 ---------> resend false
   if (resResend?.response?.data?.resend  == "false") {
     setResResend(() => ({}));
-    Swal.fire({
+   return Swal.fire({
       icon: "error",
       title: "There has been an error emailing your code",
       text: "Please, try again",
@@ -26,7 +26,7 @@ export const useResendCodeError = (
 
   if (resResend?.data?.resend.toString() == "true") {
     setResResend(() => ({}));
-    Swal.fire({
+   return Swal.fire({
       icon: "success",
       title: "Confirmation code was sent",
       text: "Please, check your email",
@@ -43,7 +43,7 @@ export const useResendCodeError = (
   ) {
     setUserNotFound(() => true);
     setResResend(() => ({}));
-    Swal.fire({
+    return Swal.fire({
       icon: "error",
       title: "Interval Server Error",
       text: "Please, try again",
@@ -54,7 +54,7 @@ export const useResendCodeError = (
   // 500 ----------> interval server error
   if (resResend?.response?.status == 500) {
     setResResend(() => ({}));
-    Swal.fire({
+    return Swal.fire({
       icon: "error",
       title: "Interval Server Error",
       text: "There has been an error in our internal servers. Please, try again",

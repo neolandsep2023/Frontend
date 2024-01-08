@@ -3,7 +3,7 @@ import { ProfileDataMobileElement } from "./ProfileDataMobile.element";
 import { useAuth } from "../../context/authContext";
 import { ButtonPrimary, FlexDir } from "../StyleComponents";
 import { ConnectButtonCustom } from "../StyleComponents/Buttons/ConnectButton";
-import { useNavigate } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import { getUserById } from "../../services/user.service";
 
 export const ProfileDataMobile = () => {

@@ -6,7 +6,7 @@ export const useIsAuthor = async (user, id, navigate, route, item) => {
     if(route.pathname.includes('/updateRoom')) {
         if (!item.postedBy[0].includes(user._id)) {
             navigate(`/roomFinds/${id}`)
-            Swal.fire({
+            return Swal.fire({
                 icon: "error",
                 title: "You are not the owner.",
                 showConfirmButton: false,
@@ -17,7 +17,7 @@ export const useIsAuthor = async (user, id, navigate, route, item) => {
     else if (route.pathname.includes('/updatePost')) {
         if (!item.author[0].includes(user._id)) {
             navigate(`/feed/${id}`)
-            Swal.fire({
+           return Swal.fire({
                 icon: "error",
                 title: "You are not the owner.",
                 showConfirmButton: false,

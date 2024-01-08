@@ -7,7 +7,7 @@ export const useForgotPasswordError = (res, setRes, setForgotOk) => {
       res?.response?.data?.includes("User does not exist.")
     ) {
       setRes(() => ({}));
-      Swal.fire({
+      return Swal.fire({
         icon: "error",
         title: "This user does not exists",
         text: "Please, register first",
@@ -22,7 +22,7 @@ export const useForgotPasswordError = (res, setRes, setForgotOk) => {
       res?.response?.data?.includes("dont send email and dont update user")
     ) {
       setRes(() => ({}));
-      Swal.fire({
+     return  Swal.fire({
         icon: "error",
         title: "There was a problem updating your user",
       text: "Please, try again",
@@ -36,7 +36,7 @@ export const useForgotPasswordError = (res, setRes, setForgotOk) => {
       if (res?.data?.sendPassword == true && res?.data?.updateUser == true) {
         setForgotOk(() => true);
         setRes(() => ({}));
-        Swal.fire({
+        return Swal.fire({
           icon: "success",
           title: 'We have sent you a temporary password',
           text: 'Please, check your email',
@@ -54,7 +54,7 @@ export const useForgotPasswordError = (res, setRes, setForgotOk) => {
       res?.response?.data?.updateUser == false
     ) {
       setRes(() => ({}));
-      Swal.fire({
+     return  Swal.fire({
         icon: "error",
         title: "There was a problem updating your user",
         text: "The email we sent you is no longer valid. Please, try again to get a valid new password",
@@ -67,7 +67,7 @@ export const useForgotPasswordError = (res, setRes, setForgotOk) => {
   
     if (res?.response?.status == 500) {
       setRes(() => ({}));
-      Swal.fire({
+      return Swal.fire({
         icon: "error",
         title: "Interval Server Error",
       text: "There was an error in our interval server. Please try again",
