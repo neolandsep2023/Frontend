@@ -60,10 +60,6 @@ export const router = createBrowserRouter ([
                 element: <RoomSearch/>,
               },
               {
-                path: "/roomFinds",
-                // element: < />,
-              },
-              {
                 path: "/roomFinds/:id",
                 element: 
                 (<Protected>
@@ -215,14 +211,14 @@ export const router = createBrowserRouter ([
                 path: "*",
                 element: <NotFound />,
               },
-              {path: "/pruebas/create",
-            element: <MapCreation/>},
-            {path: "/pruebas/view",
-          element: <ByIdMap/>},
-          {
-            path: "/pruebas/styledcomponents",
-            element: <PopUpLink/>
-          }
+          //     {path: "/pruebas/create",
+          //   element: <MapCreation/>},
+          //   {path: "/pruebas/view",
+          // element: <ByIdMap/>},
+          // {
+          //   path: "/pruebas/styledcomponents",
+          //   element: <PopUpLink/>
+          // }
         ],
     },
 ]);

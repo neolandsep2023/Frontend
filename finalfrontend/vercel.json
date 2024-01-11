@@ -8,7 +8,6 @@
         { "src": "/verifyCode", "dest": "/" },
         { "src": "/forgotpassword", "dest": "/" },
         { "src": "/roomSearch", "dest": "/" },
-        { "src": "/roomFinds", "dest": "/" },
         { "src": "/roomFinds/:id", "dest": "/" },
         { "src": "/feed", "dest": "/" },
         { "src": "/feed/:id", "dest": "/" },
