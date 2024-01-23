@@ -11,7 +11,7 @@ export const useFetchDataUpdate = (id, route, user, navigate, setRoomType) => {
       if (route.pathname.includes('/updateRoom')) {
         const data = await getRoomById(id);
         if(data.data.postedBy[0]._id.includes(user._id)) {
-            console.log(data);
+            // console.log(data);
             setPost(data.data);
             setRoomType(data.data.type)
         } else navigate(`/roomFinds/${id}`)

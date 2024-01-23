@@ -8,7 +8,6 @@ import { googleUser } from "./serviceGoogle.config";
 //! ------------------------- REGISTER ----------------------------------
 
 export const registerUser = async (formData) => {
-  console.log('entro en services', formData)
   const APIGeneral = extraConfig();
   return APIGeneral.post("/users/redirectRegister", formData, {
     headers: { "Content-Type": "multipart/form-data" },
@@ -27,7 +26,6 @@ export const registerUserWithGoogle = async (formData) => {
 
 
 export const registerGoogle = async (token) => {
-  console.log('ENTRO AL USER SERVICE')
   const APIGeneral = googleUser(token);
 
   return APIGeneral.then((res) => res).catch((error) => error);

@@ -3,7 +3,6 @@ import { extraConfig } from "./serviceApiGeneral.config";
 //! ------------------ CREATE ------------------
 export const createRoom = async (formData) => {
   const APIGeneral = extraConfig();
-  console.log("aqui el servicio",formData,)
 
   return APIGeneral.post(`/rooms/`, formData, {
     headers: { "Content-Type": "multipart/form-data" },

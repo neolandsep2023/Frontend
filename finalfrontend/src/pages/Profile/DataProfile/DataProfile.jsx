@@ -55,7 +55,7 @@ export const DataProfile = ({ page }) => {
     setUserLikedPosts(userSavedPosts?.data?.savedPosts); //! tiene que ser un array - BACK NO POPULADO
   };
 
-  console.log(userLikedPosts);
+  // console.log(userLikedPosts);
 
   useEffect(() => {
     getSavedPosts();
@@ -204,7 +204,7 @@ export const DataProfile = ({ page }) => {
                       padding="2rem 0 1rem 0"
                       margin="3rem 0 1rem 0"
                     >
-                      {console.log(review)}
+                      {/* {console.log(review)} */}
 
                       <FlexEnd
                         variant="inverted"

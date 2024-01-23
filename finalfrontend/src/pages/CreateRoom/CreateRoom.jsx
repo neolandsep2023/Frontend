@@ -77,7 +77,7 @@ const { postId } = useParams()
         // customFormData = {...customFormData, ['image'] : inputFile[i]} esto esta delibreadamente comentado!!
       }
 
-      console.log("custom form data con imagen", customFormData);
+      // console.log("custom form data con imagen", customFormData);
     } else {
       // no hay imagen
       const customFormData = {

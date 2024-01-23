@@ -1,7 +1,7 @@
 import Swal from "sweetalert2";
 
 export const useCanUserPost = (data, navigate) => {
-    console.log(data)
+    // console.log(data)
   if (
     data.description == "" || data.description == null ||
     data.name == "" || data.name == null ||
@@ -12,7 +12,7 @@ export const useCanUserPost = (data, navigate) => {
     const modifyThis = [];
     const requiredData = ["description", "name", "lastName", "birthYear", "interests"]
 
-    console.log(Object.keys(data))
+    // console.log(Object.keys(data))
     for (let i = 0; i < Object.keys(data).length; i++) {
         if (Object.values(data)[i].length === 0 ) {
             modifyThis.push(Object.keys(data)[i])

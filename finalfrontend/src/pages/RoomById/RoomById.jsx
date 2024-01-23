@@ -49,7 +49,6 @@ export const RoomById = () => {
     } else {
       setIsOwner(false);
     }
-    console.log("holaaa aaaaa aa", res?.data?.post);
   };
 
   useEffect(() => {
@@ -88,7 +87,7 @@ export const RoomById = () => {
             minHeigh="55vh"
           >
             <FlexDir width="60vw">
-              {console.log(res?.data)}
+              {/* {console.log(res?.data)} */}
               <AppCarousel src={res?.data?.image} alt={res?.data?.title} />
             </FlexDir>
             <FlexDir

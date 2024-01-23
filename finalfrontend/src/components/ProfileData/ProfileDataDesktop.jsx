@@ -32,7 +32,6 @@ export const ProfileDataDesktop = () => {
     }, []);
 
     const medias = sacarMedia(data)
-console.log(data)
 
 let userAge = data?.birthYear && (2023 - data?.birthYear)
 

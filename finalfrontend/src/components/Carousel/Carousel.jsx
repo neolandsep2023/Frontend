@@ -59,7 +59,7 @@ const Carousel = ({ children }) => {
 };
 
 export const AppCarousel = ({ src, alt }) => {
-  console.log(src);
+  // console.log(src);
   CARDS = src?.length;
   return (
     <div id="carouselPage">

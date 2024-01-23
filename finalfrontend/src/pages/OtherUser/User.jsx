@@ -28,7 +28,7 @@ export const User = () => {
 
   const dataFetch = async () => {
     const response = await getUserByUsernameP(username);
-    console.log(response);
+    // console.log(response);
     setUserData(response.data);
     setLoading(false);
   };

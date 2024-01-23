@@ -12,7 +12,7 @@ import { ButtonPrimary } from "../StyleComponents";
 
 
 export const DeleteButtonComponent = ({ type, id }) => {
-  console.log("soy el tipo de boton de delete", type)
+  // console.log("soy el tipo de boton de delete", type)
     const navigate = useNavigate();
   const deleteAction = async () => {
     Swal.fire({

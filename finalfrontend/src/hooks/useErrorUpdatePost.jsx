@@ -1,7 +1,7 @@
 import Swal from "sweetalert2"
 
 export const useErrorUpdatePost = (res, setRes, navigate) => {
-  console.log(res);
+  // console.log(res);
   if (res?.status == 200) {
     let id = (res?.data?.postByIdUpdated?._id)
   navigate(`/feed/${id}`)

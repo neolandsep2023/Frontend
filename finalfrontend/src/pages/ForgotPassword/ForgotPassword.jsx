@@ -20,7 +20,7 @@ export const ForgotPassword = () => {
   
     useEffect(() => {
       useForgotPasswordError(res, setRes, setForgotOk); 
-      console.log(res)
+      // console.log(res)
     }, [res]);
   
     if (forgotOk) {

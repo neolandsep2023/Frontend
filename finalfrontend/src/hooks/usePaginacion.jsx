@@ -6,7 +6,6 @@ export const usePaginacion = (num) => {
   const itemsPerPage = num || 6;
   const [currentPage, setCurrentPage] = useState(1);
 
-console.log(galeriaItems)
 
   const currentItems = galeriaItems?.slice(
     (currentPage - 1) * itemsPerPage,

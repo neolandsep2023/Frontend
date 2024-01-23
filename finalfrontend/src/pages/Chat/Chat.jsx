@@ -62,7 +62,7 @@ export const Chat = () => {
 
     const response = await newMessageChat(customFormData);
     if (response.status == 200) {
-      console.log("entroooooo", sentComment);
+      // console.log("entroooooo", sentComment);
       setActiveChat("");
       setSentComment(!sentComment);
       setTextArea("");
@@ -419,7 +419,7 @@ export const Chat = () => {
                             <input
                               onInput={(e) => {
                                 setInputValue(e.target.value);
-                                console.log(inputValue);
+                                // console.log(inputValue);
                               }}
                               className="textArea"
                               type="text"

@@ -51,17 +51,13 @@ export const UpdateRoom = () => {
 
   const formSubmit = async (formData) => {
     const inputFile = document.getElementById("file-upload").files;
-    // console.log("formData en el componente", formData);
-    // console.log("inputFile en el componente", inputFile);
+
     if (inputFile.length != 0) {
       let customFormData = {
         ...formData,
         image: inputFile,
       };
-      //   for (let i = 0; i < inputFile.length; i++) {
-      //     customFormData = { ...customFormData, ["image"]: inputFile[i] };
-      //   }
-      console.log("custom form data con imagen", customFormData);
+
       setSend(true);
       setRes(await updateRoom(id, customFormData));
       setSend(false);
@@ -79,9 +75,6 @@ export const UpdateRoom = () => {
 
   useEffect(() => {}, [roomType]);
 
-//   useEffect(() => {
-//     useErrorCreateRoom(res, setRes, logout, navigate);
-//   }, [res]);
 
   useEffect(() => {
     useUserVerify(user, logout, navigate);

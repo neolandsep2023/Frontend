@@ -14,7 +14,7 @@ const {login} = useAuth();
 
     const sentAutoLoginData = await autoLoginUser(customFormData);
     if (sentAutoLoginData?.status == 200) {
-      console.log(sentAutoLoginData)
+      // console.log(sentAutoLoginData)
       const { username, email, image, isVerified, gender} = sentAutoLoginData.data.user;
         
       const customUser = {

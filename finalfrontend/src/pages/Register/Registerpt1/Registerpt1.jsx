@@ -72,13 +72,13 @@ export const Registerpt1 = () => {
     }
   };
 
-  const handleGoogleLogin = useGoogleLogin({
-    onSuccess: (codeResponse) => setGoogleUser(codeResponse),
-    onError: (error) => console.log("Login Failed:", error),
-  });
+  // const handleGoogleLogin = useGoogleLogin({
+  //   onSuccess: (codeResponse) => setGoogleUser(codeResponse),
+  //   onError: (error) => console.log("Login Failed:", error),
+  // });
 
   const formGoogle = async () => {
-    console.log(resGoogle);
+    // console.log(resGoogle);
     const customFormData = {
       isVerified: resGoogle.data.verified_email,
       email: resGoogle.data.email,
@@ -94,14 +94,11 @@ export const Registerpt1 = () => {
 
     setSend(true);
     setRes(await registerUserWithGoogle(customFormData));
-    console.log(res);
+    // console.log(res);
     setSend(false);
   };
 
   const handleGoogleRegister = async () => {
-    //         const credentialDecoded = jwtDecode(googleUser.credential)
-    // console.log(credentialDecoded)
-
     setSend(true);
     setResGoogle(await registerGoogle(googleUser.access_token));
     setSend(false);
@@ -132,7 +129,7 @@ export const Registerpt1 = () => {
 
   if (okRegisterGoogle) {
     if (!localStorage.getItem("user")) {
-      console.log(allUser);
+      // console.log(allUser);
       useAutoLogin(allUser);
     } else {
       return <Navigate to="/register/complete" />;
@@ -155,9 +152,9 @@ export const Registerpt1 = () => {
 
             <FlexDir margin={"0 0 8px 0"}></FlexDir>
             {/* <GoogleLogin onClick={() => handleGoogleLogin()} /> */}
-            <button onClick={() => handleGoogleLogin()} scope="profile email">
+            {/* <button onClick={() => handleGoogleLogin()} scope="profile email">
               Sign in with Google 🚀{" "}
-            </button>
+            </button> */}
             <LabelAndInput>
               Username
               <input

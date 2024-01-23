@@ -4,7 +4,7 @@ import { Navigate, useNavigate } from "react-router-dom";
 
 
 export const useErrorCreateRoom = (res, setRes, setCreatedRoomSuccesfully, setId, logout, navigate) => {
-  console.log(res);
+  // console.log(res);
   if (res?.status == 200) {
     
     setId(res.data._id)

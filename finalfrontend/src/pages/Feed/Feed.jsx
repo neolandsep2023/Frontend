@@ -103,7 +103,7 @@ export const Feed = () => {
         ? setGaleriaItems(resSearch?.data?.resArrayRoommSeeker) //aqui se setea la respuesta del search segun estes en room o roommate
         : setGaleriaItems(resSearch?.data?.resArrayRoommateSeeker);
     } else if (province == true && resFilterProvince?.status == 200) {
-      console.log("entro");
+
       setGaleriaItems(resFilterProvince?.data);
     } else {
       res?.status == 200 && setGaleriaItems(res?.data?.allPosts);

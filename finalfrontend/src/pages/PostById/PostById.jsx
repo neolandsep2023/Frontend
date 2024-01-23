@@ -57,12 +57,11 @@ export const PostById = () => {
   //todo ------------- Get Post --------------
   const fetchPost = async () => {
     const data = await getPostById(id);
-    console.log(data);
+    // console.log(data);
     setRes(data);
     setPublicLocation(data.data.publicLocation);
     setProvince(data.data.province);
     setPostcode(data.data.postcode);
-    // console.log(postcode)
   };
 
   //todo ------------- Check if OWNER -------------
@@ -92,7 +91,6 @@ export const PostById = () => {
   };
 
   const showPopupLink = () => {
-    console.log("holaa estoy aqui");
     setPopupLinkActive(true);
   };
 

@@ -78,7 +78,7 @@ export const CreateRoomLink = () => {
         // customFormData = {...customFormData, ['image'] : inputFile[i]} esto esta delibreadamente comentado!!
       }
 
-      console.log("custom form data con imagen", customFormData);
+      // console.log("custom form data con imagen", customFormData);
     } else {
       // no hay imagen
       const customFormData = {
@@ -239,7 +239,7 @@ export const CreateRoomLink = () => {
               defaultValue="Apartment"
               onInput={(e) => {
                 //no se puede hacer un onChange, no funciona
-                console.log("soy target", e.target.value);
+                // console.log("soy target", e.target.value);
                 setRoomType(e.target.value);
               }}
               {...register("type", { required: true })}

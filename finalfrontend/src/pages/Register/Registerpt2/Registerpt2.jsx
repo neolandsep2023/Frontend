@@ -26,7 +26,7 @@ export const Registerpt2 = () => {
   const { handleSubmit, register } = useForm();
 
   const formSubmit = async (formData) => {
-    console.log(formData);
+    // console.log(formData);
 
     setSend(true);
     setRes(await updateUser(formData));
@@ -34,7 +34,7 @@ export const Registerpt2 = () => {
   };
 
   useEffect(() => {
-    console.log(res);
+    // console.log(res);
     useErrorRegisterpt2(res, setRes, setOkRegister, login, user);
   }, [res]);
 

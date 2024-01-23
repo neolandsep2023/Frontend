@@ -43,7 +43,7 @@ export const UserDataProfile = ({ page, userData }) => {
   const fetchData = async () => {
     setIsLoaded(false);
     setRes(await getUserByUsernameP(username));
-    console.log(res?.data);
+    // console.log(res?.data);
     setIsLoaded(true);
   };
 
@@ -212,7 +212,7 @@ export const UserDataProfile = ({ page, userData }) => {
                       padding="2rem 0 1rem 0"
                       margin="3rem 0 1rem 0"
                     >
-                      {console.log(review)}
+                      {/* {console.log(review)} */}
 
                       <FlexEnd variant="inverted" height={"70px"}>
                         <ProfileIcon

@@ -55,7 +55,7 @@ export const AccountSettings = () => {
 
   useEffect(() => {
     useErrorChangePassword(resPassword, setResPassword, setUser);
-    console.log(resPassword)
+    // console.log(resPassword)
   }, [resPassword]);
 
   //! ---- estados de navegacion

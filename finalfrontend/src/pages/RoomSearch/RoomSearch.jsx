@@ -162,7 +162,7 @@ export const RoomSearch = () => {
           <FlexDir direction="column" width="100%" margin="0">
             <h2 ref={titleRef}>Top Rooms in your Area</h2>
             <FlexDir wrap="wrap" gap="2rem" width="100%" margin="0">
-              {console.log(res)}
+              {/* {console.log(res)} */}
               {res &&
                 res?.data?.toReversed().map((room) => {
                   return (

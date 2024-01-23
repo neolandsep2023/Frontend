@@ -31,7 +31,7 @@ export const UserReview = ({ action, userData }) => {
       ...formData,
       rating: valueStar,
     };
-    console.log("Custom Form Data:", customFormData);
+    // console.log("Custom Form Data:", customFormData);
     if (action == "usercomment") {
       setRes(await createUserComment(id, customFormData));
     } else if (action == "roomcomment") {

@@ -217,7 +217,7 @@ export const CreatePost = () => {
                 id="RoomSeeker"
                 value="RoomSeeker"
                 onInput={(e) => {
-                  console.log("soy target", e.target.value);
+                  // console.log("soy target", e.target.value);
                   //este set timeout y el del siguiente radio es porque leaflet (la libreria de mapas), no muestra
                   //bien el mapa por el hidden y el renderizado condicional. El rpoblema de raiz se genera en que
                   //el div que contiene el id de map para que leaflet renderice ahi su mapa tiene que aparecer en la pagina
@@ -249,7 +249,7 @@ export const CreatePost = () => {
                   setTimeout(() => {
                     window.dispatchEvent(new Event("resize"));
                   }, 500);
-                  console.log("soy target", e.target.value);
+                  // console.log("soy target", e.target.value);
                   setPostType(e.target.value);
                 }}
                 {...register("type", { required: true })}

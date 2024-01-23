@@ -12,15 +12,14 @@ export const MessagePopup = ({ id, setPopupActive, isMobile }) => {
 
   const submitComment = async (formData) => {
     setSent(true)
-    console.log(formData);
+    // console.log(formData);
     let customFormData = {
       textComment: formData.textComment,
       otherUser: id,
     };
-    console.log(customFormData);
+    // console.log(customFormData);
 
     const response = await newMessageChat(customFormData);
-    console.log("HOOLAAAAAAAAAAAAAAAAAAa", response);
     if (response.status == 200) {
         setSent(false)
       navigate("/messages");

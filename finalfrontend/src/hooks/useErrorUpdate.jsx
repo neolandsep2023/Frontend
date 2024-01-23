@@ -1,7 +1,7 @@
 import Swal from "sweetalert2/dist/sweetalert2.all.js";
 
 export const useErrorUpdate = (res, setRes, logout) => {
-console.log(res)
+// console.log(res)
 let acc
 if(res?.data){
     acc = 0

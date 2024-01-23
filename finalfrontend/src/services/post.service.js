@@ -2,7 +2,6 @@ import { extraConfig } from "./serviceApiGeneral.config";
 
 //! ------------------ CREATE ------------------
 export const createPost = async (formData) => {
-  console.log("en el servicio", formData);
   const APIGeneral = extraConfig();
 
   return APIGeneral.post(`/posts/create`, formData, {
@@ -100,7 +99,6 @@ export const getPostByLocation = async (location) => {
 //! ---------------- GET by POSTCODE ----------------
 export const getPostByPostCode = async (postcode) => {
   const APIGeneral = extraConfig();
-  console.log(postcode);
 
   return APIGeneral.get(`/posts/byPostcode/${postcode}`)
     .then((res) => res)
@@ -136,7 +134,7 @@ export const search = async (search) => {
 
 //! ---------------- TOGGLE ROOMMATE ----------------
 export const toggleRoommate = async (id, formData) => {
-  console.log(formData)
+  // console.log(formData)
   const APIGeneral = extraConfig();
 
   return APIGeneral.patch(`/posts/toggleRoommates/${id}/${formData}`)
@@ -146,7 +144,7 @@ export const toggleRoommate = async (id, formData) => {
 
 //! ---------------- TOGGLE ROOM ----------------
 export const toggleRoom = async (id, formData) => {
-  console.log(formData)
+  // console.log(formData)
   const APIGeneral = extraConfig();
 
   return APIGeneral.patch(`/posts/toggleRoom/${id}/${formData}`)
