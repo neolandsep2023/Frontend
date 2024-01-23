@@ -1,7 +1,7 @@
 import React from "react";
 import styled from "@emotion/styled";
 
-const StyledHeader = styled.div`
+const StyledHeader = styled.header`
  .figureNav span {
   color: rgb(74, 206, 130);
   font-weight: 700;
@@ -10,29 +10,33 @@ const StyledHeader = styled.div`
   color: rgb(74, 206, 130);
 }
 
-.headerDesktop {
+
   display: flex;
   justify-content: space-between;
   width: 100%;
-  height: 17vh;
+  height: 13vh;
   /* margin-bottom: 20px; */
   min-height: 100px;
   max-height: 140px;
 
   background-color: ${({ theme }) => theme.palette.header.main};
-}
 
-.navs {
+
+& div {
+  height: 100%;
+  margin: 0;
+  padding: 0;
   display: flex;
   flex-direction: column;
-
-  justify-content: space-around;
+  align-items: end;
+  justify-content: end;
 }
 .navUno {
   display: flex;
   justify-content: flex-end;
 }
 .navUno ul {
+  margin: px;
   display: flex;
   height: 1vh;
   color: rgb(74, 206, 130);
@@ -57,7 +61,7 @@ const StyledHeader = styled.div`
   margin-right: 3vw;
   padding-top: 10px;
 }
-.botonesH img{
+.user-img{
  height: 50px;
  width: 50px;
  background-color:rgb(74, 206, 130);
@@ -70,13 +74,14 @@ const StyledHeader = styled.div`
     background-color: ${({ theme }) => theme.palette.background.header};
  cursor: pointer;
 }
-.navDos {
+& nav {
   display: flex;
   justify-content: flex-end;
   gap: 20px;
   align-items: center;
   color: rgb(74, 206, 130);
-  font-weight: 700;
+  font-weight: 600;
+  font-size: 18px;
 }
 
 .headerImg img {
@@ -84,7 +89,7 @@ const StyledHeader = styled.div`
   display: flex;
   justify-content: center;
   align-items: center;
-  max-width: 230px;
+  max-width: 200px;
  
 }
 .headerImg {
@@ -120,18 +125,23 @@ const StyledHeader = styled.div`
     transform: scaleX(1);
   }
   
+  & li {
+    list-style: none;
+    display: flex;
+    align-items: center;
+    gap: 15px;
+  }
 
 
 
 
 .mainNav {
+  margin: 0 0 10px 0;
   display: flex;
   justify-content: space-around;
   align-items: center;
-  width: 70vw;
+  width: 60vw;
   max-width: 1000px;
-  gap: 20px;
-  padding: 0 20px;
 }
 body.light .headerDesktop {
 background-color: #f0f9f3;

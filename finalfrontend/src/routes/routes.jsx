@@ -62,9 +62,9 @@ export const router = createBrowserRouter ([
               {
                 path: "/roomFinds/:id",
                 element: 
-                (<Protected>
+                // (<Protected>
                   < RoomById/>
-                </Protected>)
+                // </Protected>)
               },
               {
                 path: "/feed",
@@ -73,9 +73,9 @@ export const router = createBrowserRouter ([
               {
                 path: "/feed/:id",
                 element: 
-                (<Protected>
+                // (<Protected>
                   <PostById/>
-                </Protected>),
+                // </Protected>),
               },
               {
                 path: "/verifyCode",

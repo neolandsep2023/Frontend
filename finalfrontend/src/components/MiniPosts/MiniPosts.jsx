@@ -1,14 +1,15 @@
-import { Link } from "react-router-dom"
+import { Link, useNavigate } from "react-router-dom"
 import { MiniPostStyle } from "./MiniPosts.element"
 import { AddElement, FlexDir, FlexEnd, SaveElement, SavedElement } from "../StyleComponents"
 import { useEffect, useState } from "react"
+import { useAuth } from "../../context/authContext"
 
 
 export const MiniPosts = ({id, title, text, image, province, price, author, addToSaved, userLikedPosts, updatedLikes}) => {
 const path = `/feed/${id}`
-
+const navigate = useNavigate();
 const [saved, setSaved] = useState(false)
-
+const { user } = useAuth()
 
 const isSaved = userLikedPosts?.includes(id)
 
@@ -29,7 +30,7 @@ useEffect(() => {
     <MiniPostStyle>
 
         <FlexDir  direction={"column"} width={"100%"} gap={"0"}>
-            <SavedElement onClick={()=> addToSaved(id)} variant={isSaved ? "saved" : "normal"}/>
+            <SavedElement onClick={()=> user != null ? addToSaved(id) : navigate("/login")} variant={isSaved ? "saved" : "normal"}/>
         <Link to={path}>
             <FlexDir  width={"100%"} height={"70%"} mediaqueryHeightMobile={"95%"} mediaqueryDirMobile={"column"} margin={"0"}>
         <img src={image} alt="img post" />

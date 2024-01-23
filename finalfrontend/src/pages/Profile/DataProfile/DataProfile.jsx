@@ -6,6 +6,7 @@ import {
 } from "../../../services/user.service";
 import { useAuth } from "../../../context/authContext";
 import {
+  Loading,
   MiniPostProfile,
   MiniPostProfileContainerElement,
   MiniPosts,
@@ -32,15 +33,14 @@ export const DataProfile = ({ page }) => {
   const { user } = useAuth();
   const [data, setData] = useState(null);
   const [res, setRes] = useState(null);
-  const [isLoaded, setIsLoaded] = useState(false);
+  const [isLoading, setIsLoading] = useState(true);
 
   const [userLikedPosts, setUserLikedPosts] = useState([]); //! useState de los likes
   const [updatedLikes, setUpdatedLikes] = useState(false);
 
   const fetchData = async () => {
-    setIsLoaded(false);
     setRes(await getUserByIdP(user?._id));
-    setIsLoaded(true);
+    setIsLoading(false);
   };
 
   //------------------------------------ save post
@@ -86,6 +86,7 @@ export const DataProfile = ({ page }) => {
     switch (page) {
       case "posted":
         return (
+          isLoading ? <Loading/> :
           <>
             <ProfileContainer heightTablet={"38vh"} height={"77vh"} key={page}>
               <FlexDir>
@@ -130,6 +131,7 @@ export const DataProfile = ({ page }) => {
 
       case "rooms":
         return (
+          isLoading ? <Loading/> :
           <>
             <ProfileContainer heightTablet={"58vh"} height={"77vh"} key={page}>
               <FlexDir>
@@ -183,6 +185,7 @@ export const DataProfile = ({ page }) => {
 
       case "reviews":
         return (
+          isLoading ? <Loading/> :
           <>
             <ProfileContainer
               heightTablet={"58vh"}
@@ -241,6 +244,7 @@ export const DataProfile = ({ page }) => {
 
       case "bookmarks":
         return (
+          isLoading ? <Loading/> :
           <>
             <ProfileContainer heightTablet={"58vh"} height={"77vh"} key={page}>
               <FlexDir>

@@ -5,19 +5,19 @@ import { ButtonPrimary, FlexDir } from "../StyleComponents";
 import { ConnectButtonCustom } from "../StyleComponents/Buttons/ConnectButton";
 import { Link, useNavigate } from "react-router-dom";
 import { getUserById } from "../../services/user.service";
+import { Loading } from "../Loading/Loading";
 
 export const ProfileDataMobile = () => {
   const navigate = useNavigate();
   const { user, logout } = useAuth();
     const [data, setData] = useState(null);
     const [res, setRes] = useState(null);
-    const [isLoaded, setIsLoaded] = useState(false);
+    const [isLoading, setIsLoading] = useState(true);
 
     const fetchData = async () => {
-      setIsLoaded(false);
       const response = await getUserById(user?._id);
       setData(response.data)
-      setIsLoaded(true);
+      setIsLoading(false);
     };
   
     useEffect(() => {
@@ -27,6 +27,7 @@ export const ProfileDataMobile = () => {
 
 
   return (
+    isLoading ? <Loading/> :
     <>
     { data && (
       <ProfileDataMobileElement>

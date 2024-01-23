@@ -31,7 +31,6 @@ export const RoomSearch = () => {
 
   //! ---------- Destructuring ----------
   const { theme } = useThemeApp();
-  const themeObject = useTheme();
 
   const isTablet = window.innerWidth < 1050 ? true : false;
   const titleRef = useRef();
@@ -89,7 +88,8 @@ export const RoomSearch = () => {
               await you
             </H1Custom>
             <H3Custom>
-              Discover Your Ideal Living Space with HousePal's varied offers
+              Discover your Ideal Living Space with connect-a-mate's varied
+              offers
             </H3Custom>
             <FlexDir width="100%" direction="row">
               <SearchInputCustom

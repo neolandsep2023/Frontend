@@ -22,12 +22,14 @@ import { MessagePopup } from "../../components/OtherUser/MessagePopup";
 import { WarningElement } from "../../components/StyleComponents/Warning/Warning.element";
 import { H3PerfectFit } from "../../components/StyleComponents/Text/H3/H3PerfectFit";
 import { SuccessElement } from "../../components/StyleComponents/Warning/Success.element";
+import { Loading, Protected } from "../../components";
 export const RoomById = () => {
   //! ---------- Estados ----------
   const navigate = useNavigate();
   const [res, setRes] = useState();
   const [isOwner, setIsOwner] = useState();
   const [popupActive, setPopupActive] = useState(false);
+  const [isLoading, setIsLoading] = useState(true);
 
   //! ---------- Destructuring ----------
   const { id } = useParams();
@@ -37,6 +39,7 @@ export const RoomById = () => {
 
   const fetchRoom = async () => {
     setRes(await getRoomById(id));
+    setIsLoading(false);
   };
 
   const showPopup = () => {
@@ -55,6 +58,8 @@ export const RoomById = () => {
     fetchRoom();
   }, []);
 
+  console.log(user)
+
   useEffect(() => {
     if (res?.status == 200) {
       isOwnerFunction();
@@ -62,6 +67,10 @@ export const RoomById = () => {
   }, [res]);
 
   return (
+    <>
+    {isLoading ? (
+      <Loading />
+    ) : (
     <>
       {res && (
         <FlexDir gap="20px" minHeight="100vh" direction="column" margin="0">
@@ -163,9 +172,10 @@ export const RoomById = () => {
                 )}
               </UlCustom>
               {!isOwner && (
-                <ConnectButtonCustom onClick={showPopup}>
-                  Connect
-                </ConnectButtonCustom>
+      <ConnectButtonCustom onClick={() => user != null ? showPopup : navigate("/login")}>
+      Connect
+    </ConnectButtonCustom>
+      
               )}
               {res?.data?.post?._id && (
                 <SuccessElement
@@ -259,7 +269,7 @@ export const RoomById = () => {
                 )}
               </>
             ) : (
-              !isOwner && <UserReview action="roomcomment" />
+              !isOwner && user != null && <UserReview action="roomcomment" />
             )}
             {popupActive && (
               <MessagePopup
@@ -271,5 +281,7 @@ export const RoomById = () => {
         </FlexDir>
       )}
     </>
+    )}
+     </>
   );
 };

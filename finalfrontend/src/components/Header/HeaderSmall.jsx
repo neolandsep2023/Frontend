@@ -4,6 +4,7 @@ import { ButtonHeader } from "../StyleComponents";
 import { useThemeApp } from "../../context/themeContext";
 import { useAuth } from "../../context/authContext";
 import { HeaderSmallElement } from "./HeaderSmall.element";
+import { NavSpan } from "../StyleComponents/Buttons/NavSpan.element";
 
 export const HeaderSmall = () => {
   const [showMenu, setShowMenu] = useState(false);
@@ -30,9 +31,9 @@ export const HeaderSmall = () => {
           alt="Logo "
         />
         <div className="botonesHS">
-  <img  className="imgDark" onClick={toggleTheme}   src="https://res.cloudinary.com/djfkchzyq/image/upload/v1703067364/xgavzjkhbovd4tm1oryx.png">
-  
-  </img>
+        <NavSpan onClick={toggleTheme}>
+{theme == "dark" ? "light_mode" : "dark_mode"}
+</NavSpan>
   {user == null && (
     <button className="buttonHeader" onClick={navigateToLogin}>
       LOG IN
@@ -80,20 +81,20 @@ export const HeaderSmall = () => {
             <figure className="figureNav">
               <span className="material-symbols-outlined">source_environment</span>
               <NavLink to={"/roomSearch"} onClick={() => setShowMenu(false)}>
-                Room Search
+                Find your Room
               </NavLink>
             </figure>
 
-            <figure className="figureNav">
+            {/* <figure className="figureNav">
               <span className="material-symbols-outlined">handshake</span>
               <NavLink to={"/createRoom"} onClick={() => setShowMenu(false)}>
                 Create Room
               </NavLink>
-            </figure>
+            </figure> */}
             <figure className="figureNav">
               <span className="material-symbols-outlined">reduce_capacity</span>
               <NavLink to={"/createPost"} onClick={() => setShowMenu(false)}>
-                Create Post
+               Post
               </NavLink>
             </figure>
 
