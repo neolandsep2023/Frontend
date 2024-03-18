@@ -264,9 +264,9 @@ export const RoomById = () => {
               <>
                 <H3PerfectFit>Add a review</H3PerfectFit>
                 <RoomReview roomId={res?.data?._id} />
-                {res?.data?.post?.roommates?.includes(user._id) && (
+                {/* {res?.data?.post?.roommates?.includes(user._id) && (
                   <AddReview width="5vw" height="5vw" />
-                )}
+                )} */}
               </>
             ) : (
               !isOwner && user != null && <UserReview action="roomcomment" />
